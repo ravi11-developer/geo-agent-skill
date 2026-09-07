@@ -332,28 +332,41 @@ def audit_page(url):
             affected_urls=[url], confidence="low", finding_type="recommendation",
         ))
 
-    # ---- NEW: CRAWL-014 — noindex meta tag ----
-    if parsed.robots_meta and "noindex" in parsed.robots_meta:
+    # ---- NEW: CRAWL-014 — noindex meta tag / header ----
+    x_robots = r["headers"].get("x-robots-tag", "").lower()
+    if (parsed.robots_meta and "noindex" in parsed.robots_meta) or "noindex" in x_robots:
+        evidence_parts = []
+        if parsed.robots_meta and "noindex" in parsed.robots_meta:
+            evidence_parts.append("<meta name='robots' content='{}'>".format(parsed.robots_meta))
+        if "noindex" in x_robots:
+            evidence_parts.append("X-Robots-Tag: {}".format(x_robots))
+            
         findings.append(make_finding(
-            "CRAWL-014", "Page has noindex meta tag — invisible to search and AI", "critical",
-            "{} contains <meta name='robots' content='{}'> which includes 'noindex'. "
+            "CRAWL-014", "Page has noindex directive — invisible to search and AI", "critical",
+            "{} contains {} which includes 'noindex'. "
             "This directive tells search engines and AI crawlers to NOT index this page. "
             "The page will be excluded from search results and AI training/retrieval.".format(
-                url, parsed.robots_meta),
+                url, " and ".join(evidence_parts)),
             "Remove the noindex directive if this page should be discoverable. "
             "If noindex is intentional, verify that no important public content is "
             "locked behind it.",
             affected_urls=[url],
         ))
 
-    # ---- NEW: CRAWL-015 — nofollow meta tag ----
-    if parsed.robots_meta and "nofollow" in parsed.robots_meta:
+    # ---- NEW: CRAWL-015 — nofollow meta tag / header ----
+    if (parsed.robots_meta and "nofollow" in parsed.robots_meta) or "nofollow" in x_robots:
+        evidence_parts = []
+        if parsed.robots_meta and "nofollow" in parsed.robots_meta:
+            evidence_parts.append("<meta name='robots' content='{}'>".format(parsed.robots_meta))
+        if "nofollow" in x_robots:
+            evidence_parts.append("X-Robots-Tag: {}".format(x_robots))
+            
         findings.append(make_finding(
-            "CRAWL-015", "Page has nofollow meta tag — link equity blocked", "medium",
-            "{} contains <meta name='robots' content='{}'> which includes 'nofollow'. "
+            "CRAWL-015", "Page has nofollow directive — link equity blocked", "medium",
+            "{} contains {} which includes 'nofollow'. "
             "This prevents crawlers from following outbound links on this page, "
             "reducing the discoverability of linked pages.".format(
-                url, parsed.robots_meta),
+                url, " and ".join(evidence_parts)),
             "Remove the nofollow directive unless there is a specific reason to "
             "prevent crawlers from following links (e.g., user-generated content).",
             affected_urls=[url], confidence="high",
