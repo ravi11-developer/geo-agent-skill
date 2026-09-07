@@ -1,0 +1,485 @@
+{
+  "site": "www.tutorialspoint.com",
+  "audited_at": "2026-09-07T16:36:59Z",
+  "pages_crawled": 10,
+  "crawl_depth": 2,
+  "site_info": {
+    "has_sitemap": false,
+    "sitemap_url_count": 0,
+    "has_robots_txt": true,
+    "uses_https": true
+  },
+  "summary": {
+    "critical": 0,
+    "high": 7,
+    "medium": 12,
+    "low": 8,
+    "total_findings": 27
+  },
+  "findings": [
+    {
+      "category": "on-page-seo",
+      "title": "Missing H1 Tag",
+      "severity": "high",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com/practice/index.htm",
+        "https://www.tutorialspoint.com"
+      ],
+      "evidence": "No <h1> tag found in the HTML. (affects 3 pages)",
+      "suggested_action": {
+        "summary": "Include exactly one <h1> tag summarizing the page topic.",
+        "priority": "high"
+      },
+      "id": "F-001"
+    },
+    {
+      "category": "content-quality",
+      "title": "Thin Content",
+      "severity": "high",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com/practice/index.htm",
+        "https://www.tutorialspoint.com/codingground.htm",
+        "https://www.tutorialspoint.com/online_dev_tools.htm",
+        "https://www.tutorialspoint.com",
+        "https://www.tutorialspoint.com/python_technologies_tutorials.htm"
+      ],
+      "evidence": "Word count is 227. (affects 6 pages)",
+      "suggested_action": {
+        "summary": "Expand the page content to provide more value (aim for >300 words).",
+        "priority": "high"
+      },
+      "id": "F-002"
+    },
+    {
+      "category": "accessibility",
+      "title": "Missing Image Alt Text",
+      "severity": "high",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com"
+      ],
+      "evidence": "2 out of 25 images lack an alt attribute. (affects 2 pages)",
+      "suggested_action": {
+        "summary": "Add descriptive alt text to all images for screen readers.",
+        "priority": "high"
+      },
+      "id": "F-003"
+    },
+    {
+      "category": "technical-seo",
+      "title": "Missing Canonical Tag",
+      "severity": "high",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/codingground.htm"
+      ],
+      "evidence": "No <link rel=\"canonical\"> tag found.",
+      "suggested_action": {
+        "summary": "Add a self-referencing canonical tag to prevent duplicate content issues.",
+        "priority": "high"
+      },
+      "id": "F-004"
+    },
+    {
+      "category": "technical-seo",
+      "title": "Missing XML Sitemap",
+      "severity": "high",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/vlsi_design/vlsi_design_mos_inverter.htm"
+      ],
+      "evidence": "No sitemap URLs found in site data.",
+      "suggested_action": {
+        "summary": "Provide an XML sitemap and reference it in robots.txt.",
+        "priority": "high"
+      },
+      "id": "F-005"
+    },
+    {
+      "category": "content-quality",
+      "title": "Duplicate Title Tags",
+      "severity": "high",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com"
+      ],
+      "evidence": "Title 'Coding Practice Problems & Tutorials | TutorialsPoint' is shared across 2 pages. (affects 2 pages)",
+      "suggested_action": {
+        "summary": "Ensure every page has a unique title tag.",
+        "priority": "high"
+      },
+      "id": "F-006"
+    },
+    {
+      "category": "international-seo",
+      "title": "Missing Hreflang Tags",
+      "severity": "high",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/vlsi_design/vlsi_design_mos_inverter.htm",
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com/practice/index.htm",
+        "https://www.tutorialspoint.com/online_graphing_calculator.htm",
+        "https://www.tutorialspoint.com/codingground.htm",
+        "https://www.tutorialspoint.com/articles/index.php",
+        "https://www.tutorialspoint.com/online_dev_tools.htm",
+        "https://www.tutorialspoint.com",
+        "https://www.tutorialspoint.com/python_technologies_tutorials.htm"
+      ],
+      "evidence": "9 pages lack hreflang tags on a multi-language site. (affects 9 pages)",
+      "suggested_action": {
+        "summary": "Ensure hreflang tags are implemented consistently across all localized pages.",
+        "priority": "high"
+      },
+      "id": "F-007"
+    },
+    {
+      "category": "on-page-seo",
+      "title": "Suboptimal Title Length",
+      "severity": "medium",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/vlsi_design/vlsi_design_mos_inverter.htm",
+        "https://www.tutorialspoint.com/whiteboard.htm",
+        "https://www.tutorialspoint.com/practice/index.htm",
+        "https://www.tutorialspoint.com/online_graphing_calculator.htm"
+      ],
+      "evidence": "Title length is 26 characters. (affects 4 pages)",
+      "suggested_action": {
+        "summary": "Keep title tags between 30 and 60 characters.",
+        "priority": "medium"
+      },
+      "id": "F-008"
+    },
+    {
+      "category": "on-page-seo",
+      "title": "Suboptimal Meta Description Length",
+      "severity": "medium",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/vlsi_design/vlsi_design_mos_inverter.htm",
+        "https://www.tutorialspoint.com/whiteboard.htm",
+        "https://www.tutorialspoint.com/practice/index.htm",
+        "https://www.tutorialspoint.com/online_graphing_calculator.htm",
+        "https://www.tutorialspoint.com/codingground.htm"
+      ],
+      "evidence": "Description length is 235 characters. (affects 5 pages)",
+      "suggested_action": {
+        "summary": "Keep meta descriptions between 70 and 155 characters.",
+        "priority": "medium"
+      },
+      "id": "F-009"
+    },
+    {
+      "category": "structured-data",
+      "title": "Missing JSON-LD",
+      "severity": "medium",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/vlsi_design/vlsi_design_mos_inverter.htm",
+        "https://www.tutorialspoint.com/whiteboard.htm",
+        "https://www.tutorialspoint.com/online_graphing_calculator.htm",
+        "https://www.tutorialspoint.com/codingground.htm",
+        "https://www.tutorialspoint.com/articles/index.php",
+        "https://www.tutorialspoint.com/online_dev_tools.htm",
+        "https://www.tutorialspoint.com/python_technologies_tutorials.htm"
+      ],
+      "evidence": "No JSON-LD script tags found. (affects 7 pages)",
+      "suggested_action": {
+        "summary": "Implement JSON-LD structured data to enhance rich snippets.",
+        "priority": "medium"
+      },
+      "id": "F-010"
+    },
+    {
+      "category": "performance",
+      "title": "Images Missing Lazy Loading",
+      "severity": "medium",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/vlsi_design/vlsi_design_mos_inverter.htm",
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com/articles/index.php",
+        "https://www.tutorialspoint.com/online_dev_tools.htm",
+        "https://www.tutorialspoint.com",
+        "https://www.tutorialspoint.com/python_technologies_tutorials.htm"
+      ],
+      "evidence": "14 images lack loading=\"lazy\". (affects 6 pages)",
+      "suggested_action": {
+        "summary": "Add loading=\"lazy\" to images below the fold.",
+        "priority": "medium"
+      },
+      "id": "F-011"
+    },
+    {
+      "category": "security",
+      "title": "Missing Security Headers",
+      "severity": "medium",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/vlsi_design/vlsi_design_mos_inverter.htm",
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com/whiteboard.htm",
+        "https://www.tutorialspoint.com/practice/index.htm",
+        "https://www.tutorialspoint.com/online_graphing_calculator.htm",
+        "https://www.tutorialspoint.com/codingground.htm",
+        "https://www.tutorialspoint.com/articles/index.php",
+        "https://www.tutorialspoint.com/online_dev_tools.htm",
+        "https://www.tutorialspoint.com",
+        "https://www.tutorialspoint.com/python_technologies_tutorials.htm"
+      ],
+      "evidence": "Missing headers: x-frame-options (affects 10 pages)",
+      "suggested_action": {
+        "summary": "Implement standard security headers to protect users.",
+        "priority": "medium"
+      },
+      "id": "F-012"
+    },
+    {
+      "category": "technical-seo",
+      "title": "Canonical Points to Different URL",
+      "severity": "medium",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com/practice/index.htm"
+      ],
+      "evidence": "Canonical href (https://www.tutorialspoint.com) differs from page URL (https://www.tutorialspoint.com/). (affects 2 pages)",
+      "suggested_action": {
+        "summary": "Verify that the canonical URL is the intended master version.",
+        "priority": "medium"
+      },
+      "id": "F-013"
+    },
+    {
+      "category": "on-page-seo",
+      "title": "Skipped Heading Levels",
+      "severity": "medium",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com/online_graphing_calculator.htm",
+        "https://www.tutorialspoint.com/codingground.htm",
+        "https://www.tutorialspoint.com/articles/index.php",
+        "https://www.tutorialspoint.com/online_dev_tools.htm",
+        "https://www.tutorialspoint.com",
+        "https://www.tutorialspoint.com/python_technologies_tutorials.htm"
+      ],
+      "evidence": "Heading skipped from H2 to H4. (affects 7 pages)",
+      "suggested_action": {
+        "summary": "Ensure heading levels are nested properly without skipping levels.",
+        "priority": "medium"
+      },
+      "id": "F-014"
+    },
+    {
+      "category": "performance",
+      "title": "Excessive DOM Size",
+      "severity": "medium",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com"
+      ],
+      "evidence": "Found 2116 HTML elements. (affects 2 pages)",
+      "suggested_action": {
+        "summary": "Reduce DOM complexity to improve rendering performance.",
+        "priority": "medium"
+      },
+      "id": "F-015"
+    },
+    {
+      "category": "structured-data",
+      "title": "Missing Open Graph Tags",
+      "severity": "medium",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/whiteboard.htm",
+        "https://www.tutorialspoint.com/online_graphing_calculator.htm",
+        "https://www.tutorialspoint.com/codingground.htm",
+        "https://www.tutorialspoint.com/online_dev_tools.htm"
+      ],
+      "evidence": "Missing tags: og:title, og:image (affects 4 pages)",
+      "suggested_action": {
+        "summary": "Add missing Open Graph meta tags for better social sharing.",
+        "priority": "medium"
+      },
+      "id": "F-016"
+    },
+    {
+      "category": "accessibility",
+      "title": "Missing HTML Lang Attribute",
+      "severity": "medium",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/whiteboard.htm"
+      ],
+      "evidence": "The <html> tag has no 'lang' attribute.",
+      "suggested_action": {
+        "summary": "Specify the primary language of the page in the <html> tag.",
+        "priority": "medium"
+      },
+      "id": "F-017"
+    },
+    {
+      "category": "international-seo",
+      "title": "Missing x-default Hreflang",
+      "severity": "medium",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/whiteboard.htm"
+      ],
+      "evidence": "Hreflang tags exist but none is 'x-default'.",
+      "suggested_action": {
+        "summary": "Add an x-default hreflang tag for unmatched languages/regions.",
+        "priority": "medium"
+      },
+      "id": "F-018"
+    },
+    {
+      "category": "content-quality",
+      "title": "Duplicate Meta Descriptions",
+      "severity": "medium",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com"
+      ],
+      "evidence": "Meta description is shared across 2 pages. (affects 2 pages)",
+      "suggested_action": {
+        "summary": "Ensure every page has a unique meta description.",
+        "priority": "medium"
+      },
+      "id": "F-019"
+    },
+    {
+      "category": "technical-seo",
+      "title": "Suboptimal URL Structure",
+      "severity": "low",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/vlsi_design/vlsi_design_mos_inverter.htm",
+        "https://www.tutorialspoint.com/online_graphing_calculator.htm",
+        "https://www.tutorialspoint.com/online_dev_tools.htm",
+        "https://www.tutorialspoint.com/python_technologies_tutorials.htm"
+      ],
+      "evidence": "Contains underscores (affects 4 pages)",
+      "suggested_action": {
+        "summary": "Use short, lowercase URLs with hyphens instead of underscores.",
+        "priority": "low"
+      },
+      "id": "F-020"
+    },
+    {
+      "category": "structured-data",
+      "title": "Missing Twitter Card",
+      "severity": "low",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/vlsi_design/vlsi_design_mos_inverter.htm",
+        "https://www.tutorialspoint.com/whiteboard.htm",
+        "https://www.tutorialspoint.com/online_graphing_calculator.htm",
+        "https://www.tutorialspoint.com/codingground.htm",
+        "https://www.tutorialspoint.com/articles/index.php",
+        "https://www.tutorialspoint.com/online_dev_tools.htm",
+        "https://www.tutorialspoint.com/python_technologies_tutorials.htm"
+      ],
+      "evidence": "No twitter:card meta tag found. (affects 7 pages)",
+      "suggested_action": {
+        "summary": "Add a twitter:card meta tag to optimize sharing on Twitter.",
+        "priority": "low"
+      },
+      "id": "F-021"
+    },
+    {
+      "category": "security",
+      "title": "Unsafe target=\"_blank\" Links",
+      "severity": "low",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/vlsi_design/vlsi_design_mos_inverter.htm",
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com/practice/index.htm",
+        "https://www.tutorialspoint.com/codingground.htm",
+        "https://www.tutorialspoint.com/articles/index.php",
+        "https://www.tutorialspoint.com/online_dev_tools.htm",
+        "https://www.tutorialspoint.com",
+        "https://www.tutorialspoint.com/python_technologies_tutorials.htm"
+      ],
+      "evidence": "Found 14 links missing rel=\"noopener\" or rel=\"noreferrer\". (affects 8 pages)",
+      "suggested_action": {
+        "summary": "Add rel=\"noopener\" to external links that open in a new tab.",
+        "priority": "low"
+      },
+      "id": "F-022"
+    },
+    {
+      "category": "content-quality",
+      "title": "Low Text-to-HTML Ratio",
+      "severity": "low",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com/practice/index.htm",
+        "https://www.tutorialspoint.com/online_graphing_calculator.htm",
+        "https://www.tutorialspoint.com/codingground.htm",
+        "https://www.tutorialspoint.com/online_dev_tools.htm",
+        "https://www.tutorialspoint.com",
+        "https://www.tutorialspoint.com/python_technologies_tutorials.htm"
+      ],
+      "evidence": "Ratio is 0.76% (<10%). (affects 7 pages)",
+      "suggested_action": {
+        "summary": "Increase readable text or reduce HTML bloat.",
+        "priority": "low"
+      },
+      "id": "F-023"
+    },
+    {
+      "category": "accessibility",
+      "title": "Missing Form Labels",
+      "severity": "low",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/",
+        "https://www.tutorialspoint.com/whiteboard.htm",
+        "https://www.tutorialspoint.com/practice/index.htm",
+        "https://www.tutorialspoint.com/online_graphing_calculator.htm",
+        "https://www.tutorialspoint.com/codingground.htm",
+        "https://www.tutorialspoint.com/articles/index.php",
+        "https://www.tutorialspoint.com",
+        "https://www.tutorialspoint.com/python_technologies_tutorials.htm"
+      ],
+      "evidence": "Found 2 form inputs without associated labels. (affects 8 pages)",
+      "suggested_action": {
+        "summary": "Ensure all form controls have an associated <label>.",
+        "priority": "low"
+      },
+      "id": "F-024"
+    },
+    {
+      "category": "accessibility",
+      "title": "Missing ARIA Landmarks",
+      "severity": "low",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/whiteboard.htm",
+        "https://www.tutorialspoint.com/online_graphing_calculator.htm"
+      ],
+      "evidence": "No semantic HTML5 landmarks or ARIA landmark roles found. (affects 2 pages)",
+      "suggested_action": {
+        "summary": "Use semantic HTML5 elements or ARIA roles to define page regions.",
+        "priority": "low"
+      },
+      "id": "F-025"
+    },
+    {
+      "category": "on-page-seo",
+      "title": "Multiple H1 Tags",
+      "severity": "low",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/codingground.htm"
+      ],
+      "evidence": "Found 2 <h1> tags.",
+      "suggested_action": {
+        "summary": "Use only one <h1> tag per page for best SEO practices.",
+        "priority": "low"
+      },
+      "id": "F-026"
+    },
+    {
+      "category": "link-health",
+      "title": "Non-Descriptive Anchor Text",
+      "severity": "low",
+      "affected_urls": [
+        "https://www.tutorialspoint.com/articles/index.php"
+      ],
+      "evidence": "Found 10 links with generic anchor text.",
+      "suggested_action": {
+        "summary": "Use descriptive keywords in anchor text.",
+        "priority": "low"
+      },
+      "id": "F-027"
+    }
+  ]
+}
