@@ -1,0 +1,58 @@
+{
+  "slug": "trigger-dev",
+  "url": "https://trigger.dev/",
+  "category": "spa_product_global",
+  "why_hard": "SaaS, JS content",
+  "captured_at": "2026-09-07T20:46:03.950312+00:00",
+  "pages": [
+    {
+      "requested": "https://trigger.dev/",
+      "final_url": "https://trigger.dev/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 430465,
+      "elapsed_ms": 1312,
+      "is_entry": true
+    },
+    {
+      "requested": "https://trigger.dev/product",
+      "final_url": "https://trigger.dev/product",
+      "path": "/product/",
+      "file": "product/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 306028,
+      "elapsed_ms": 531,
+      "is_entry": false
+    },
+    {
+      "requested": "https://trigger.dev/product/ai-agents",
+      "final_url": "https://trigger.dev/product/ai-agents",
+      "path": "/product/ai-agents/",
+      "file": "product/ai-agents/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 324438,
+      "elapsed_ms": 452,
+      "is_entry": false
+    },
+    {
+      "requested": "https://trigger.dev/product/realtime",
+      "final_url": "https://trigger.dev/product/realtime",
+      "path": "/product/realtime/",
+      "file": "product/realtime/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 179455,
+      "elapsed_ms": 577,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1240386
+}

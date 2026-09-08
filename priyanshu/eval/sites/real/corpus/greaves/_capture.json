@@ -1,0 +1,58 @@
+{
+  "slug": "greaves",
+  "url": "https://greavescotton.com/",
+  "category": "b2b_manufacturing",
+  "why_hard": "Manufacturer, dated content",
+  "captured_at": "2026-09-07T20:46:23.754589+00:00",
+  "pages": [
+    {
+      "requested": "https://greavescotton.com/",
+      "final_url": "https://greavescotton.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 409418,
+      "elapsed_ms": 1405,
+      "is_entry": true
+    },
+    {
+      "requested": "https://greavescotton.com/about-us/",
+      "final_url": "https://greavescotton.com/about-us/",
+      "path": "/about-us/",
+      "file": "about-us/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 326158,
+      "elapsed_ms": 922,
+      "is_entry": false
+    },
+    {
+      "requested": "https://greavescotton.com/our-businesses/",
+      "final_url": "https://greavescotton.com/our-businesses/",
+      "path": "/our-businesses/",
+      "file": "our-businesses/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 258476,
+      "elapsed_ms": 906,
+      "is_entry": false
+    },
+    {
+      "requested": "https://greavescotton.com/energy-solutions/",
+      "final_url": "https://greavescotton.com/energy-solutions/",
+      "path": "/energy-solutions/",
+      "file": "energy-solutions/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 403997,
+      "elapsed_ms": 1234,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1398049
+}

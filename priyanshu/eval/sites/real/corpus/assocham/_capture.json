@@ -1,0 +1,58 @@
+{
+  "slug": "assocham",
+  "url": "https://www.assocham.org/",
+  "category": "industry_body",
+  "why_hard": "Industry body, dated content",
+  "captured_at": "2026-09-07T20:46:12.577241+00:00",
+  "pages": [
+    {
+      "requested": "https://www.assocham.org/",
+      "final_url": "https://www.assocham.org/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 441115,
+      "elapsed_ms": 577,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.assocham.org/index.php",
+      "final_url": "https://www.assocham.org/index.php",
+      "path": "/index.php/",
+      "file": "index.php/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 441315,
+      "elapsed_ms": 156,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.assocham.org/about-us.php",
+      "final_url": "https://www.assocham.org/about-us.php",
+      "path": "/about-us.php/",
+      "file": "about-us.php/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 216985,
+      "elapsed_ms": 171,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.assocham.org/employeeRecord.php",
+      "final_url": "https://www.assocham.org/employeeRecord.php",
+      "path": "/employeeRecord.php/",
+      "file": "employeeRecord.php/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 156321,
+      "elapsed_ms": 140,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1255736
+}

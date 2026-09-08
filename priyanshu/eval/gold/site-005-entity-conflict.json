@@ -1,0 +1,22 @@
+{
+    "site_id": "site-005-entity-conflict",
+    "url": "http://localhost:9500/site-005-entity-conflict/",
+    "description": "Entity identity conflict - company referred to by 6+ names (NovaTech Industries, Nova Technical Corp, Nova Tech, NovarTech, Nova Manufacturing Ltd., Nova Technical Corporation, NovaTech Holdings Group)",
+    "expected_findings": [
+        {
+            "category": "entity_identity",
+            "description": "Company is referred to by multiple conflicting names, creating entity ambiguity that would confuse AI systems trying to identify and cite the brand",
+            "severity": "high",
+            "keywords": ["entity", "name", "conflict", "ambiguity", "inconsistent", "brand", "identity", "multiple names"]
+        }
+    ],
+    "expected_non_findings": [
+        {"category": "rendering", "reason": "All content is in raw HTML"},
+        {"category": "freshness", "reason": "No explicit dates that are stale"}
+    ],
+    "expected_proactive": [
+        "Establish one canonical company name and use it consistently across all pages",
+        "Update JSON-LD to reflect the canonical name without conflicting alternateName values"
+    ],
+    "max_acceptable_findings": 3
+}

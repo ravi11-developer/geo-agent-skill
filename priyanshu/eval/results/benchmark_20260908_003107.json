@@ -1,0 +1,799 @@
+{
+  "timestamp": "2026-09-07T19:01:07.079601+00:00",
+  "agents": [
+    "hybrid"
+  ],
+  "sites": [
+    "site-001-healthy",
+    "site-002-no-schema",
+    "site-003-js-only-facts",
+    "site-004-image-only-facts",
+    "site-005-entity-conflict",
+    "site-006-stale-facts",
+    "site-007-poor-navigation",
+    "site-008-mixed-faults",
+    "site-009-weird-but-healthy",
+    "site-010-seo-noise"
+  ],
+  "leaderboard": {
+    "hybrid": {
+      "sites_tested": 10,
+      "sites_failed": 0,
+      "detection": {
+        "tp": 9,
+        "fp": 3,
+        "fn": 5,
+        "precision": 0.75,
+        "recall": 0.6429,
+        "f1": 0.6923
+      },
+      "false_positive_score": 0.97,
+      "evidence_score": 0.3167,
+      "action_score": 0.3833,
+      "severity_score": 0.8167,
+      "proactive_score": 0.5,
+      "schema_score": 1.0,
+      "runtime_score": 1.0,
+      "avg_runtime_seconds": 12.88,
+      "overall": 61.6
+    }
+  },
+  "detailed_results": {
+    "hybrid": [
+      {
+        "agent": "hybrid",
+        "site": "site-001-healthy",
+        "url": "http://localhost:9500/site-001-healthy/",
+        "runtime_seconds": 18.67,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      },
+      {
+        "agent": "hybrid",
+        "site": "site-002-no-schema",
+        "url": "http://localhost:9500/site-002-no-schema/",
+        "runtime_seconds": 14.52,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "structured_data"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "structured_data",
+                "gold": {
+                  "category": "structured_data",
+                  "description": "No structured data (JSON-LD) present despite having organization/product information that should be machine-readable",
+                  "severity": "medium"
+                },
+                "agent": {
+                  "id": "F-001",
+                  "title": "No Structured Data (JSON-LD) Found",
+                  "category": "structured_data",
+                  "original_category": "structured_data",
+                  "severity": "medium",
+                  "evidence": "None of the 1 crawled pages contain JSON-LD structured data. AI systems and search engines rely on structured data to understand entity identity, products, and organization details in a machine-readable format.",
+                  "suggested_action": {
+                    "summary": "Add Organization JSON-LD to the homepage and Product/Service JSON-LD to product pages to make key business facts machine-readable for AI systems.",
+                    "priority": "medium"
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              1
+            ],
+            "average": 1.0,
+            "normalized": 0.25
+          },
+          "actions": {
+            "scores": [
+              3
+            ],
+            "average": 3.0,
+            "normalized": 0.75
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      },
+      {
+        "agent": "hybrid",
+        "site": "site-003-js-only-facts",
+        "url": "http://localhost:9500/site-003-js-only-facts/",
+        "runtime_seconds": 8.22,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6667,
+            "tp_categories": [
+              "rendering"
+            ],
+            "fp_categories": [],
+            "fn_categories": [
+              "content_extraction"
+            ],
+            "matches": [
+              {
+                "category": "rendering",
+                "gold": {
+                  "category": "rendering",
+                  "description": "Important business content (products, pricing, company facts) is unavailable in raw HTML and only appears after client-side JavaScript execution",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "F-001",
+                  "title": "Critical Content Requires JavaScript Rendering",
+                  "category": "rendering",
+                  "original_category": "rendering",
+                  "severity": "high",
+                  "evidence": "Page http://localhost:9500/site-003-js-only-facts/ contains a noscript warning ('') and the raw HTML contains only 173 characters of visible text. Non-rendering crawlers and AI systems will see minimal content.",
+                  "suggested_action": {
+                    "summary": "Render critical business content (products, pricing, company facts) in the initial HTML response using server-side rendering or static generation.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": [
+              {
+                "category": "content_extraction",
+                "gold_finding": {
+                  "category": "content_extraction",
+                  "description": "Key facts about products, pricing, and company are not accessible to non-rendering crawlers",
+                  "severity": "high"
+                }
+              }
+            ]
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              3
+            ],
+            "average": 3.0,
+            "normalized": 0.75
+          },
+          "actions": {
+            "scores": [
+              1
+            ],
+            "average": 1.0,
+            "normalized": 0.25
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      },
+      {
+        "agent": "hybrid",
+        "site": "site-004-image-only-facts",
+        "url": "http://localhost:9500/site-004-image-only-facts/",
+        "runtime_seconds": 10.33,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6667,
+            "tp_categories": [
+              "non_text_facts"
+            ],
+            "fp_categories": [],
+            "fn_categories": [
+              "content_extraction"
+            ],
+            "matches": [
+              {
+                "category": "non_text_facts",
+                "gold": {
+                  "category": "non_text_facts",
+                  "description": "Important business information (products, pricing, features, contact details) exists only in images without text equivalents",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "F-001",
+                  "title": "Important Facts Locked in Non-Text Content",
+                  "category": "non_text_facts",
+                  "original_category": "non_text_facts",
+                  "severity": "high",
+                  "evidence": "Found 4 images with filenames suggesting factual content (products, pricing, etc.) but only 295 characters of extractable text. AI systems cannot read text from images.",
+                  "suggested_action": {
+                    "summary": "Reproduce all factual content currently in images as HTML text. Use images as supplementary visual content with descriptive alt text.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": [
+              {
+                "category": "content_extraction",
+                "gold_finding": {
+                  "category": "content_extraction",
+                  "description": "Critical business facts cannot be extracted by text-based crawlers because they are embedded in images",
+                  "severity": "high"
+                }
+              }
+            ]
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              2
+            ],
+            "average": 2.0,
+            "normalized": 0.5
+          },
+          "actions": {
+            "scores": [
+              2
+            ],
+            "average": 2.0,
+            "normalized": 0.5
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      },
+      {
+        "agent": "hybrid",
+        "site": "site-005-entity-conflict",
+        "url": "http://localhost:9500/site-005-entity-conflict/",
+        "runtime_seconds": 12.47,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "entity_identity"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "entity_identity",
+                "gold": {
+                  "category": "entity_identity",
+                  "description": "Company is referred to by multiple conflicting names, creating entity ambiguity that would confuse AI systems trying to identify and cite the brand",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "F-001",
+                  "title": "Entity Identity Ambiguity",
+                  "category": "entity_identity",
+                  "original_category": "entity_identity",
+                  "severity": "high",
+                  "evidence": "An AI system attempting to identify this brand would encounter 4 different names: 'Nova Technical Corporation', 'Nova Technical Corp', 'Welcome to NovaTech Industries', 'NovaTech Industries'. These map to 4 distinct root names. This makes it impossible for AI to confidently associate facts with a single entity.",
+                  "suggested_action": {
+                    "summary": "Choose one canonical name and use it in the title, H1, JSON-LD 'name' field, footer, and body text. Use 'alternateName' in JSON-LD for any well-known abbreviation.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              1
+            ],
+            "average": 1.0,
+            "normalized": 0.25
+          },
+          "actions": {
+            "scores": [
+              3
+            ],
+            "average": 3.0,
+            "normalized": 0.75
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      },
+      {
+        "agent": "hybrid",
+        "site": "site-006-stale-facts",
+        "url": "http://localhost:9500/site-006-stale-facts/",
+        "runtime_seconds": 12.47,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "freshness"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "freshness",
+                "gold": {
+                  "category": "freshness",
+                  "description": "Content is significantly outdated - pricing, awards, statistics, team information, and press releases are all from 2018-2021 with no recent updates",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "F-001",
+                  "title": "Outdated Content Detected",
+                  "category": "freshness",
+                  "original_category": "freshness",
+                  "severity": "high",
+                  "evidence": "Multiple freshness signals indicate stale content. Years referenced range from 2018 to 2025 (current year: 2026). Specific indicators: Last updated date: 2019 on http://localhost:9500/site-006-stale-facts/; Pricing date: 2020 on http://localhost:9500/site-006-stale-facts/; Copyright year: 2021 on http://localhost:9500/site-006-stale-facts/. AI systems may cite outdated information as current facts.",
+                  "suggested_action": {
+                    "summary": "Update pricing, team information, statistics, and press releases to reflect current data. Add visible 'last updated' dates to time-sensitive content. Update the copyright year in the footer.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              2
+            ],
+            "average": 2.0,
+            "normalized": 0.5
+          },
+          "actions": {
+            "scores": [
+              2
+            ],
+            "average": 2.0,
+            "normalized": 0.5
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      },
+      {
+        "agent": "hybrid",
+        "site": "site-007-poor-navigation",
+        "url": "http://localhost:9500/site-007-poor-navigation/",
+        "runtime_seconds": 6.17,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.3333,
+            "recall": 1.0,
+            "f1": 0.5,
+            "tp_categories": [
+              "engagement"
+            ],
+            "fp_categories": [
+              "freshness",
+              "structured_data"
+            ],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "engagement",
+                "gold": {
+                  "category": "engagement",
+                  "description": "No navigation structure - site lacks nav elements, internal links, header/footer, breadcrumbs. Users and AI systems cannot discover related content or understand site structure.",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "F-001",
+                  "title": "No Site Navigation for User or Bot Orientation",
+                  "category": "engagement",
+                  "original_category": "engagement",
+                  "severity": "high",
+                  "evidence": "The site has no <nav> element and fewer than 2 navigation links. A user arriving from an AI citation cannot discover related pages, understand the site structure, or continue engaging with the brand.",
+                  "suggested_action": {
+                    "summary": "Add a persistent navigation menu with links to core pages (About, Products, Pricing, Contact). Add breadcrumbs and a footer with site-wide links.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "false_positives": [
+              {
+                "category": "freshness",
+                "agent_finding": {
+                  "id": "F-003",
+                  "title": "No Recent Content Dates Found",
+                  "category": "freshness",
+                  "original_category": "freshness",
+                  "severity": "medium",
+                  "evidence": "The most recent year referenced on the site is 2019 (current year: 2026). No content appears to have been updated in the last 2+ years.",
+                  "suggested_action": {
+                    "summary": "Add recent news, updates, or blog posts. Update existing content with current dates and information.",
+                    "priority": "medium"
+                  }
+                }
+              },
+              {
+                "category": "structured_data",
+                "agent_finding": {
+                  "id": "F-002",
+                  "title": "No Structured Data (JSON-LD) Found",
+                  "category": "structured_data",
+                  "original_category": "structured_data",
+                  "severity": "medium",
+                  "evidence": "None of the 1 crawled pages contain JSON-LD structured data. AI systems and search engines rely on structured data to understand entity identity, products, and organization details in a machine-readable format.",
+                  "suggested_action": {
+                    "summary": "Add Organization JSON-LD to the homepage and Product/Service JSON-LD to product pages to make key business facts machine-readable for AI systems.",
+                    "priority": "medium"
+                  }
+                }
+              }
+            ],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              2
+            ],
+            "average": 2.0,
+            "normalized": 0.5
+          },
+          "actions": {
+            "scores": [
+              2
+            ],
+            "average": 2.0,
+            "normalized": 0.5
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      },
+      {
+        "agent": "hybrid",
+        "site": "site-008-mixed-faults",
+        "url": "http://localhost:9500/site-008-mixed-faults/",
+        "runtime_seconds": 6.2,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 3,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6667,
+            "tp_categories": [
+              "engagement",
+              "freshness",
+              "structured_data"
+            ],
+            "fp_categories": [],
+            "fn_categories": [
+              "entity_identity",
+              "non_text_facts",
+              "rendering"
+            ],
+            "matches": [
+              {
+                "category": "engagement",
+                "gold": {
+                  "category": "engagement",
+                  "description": "No navigation structure for user or bot orientation",
+                  "severity": "medium"
+                },
+                "agent": {
+                  "id": "F-002",
+                  "title": "No Site Navigation for User or Bot Orientation",
+                  "category": "engagement",
+                  "original_category": "engagement",
+                  "severity": "high",
+                  "evidence": "The site has no <nav> element and fewer than 2 navigation links. A user arriving from an AI citation cannot discover related pages, understand the site structure, or continue engaging with the brand.",
+                  "suggested_action": {
+                    "summary": "Add a persistent navigation menu with links to core pages (About, Products, Pricing, Contact). Add breadcrumbs and a footer with site-wide links.",
+                    "priority": "high"
+                  }
+                }
+              },
+              {
+                "category": "freshness",
+                "gold": {
+                  "category": "freshness",
+                  "description": "Awards and industry data from 2018-2019, copyright year 2020",
+                  "severity": "medium"
+                },
+                "agent": {
+                  "id": "F-001",
+                  "title": "Outdated Content Detected",
+                  "category": "freshness",
+                  "original_category": "freshness",
+                  "severity": "high",
+                  "evidence": "Multiple freshness signals indicate stale content. Years referenced range from 2018 to 2020 (current year: 2026). Specific indicators: Copyright year: 2020 on http://localhost:9500/site-008-mixed-faults/. AI systems may cite outdated information as current facts.",
+                  "suggested_action": {
+                    "summary": "Update pricing, team information, statistics, and press releases to reflect current data. Add visible 'last updated' dates to time-sensitive content. Update the copyright year in the footer.",
+                    "priority": "high"
+                  }
+                }
+              },
+              {
+                "category": "structured_data",
+                "gold": {
+                  "category": "structured_data",
+                  "description": "No structured data present despite having organization and product information",
+                  "severity": "medium"
+                },
+                "agent": {
+                  "id": "F-003",
+                  "title": "No Structured Data (JSON-LD) Found",
+                  "category": "structured_data",
+                  "original_category": "structured_data",
+                  "severity": "medium",
+                  "evidence": "None of the 1 crawled pages contain JSON-LD structured data. AI systems and search engines rely on structured data to understand entity identity, products, and organization details in a machine-readable format.",
+                  "suggested_action": {
+                    "summary": "Add Organization JSON-LD to the homepage and Product/Service JSON-LD to product pages to make key business facts machine-readable for AI systems.",
+                    "priority": "medium"
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": [
+              {
+                "category": "non_text_facts",
+                "gold_finding": {
+                  "category": "non_text_facts",
+                  "description": "Customer results and partnership information locked in images without text equivalents",
+                  "severity": "medium"
+                }
+              },
+              {
+                "category": "entity_identity",
+                "gold_finding": {
+                  "category": "entity_identity",
+                  "description": "Company referred to by multiple conflicting names (CloudPeak Technologies, Cloud Peak Tech, CloudPeak Solutions, CP Technologies, PeakCloud Inc.)",
+                  "severity": "high"
+                }
+              },
+              {
+                "category": "rendering",
+                "gold_finding": {
+                  "category": "rendering",
+                  "description": "Product and pricing information only available via client-side JavaScript",
+                  "severity": "high"
+                }
+              }
+            ]
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              2,
+              2,
+              1
+            ],
+            "average": 1.67,
+            "normalized": 0.4167
+          },
+          "actions": {
+            "scores": [
+              2,
+              2,
+              3
+            ],
+            "average": 2.33,
+            "normalized": 0.5833
+          },
+          "severity": {
+            "scores": [
+              0.5,
+              0.5,
+              1.0
+            ],
+            "average": 0.6667
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      },
+      {
+        "agent": "hybrid",
+        "site": "site-009-weird-but-healthy",
+        "url": "http://localhost:9500/site-009-weird-but-healthy/",
+        "runtime_seconds": 25.08,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 1.0,
+            "f1": 0.0,
+            "tp_categories": [],
+            "fp_categories": [
+              "entity_identity"
+            ],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [
+              {
+                "category": "entity_identity",
+                "agent_finding": {
+                  "id": "F-001",
+                  "title": "Entity Identity Ambiguity",
+                  "category": "entity_identity",
+                  "original_category": "entity_identity",
+                  "severity": "high",
+                  "evidence": "An AI system attempting to identify this brand would encounter 3 different names: 'DataStream Pro', 'Zephyr Data Labs, Inc', 'Zephyr Data Labs'. These map to 3 distinct root names. This makes it impossible for AI to confidently associate facts with a single entity.",
+                  "suggested_action": {
+                    "summary": "Choose one canonical name and use it in the title, H1, JSON-LD 'name' field, footer, and body text. Use 'alternateName' in JSON-LD for any well-known abbreviation.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "missed": []
+          },
+          "false_positive": 0.7,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      },
+      {
+        "agent": "hybrid",
+        "site": "site-010-seo-noise",
+        "url": "http://localhost:9500/site-010-seo-noise/",
+        "runtime_seconds": 14.64,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "delhi-gov",
+  "url": "https://delhi.gov.in/",
+  "category": "gov_civic",
+  "why_hard": "State portal, thin metadata",
+  "captured_at": "2026-09-07T20:44:50.373760+00:00",
+  "pages": [
+    {
+      "requested": "https://delhi.gov.in/",
+      "final_url": "https://delhi.gov.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 51253,
+      "elapsed_ms": 1172,
+      "is_entry": true
+    },
+    {
+      "requested": "https://delhi.gov.in/screen-reader-access",
+      "final_url": "https://delhi.gov.in/screen-reader-access",
+      "path": "/screen-reader-access/",
+      "file": "screen-reader-access/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 37605,
+      "elapsed_ms": 1186,
+      "is_entry": false
+    },
+    {
+      "requested": "https://delhi.gov.in/sitemap",
+      "final_url": "https://delhi.gov.in/sitemap",
+      "path": "/sitemap/",
+      "file": "sitemap/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 44617,
+      "elapsed_ms": 1078,
+      "is_entry": false
+    },
+    {
+      "requested": "https://delhi.gov.in/user/login",
+      "final_url": "https://delhi.gov.in/user/login",
+      "path": "/user/login/",
+      "file": "user/login/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 9455,
+      "elapsed_ms": 969,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 403,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 142930
+}

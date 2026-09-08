@@ -1,0 +1,25 @@
+{
+  "slug": "third-wave-coffee",
+  "url": "https://www.thirdwavecoffee.in/",
+  "category": "food_hospitality",
+  "why_hard": "Cafe chain, image menus",
+  "captured_at": "2026-09-07T20:45:30.187689+00:00",
+  "pages": [
+    {
+      "requested": "https://www.thirdwavecoffee.in/",
+      "final_url": "https://www.thirdwavecoffeeroasters.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 243484,
+      "elapsed_ms": 875,
+      "is_entry": true
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 243484
+}

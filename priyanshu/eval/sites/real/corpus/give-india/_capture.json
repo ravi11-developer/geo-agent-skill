@@ -1,0 +1,47 @@
+{
+  "slug": "give-india",
+  "url": "https://www.giveindia.org/",
+  "category": "ngo",
+  "why_hard": "Donation platform, SPA-ish",
+  "captured_at": "2026-09-07T20:45:14.341647+00:00",
+  "pages": [
+    {
+      "requested": "https://www.giveindia.org/",
+      "final_url": "https://www.giveindia.org/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 37382,
+      "elapsed_ms": 62,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.giveindia.org/aboutus",
+      "final_url": "https://www.giveindia.org/aboutus/",
+      "path": "/aboutus/",
+      "file": "aboutus/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 37965,
+      "elapsed_ms": 156,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.giveindia.org/aboutus/",
+      "final_url": "https://www.giveindia.org/aboutus/",
+      "path": "/aboutus/",
+      "file": "aboutus/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 37965,
+      "elapsed_ms": 61,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 403,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 113312
+}

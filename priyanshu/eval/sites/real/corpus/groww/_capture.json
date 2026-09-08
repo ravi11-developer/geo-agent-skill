@@ -1,0 +1,58 @@
+{
+  "slug": "groww",
+  "url": "https://groww.in/",
+  "category": "fintech_saas_in",
+  "why_hard": "Fintech, SPA",
+  "captured_at": "2026-09-07T20:45:46.254489+00:00",
+  "pages": [
+    {
+      "requested": "https://groww.in/",
+      "final_url": "https://groww.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 202633,
+      "elapsed_ms": 438,
+      "is_entry": true
+    },
+    {
+      "requested": "https://groww.in/stocks",
+      "final_url": "https://groww.in/stocks",
+      "path": "/stocks/",
+      "file": "stocks/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 153403,
+      "elapsed_ms": 155,
+      "is_entry": false
+    },
+    {
+      "requested": "https://groww.in/stocks/intraday",
+      "final_url": "https://groww.in/stocks/intraday",
+      "path": "/stocks/intraday/",
+      "file": "stocks/intraday/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 837723,
+      "elapsed_ms": 125,
+      "is_entry": false
+    },
+    {
+      "requested": "https://groww.in/etfs",
+      "final_url": "https://groww.in/etfs",
+      "path": "/etfs/",
+      "file": "etfs/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 838507,
+      "elapsed_ms": 125,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 2032266
+}

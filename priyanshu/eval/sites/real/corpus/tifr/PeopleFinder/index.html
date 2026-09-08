@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Basic -->
+<noscript>
+	<h3> You must have JavaScript enabled in order to use this registartion form. Please 
+		  enable JavaScript and then reload the registartion page in order to continue. </h3> 
+	<meta HTTP-EQUIV="refresh" content=0;url="errordisplay.php">
+</noscript>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+
+		<title>Tata Institute of Fundamental Research | TIFR</title>	
+
+		<meta name="keywords" content="TIFR Main Campus Site" />
+		<meta name="description" content="TIFR is a premier institute for research and education in India. It is a National Centre of the Government of India, under the umbrella of the Department of Atomic Energy, as well as a deemed University awarding degrees for master's and doctoral programs.">
+		<meta name="author" content="TIFR">
+
+		<!-- Favicon -->
+	
+		<link rel="icon" type="image/x-icon" href="img/favicon/mstile-70x70.png">
+		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon/apple-touch-icon-144x144.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/favicon/apple-touch-icon-60x60.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/favicon/apple-touch-icon-120x120.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/favicon/apple-touch-icon-76x76.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/favicon/apple-touch-icon-152x152.png" />
+		<link rel="icon" type="image/png" href="img/favicon/favicon-196x196.png" sizes="196x196" />
+		<link rel="icon" type="image/png" href="img/favicon/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png" sizes="32x32" />
+		<link rel="icon" type="image/png" href="img/favicon/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="img/favicon/favicon-128.png" sizes="128x128" />
+		<meta name="application-name" content="Tata Institute of Fundamental Research, Mumbai | TIFR Mumbai "/>
+		<meta name="msapplication-TileColor" content="#FFFFFF" />
+		<meta name="msapplication-TileImage" content="img/favicon/mstile-144x144.png" />
+		<meta name="msapplication-square70x70logo" content="img/favicon/mstile-70x70.png" />
+		<meta name="msapplication-square150x150logo" content="img/favicon/mstile-150x150.png" />
+		<meta name="msapplication-wide310x150logo" content="img/favicon/mstile-310x150.png" />
+		<meta name="msapplication-square310x310logo" content="img/favicon/mstile-310x310.png" />
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+		<!-- Web Fonts  -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css" async>
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" async>
+		<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css" async>
+		<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css" async>
+		<link rel="stylesheet" href="vendor/animate/animate.min.css" async>
+		<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css" async>
+		<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css" async>
+		<link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css" async>
+
+		<!-- Current Page CSS -->
+		<link rel="stylesheet" href="vendor/rs-plugin/css/settings.css" async>
+		<!--<link rel="stylesheet" href="vendor/rs-plugin/css/layers.css">-->
+		<link rel="stylesheet" href="vendor/rs-plugin/css/navigation.css" async>
+		<!--<link rel="stylesheet" href="vendor/circle-flip-slideshow/css/component.css">-->
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="css/theme.css" async>
+		<link rel="stylesheet" href="css/theme-elements.css" async>
+		<link rel="stylesheet" href="css/theme-blog.css" async>
+		<link rel="stylesheet" href="css/theme-shop.css" async>
+		
+		<!-- Demo CSS -->
+
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="css/skins/default.css" async> 
+		<link rel="stylesheet" href="css/skins/skin-corporate-9.css" async>
+
+
+		
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="css/custom.css" async>
+		<link rel="stylesheet" type="text/css" media="all" href="css/atbar.css">
+		
+
+		<!-- Head Libs -->
+		<script src="vendor/modernizr/modernizr.min.js" async></script>
+		
+<style>
+	.header-fnt{
+	color:#fff;
+	}
+	@media only screen and (min-width: 992px)
+	{
+		.img_div
+		{
+			width : 100%;
+			height : 420px;
+		}
+		.img_div img
+		{
+			max-width:100%;
+			max-height:100%;
+		}
+		
+	}
+	#main_id
+	{
+		margin : 0 auto;
+	}
+	
+	#messagecontainer > div {
+		display: none;
+	}
+
+/* [1] The container */
+.img-hover-zoom {
+ 
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+.img-hover-zoom img {
+  transition: transform .2s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.img-hover-zoom:hover img {
+  transform: scale(1.05);
+ 
+}
+</style>
+<style>
+<!--For footer India images-->
+
+.footer-copyright img{
+border-radius: 5px;	
+}
+</style></head>
+		
+	
+<body onload="showDeptList('','' )">
+<div class="body" >
+<div class="main" role="main">
+
+<style>
+.header-fnt
+{
+	color: #cad6ec;
+}
+.tifrlogo:hover{
+		content: url(https://www.tifr.res.in/maincampus/img/tifr-logo-blue-new.png);
+}
+
+
+</style>
+<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 120, 'stickyHeaderContainerHeight': 70}">
+				<div class="header-body border-top-0">
+					<div class="header-top">
+						<div class="container">
+							<div class="header-row py-2">
+								<div class="header-column justify-content-start">
+									<div class="header-row">
+										<nav class="header-nav-top">
+											<ul class="nav nav-pills">
+												<li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show">
+													<a href="/" target="_blank"><span class="ws-nowrap header-fnt">TIFR Portal</span></a>
+												</li>
+												<li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show d-lg-none d-block">
+													
+														<a href="" class="decrease" style="padding-right:1px"><span class="ws-nowrap header-fnt">A-</span></a>
+														<a href="" class="resetMe" style="padding-right:2px"><span class="ws-nowrap header-fnt">A</span></a>
+														<a href=""  class="increase" style="padding-right:1px"><span class="ws-nowrap header-fnt">A+</span></a>
+												</li>
+											</ul>
+										</nav>
+									</div>
+								</div>
+								<div class="header-column justify-content-end d-lg-block d-none">
+									<div class="header-row ">
+										<nav class="header-nav-top">
+										<ul class="nav nav-pills">
+									
+											
+											<li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show">
+												
+													<a href="" class="decrease"><span class="ws-nowrap header-fnt">A-</span></a>
+													<a href="" class="resetMe"><span class="ws-nowrap header-fnt">A</span></a>
+												
+													<a href=""  class="increase" ><span class="ws-nowrap header-fnt">A+</span></a>
+											</li>
+											
+											
+										</ul>
+										</nav>								
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="header-container container" style="height:90px;">
+						<div class="header-row">
+							<div class="header-column">
+								<div class="header-row">
+								
+													
+									<div class="header-logo">
+										<a href="/PeopleFinder/index.php">
+											<img class="tifrlogo" src="https://www.tifr.res.in/maincampus/img/tifr-logo-black-new.png" alt="TIFR" height="70" width="120" data-sticky-height="50" >
+										</a>
+									</div>
+								</div>
+							</div>
+							
+							<div class="header-column justify-content-end">
+								<div class="header-row">
+									<div class="header-nav header-nav-line header-nav-bottom-line">
+										<div class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
+											
+										</div>
+										
+										<button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav"><i class="fas fa-bars"></i></button>
+									</div>
+			
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+				
+	
+<style>
+.table thead th
+{
+	border-bottom: 2px solid #166dc3;
+}
+tr.clickable-row:hover{
+    background-color:#0088ccd1; 				/*previous color:#17c4bb;*/
+    cursor: pointer;
+    color: white;
+}
+tr.clickable-row1:hover{
+    background-color:#0088ccd1; 				/*previous color:#17c4bb;*/
+    cursor: default;
+    color: white;
+}
+</style>
+<script>
+function validate()
+{
+	var error_msg=0;
+	var filter_chk = document.getElementsByName('filter_by');
+	var chk_value;
+	for(var i = 0; i < filter_chk.length; i++){
+		if(filter_chk[i].checked){
+			chk_value = filter_chk[i].value;
+		}
+	}
+	if(chk_value == 'name')
+	{
+		var name_srch=document.getElementById('name_srch');
+		var srch_room_no=document.getElementById('srch_room_no');
+		
+		var name_pattern = /^[A-Za-z\']+$/;
+		
+		if(name_srch.value.trim() == '' || name_srch.value.trim() == null)
+		{
+			error_msg="Enter string for search. Cannot be blank";
+		}
+		else if(name_srch.value.trim().length < 3)
+		{
+			error_msg="Enter atleast 3 characters for search.";
+		}
+		else if(name_srch.value.trim().length > 15)
+		{
+			error_msg="Not more than 15 are characters allowed for search.";
+		}
+		else if(!name_srch.value.match(name_pattern))
+		{
+			error_msg="Only alphabets are allowed.";
+		}
+	}
+	
+	if(chk_value == 'dept')
+	{
+		var srch_dept=document.getElementById('dept_code');
+		//alert(srch_dept.value);
+		if(srch_dept.value == 0 || srch_dept.value == null)
+		{
+			error_msg="Select department name for search";
+		}
+	}
+	
+	if(chk_value == 'room_no')
+	{
+		var srch_room_no=document.getElementById('srch_room_no');
+		var room_pattern = /^[A-Za-z0-9\ \-]+$/;
+		if(srch_room_no.value.trim() == '' || srch_room_no.value.trim() == null)
+		{
+			error_msg="Enter room-no for search. Cannot be blank";
+		}
+		else if(srch_room_no.value.trim().length < 3)
+		{
+			error_msg="Enter atleast 3 characters for search.";
+		}
+		else if(srch_room_no.value.trim().length > 8)
+		{
+			error_msg="Not more than 8 characters allowed.";
+		}
+		
+		else if(!srch_room_no.value.match(room_pattern))
+		{
+			error_msg="Special characters are not allowed.";
+		}
+	}
+	
+	if(chk_value == 'email')
+	{
+		var email_id=document.getElementById('srch_email_id');
+		if(email_id.value.trim() == '')
+		{
+			error_msg ="Email ID is required";
+			email_id.value="";
+		}
+		else
+		{
+			if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email_id.value)))
+			{
+				error_msg ="Invalid Email-ID Format";
+				//email_id.value="";
+			}
+		}
+	}
+	
+	if(chk_value == 'extn_no')
+	{
+		var extn_no=document.getElementById('extn_no');
+		var extn_pattern = /^[0-9]+$/;
+		if(extn_no.value.trim() == '' || extn_no.value.trim() == null)
+		{
+			error_msg="Enter extension no for search. Cannot be blank";
+		}
+		else if(!extn_no.value.match(extn_pattern))
+		{
+			error_msg="Only numbers are allowed.";
+		}
+		else if(extn_no.value.trim().length < 4)
+		{
+			error_msg="Enter 4 digit no for search.";
+		}
+		else if(extn_no.value.trim().length > 8)
+		{
+			error_msg="Number cannot be more than 8 digit.";
+		}
+		
+	}
+	
+	
+	if(error_msg != 0)
+	{
+		alert(error_msg);
+		return false;
+	}
+	return true;
+}
+</script>
+	
+<!-----Your contents starts here----->
+<section class="page-header page-header-modern bg-color-light-scale-1 page-header-md" style="margin-top:10px">
+					<div class="container">
+						<div class="row">
+
+							<div class="col-md-8 order-2 order-md-1 align-self-center p-static">
+								<h1 class="text-dark"><strong>People Finder</strong></h1>
+							</div>
+							
+						</div>
+					</div>
+				</section>
+	<div class="container" style="margin-top:0px">
+		<div class="row" >
+						<div class="col-lg-9">
+							<div class="row">
+								<div class="col-lg-12">
+									
+										<form id="contactForm" class="contact-form p-4 rounded bg-color-grey" action="index.php" method="POST" onsubmit="return validate();">	
+											<input type="hidden" name="ctoken" value="48o0dGCPv9">
+											<div class="form-row">
+												<div class="form-group col-lg-12">
+													<label class="required font-weight-bold text-dark">Filter By</label>
+														<input type="radio" name="filter_by" value="name" onclick="showFilterDiv(this.value)"  checked>&nbsp;Name
+														<span style="padding-left:20px"><input type="radio" name="filter_by" value="dept" onclick="showFilterDiv(this.value)" >&nbsp;Department</span>
+														<span style="padding-left:20px"><input type="radio" name="filter_by" value="room_no" onclick="showFilterDiv(this.value)" >&nbsp;Room No</span>
+														<span style="padding-left:20px"><input type="radio" name="filter_by" value="email" onclick="showFilterDiv(this.value)" >&nbsp;Email ID</span>
+														<span style="padding-left:20px"><input type="radio" name="filter_by" value="extn_no" onclick="showFilterDiv(this.value)" >&nbsp;Extension</span>
+													</div>
+											</div>
+											<div class="form-row" id="name_div" style="display:">
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<select name="48o0dGCPv9_user_type" class="form-control">
+															<option value="current" >In Service</option>
+															<option value="past" >Ex-Members</option>
+														</select>
+													</div>
+													<input type="text" name="48o0dGCPv9_srch_string" id="name_srch" class="form-control" value="" maxlength="15" placeholder=""  >
+													<div class="input-group-append">
+														<button class="btn btn-primary btn-modern btn-sm" type="submit" name="submit1">Go</button>
+													</div>
+												</div>
+											</div>
+											<div class="form-row" id="dept_div" style="display:none"> 
+															<div class="form-group col-lg-4">
+																<label class="required font-weight-bold text-dark">Location</label>
+																<select class="form-control" name="location" id="location" onchange="showDeptList(this.value)">
+																	<option value="0" selected>Mumbai Campus</option>
+																	<option value="1" >TIFR Centers & Field Station</option>
+																</select>
+																
+															</div>
+															<div class="form-group col-lg-6"  id="dept_list_div">
+																<label class="required font-weight-bold text-dark">Department</label>
+																<select class="form-control" name="48o0dGCPv9_dept_code" id="dept_code">
+															<option value="0">--Select --</option>
+																																	
+																	<option value="AAAC" >Art & Archives</option>
+																																		
+																	<option value="ACT" >Accounts</option>
+																																		
+																	<option value="ADM" >Administration</option>
+																																		
+																	<option value="AWK" >Auto Workshop</option>
+																																		
+																	<option value="BPG" >Budget Planning Group</option>
+																																		
+																	<option value="CCCF" >Computer Center And Communications Facility</option>
+																																		
+																	<option value="CNT" >Canteen</option>
+																																		
+																	<option value="COS" >Cosmetic Maintenance</option>
+																																		
+																	<option value="CWK" >Central Workshop</option>
+																																		
+																	<option value="DAA" >Dept. of Astronomy & Astrophysics</option>
+																																		
+																	<option value="DBS" >Dept. of Biological Sciences</option>
+																																		
+																	<option value="DCMP" >Dept. of Condensed Matter Physics</option>
+																																		
+																	<option value="DCS" >Dept. of Chemical Sciences</option>
+																																		
+																	<option value="DHEP" >Dept. of High Energy Physics</option>
+																																		
+																	<option value="DNAP" >Dept. of Nuclear & Atomic Physics</option>
+																																		
+																	<option value="DRTO" >Director office</option>
+																																		
+																	<option value="DTP" >Dept. of Theoretical Physics</option>
+																																		
+																	<option value="EST" >Establishment</option>
+																																		
+																	<option value="FCL" >Facilities</option>
+																																		
+																	<option value="GAD" >General Administration</option>
+																																		
+																	<option value="GBS" >Glass Blowing</option>
+																																		
+																	<option value="HBCCC" >Homi Bhabha Birth Centenary Celebrations</option>
+																																		
+																	<option value="HGH" >Hostel & Guest House</option>
+																																		
+																	<option value="HPC" >Health Promotion Centre</option>
+																																		
+																	<option value="INO" >India Based Neutrino Observatory</option>
+																																		
+																	<option value="INOE" >Neutrino Observatory</option>
+																																		
+																	<option value="ISDG" >Information Systems Development Group</option>
+																																		
+																	<option value="LTF" >Low Temperature Facility</option>
+																																		
+																	<option value="MED" >Medical</option>
+																																		
+																	<option value="MTH" >School of Mathematics</option>
+																																		
+																	<option value="NSF" >Natural Sciences Faculty</option>
+																																		
+																	<option value="PCH" >Purchase</option>
+																																		
+																	<option value="PHOTO" >Photography</option>
+																																		
+																	<option value="PLF" >Pelletron Linac Facility</option>
+																																		
+																	<option value="PRKG" >Parks & Garden</option>
+																																		
+																	<option value="SEC" >Security</option>
+																																		
+																	<option value="SIRC" >Scientific Information Resource Centre</option>
+																																		
+																	<option value="STCS" >School of Technology & Computer Science</option>
+																																		
+																	<option value="STR" >Stores</option>
+																																		
+																	<option value="TDU" >TIFR Deemed University</option>
+																																		
+																	<option value="TRN" >Transport</option>
+																																		
+																	<option value="TSR" >Technical Services</option>
+																															
+															</div>
+														
+															<div class="form-group col-lg-2">
+															<br>
+																<input type="submit" name="submit1" value="Search" class="btn btn-primary mt-2" >
+															</div>
+														
+													</div>
+													<div class="form-row" id="email_div" style="display:none" > 
+															<div class="form-group form-inline col-lg-8">
+																<label class="font-weight-bold text-dark">Email &nbsp;&nbsp;&nbsp;&nbsp;</label>
+																<input type="text" name="48o0dGCPv9_email_id"  class="form-control col-lg-6 " value="" id="srch_email_id" placeholder=""  >
+																<input type="submit" name="submit1" value="Search" class="btn btn-primary ml-4" >
+															</div>
+													</div>
+													<div class="form-row" id="room_div" style="display:none" > 
+															
+															<div class="form-group form-inline col-lg-8">
+																<label class="font-weight-bold text-dark">Room No &nbsp;&nbsp;&nbsp;&nbsp;</label>
+																<input type="text" name="48o0dGCPv9_room_no" class="form-control col-lg-6 " value="" id="srch_room_no" placeholder=""  maxlength=8>
+																<input type="submit" name="submit1" value="Search" class="btn btn-primary ml-4" >
+															</div>
+													</div>
+													<div class="form-row" id="extn_div" style="display:none"> 
+															
+															<div class="form-group form-inline col-lg-8">
+																<label class="font-weight-bold text-dark">Extension No &nbsp;&nbsp;&nbsp;&nbsp;</label>
+																<input type="text" name="48o0dGCPv9_extn_no"  class="form-control col-lg-6 " id="extn_no" value="" placeholder=""  maxlength="8" >
+																<input type="submit" name="submit1" value="Search" class="btn btn-primary ml-4" >
+															</div>
+													</div>
+										</form>
+								</div>
+									
+								</div>
+								
+						
+								
+							
+						</div>
+								<div class="col-lg-3 ">
+									<aside class="sidebar">
+										<h5 class="font-weight-normal">Useful Links</h5>
+										<ul class="nav nav-list flex-column mb-5">
+											<li class="nav-item"><a class="nav-link " href="/PeopleFinder/official_mobile_srch.php">Official Mobile Page</a></li>
+																						
+										</ul>
+									</aside>
+								</div>
+								
+								
+		</div>
+		<br><br>
+<!-- Insert your phph file here-->
+
+
+<!-----Your contents ends here----->
+</div> <!-- end of class main role main -->
+</div><!-- end of class body div-->
+<!-- Vendor -->
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
+		<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+		<script src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
+		<script src="vendor/popper/umd/popper.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="vendor/common/common.min.js"></script>
+		<script src="vendor/jquery.validation/jquery.validate.min.js"></script>
+		<script src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+		<script src="vendor/jquery.gmap/jquery.gmap.min.js"></script>
+		<script src="vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+		<script src="vendor/isotope/jquery.isotope.min.js"></script>
+		<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+		<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+		<script src="vendor/vide/jquery.vide.min.js"></script>
+		<script src="vendor/vivus/vivus.min.js"></script>
+		
+		<!-- Current Page Vendor and Views -->
+		<script src="vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+		<script src="vendor/nivo-slider/jquery.nivo.slider.min.js"></script>
+		
+		<!-- Current Page Vendor and Views -->
+		<script src="vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+		<script src="vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+		<script src="vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+		<script src="js/views/view.home.js"></script>
+		
+		<!-- Theme Base, Components and Settings -->
+		<script src="js/theme.js"></script>
+		
+		<!-- Theme Custom -->
+		<script src="js/custom.js"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="js/theme.init.js"></script>
+		
+		<script>
+		var $affectedElements = $("p,div,span"); // Can be extended, ex. $("div, p, span.someClass")
+
+		// Storing the original size in a data attribute so size can be reset
+		$affectedElements.each( function(){
+		  var $this = $(this);
+		  $this.data("orig-size", $this.css("font-size") );
+		});
+
+		$("#btn-increase").click(function(){
+		  changeFontSize(1);
+		})
+
+		$("#btn-decrease").click(function(){
+		  changeFontSize(-1);
+		})
+
+		$("#btn-orig").click(function(){
+		  $affectedElements.each( function(){
+				var $this = $(this);
+				$this.css( "font-size" , $this.data("orig-size") );
+		   });
+		})
+
+		function changeFontSize(direction){
+			$affectedElements.each( function(){
+				var $this = $(this);
+				$this.css( "font-size" , parseInt($this.css("font-size"))+direction );
+			});
+		}
+		</script>
+		
+		
+		<script type="text/javascript">
+         $(document).ready(function(){        
+           var originalSize = $('div').css('font-size'); 
+		   var incr_limit=0;
+		   var dec_limit=0;
+		   var limit = 2;
+          // reset        
+         /*   $(".resetMe").click(function(){           
+		   $('div').css('font-size', originalSize);         
+           }); */
+		   
+		   $('.resetMe').click(function() {
+				location.reload();
+			});
+         
+           // Increase Font Size 
+		     $(".increase").click(function(){
+				//alert('increase');
+				if(incr_limit <= limit)
+				{
+					var currentSize = $('div').css('font-size');         
+					var currentSize = parseFloat(currentSize)*1.2;          
+					$('div').css('font-size', currentSize);  
+
+					incr_limit++;
+				 
+					if(dec_limit != 0)
+						dec_limit--;	
+					
+					console.log("Increament value :"+incr_limit);
+					console.log("Decreament value :"+dec_limit);			 
+					
+					
+					return false;  
+				}
+				if(incr_limit == limit)
+					{
+						$(".increase").off('click');
+						console.log("Increament click disabled");
+					}
+				
+			  });
+							  
+		 
+		  
+           // Decrease Font Size    
+			
+			   $(".decrease").click(function(){ 
+					if(dec_limit <= limit)
+					{
+						var currentFontSize = $('div').css('font-size');        
+						var currentSize = $('div').css('font-size');        
+						var currentSize = parseFloat(currentSize)*0.8;        
+						$('div').css('font-size', currentSize); 
+						
+						dec_limit++;
+					
+						if(incr_limit != 0)
+							incr_limit--;
+						
+						console.log("Increament value :"+incr_limit);
+						console.log("Decreament value :"+dec_limit);		
+						return false;
+					}	   
+			   });  
+
+			console.log("Increament value :"+incr_limit);
+			console.log("Decreament value :"+dec_limit);
+			
+         });
+         
+      </script>
+	  
+	  		<script type="text/javascript">
+$(function() {
+    $(this).bind("contextmenu", function(e) {
+        e.preventDefault();
+    });
+}); 
+</script>
+
+<script>
+function showFilterDiv(str)
+{
+	var name_div=document.getElementById("name_div");
+	var dept_div=document.getElementById("dept_div");
+	var room_div=document.getElementById("room_div");
+	var extn_div=document.getElementById("extn_div");
+	var email_div=document.getElementById("email_div");
+	if(str == 'name')
+	{
+		name_div.style.display="";
+		dept_div.style.display="none";
+		room_div.style.display="none";
+		extn_div.style.display="none";
+		email_div.style.display="none";
+	}
+	if(str == 'dept')
+	{
+		name_div.style.display="none";
+		dept_div.style.display="";
+		room_div.style.display="none";
+		extn_div.style.display="none";
+		email_div.style.display="none";
+	}
+	if(str == 'room_no')
+	{
+		name_div.style.display="none";
+		dept_div.style.display="none";
+		room_div.style.display="";
+		extn_div.style.display="none";
+		email_div.style.display="none";
+	}
+	if(str == 'extn_no')
+	{
+		name_div.style.display="none";
+		dept_div.style.display="none";
+		room_div.style.display="none";
+		extn_div.style.display="";
+		email_div.style.display="none";
+	}
+	if(str == 'email')
+	{
+		name_div.style.display="none";
+		dept_div.style.display="none";
+		room_div.style.display="none";
+		extn_div.style.display="none";
+		email_div.style.display="";
+	}
+	
+}
+</script>
+<script>
+var xmlhttp;
+
+function showDeptList(loc_val,dept_val)
+{
+	//alert(loc_val);
+	xmlhttp=GetXmlHttpObject();
+	if (xmlhttp==null)
+	{
+	alert ("Browser does not support HTTP Request");
+	return;
+	}
+	var url="dept_list.php";
+	url=url+"?d="+loc_val;
+	url=url+"&c="+dept_val;
+	xmlhttp.onreadystatechange=stateChanged;
+	xmlhttp.open("GET",url,true);
+	xmlhttp.send(null);
+}
+
+function stateChanged()
+{
+	if (xmlhttp.readyState==4)
+	{
+		//document.getElementById("dept_list_div").style.display="";
+		document.getElementById("dept_list_div").innerHTML=xmlhttp.responseText;
+	}
+}
+
+function GetXmlHttpObject()
+{
+if (window.XMLHttpRequest)
+{
+// code for IE7+, Firefox, Chrome, Opera, Safari
+return new XMLHttpRequest();
+}
+if (window.ActiveXObject)
+{
+// code for IE6, IE5
+return new ActiveXObject("Microsoft.XMLHTTP");
+}
+return null;
+}
+</script>
+</body><!-- end of body tag-->
+</html>

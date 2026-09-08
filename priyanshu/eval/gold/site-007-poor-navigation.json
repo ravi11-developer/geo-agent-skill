@@ -1,0 +1,25 @@
+{
+    "site_id": "site-007-poor-navigation",
+    "url": "http://localhost:9500/site-007-poor-navigation/",
+    "description": "No navigation elements, no internal links, no header/footer, no breadcrumbs. Pages are completely isolated.",
+    "expected_findings": [
+        {
+            "category": "engagement",
+            "description": "No navigation structure - site lacks nav elements, internal links, header/footer, breadcrumbs. Users and AI systems cannot discover related content or understand site structure.",
+            "severity": "high",
+            "keywords": ["navigation", "nav", "links", "internal", "orientation", "breadcrumb", "menu", "isolated"]
+        }
+    ],
+    "expected_non_findings": [
+        {"category": "rendering", "reason": "Content is in HTML"},
+        {"category": "entity_identity", "reason": "Consistent naming"},
+        {"category": "freshness", "reason": "No stale dates present"}
+    ],
+    "expected_proactive": [
+        "Add navigation menu linking to all key pages",
+        "Add breadcrumb navigation for user/bot orientation",
+        "Add internal links between related content pages",
+        "Add a footer with site-wide navigation"
+    ],
+    "max_acceptable_findings": 3
+}

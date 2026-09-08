@@ -1,0 +1,46 @@
+{
+    "site_id": "site-008-mixed-faults",
+    "url": "http://localhost:9500/site-008-mixed-faults/",
+    "description": "Multiple simultaneous faults: no schema, entity conflict, JS-only pricing, image-only data, stale facts, no navigation",
+    "expected_findings": [
+        {
+            "category": "structured_data",
+            "description": "No structured data present despite having organization and product information",
+            "severity": "medium",
+            "keywords": ["json-ld", "structured data", "schema", "missing"]
+        },
+        {
+            "category": "entity_identity",
+            "description": "Company referred to by multiple conflicting names (CloudPeak Technologies, Cloud Peak Tech, CloudPeak Solutions, CP Technologies, PeakCloud Inc.)",
+            "severity": "high",
+            "keywords": ["entity", "name", "conflict", "ambiguity", "inconsistent"]
+        },
+        {
+            "category": "rendering",
+            "description": "Product and pricing information only available via client-side JavaScript",
+            "severity": "high",
+            "keywords": ["javascript", "rendering", "client-side", "dynamic", "noscript"]
+        },
+        {
+            "category": "non_text_facts",
+            "description": "Customer results and partnership information locked in images without text equivalents",
+            "severity": "medium",
+            "keywords": ["image", "non-text", "visual", "inaccessible"]
+        },
+        {
+            "category": "freshness",
+            "description": "Awards and industry data from 2018-2019, copyright year 2020",
+            "severity": "medium",
+            "keywords": ["stale", "outdated", "2018", "2019", "2020", "freshness"]
+        },
+        {
+            "category": "engagement",
+            "description": "No navigation structure for user or bot orientation",
+            "severity": "medium",
+            "keywords": ["navigation", "orientation", "links", "menu"]
+        }
+    ],
+    "expected_non_findings": [],
+    "expected_proactive": [],
+    "max_acceptable_findings": 10
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "sidbi",
+  "url": "https://www.sidbi.in/",
+  "category": "industry_body",
+  "why_hard": "Development bank, PDF-first",
+  "captured_at": "2026-09-07T20:46:12.793261+00:00",
+  "pages": [
+    {
+      "requested": "https://www.sidbi.in/",
+      "final_url": "https://www.sidbi.in/en/",
+      "path": "/en/",
+      "file": "en/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 252136,
+      "elapsed_ms": 1530,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.sidbi.in/en/index",
+      "final_url": "https://www.sidbi.in/en/index",
+      "path": "/en/index/",
+      "file": "en/index/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 252136,
+      "elapsed_ms": 1077,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.sidbi.in/index",
+      "final_url": "https://www.sidbi.in/index",
+      "path": "/index/",
+      "file": "index/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 252091,
+      "elapsed_ms": 860,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.sidbi.in/about",
+      "final_url": "https://www.sidbi.in/about",
+      "path": "/about/",
+      "file": "about/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 208777,
+      "elapsed_ms": 686,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 403,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 965140
+}

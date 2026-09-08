@@ -1,0 +1,58 @@
+{
+  "slug": "linear",
+  "url": "https://linear.app/",
+  "category": "spa_product_global",
+  "why_hard": "Design-led SPA, facts in components",
+  "captured_at": "2026-09-07T20:45:51.623079+00:00",
+  "pages": [
+    {
+      "requested": "https://linear.app/",
+      "final_url": "https://linear.app/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1267210,
+      "elapsed_ms": 2390,
+      "is_entry": true
+    },
+    {
+      "requested": "https://linear.app/homepage",
+      "final_url": "https://linear.app/homepage",
+      "path": "/homepage/",
+      "file": "homepage/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1267374,
+      "elapsed_ms": 1952,
+      "is_entry": false
+    },
+    {
+      "requested": "https://linear.app/customers",
+      "final_url": "https://linear.app/customers",
+      "path": "/customers/",
+      "file": "customers/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 724729,
+      "elapsed_ms": 562,
+      "is_entry": false
+    },
+    {
+      "requested": "https://linear.app/pricing",
+      "final_url": "https://linear.app/pricing",
+      "path": "/pricing/",
+      "file": "pricing/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 797632,
+      "elapsed_ms": 469,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 4056945
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "the-ken",
+  "url": "https://the-ken.com/",
+  "category": "media_regional",
+  "why_hard": "Paywalled analysis",
+  "captured_at": "2026-09-07T20:46:29.204742+00:00",
+  "pages": [
+    {
+      "requested": "https://the-ken.com/",
+      "final_url": "https://the-ken.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 325728,
+      "elapsed_ms": 2639,
+      "is_entry": true
+    },
+    {
+      "requested": "https://the-ken.com/pricing/",
+      "final_url": "https://the-ken.com/pricing/",
+      "path": "/pricing/",
+      "file": "pricing/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 260427,
+      "elapsed_ms": 1219,
+      "is_entry": false
+    },
+    {
+      "requested": "https://the-ken.com/all-stories/",
+      "final_url": "https://the-ken.com/all-stories/",
+      "path": "/all-stories/",
+      "file": "all-stories/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 598603,
+      "elapsed_ms": 1266,
+      "is_entry": false
+    },
+    {
+      "requested": "https://the-ken.com/trade-tricks/stories/",
+      "final_url": "https://the-ken.com/trade-tricks/stories/",
+      "path": "/trade-tricks/stories/",
+      "file": "trade-tricks/stories/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 184068,
+      "elapsed_ms": 1062,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1368826
+}

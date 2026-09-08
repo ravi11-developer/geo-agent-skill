@@ -1,0 +1,29 @@
+{
+    "site_id": "site-004-image-only-facts",
+    "url": "http://localhost:9500/site-004-image-only-facts/",
+    "description": "Key business info (products, pricing, features, contact) locked in images with non-descriptive alt text",
+    "expected_findings": [
+        {
+            "category": "non_text_facts",
+            "description": "Important business information (products, pricing, features, contact details) exists only in images without text equivalents",
+            "severity": "high",
+            "keywords": ["image", "non-text", "alt text", "img", "visual", "infographic", "inaccessible"]
+        },
+        {
+            "category": "content_extraction",
+            "description": "Critical business facts cannot be extracted by text-based crawlers because they are embedded in images",
+            "severity": "high",
+            "keywords": ["extract", "content", "unavailable", "image-only", "text"]
+        }
+    ],
+    "expected_non_findings": [
+        {"category": "rendering", "reason": "Content is not JS-dependent; images load from HTML"},
+        {"category": "entity_identity", "reason": "Consistent naming in available text"}
+    ],
+    "expected_proactive": [
+        "Reproduce product/pricing/contact information as machine-readable HTML text",
+        "Add descriptive alt text to images that contain factual information",
+        "Add structured data reflecting the facts currently only in images"
+    ],
+    "max_acceptable_findings": 4
+}

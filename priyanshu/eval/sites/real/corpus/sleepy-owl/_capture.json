@@ -1,0 +1,58 @@
+{
+  "slug": "sleepy-owl",
+  "url": "https://sleepyowl.co/",
+  "category": "d2c_retail",
+  "why_hard": "D2C, image-led PDPs",
+  "captured_at": "2026-09-07T20:45:14.678319+00:00",
+  "pages": [
+    {
+      "requested": "https://sleepyowl.co/",
+      "final_url": "https://sleepyowl.co/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 899013,
+      "elapsed_ms": 937,
+      "is_entry": true
+    },
+    {
+      "requested": "https://sleepyowl.co/collections/premium-instant-coffee",
+      "final_url": "https://sleepyowl.co/collections/premium-instant-coffee",
+      "path": "/collections/premium-instant-coffee/",
+      "file": "collections/premium-instant-coffee/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 938863,
+      "elapsed_ms": 578,
+      "is_entry": false
+    },
+    {
+      "requested": "https://sleepyowl.co/collections/best-sellers",
+      "final_url": "https://sleepyowl.co/collections/best-sellers",
+      "path": "/collections/best-sellers/",
+      "file": "collections/best-sellers/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 851675,
+      "elapsed_ms": 561,
+      "is_entry": false
+    },
+    {
+      "requested": "https://sleepyowl.co/pages/bulk-special-orders",
+      "final_url": "https://sleepyowl.co/pages/bulk-special-orders",
+      "path": "/pages/bulk-special-orders/",
+      "file": "pages/bulk-special-orders/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1229149,
+      "elapsed_ms": 516,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 3918700
+}

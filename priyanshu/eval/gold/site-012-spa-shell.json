@@ -1,0 +1,21 @@
+{
+  "site_id": "site-012-spa-shell",
+  "url": "http://localhost:9500/site-012-spa-shell/",
+  "holdout": true,
+  "description": "Single-page-application shell: empty #root div, external bundle, noscript gate, all products/pricing/contact injected by JavaScript.",
+  "expected_findings": [
+    {"category": "rendering", "description": "Empty framework root; all content injected client-side", "severity": "high",
+     "keywords": ["javascript", "spa", "root", "client-side", "render"]},
+    {"category": "content_extraction", "description": "Raw HTML yields no business facts at all", "severity": "high",
+     "keywords": ["extract", "facts", "pricing", "unavailable"]}
+  ],
+  "expected_non_findings": [
+    {"category": "structured_data", "reason": "Organization JSON-LD present"},
+    {"category": "entity_identity", "reason": "Single consistent name"}
+  ],
+  "expected_proactive": [
+    "Server-side render or pre-render the initial HTML",
+    "Add Product structured data for pricing"
+  ],
+  "max_acceptable_findings": 4
+}

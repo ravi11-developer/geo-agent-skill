@@ -1,0 +1,805 @@
+
+
+<!DOCTYPE html>
+
+<html>
+<head><title>
+	Building Permissions
+</title><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Welcome to GHMC" /><meta name="keywords" content="GHMC" /><link href="css_NewDesign/bootstrap.min.css" rel="stylesheet" /><link rel="stylesheet" href="css_NewDesign/font-awesome.min.css" /><link rel="stylesheet" type="text/css" href="breakingnews_NewDesign/breaking-news-ticker.css" /><link href="menu_NewDesign/sm-core-css.css" rel="stylesheet" /><link href="css_NewDesign/owl.carousel.min.css" rel="stylesheet" /><link href="css_NewDesign/owl.theme.default.min.css" rel="stylesheet" /><link href="menu_NewDesign/sm-blue.css" rel="stylesheet" /><link href="css_NewDesign/flexslider.css" rel="stylesheet" /><link href="carousel_NewDesign/carousel.css" rel="stylesheet" /><link href="custom_NewDesign.css" rel="stylesheet" /><link rel="preconnect" href="https://fonts.googleapis.com" /><link href="https://fonts.googleapis.com/css2?family=Ramabhadra&amp;display=swap" rel="stylesheet" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" /><link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&amp;family=Noto+Serif+Telugu:wght@100..900&amp;family=Roboto+Slab:wght@100..900&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet" /><link href="QuickLinksStyling.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        function swapStyleSheet(sheet) {
+
+            document.getElementById('theme-stylesheet').setAttribute('href', sheet);
+
+        }
+
+    </script>
+    <style type="text/css">
+        iframe {
+            display: none;
+        }
+
+        .translated-ltr {
+            margin-top: -40px;
+        }
+
+        #printable {
+            display: none;
+        }
+
+        @media print {
+            body {
+                visibility: hidden;
+            }
+
+            #non-printable {
+                display: none;
+            }
+
+            #printable {
+                display: block;
+            }
+        }
+
+
+
+        .goog-te-banner-frame {
+            height: 0px !important;
+        }
+
+
+        /* Hide "Powered by Google Translate" text */
+        #google_translate_element .goog-logo-link {
+            display: none !important;
+        }
+
+        /* Hide "Google Translate" text */
+        #google_translate_element .goog-te-gadget{
+            /*font-size:0!important;*/
+        }
+        #google_translate_element .VIpgJd-ZVi9od-l4eHX-hSRGPd {
+            
+            display: none !important;
+
+        }
+
+        /* Adjust dropdown width if needed */
+        
+    </style>
+
+
+    
+</head>
+<body>
+    
+    <script type="text/javascript">
+
+        //function googleTranslateElementInit() {
+        //    new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: false }, 'google_translate_element'); //remove the layout
+
+        //}
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: "hi,en,te" }, 'google_translate_element');
+        }
+        /*body_1.style.top = "40px";*/
+    </script>
+    <header>
+
+        <div class="header-middle">
+            <div class="top-bar">
+                <div class="container-fluid">
+
+                    <div class="row no-gutters">
+
+                        
+                        <div class="col-md-6 col-6"></div>
+                        
+                         
+
+                        <div class="col-md-4 col-4">
+                            <span class="d-flex justify-content-end align-items-right">
+                                <button id="btn-decrease">A-</button>
+                                <button id="btn-orig">A</button>
+                                <button id="btn-increase">A+</button>
+                                <button onclick="swapStyleSheet('dark.css')" style="background: #000; border-color: none; color: #fff">A&nbsp;</button>
+                                <button onclick="swapStyleSheet('custom.css')" style="background: #05386f; border-color: none; color: #fff">A&nbsp;</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+
+
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="logo px-2">
+                            
+                                <img src="img_NewDesign/telanganalogo.png" class="img-responsive">
+
+                            
+                            <div class="logo-text">
+
+                                <h1 class="site_name_english" lang="en" translate="no">Greater Hyderabad Municipal Corporation
+ <br />
+                                    <span>హైదరాబాద్ మహానగర పాలక సంస్థ</span>
+
+                                </h1>
+
+                            </div>
+                           
+                            <img src="img_NewDesign/GHMCNewLogo.png" class="img-responsive">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="bg_nav">
+                <div class="container">
+                    <div class="row">
+
+
+
+
+                        <div class="col-md-12">
+
+                            <nav class="main-nav" role="navigation ">
+                                <!-- Mobile menu toggle button (hamburger/x icon) -->
+
+                                <input id="mainmenu-state" type="checkbox" />
+                                <label class="mainmenu-btn" for="mainmenu-state">
+                                    <span class="mainmenu-btn-icon"></span>Toggle main menu visibility
+                                </label>
+                                 
+
+                                <ul id="mainmenu" class="sm sm-blue"><li> <a style="font-size:20px" target=_blank href = "/Ghmc_Home.aspx"> Home</a></li><li> <a style="font-size:20px" >Our Services</a><ul> <li> <a target=_blank href="https://petanimal.ghmc.gov.in/Login/Login">Pet Dog License</a> <li> <a href="#">Town Planning</a><ul> <li> <a target=_blank href="/EODB.aspx">Ease of doing Business (EODB)</a> <li> <a href="#">Master Plans</a> <li> <a target=_blank href="/Townplanning_Reports/TSECBCFAQs.pdf">Online Compliance System for ECBC</a> <li> <a target=_blank href="https://lrs.ghmc.gov.in/LRSApplicationStatus.aspx ">Know LRS Status 2015</a> <li> <a target=_blank href="https://lrs.ghmc.gov.in/LRS/HMDAtoGHMC.aspx ">Apply LRS (HMDA Applied Candidates Only)</a> <li> <a target=_blank href="/Building.aspx">More About Town planning</a> <li> <a target=_blank href="/Townplanning_Reports/Application Form of Existing Assembly Buildings.pdf">Application Form of Existing Assembly <br />  Buildings for Fire Safety Inspections</a> <li> <a href="#">Unauthorised Construction Information Management System</a><ul> <li> <a href="#">Citizen Grievance</a> <li> <a target=_blank href="https://ucimsghmc.telangana.gov.in/">Officer Login</a></li></ul> <li> <a target=_blank href="http://192.168.32.170/rdps/TPlogin.aspx">RDPS</a></li></ul> <li> <a href="#">Grievance</a><ul> <li> <a target=_blank href="https://igs.ghmc.gov.in/operator/send_otp_mobile">CITIZEN</a></li></ul> <li> <a href="#">UCD</a><ul> <li> <a target=_blank href="/Swachh_Hyderabad.aspx">PROMOTION OF JUTE BAGS</a></li></ul> <li> <a href="#">Property Tax</a><ul> <li> <a href="#">Property Tax </a><ul> <li> <a href="#">CDMA</a><ul> <li> <a target=_blank href="https://cdma.cgg.gov.in/cdma_arbs/CDMA_PG/PTMenu">Property Tax Search</a></li></ul> <li> <a href="#">GHMC</a><ul> <li> <a target=_blank href="/Search.aspx">Know Your Property Tax Details</a></li></ul></li></ul> <li> <a href="#">Mutation</a><ul> <li> <a href="#">GHMC</a><ul> <li> <a target=_blank href="https://eodb.ghmc.gov.in/KnowYourMutationStatus_New.aspx">Know your mutation status</a> <li> <a target=_blank href="/Mutation_Certificate.aspx">Download Mutation Certificate </a> <li> <a target=_blank href="/Mutation_Report.aspx">Online Dashboard </a> <li> <a target=_blank href="/Property_Tax/Procedure_Online_Mutation.pdf">Procedure for online Mutation</a> <li> <a target=_blank href="/Property_Tax/2017INDS_MS50.pdf">G.O on Online Mutation Timelines </a> <li> <a target=_blank href="/Property_Tax/Mutation_G.O.Ms.No-155-MAUD(M1).pdf">Govt. order for online mutation</a> <li> <a target=_blank href="/Property_Tax/Mutation_G O NO 192 Errata mutation GO.pdf">Errata Govt. order for online mutation </a></li></ul> <li> <a href="#">CDMA</a><ul> <li> <a target=_blank href="https://cdma.cgg.gov.in/CDMA_PT/Mutation/Index">Mutation Search</a></li></ul></li></ul></li></ul> <li> <a href="#">Vacant Land Tax</a><ul> <li> <a href="#">Vacant Land Tax</a><ul> <li> <a href="#">GHMC</a><ul> <li> <a target=_blank href="/Property_Tax/Procedure_Vacant Land Tax.pdf">Procedure for Vacant Land Tax</a></li></ul> <li> <a href="#">CDMA</a><ul> <li> <a target=_blank href="https://cdma.cgg.gov.in/cdma_Arbs/CDMA_vlt/vlTMenu">Vacant Land Tax Search</a></li></ul></li></ul></li></ul> <li> <a href="#">Trade License</a><ul> <li> <a target=_blank href="/Townplanning_Reports/Online_Procedure_Trade.pdf">Online Application Procedure</a> <li> <a target=_blank href="https://trade.ghmc.gov.in/">Apply For New Trade</a> <li> <a target=_blank href="/Menu_Files/Trade License Fee rates.pdf">Trade License Fee Rates</a> <li> <a target=_blank href="/Certificatesearch.aspx">Download Certificate</a> <li> <a target=_blank href="/EODBReport.aspx">ONLINE DASHBAORD</a> <li> <a target=_blank href="/Trade.aspx">More About Trade License</a> <li> <a target=_blank href="https://onlinepayments.ghmc.gov.in/TLTax/TLPayment">Trade License Dues</a> <li> <a target=_blank href="/TradeStatus.aspx">Know Your Trade Applications Status</a></li></ul> <li> <a href="#">Health & Sanitation</a><ul> <li> <a target=_blank href="https://bnd.ghmc.gov.in">Hospitals Login</a> <li> <a target=_blank href="/Birth.aspx">More About Birth&Death</a> <li> <a target=_blank href="https://igs.ghmc.gov.in/Login/VBDLogin">Disease Surveillance App</a></li></ul> <li> <a href="#">Advertisements</a><ul> <li> <a target=_blank href="https://advt.ghmc.gov.in/">Apply for Advertisement</a> <li> <a target=_blank href="/Menu_Files/proceedings dated11-12-2019.pdf">Advertisement Fee rates</a> <li> <a target=_blank href="https://advt.ghmc.gov.in/login/login ">Officer Login</a> <li> <a target=_blank href="/Menu_Files/GHMC-Advt How to Apply_compressed.pdf">How to apply</a></li></ul> <li> <a target=_blank href="/Menu_Files/UBD.pdf">Parks And Urban Biodiversity</a><ul> <li> <a target=_blank href="https://ubd-ghmc.aptonline.in/">Officer Login</a></li></ul> <li> <a target=_blank href="/Sports.aspx">Sports And Playgrounds</a> <li> <a href="#">Engineering</a><ul> <li> <a target=_blank href="/Engineering_Works.aspx">ENGINEERING WORKS</a> <li> <a target=_blank href="http://workmodule.bloomsolutions.co.in/workmodule/project99/login">WORKS MONITORING SYSTEM</a><ul> <li> <a target=_blank href="http://workmodule.ghmc.bloomsolutions.co.in/">CONTRACTOR LOGIN</a> <li> <a target=_blank href="http://workmodule.ghmc.bloomsolutions.co.in/eli">AE LOGIN</a> <li> <a target=_blank href="http://workmodule.ghmc.bloomsolutions.co.in/ali">AUDITOR LOGIN</a> <li> <a target=_blank href="http://workmodule.ghmc.bloomsolutions.co.in/eal">EXAMINER OF ACCOUNTS LOGIN</a> <li> <a target=_blank href="http://workmodule.ghmc.bloomsolutions.co.in/eeli">EE LOGIN</a> <li> <a target=_blank href="http://workmodule.ghmc.bloomsolutions.co.in/seli">SE LOGIN</a> <li> <a target=_blank href="http://workmodule.ghmc.bloomsolutions.co.in/zcli">ZC LOGIN</a></li></ul></li></ul> <li> <a target=_blank href="/Traffic.aspx">Traffic and Transportation</a> <li> <a target=_blank href="https://csr.ghmc.gov.in/">CSR</a> <li> <a href="#">CELL TOWERS</a><ul> <li> <a target=_blank href="/Cell_TowersEodb.aspx">ONLINE DASHBOARD</a> <li> <a target=_blank href="/Reports_Cell_TowersEodb.aspx">APPLICATION SEARCH</a> <li> <a target=_blank href="/SearchCelltower.aspx">Application Status</a> <li> <a target=_blank href="/CellTowers.aspx">About Cell Towers</a></li></ul> <li> <a href="#">Estates</a><ul> <li> <a target=_blank href="https://ems.ghmc.gov.in/">Officer Login (EMS)</a> <li> <a target=_blank href="https://ems.ghmc.gov.in/Citizen/Citizenhome">Pay Online</a></li></ul> <li> <a href="#">Land Acquisition</a><ul> <li> <a href="#">LB Nagar Zone</a><ul> <li> <a target=_blank href="/Menu_Files/Form-C1.pdf">Form-C(1)</a> <li> <a target=_blank href="/Menu_Files/Form-C2.pdf">Form-C(2)</a></li></ul> <li> <a target=_blank href="https://drive.google.com/file/d/1vxPaicpcRtFpRXo1JeQKTMJ_XBFt5XSv/view?usp=drive_link">Khairathabad Zone</a> <li> <a target=_blank href="https://drive.google.com/file/d/1d2tH8TP-odo7r32HX5B22EsXC4Y3iGI6/view?usp=drive_link">Golconda Zone</a> <li> <a target=_blank href="https://drive.google.com/file/d/1ETLJ4KoW4Nw4JtLni5gz98HqCM7MYWJ1/view?usp=drive_link">Charminar Zone</a></li></ul> <li> <a target=_blank href="https://tgbpass.telangana.gov.in/">TG-bPASS</a></li></ul></li><li> <a style="font-size:20px" >Online Services</a><ul> <li> <a href="#">Property Tax</a><ul> <li> <a target=_blank href="https://sa.ghmc.gov.in/MeesevaARVR.aspx">Assessment Revision</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/MeesevaARVR.aspx">Vacancy Remission</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/AssessmentDoorAndOwnerChange.aspx">Owner Name Correction</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/AssessmentDoorAndOwnerChange.aspx">Door No Correction</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/AssessmentExemption.aspx">Assessment Exemption</a> <li> <a target=_blank href="https://sa.ghmc.gov.in">Self Assessment of Property Tax</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/Mutationentry.aspx">Mutation of Property</a> <li> <a href="#"></a> <li> <a target=_blank href="https://sa.ghmc.gov.in/meesevaarvr.aspx">Property Tax Block</a></li></ul> <li> <a href="#">Trade License</a><ul> <li> <a target=_blank href="https://sa.ghmc.gov.in/TradeAddressOwnerTitleChange.aspx">Trade License Corrections</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/TradeNewApplicationEntry.aspx">Apply For New Trade</a> <li> <a target=_blank href="https://trade.ghmc.gov.in/OnlinePettyTrade.aspx">Temporary Trade License for Cracker Shops</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/TradeAddressOwnerTitlechange.aspx">Trade Block</a></li></ul> <li> <a target=_blank href="https://buildnow.telangana.gov.in">Submission of Building Application (Build Now)</a><ul> <li> <a target=_blank href="https://buildnow.telangana.gov.in"></a></li></ul> <li> <a target=_blank href="https://tdr.ghmc.telangana.gov.in:8080/">Transfer of Development Rights (TDR)</a> <li> <a target=_blank href="https://bookfunctionhalls.ghmc.gov.in/">Multipurpose Function Hall Booking</a> <li> <a target=_blank href="https://igs.ghmc.gov.in/Operator/CNDWaste_Send_OtpMobile">Construction & Demolition (C&D) Waste  Paid Service Request</a><ul> <li> <a target=_blank href="/Menu_Files/C & D Doc.pdf">User Charges & Penalties</a> <li> <a target=_blank href="https://igs.ghmc.gov.in/Operator/CNDWaste_Send_OtpMobile">Raise Paid Service Request</a> <li> <a target=_blank href="https://igs.ghmc.gov.in/Operator/CNDWaste_Search">CND Waste Search</a></li></ul> <li> <a target=_blank href="https://sports.ghmc.gov.in/">GHMC Sports Bookings</a> <li> <a href="#">Vacant Land Tax (VLT)</a><ul> <li> <a target=_blank href="https://sa.ghmc.gov.in//VLTEntryForm.aspx">Apply for new VLT</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/VLT_MutationForm.aspx">VLT Mutation (Change of Ownership)</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/VLT_AssessmentRevisionForm.aspx">VLT Revision</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/VLTOwnerNameCorrection.aspx">Owner Name Correction</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/vltblockform.aspx">VLT Block</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/VLT_mobileupdate.aspx">VLT - Update Mobile Number</a></li></ul></li></ul></li><li> <a style="font-size:20px" >Online Payments</a><ul> <li> <a target=_blank href="https://onlinepayments.ghmc.gov.in/">Property Tax</a> <li> <a target=_blank href="https://onlinepayments.ghmc.gov.in/TLTax/TLPayment">Trade License</a> <li> <a target=_blank href="https://sports.ghmc.gov.in/">Sports </a> <li> <a target=_blank href="https://advt.ghmc.gov.in/">Advertisement</a><ul> <li> <a target=_blank href="/Menu_Files/GHMC-Advt How to Apply_compressed.pdf">How to apply</a> <li> <a target=_blank href="https://advt.ghmc.gov.in/">Apply for Advertisement</a></li></ul> <li> <a target=_blank href="https://emd.ghmc.gov.in/">Balance EMD</a> <li> <a target=_blank href="https://ems.ghmc.gov.in/Citizen/Citizenhome">Estates</a></li></ul></li><li> <a style="font-size:20px" > 27 erstwhile ULBs</a><ul> <li> <a href="#">Property tax</a><ul> <li> <a target=_blank href="https://onlinepayments.ghmc.gov.in/">Pay Property Tax</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/">Apply for Self Assessment</a> <li> <a target=_blank href="https://sa.ghmc.gov.in/Mutationentry.aspx">Apply for Mutation</a></li></ul> <li> <a href="#">Vacant Land Tax</a><ul> <li> <a target=_blank href="https://ghmculbmerger.ghmc.gov.in/arbs/CDMA_VLT/VLTMenu">Pay Vacant Land Tax</a> <li> <a target=_blank href="https://ghmculbmerger.ghmc.gov.in/VLT//SelfAssessment/SelfAssessment">Apply for New VLT</a> <li> <a target=_blank href="https://ghmculbmerger.ghmc.gov.in/VLT//Mutation/Index">Apply for VLT Mutation</a> <li> <a target=_blank href="https://ghmculbmerger.ghmc.gov.in/arbs//CDMA_VLT/getmutationdetails">Pay VLT Mutation Fee</a> <li> <a target=_blank href="https://ghmculbmerger.ghmc.gov.in/VLT//SelfAssessment/ApplicantIdEntry">Download Approved VLT Certificate</a></li></ul> <li> <a href="#">Trade License</a><ul> <li> <a target=_blank href="https://trade.ghmc.gov.in/">Apply for New Trade License</a> <li> <a target=_blank href="https://onlinepayments.ghmc.gov.in/TLTax/TLPayment">Trade Renewal Payment</a> <li> <a target=_blank href="/Certificatesearch.aspx">Download Trade Renewal Certificate</a> <li> <a target=_blank href="/TradeStatus.aspx">Download New Trade Acknowledgement</a></li></ul></li></ul></li><li> <a style="font-size:20px" >Enquiry</a><ul> <li> <a href="#">Grievance</a><ul> <li> <a target=_blank href="https://igs.ghmc.gov.in/operator/search">Status</a></li></ul> <li> <a href="#">Trade License</a><ul> <li> <a target=_blank href="https://onlinepayments.ghmc.gov.in/TLTax/Search_Your_Trade">Search for TIN</a></li></ul> <li> <a href="#">Birth</a><ul> <li> <a target=_blank href="https://bnd.ghmc.gov.in/Birth_Certificate.aspx">Verification</a></li></ul> <li> <a href="#">Death</a><ul> <li> <a target=_blank href="https://bnd.ghmc.gov.in/Death_Certificate.aspx">Verification</a></li></ul> <li> <a href="#">Town Planning</a><ul> <li> <a target=_blank href="https://lrs.ghmc.gov.in/LRSApplicationStatus.aspx ">Know LRS Status 2015</a></li></ul></li></ul></li><li> <a style="font-size:20px" >More</a><ul> <li> <a href="#">Downloads</a><ul> <li> <a target=_blank href="/Swatchranking.aspx">Swachh Ranking GHMC</a> <li> <a target=_blank href="/CSC_ApplicationForms.aspx">CSC Applications Forms</a> <li> <a target=_blank href="/Tenderspage.aspx">Tender Notifications</a> <li> <a target=_blank href="/Townplanning_Reports/TSECBCFAQs.pdf">Online Compliance System for ECBC</a> <li> <a target=_blank href="/ghmcbuget.aspx">GHMC BUDGET</a> <li> <a target=_blank href="https://goir.telangana.gov.in/">Circulars and GO's</a> <li> <a href="#">Birth and Death Forms</a><ul> <li> <a target=_blank href="/CSC_Applications/FORM-1 NEW.pdf">Form-1</a> <li> <a target=_blank href="/Menu_Files/Form No.2.pdf">Form-2</a></li></ul> <li> <a target=_blank href="https://play.google.com/store/apps/details?id=cgg.gov.ghmc">Download My CURE Mobile App</a> <li> <a target=_blank href="https://ghmc1.ghmc.gov.in/Vikasam_Registration_Form.pdf">VIKASAM Registration Form</a> <li> <a target=_blank href="/Menu_Files/citizen-charter-19-06_compress.pdf">Citizen’s Charter</a></li></ul> <li> <a href="#">Others</a><ul> <li> <a target=_blank href="/KeyContacts.aspx">Contact Us</a> <li> <a target=_blank href="/quicklinks/rti  latest (1) (1).pdf">RTI</a> <li> <a target=_blank href="/Awards.aspx">Awards</a> <li> <a target=_blank href="/GHMCorganizationchart.pdf">Organization Chart</a> <li> <a target=_blank href="/City_History.aspx">Our City</a> <li> <a href="#">OFFICERS LOGIN</a><ul> <li> <a target=_blank href="https://repdb.ghmc.gov.in/login.aspx">DASHBOARD</a> <li> <a target=_blank href="/AppDashboard.aspx">APPLICATION DASHBOARD</a> <li> <a target=_blank href="https://igs.ghmc.gov.in">GRIEVANCE</a></li></ul> <li> <a target=_blank href="/FeedBackDashboard.aspx">FEED BACK DASHBOARD</a> <li> <a target=_blank href="/Menu_Files/GHMC Bonds Details.pdf">Bonds Section</a> <li> <a target=_blank href="/GHMC_CriminalProvisionAct.aspx">Criminal Provisions as per GHMC Act</a> <li> <a href="#">NCAP(National Clean Air Programme)</a><ul> <li> <a target=_blank href="/Menu_Files/Action Plans for Non-attainment CitiesAreas(Air Pollution of Telangana-Hyderabad & patancheruvu).pdf">City Action Plan of Hyderabad</a> <li> <a target=_blank href="/Menu_Files/NCAP_Government Order.pdf">Government Orders (GOs)</a> <li> <a target=_blank href="https://prana.cpcb.gov.in/#/resources">Guidelines</a> <li> <a target=_blank href="https://tgpcb.cgg.gov.in/Home/EnvironmentalData">Air Quality</a></li></ul></li></ul> <li> <a href="#">LRS</a><ul> <li> <a target=_blank href="https://lrs.ghmc.gov.in/KnowCitizenUserid.aspx ">Know Registered Mobile No</a> <li> <a target=_blank href="https://lrs.ghmc.gov.in/ ">Online Payment</a> <li> <a target=_blank href="https://lrs.ghmc.gov.in/Fee_intimation_global.aspx">Fee Intimation List</a></li></ul> <li> <a href="#">Recruitment</a><ul> <li> <a target=_blank href="/Menu_Files/MSU Recruitment Notification 2026.pdf">Notification for Recruitment in MSU Hyd.</a></li></ul> <li> <a target=_blank href="https://elections.ghmc.gov.in/ghmcelections">Elections</a></li></ul></li></li></ul>
+
+                                
+                            </nav>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </header>
+
+    <form method="post" action="./Building.aspx" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTY1NDU2MTA1Mg8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFgJmD2QWAgIDDxYCHglpbm5lcmh0bWwF8oEBPGxpPiA8YSBzdHlsZT0iZm9udC1zaXplOjIwcHgiIHRhcmdldD1fYmxhbmsgaHJlZiA9ICJHaG1jX0hvbWUuYXNweCI+IEhvbWU8L2E+PC9saT48bGk+IDxhIHN0eWxlPSJmb250LXNpemU6MjBweCIgPk91ciBTZXJ2aWNlczwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3BldGFuaW1hbC5naG1jLmdvdi5pbi9Mb2dpbi9Mb2dpbiI+UGV0IERvZyBMaWNlbnNlPC9hPiA8bGk+IDxhIGhyZWY9IiMiPlRvd24gUGxhbm5pbmc8L2E+PHVsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iRU9EQi5hc3B4Ij5FYXNlIG9mIGRvaW5nIEJ1c2luZXNzIChFT0RCKTwvYT4gPGxpPiA8YSBocmVmPSIjIj5NYXN0ZXIgUGxhbnM8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJUb3ducGxhbm5pbmdfUmVwb3J0cy9UU0VDQkNGQVFzLnBkZiI+T25saW5lIENvbXBsaWFuY2UgU3lzdGVtIGZvciBFQ0JDPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9scnMuZ2htYy5nb3YuaW4vTFJTQXBwbGljYXRpb25TdGF0dXMuYXNweCAiPktub3cgTFJTIFN0YXR1cyAyMDE1PC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9scnMuZ2htYy5nb3YuaW4vTFJTL0hNREF0b0dITUMuYXNweCAiPkFwcGx5IExSUyAoSE1EQSBBcHBsaWVkIENhbmRpZGF0ZXMgT25seSk8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJCdWlsZGluZy5hc3B4Ij5Nb3JlIEFib3V0IFRvd24gcGxhbm5pbmc8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJUb3ducGxhbm5pbmdfUmVwb3J0cy9BcHBsaWNhdGlvbiBGb3JtIG9mIEV4aXN0aW5nIEFzc2VtYmx5IEJ1aWxkaW5ncy5wZGYiPkFwcGxpY2F0aW9uIEZvcm0gb2YgRXhpc3RpbmcgQXNzZW1ibHkgPGJyIC8+ICBCdWlsZGluZ3MgZm9yIEZpcmUgU2FmZXR5IEluc3BlY3Rpb25zPC9hPiA8bGk+IDxhIGhyZWY9IiMiPlVuYXV0aG9yaXNlZCBDb25zdHJ1Y3Rpb24gSW5mb3JtYXRpb24gTWFuYWdlbWVudCBTeXN0ZW08L2E+PHVsPiA8bGk+IDxhIGhyZWY9IiMiPkNpdGl6ZW4gR3JpZXZhbmNlPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly91Y2ltc2dobWMudGVsYW5nYW5hLmdvdi5pbi8iPk9mZmljZXIgTG9naW48L2E+PC9saT48L3VsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cDovLzE5Mi4xNjguMzIuMTcwL3JkcHMvVFBsb2dpbi5hc3B4Ij5SRFBTPC9hPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5HcmlldmFuY2U8L2E+PHVsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9pZ3MuZ2htYy5nb3YuaW4vb3BlcmF0b3Ivc2VuZF9vdHBfbW9iaWxlIj5DSVRJWkVOPC9hPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5VQ0Q8L2E+PHVsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iU3dhY2hoX0h5ZGVyYWJhZC5hc3B4Ij5QUk9NT1RJT04gT0YgSlVURSBCQUdTPC9hPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5Qcm9wZXJ0eSBUYXg8L2E+PHVsPiA8bGk+IDxhIGhyZWY9IiMiPlByb3BlcnR5IFRheCA8L2E+PHVsPiA8bGk+IDxhIGhyZWY9IiMiPkNETUE8L2E+PHVsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9jZG1hLmNnZy5nb3YuaW4vY2RtYV9hcmJzL0NETUFfUEcvUFRNZW51Ij5Qcm9wZXJ0eSBUYXggU2VhcmNoPC9hPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5HSE1DPC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9IlNlYXJjaC5hc3B4Ij5Lbm93IFlvdXIgUHJvcGVydHkgVGF4IERldGFpbHM8L2E+PC9saT48L3VsPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5NdXRhdGlvbjwvYT48dWw+IDxsaT4gPGEgaHJlZj0iIyI+R0hNQzwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2VvZGIuZ2htYy5nb3YuaW4vS25vd1lvdXJNdXRhdGlvblN0YXR1c19OZXcuYXNweCI+S25vdyB5b3VyIG11dGF0aW9uIHN0YXR1czwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vd3d3LmdobWMuZ292LmluL011dGF0aW9uX0NlcnRpZmljYXRlLmFzcHgiPkRvd25sb2FkIE11dGF0aW9uIENlcnRpZmljYXRlIDwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vZ2htYy5nb3YuaW4vTXV0YXRpb25fUmVwb3J0LmFzcHgiPk9ubGluZSBEYXNoYm9hcmQgPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iUHJvcGVydHlfVGF4L1Byb2NlZHVyZV9PbmxpbmVfTXV0YXRpb24ucGRmIj5Qcm9jZWR1cmUgZm9yIG9ubGluZSBNdXRhdGlvbjwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9IlByb3BlcnR5X1RheC8yMDE3SU5EU19NUzUwLnBkZiI+Ry5PIG9uIE9ubGluZSBNdXRhdGlvbiBUaW1lbGluZXMgPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iUHJvcGVydHlfVGF4L011dGF0aW9uX0cuTy5Ncy5Oby0xNTUtTUFVRChNMSkucGRmIj5Hb3Z0LiBvcmRlciBmb3Igb25saW5lIG11dGF0aW9uPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iUHJvcGVydHlfVGF4L011dGF0aW9uX0cgTyBOTyAxOTIgRXJyYXRhIG11dGF0aW9uIEdPLnBkZiI+RXJyYXRhIEdvdnQuIG9yZGVyIGZvciBvbmxpbmUgbXV0YXRpb24gPC9hPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5DRE1BPC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vY2RtYS5jZ2cuZ292LmluL0NETUFfUFQvTXV0YXRpb24vSW5kZXgiPk11dGF0aW9uIFNlYXJjaDwvYT48L2xpPjwvdWw+PC9saT48L3VsPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5WYWNhbnQgTGFuZCBUYXg8L2E+PHVsPiA8bGk+IDxhIGhyZWY9IiMiPlZhY2FudCBMYW5kIFRheDwvYT48dWw+IDxsaT4gPGEgaHJlZj0iIyI+R0hNQzwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJQcm9wZXJ0eV9UYXgvUHJvY2VkdXJlX1ZhY2FudCBMYW5kIFRheC5wZGYiPlByb2NlZHVyZSBmb3IgVmFjYW50IExhbmQgVGF4PC9hPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5DRE1BPC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vY2RtYS5jZ2cuZ292LmluL2NkbWFfQXJicy9DRE1BX3ZsdC92bFRNZW51Ij5WYWNhbnQgTGFuZCBUYXggU2VhcmNoPC9hPjwvbGk+PC91bD48L2xpPjwvdWw+PC9saT48L3VsPiA8bGk+IDxhIGhyZWY9IiMiPlRyYWRlIExpY2Vuc2U8L2E+PHVsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iVG93bnBsYW5uaW5nX1JlcG9ydHMvT25saW5lX1Byb2NlZHVyZV9UcmFkZS5wZGYiPk9ubGluZSBBcHBsaWNhdGlvbiBQcm9jZWR1cmU8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3RyYWRlLmdobWMuZ292LmluLyI+QXBwbHkgRm9yIE5ldyBUcmFkZTwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Ik1lbnVfRmlsZXMvVHJhZGUgTGljZW5zZSBGZWUgcmF0ZXMucGRmIj5UcmFkZSBMaWNlbnNlIEZlZSBSYXRlczwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vd3d3LmdobWMuZ292LmluL0NlcnRpZmljYXRlc2VhcmNoLmFzcHgiPkRvd25sb2FkIENlcnRpZmljYXRlPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly93d3cuZ2htYy5nb3YuaW4vRU9EQlJlcG9ydC5hc3B4Ij5PTkxJTkUgREFTSEJBT1JEPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly93d3cuZ2htYy5nb3YuaW4vVHJhZGUuYXNweCI+TW9yZSBBYm91dCBUcmFkZSBMaWNlbnNlPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9vbmxpbmVwYXltZW50cy5naG1jLmdvdi5pbi9UTFRheC9UTFBheW1lbnQiPlRyYWRlIExpY2Vuc2UgRHVlczwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vZ2htYy5nb3YuaW4vVHJhZGVTdGF0dXMuYXNweCI+S25vdyBZb3VyIFRyYWRlIEFwcGxpY2F0aW9ucyBTdGF0dXM8L2E+PC9saT48L3VsPiA8bGk+IDxhIGhyZWY9IiMiPkhlYWx0aCAmIFNhbml0YXRpb248L2E+PHVsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9ibmQuZ2htYy5nb3YuaW4iPkhvc3BpdGFscyBMb2dpbjwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9IkJpcnRoLmFzcHgiPk1vcmUgQWJvdXQgQmlydGgmRGVhdGg8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2lncy5naG1jLmdvdi5pbi9Mb2dpbi9WQkRMb2dpbiI+RGlzZWFzZSBTdXJ2ZWlsbGFuY2UgQXBwPC9hPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5BZHZlcnRpc2VtZW50czwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2FkdnQuZ2htYy5nb3YuaW4vIj5BcHBseSBmb3IgQWR2ZXJ0aXNlbWVudDwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Ik1lbnVfRmlsZXMvcHJvY2VlZGluZ3MgZGF0ZWQxMS0xMi0yMDE5LnBkZiI+QWR2ZXJ0aXNlbWVudCBGZWUgcmF0ZXM8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2FkdnQuZ2htYy5nb3YuaW4vbG9naW4vbG9naW4gIj5PZmZpY2VyIExvZ2luPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iTWVudV9GaWxlcy9HSE1DLUFkdnQgSG93IHRvIEFwcGx5X2NvbXByZXNzZWQucGRmIj5Ib3cgdG8gYXBwbHk8L2E+PC9saT48L3VsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iTWVudV9GaWxlcy9VQkQucGRmIj5QYXJrcyBBbmQgVXJiYW4gQmlvZGl2ZXJzaXR5PC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vdWJkLWdobWMuYXB0b25saW5lLmluLyI+T2ZmaWNlciBMb2dpbjwvYT48L2xpPjwvdWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2dobWMuZ292LmluL1Nwb3J0cy5hc3B4Ij5TcG9ydHMgQW5kIFBsYXlncm91bmRzPC9hPiA8bGk+IDxhIGhyZWY9IiMiPkVuZ2luZWVyaW5nPC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9IkVuZ2luZWVyaW5nX1dvcmtzLmFzcHgiPkVOR0lORUVSSU5HIFdPUktTPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cDovL3dvcmttb2R1bGUuYmxvb21zb2x1dGlvbnMuY28uaW4vd29ya21vZHVsZS9wcm9qZWN0OTkvbG9naW4iPldPUktTIE1PTklUT1JJTkcgU1lTVEVNPC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHA6Ly93b3JrbW9kdWxlLmdobWMuYmxvb21zb2x1dGlvbnMuY28uaW4vIj5DT05UUkFDVE9SIExPR0lOPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cDovL3dvcmttb2R1bGUuZ2htYy5ibG9vbXNvbHV0aW9ucy5jby5pbi9lbGkiPkFFIExPR0lOPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cDovL3dvcmttb2R1bGUuZ2htYy5ibG9vbXNvbHV0aW9ucy5jby5pbi9hbGkiPkFVRElUT1IgTE9HSU48L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwOi8vd29ya21vZHVsZS5naG1jLmJsb29tc29sdXRpb25zLmNvLmluL2VhbCI+RVhBTUlORVIgT0YgQUNDT1VOVFMgTE9HSU48L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwOi8vd29ya21vZHVsZS5naG1jLmJsb29tc29sdXRpb25zLmNvLmluL2VlbGkiPkVFIExPR0lOPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cDovL3dvcmttb2R1bGUuZ2htYy5ibG9vbXNvbHV0aW9ucy5jby5pbi9zZWxpIj5TRSBMT0dJTjwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHA6Ly93b3JrbW9kdWxlLmdobWMuYmxvb21zb2x1dGlvbnMuY28uaW4vemNsaSI+WkMgTE9HSU48L2E+PC9saT48L3VsPjwvbGk+PC91bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9IlRyYWZmaWMuYXNweCI+VHJhZmZpYyBhbmQgVHJhbnNwb3J0YXRpb248L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2Nzci5naG1jLmdvdi5pbi8iPkNTUjwvYT4gPGxpPiA8YSBocmVmPSIjIj5DRUxMIFRPV0VSUzwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3d3dy5naG1jLmdvdi5pbi9DZWxsX1Rvd2Vyc0VvZGIuYXNweCI+T05MSU5FIERBU0hCT0FSRDwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vd3d3LmdobWMuZ292LmluL1JlcG9ydHNfQ2VsbF9Ub3dlcnNFb2RiLmFzcHgiPkFQUExJQ0FUSU9OIFNFQVJDSDwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vd3d3LmdobWMuZ292LmluL1NlYXJjaENlbGx0b3dlci5hc3B4Ij5BcHBsaWNhdGlvbiBTdGF0dXM8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3d3dy5naG1jLmdvdi5pbi9DZWxsVG93ZXJzLmFzcHgiPkFib3V0IENlbGwgVG93ZXJzPC9hPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5Fc3RhdGVzPC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vZW1zLmdobWMuZ292LmluLyI+T2ZmaWNlciBMb2dpbiAoRU1TKTwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vZW1zLmdobWMuZ292LmluL0NpdGl6ZW4vQ2l0aXplbmhvbWUiPlBheSBPbmxpbmU8L2E+PC9saT48L3VsPiA8bGk+IDxhIGhyZWY9IiMiPkxhbmQgQWNxdWlzaXRpb248L2E+PHVsPiA8bGk+IDxhIGhyZWY9IiMiPkxCIE5hZ2FyIFpvbmU8L2E+PHVsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iTWVudV9GaWxlcy9Gb3JtLUMxLnBkZiI+Rm9ybS1DKDEpPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iTWVudV9GaWxlcy9Gb3JtLUMyLnBkZiI+Rm9ybS1DKDIpPC9hPjwvbGk+PC91bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vZHJpdmUuZ29vZ2xlLmNvbS9maWxlL2QvMXZ4UGFpY3BjUnRGcFJYbzFKZVFLVE1KX1hCRnQ1WFN2L3ZpZXc/dXNwPWRyaXZlX2xpbmsiPktoYWlyYXRoYWJhZCBab25lPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xZDJ0SDhUUC1vZG83cjMySFg1QjIyRXNYQzRZM2lHSTYvdmlldz91c3A9ZHJpdmVfbGluayI+R29sY29uZGEgWm9uZTwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vZHJpdmUuZ29vZ2xlLmNvbS9maWxlL2QvMUVUTEo0S29XNE53NEp0TG5pNWd6OThIcUNNN01ZV0oxL3ZpZXc/dXNwPWRyaXZlX2xpbmsiPkNoYXJtaW5hciBab25lPC9hPjwvbGk+PC91bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vdGdicGFzcy50ZWxhbmdhbmEuZ292LmluLyI+VEctYlBBU1M8L2E+PC9saT48L3VsPjwvbGk+PGxpPiA8YSBzdHlsZT0iZm9udC1zaXplOjIwcHgiID5PbmxpbmUgU2VydmljZXM8L2E+PHVsPiA8bGk+IDxhIGhyZWY9IiMiPlByb3BlcnR5IFRheDwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3NhLmdobWMuZ292LmluL01lZXNldmFBUlZSLmFzcHgiPkFzc2Vzc21lbnQgUmV2aXNpb248L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3NhLmdobWMuZ292LmluL01lZXNldmFBUlZSLmFzcHgiPlZhY2FuY3kgUmVtaXNzaW9uPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9zYS5naG1jLmdvdi5pbi9Bc3Nlc3NtZW50RG9vckFuZE93bmVyQ2hhbmdlLmFzcHgiPk93bmVyIE5hbWUgQ29ycmVjdGlvbjwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vc2EuZ2htYy5nb3YuaW4vQXNzZXNzbWVudERvb3JBbmRPd25lckNoYW5nZS5hc3B4Ij5Eb29yIE5vIENvcnJlY3Rpb248L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3NhLmdobWMuZ292LmluL0Fzc2Vzc21lbnRFeGVtcHRpb24uYXNweCI+QXNzZXNzbWVudCBFeGVtcHRpb248L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3NhLmdobWMuZ292LmluIj5TZWxmIEFzc2Vzc21lbnQgb2YgUHJvcGVydHkgVGF4PC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9zYS5naG1jLmdvdi5pbi9NdXRhdGlvbmVudHJ5LmFzcHgiPk11dGF0aW9uIG9mIFByb3BlcnR5PC9hPiA8bGk+IDxhIGhyZWY9IiMiPjwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vc2EuZ2htYy5nb3YuaW4vbWVlc2V2YWFydnIuYXNweCI+UHJvcGVydHkgVGF4IEJsb2NrPC9hPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5UcmFkZSBMaWNlbnNlPC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vc2EuZ2htYy5nb3YuaW4vVHJhZGVBZGRyZXNzT3duZXJUaXRsZUNoYW5nZS5hc3B4Ij5UcmFkZSBMaWNlbnNlIENvcnJlY3Rpb25zPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9zYS5naG1jLmdvdi5pbi9UcmFkZU5ld0FwcGxpY2F0aW9uRW50cnkuYXNweCI+QXBwbHkgRm9yIE5ldyBUcmFkZTwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vdHJhZGUuZ2htYy5nb3YuaW4vT25saW5lUGV0dHlUcmFkZS5hc3B4Ij5UZW1wb3JhcnkgVHJhZGUgTGljZW5zZSBmb3IgQ3JhY2tlciBTaG9wczwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vc2EuZ2htYy5nb3YuaW4vVHJhZGVBZGRyZXNzT3duZXJUaXRsZWNoYW5nZS5hc3B4Ij5UcmFkZSBCbG9jazwvYT48L2xpPjwvdWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2J1aWxkbm93LnRlbGFuZ2FuYS5nb3YuaW4iPlN1Ym1pc3Npb24gb2YgQnVpbGRpbmcgQXBwbGljYXRpb24gKEJ1aWxkIE5vdyk8L2E+PHVsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9idWlsZG5vdy50ZWxhbmdhbmEuZ292LmluIj48L2E+PC9saT48L3VsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly90ZHIuZ2htYy50ZWxhbmdhbmEuZ292LmluOjgwODAvIj5UcmFuc2ZlciBvZiBEZXZlbG9wbWVudCBSaWdodHMgKFREUik8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2Jvb2tmdW5jdGlvbmhhbGxzLmdobWMuZ292LmluLyI+TXVsdGlwdXJwb3NlIEZ1bmN0aW9uIEhhbGwgQm9va2luZzwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vaWdzLmdobWMuZ292LmluL09wZXJhdG9yL0NORFdhc3RlX1NlbmRfT3RwTW9iaWxlIj5Db25zdHJ1Y3Rpb24gJiBEZW1vbGl0aW9uIChDJkQpIFdhc3RlICBQYWlkIFNlcnZpY2UgUmVxdWVzdDwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJNZW51X0ZpbGVzL0MgJiBEIERvYy5wZGYiPlVzZXIgQ2hhcmdlcyAmIFBlbmFsdGllczwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vaWdzLmdobWMuZ292LmluL09wZXJhdG9yL0NORFdhc3RlX1NlbmRfT3RwTW9iaWxlIj5SYWlzZSBQYWlkIFNlcnZpY2UgUmVxdWVzdDwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vaWdzLmdobWMuZ292LmluL09wZXJhdG9yL0NORFdhc3RlX1NlYXJjaCI+Q05EIFdhc3RlIFNlYXJjaDwvYT48L2xpPjwvdWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3Nwb3J0cy5naG1jLmdvdi5pbi8iPkdITUMgU3BvcnRzIEJvb2tpbmdzPC9hPiA8bGk+IDxhIGhyZWY9IiMiPlZhY2FudCBMYW5kIFRheCAoVkxUKTwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3NhLmdobWMuZ292LmluLy9WTFRFbnRyeUZvcm0uYXNweCI+QXBwbHkgZm9yIG5ldyBWTFQ8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3NhLmdobWMuZ292LmluL1ZMVF9NdXRhdGlvbkZvcm0uYXNweCI+VkxUIE11dGF0aW9uIChDaGFuZ2Ugb2YgT3duZXJzaGlwKTwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vc2EuZ2htYy5nb3YuaW4vVkxUX0Fzc2Vzc21lbnRSZXZpc2lvbkZvcm0uYXNweCI+VkxUIFJldmlzaW9uPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9zYS5naG1jLmdvdi5pbi9WTFRPd25lck5hbWVDb3JyZWN0aW9uLmFzcHgiPk93bmVyIE5hbWUgQ29ycmVjdGlvbjwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vc2EuZ2htYy5nb3YuaW4vdmx0YmxvY2tmb3JtLmFzcHgiPlZMVCBCbG9jazwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vc2EuZ2htYy5nb3YuaW4vVkxUX21vYmlsZXVwZGF0ZS5hc3B4Ij5WTFQgLSBVcGRhdGUgTW9iaWxlIE51bWJlcjwvYT48L2xpPjwvdWw+PC9saT48L3VsPjwvbGk+PGxpPiA8YSBzdHlsZT0iZm9udC1zaXplOjIwcHgiID5PbmxpbmUgUGF5bWVudHM8L2E+PHVsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9vbmxpbmVwYXltZW50cy5naG1jLmdvdi5pbi8iPlByb3BlcnR5IFRheDwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vb25saW5lcGF5bWVudHMuZ2htYy5nb3YuaW4vVExUYXgvVExQYXltZW50Ij5UcmFkZSBMaWNlbnNlPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9zcG9ydHMuZ2htYy5nb3YuaW4vIj5TcG9ydHMgPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9hZHZ0LmdobWMuZ292LmluLyI+QWR2ZXJ0aXNlbWVudDwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJNZW51X0ZpbGVzL0dITUMtQWR2dCBIb3cgdG8gQXBwbHlfY29tcHJlc3NlZC5wZGYiPkhvdyB0byBhcHBseTwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vYWR2dC5naG1jLmdvdi5pbi8iPkFwcGx5IGZvciBBZHZlcnRpc2VtZW50PC9hPjwvbGk+PC91bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vZW1kLmdobWMuZ292LmluLyI+QmFsYW5jZSBFTUQ8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2Vtcy5naG1jLmdvdi5pbi9DaXRpemVuL0NpdGl6ZW5ob21lIj5Fc3RhdGVzPC9hPjwvbGk+PC91bD48L2xpPjxsaT4gPGEgc3R5bGU9ImZvbnQtc2l6ZToyMHB4IiA+IDI3IGVyc3R3aGlsZSBVTEJzPC9hPjx1bD4gPGxpPiA8YSBocmVmPSIjIj5Qcm9wZXJ0eSB0YXg8L2E+PHVsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9vbmxpbmVwYXltZW50cy5naG1jLmdvdi5pbi8iPlBheSBQcm9wZXJ0eSBUYXg8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3NhLmdobWMuZ292LmluLyI+QXBwbHkgZm9yIFNlbGYgQXNzZXNzbWVudDwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vc2EuZ2htYy5nb3YuaW4vTXV0YXRpb25lbnRyeS5hc3B4Ij5BcHBseSBmb3IgTXV0YXRpb248L2E+PC9saT48L3VsPiA8bGk+IDxhIGhyZWY9IiMiPlZhY2FudCBMYW5kIFRheDwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2dobWN1bGJtZXJnZXIuZ2htYy5nb3YuaW4vYXJicy9DRE1BX1ZMVC9WTFRNZW51Ij5QYXkgVmFjYW50IExhbmQgVGF4PC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9naG1jdWxibWVyZ2VyLmdobWMuZ292LmluL1ZMVC8vU2VsZkFzc2Vzc21lbnQvU2VsZkFzc2Vzc21lbnQiPkFwcGx5IGZvciBOZXcgVkxUPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9naG1jdWxibWVyZ2VyLmdobWMuZ292LmluL1ZMVC8vTXV0YXRpb24vSW5kZXgiPkFwcGx5IGZvciBWTFQgTXV0YXRpb248L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2dobWN1bGJtZXJnZXIuZ2htYy5nb3YuaW4vYXJicy8vQ0RNQV9WTFQvZ2V0bXV0YXRpb25kZXRhaWxzIj5QYXkgVkxUIE11dGF0aW9uIEZlZTwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vZ2htY3VsYm1lcmdlci5naG1jLmdvdi5pbi9WTFQvL1NlbGZBc3Nlc3NtZW50L0FwcGxpY2FudElkRW50cnkiPkRvd25sb2FkIEFwcHJvdmVkIFZMVCBDZXJ0aWZpY2F0ZTwvYT48L2xpPjwvdWw+IDxsaT4gPGEgaHJlZj0iIyI+VHJhZGUgTGljZW5zZTwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3RyYWRlLmdobWMuZ292LmluLyI+QXBwbHkgZm9yIE5ldyBUcmFkZSBMaWNlbnNlPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9vbmxpbmVwYXltZW50cy5naG1jLmdvdi5pbi9UTFRheC9UTFBheW1lbnQiPlRyYWRlIFJlbmV3YWwgUGF5bWVudDwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vd3d3LmdobWMuZ292LmluL0NlcnRpZmljYXRlc2VhcmNoLmFzcHgiPkRvd25sb2FkIFRyYWRlIFJlbmV3YWwgQ2VydGlmaWNhdGU8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2dobWMuZ292LmluL1RyYWRlU3RhdHVzLmFzcHgiPkRvd25sb2FkIE5ldyBUcmFkZSBBY2tub3dsZWRnZW1lbnQ8L2E+PC9saT48L3VsPjwvbGk+PC91bD48L2xpPjxsaT4gPGEgc3R5bGU9ImZvbnQtc2l6ZToyMHB4IiA+RW5xdWlyeTwvYT48dWw+IDxsaT4gPGEgaHJlZj0iIyI+R3JpZXZhbmNlPC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vaWdzLmdobWMuZ292LmluL29wZXJhdG9yL3NlYXJjaCI+U3RhdHVzPC9hPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5UcmFkZSBMaWNlbnNlPC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vb25saW5lcGF5bWVudHMuZ2htYy5nb3YuaW4vVExUYXgvU2VhcmNoX1lvdXJfVHJhZGUiPlNlYXJjaCBmb3IgVElOPC9hPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5CaXJ0aDwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2JuZC5naG1jLmdvdi5pbi9CaXJ0aF9DZXJ0aWZpY2F0ZS5hc3B4Ij5WZXJpZmljYXRpb248L2E+PC9saT48L3VsPiA8bGk+IDxhIGhyZWY9IiMiPkRlYXRoPC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vYm5kLmdobWMuZ292LmluL0RlYXRoX0NlcnRpZmljYXRlLmFzcHgiPlZlcmlmaWNhdGlvbjwvYT48L2xpPjwvdWw+IDxsaT4gPGEgaHJlZj0iIyI+VG93biBQbGFubmluZzwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2xycy5naG1jLmdvdi5pbi9MUlNBcHBsaWNhdGlvblN0YXR1cy5hc3B4ICI+S25vdyBMUlMgU3RhdHVzIDIwMTU8L2E+PC9saT48L3VsPjwvbGk+PC91bD48L2xpPjxsaT4gPGEgc3R5bGU9ImZvbnQtc2l6ZToyMHB4IiA+TW9yZTwvYT48dWw+IDxsaT4gPGEgaHJlZj0iIyI+RG93bmxvYWRzPC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9IlN3YXRjaHJhbmtpbmcuYXNweCI+U3dhY2hoIFJhbmtpbmcgR0hNQzwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9IkNTQ19BcHBsaWNhdGlvbkZvcm1zLmFzcHgiPkNTQyBBcHBsaWNhdGlvbnMgRm9ybXM8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJUZW5kZXJzcGFnZS5hc3B4Ij5UZW5kZXIgTm90aWZpY2F0aW9uczwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9IlRvd25wbGFubmluZ19SZXBvcnRzL1RTRUNCQ0ZBUXMucGRmIj5PbmxpbmUgQ29tcGxpYW5jZSBTeXN0ZW0gZm9yIEVDQkM8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJnaG1jYnVnZXQuYXNweCI+R0hNQyBCVURHRVQ8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2dvaXIudGVsYW5nYW5hLmdvdi5pbi8iPkNpcmN1bGFycyBhbmQgR08nczwvYT4gPGxpPiA8YSBocmVmPSIjIj5CaXJ0aCBhbmQgRGVhdGggRm9ybXM8L2E+PHVsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iQ1NDX0FwcGxpY2F0aW9ucy9GT1JNLTEgTkVXLnBkZiI+Rm9ybS0xPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iTWVudV9GaWxlcy9Gb3JtIE5vLjIucGRmIj5Gb3JtLTI8L2E+PC9saT48L3VsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYXBwcy9kZXRhaWxzP2lkPWNnZy5nb3YuZ2htYyI+RG93bmxvYWQgTXkgQ1VSRSBNb2JpbGUgQXBwPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9naG1jMS5naG1jLmdvdi5pbi9WaWthc2FtX1JlZ2lzdHJhdGlvbl9Gb3JtLnBkZiI+VklLQVNBTSBSZWdpc3RyYXRpb24gRm9ybTwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Ik1lbnVfRmlsZXMvY2l0aXplbi1jaGFydGVyLTE5LTA2X2NvbXByZXNzLnBkZiI+Q2l0aXplbuKAmXMgQ2hhcnRlcjwvYT48L2xpPjwvdWw+IDxsaT4gPGEgaHJlZj0iIyI+T3RoZXJzPC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9IktleUNvbnRhY3RzLmFzcHgiPkNvbnRhY3QgVXM8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJxdWlja2xpbmtzL3J0aSAgbGF0ZXN0ICgxKSAoMSkucGRmIj5SVEk8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJBd2FyZHMuYXNweCI+QXdhcmRzPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iR0hNQ29yZ2FuaXphdGlvbmNoYXJ0LnBkZiI+T3JnYW5pemF0aW9uIENoYXJ0PC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iQ2l0eV9IaXN0b3J5LmFzcHgiPk91ciBDaXR5PC9hPiA8bGk+IDxhIGhyZWY9IiMiPk9GRklDRVJTIExPR0lOPC9hPjx1bD4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vcmVwZGIuZ2htYy5nb3YuaW4vbG9naW4uYXNweCI+REFTSEJPQVJEPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iQXBwRGFzaGJvYXJkLmFzcHgiPkFQUExJQ0FUSU9OIERBU0hCT0FSRDwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vaWdzLmdobWMuZ292LmluIj5HUklFVkFOQ0U8L2E+PC9saT48L3VsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iRmVlZEJhY2tEYXNoYm9hcmQuYXNweCI+RkVFRCBCQUNLIERBU0hCT0FSRDwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Ik1lbnVfRmlsZXMvR0hNQyBCb25kcyBEZXRhaWxzLnBkZiI+Qm9uZHMgU2VjdGlvbjwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9IgpodHRwczovL2dobWMuZ292LmluL0dITUNfQ3JpbWluYWxQcm92aXNpb25BY3QuYXNweCI+Q3JpbWluYWwgUHJvdmlzaW9ucyBhcyBwZXIgR0hNQyBBY3Q8L2E+IDxsaT4gPGEgaHJlZj0iIyI+TkNBUChOYXRpb25hbCBDbGVhbiBBaXIgUHJvZ3JhbW1lKTwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJNZW51X0ZpbGVzL0FjdGlvbiBQbGFucyBmb3IgTm9uLWF0dGFpbm1lbnQgQ2l0aWVzQXJlYXMoQWlyIFBvbGx1dGlvbiBvZiBUZWxhbmdhbmEtSHlkZXJhYmFkICYgcGF0YW5jaGVydXZ1KS5wZGYiPkNpdHkgQWN0aW9uIFBsYW4gb2YgSHlkZXJhYmFkPC9hPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iTWVudV9GaWxlcy9OQ0FQX0dvdmVybm1lbnQgT3JkZXIucGRmIj5Hb3Zlcm5tZW50IE9yZGVycyAoR09zKTwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vcHJhbmEuY3BjYi5nb3YuaW4vIy9yZXNvdXJjZXMiPkd1aWRlbGluZXM8L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL3RncGNiLmNnZy5nb3YuaW4vSG9tZS9FbnZpcm9ubWVudGFsRGF0YSI+QWlyIFF1YWxpdHk8L2E+PC9saT48L3VsPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5MUlM8L2E+PHVsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9scnMuZ2htYy5nb3YuaW4vS25vd0NpdGl6ZW5Vc2VyaWQuYXNweCAiPktub3cgUmVnaXN0ZXJlZCBNb2JpbGUgTm88L2E+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJodHRwczovL2xycy5naG1jLmdvdi5pbi8gIj5PbmxpbmUgUGF5bWVudDwvYT4gPGxpPiA8YSB0YXJnZXQ9X2JsYW5rIGhyZWY9Imh0dHBzOi8vbHJzLmdobWMuZ292LmluL0ZlZV9pbnRpbWF0aW9uX2dsb2JhbC5hc3B4Ij5GZWUgSW50aW1hdGlvbiBMaXN0PC9hPjwvbGk+PC91bD4gPGxpPiA8YSBocmVmPSIjIj5SZWNydWl0bWVudDwvYT48dWw+IDxsaT4gPGEgdGFyZ2V0PV9ibGFuayBocmVmPSJNZW51X0ZpbGVzL01TVSBSZWNydWl0bWVudCBOb3RpZmljYXRpb24gMjAyNi5wZGYiPk5vdGlmaWNhdGlvbiBmb3IgUmVjcnVpdG1lbnQgaW4gTVNVIEh5ZC48L2E+PC9saT48L3VsPiA8bGk+IDxhIHRhcmdldD1fYmxhbmsgaHJlZj0iaHR0cHM6Ly9lbGVjdGlvbnMuZ2htYy5nb3YuaW4vZ2htY2VsZWN0aW9ucyI+RWxlY3Rpb25zPC9hPjwvbGk+PC91bD48L2xpPjwvbGk+ZGQ8UkWA331gGxvCDdRdFB8p5tCLziBptMXtXOoHYLeUog==" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="2465F31B" />
+    
+     <div class="innerheader">
+     <h2 style="margin-left:6%">Building Permission</h2>
+ </div>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                Citizens have the provision to apply for building permits online. He / She fills the application form and submits all documents along with an initial payment online.
+
+                The concerned officer receives the application forms and documents once the applicant pays the initial amount.  
+                ACP inspects the site by taking photos using his Mobile phone and updates them in the Report and forwards it to the Addl. CCP for recommendation / rejection of the file. 
+
+                The Addl. CCP reviews the report and adds his remarks and forwards it to the CCP for recommendation / rejection of the file. 
+
+                The CCP reviews the report and adds his remarks and forwards it to the Addl. Commissioner (P&P). 
+
+                The Addl. Commissioner reviews the report and adds his remarks and forwards it to the Commissioner who reviews it, adds his remarks and forwards it to the Building Committee. 
+
+                The Building Committee reviews the report and gives approval or rejects it or suggests revised plans. 
+
+                Upon the file approval, the system arrives at the fee amount. The concerned officer will verify the fee and notify the applicant via SMS and Email. 
+
+                Once the citizen pays the fee, proceedings will be generated by the system and the same will be available online to download and print. 
+                  
+
+
+            </div>
+
+            
+        </div>
+
+    </div>
+    <br />
+    
+
+
+
+
+        </form>
+
+    <div class="footerlinkscontainer">
+        <div class="container">
+            <div class="row">
+                <!--<div class="col-sm-3">
+                    <img src="images/csr.png" class="img-responsive">
+                    <br>
+                    <br>
+                </div>-->
+
+                <div class="col-sm-2">
+                    <h3>Reach Us</h3>
+                    <ul class="footerlinks">
+
+
+
+                        <li><a href="/KeyContacts.aspx" target="_blank">Contact Us  </a></li>
+
+                        <li><a href="https://igs.ghmc.gov.in/operator/send_otp_mobile" id="lnkcomplaint" target="_blank" onclick="return confirm('You are redirecting to IGS Application?')">Complaint </a></li>
+
+                    </ul>
+
+                </div>
+                <div class="col-sm-2">
+                    <h3>Other Information </h3>
+                    <ul class="footerlinks">
+
+
+                        
+
+                        <li><a href="/Documents/NEW%20ZONES,CIRCLE%20MAP.jpg" id="ftr_ZoneCirclesmap" target="_blank">Zone and Circle Map</a></li>
+                        
+
+                    </ul>
+
+                </div>
+                <div class="col-sm-4">
+
+                    <a href="https://india.gov.in/" target="_blank" style="display:none" onclick="return confirm('Disclaimer\nYou are leaving the Centre for Good Governance and are subject to the privacy and security policies of the owners/sponsors of the outside website. Centre for Good Governance, does not guarantee the availability of such linked pages at all times. Centre for Good Governance cannot authorize the use of copyrighted materials contained in linked websites. Users are advised to request such authorization from the owner of the linked website. Centre for Good Governance, does not guarantee that linked websites comply with Indian Government Web Guidelines.')">
+                        <img src="img_NewDesign/nationalPortal_icon.jpg" alt="national portal link"></a>
+                    <a href="https://www.telangana.gov.in/" target="_blank" onclick="return confirm('Disclaimer\nYou are leaving the Centre for Good Governance and are subject to the privacy and security policies of the owners/sponsors of the outside website. Centre for Good Governance, does not guarantee the availability of such linked pages at all times. Centre for Good Governance cannot authorize the use of copyrighted materials contained in linked websites. Users are advised to request such authorization from the owner of the linked website. Centre for Good Governance, does not guarantee that linked websites comply with Indian Government Web Guidelines.')">
+                        <img src="img_NewDesign/telanganaportal.jpg" alt="telangana portal link">
+                    </a>
+                    <br>
+                    <br>
+                    <a href="https://greenhyderabad.ghmc.gov.in/" target="_blank">
+
+                        <img src="img_NewDesign/greenhyderabad_img.jpg" alt="green hyderabad link" style="text-align: center; margin: auto; width: 250px; height: 20px">
+                    </a>
+
+
+
+
+                </div>
+                <div class="col-sm-2">
+                    <h3>Quick Links</h3>
+                    <ul class="footerlinks">
+                        <li><a href="/privacy_policy.aspx" target="_blank">Privacy policy</a></li>
+                        <li><a href="/KeyContacts.aspx" id="A1" target="_blank">Key Contacts</a></li>
+                        <li><a href="/terms_conditions.aspx" id="A2" target="_blank">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+
+                    <a href="https://play.google.com/store/apps/details?id=cgg.gov.ghmc" target="_blank" onclick="return confirm('Disclaimer\nYou are leaving the Centre for Good Governance and are subject to the privacy and security policies of the owners/sponsors of the outside website. Centre for Good Governance, does not guarantee the availability of such linked pages at all times. Centre for Good Governance cannot authorize the use of copyrighted materials contained in linked websites. Users are advised to request such authorization from the owner of the linked website. Centre for Good Governance, does not guarantee that linked websites comply with Indian Government Web Guidelines.')">
+                        <img src="img_NewDesign/androidappongoogleplay.jpg" alt="googleplay button" width="80%">
+                    </a>
+                    <br>
+                    <br>
+                    <a href="https://itunes.apple.com/in/app/myghmc-citizen/id1232220629?mt=8" target="_blank" onclick="return confirm('Disclaimer\nYou are leaving the Centre for Good Governance and are subject to the privacy and security policies of the owners/sponsors of the outside website. Centre for Good Governance, does not guarantee the availability of such linked pages at all times. Centre for Good Governance cannot authorize the use of copyrighted materials contained in linked websites. Users are advised to request such authorization from the owner of the linked website. Centre for Good Governance, does not guarantee that linked websites comply with Indian Government Web Guidelines.')">
+                        <img src="img_NewDesign/appavailableonstore.jpg" alt="googleplay button" width="80%"></a>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="footercompany">
+        <div class="container">
+            <div class="row justify-content-center" style="margin-top: -20px;">
+                <div class="col-sm-2 col-centered">
+                    <ul class="social-icons">
+                        <li class="ico-facebook"><a href="https://www.facebook.com/GHMCOnline" target="_blank" onclick="return confirm('Disclaimer\nYou are leaving the Centre for Good Governance and are subject to the privacy and security policies of the owners/sponsors of the outside website. Centre for Good Governance, does not guarantee the availability of such linked pages at all times. Centre for Good Governance cannot authorize the use of copyrighted materials contained in linked websites. Users are advised to request such authorization from the owner of the linked website. Centre for Good Governance, does not guarantee that linked websites comply with Indian Government Web Guidelines.')"><i class="fa fa-facebook"></i></a></li>
+                        <li class="ico-twitter" style="background-color:black"><a href="https://twitter.com/GHMCOnline" target="_blank" onclick="return confirm('Disclaimer\nYou are leaving the Centre for Good Governance and are subject to the privacy and security policies of the owners/sponsors of the outside website. Centre for Good Governance, does not guarantee the availability of such linked pages at all times. Centre for Good Governance cannot authorize the use of copyrighted materials contained in linked websites. Users are advised to request such authorization from the owner of the linked website. Centre for Good Governance, does not guarantee that linked websites comply with Indian Government Web Guidelines.')"><i class="fa fa-x-twitter">X</i></a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>
+                        Copyright @ 2024. GHMC
+                    <br>
+                        All Rights Reserved 
+                        <br>
+                        No.Of Visitors :<span id="lblhitcnt">88113</span>
+                    </p>
+                </div>
+                <div class="col-sm-6" >
+                    <p style="text-align: right">
+                        Designed and Developed by <img src="img_NewDesign/cgg_logo.png" width="30%">.<br />
+                    </p>
+                </div>
+                <p style="text-align: center">
+                   Content owned, maintained and updated by Greater Hyderabad Municipal Corporation, Government of Telangana.
+                     </p>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script src="js_NewDesign/jquery.js"></script>
+    <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+
+    <script src="js_NewDesign/popper.min.js"></script>
+    <script src="js_NewDesign/bootstrap.min.js"></script>
+    <script src="js_NewDesign/fontsizer.js"></script>
+
+
+    <!-- SmartMenus jQuery plugin -->
+    <script type="text/javascript" src="js_NewDesign/jquery.smartmenus.js"></script>
+
+
+    <script type="text/javascript" src="menu_NewDesign/sm-menu.js"></script>
+
+    <script src="js_NewDesign/jquery.newsTicker.js"></script>
+    <script type="text/javascript" src="breakingnews_NewDesign/breaking-news-ticker.min.js"></script>
+    <script type="text/javascript" src="js_NewDesign/jquery.flexslider.js"></script>
+
+    <script src="js_NewDesign/owl.carousel.min.js"></script>
+
+    
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+     <script src="js/bootstrap4.5.3.min.js"></script>
+
+
+    <script>
+
+
+        function triggerHtmlEvent(element, eventName) {
+
+
+            var event;
+
+            if (document.createEvent) {
+                event = document.createEvent('HTMLEvents');
+                event.initEvent(eventName, true, true);
+                element.dispatchEvent(event);
+
+            } else {
+                event = document.createEventObject();
+                event.eventType = eventName;
+                element.fireEvent('on' + event.eventType, event);
+            }
+        }
+
+
+
+
+        /* Flag click handler */
+        $('.translation-links a').click(function (e) {
+
+            //   let $body = document.querySelector('body');
+            // $body.style.top = '0px';
+            e.preventDefault();
+            var lang = $(this).data('lang');
+            var body_1 = document.querySelector('body');
+            $('#google_translate_element select option').each(function () {
+                if ($(this).text().indexOf(lang) > -1) {
+                    $(this).parent().val($(this).val());
+                    var container = document.getElementById('google_translate_element');
+                    var select = container.getElementsByTagName('select')[0];
+                    triggerHtmlEvent(select, 'change');
+
+                }
+
+
+
+
+            });
+
+
+
+        });
+
+
+
+
+    </script>
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function ($) {
+
+            $('#newsTicker1').breakingNews();
+            //$('#newsTicker2').data('breakingNews').next();
+
+        });
+
+
+    </script>
+
+
+    <script>
+
+
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                animationLoop: true,
+                itemWidth: 210,
+                itemMargin: 5
+            });
+        });
+
+    </script>
+
+    <script src="js/jquery.newsTicker.js"></script>
+
+    <script>
+
+        var nt_example3 = $('#nt-example3').newsTicker({
+            row_height: 80,
+            max_rows: 4,
+            items: 1,
+            speed: 800,
+            duration: 2000,
+            prevButton: $('#nt-example3-prev'),
+            nextButton: $('#nt-example3-next')
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function ($) {
+
+            $('#newsTicker1').breakingNews();
+            //$('#newsTicker2').data('breakingNews').next();
+            $(".btn-logins").click(function () {
+                $(".logins").toggle();
+            });
+
+            $('.owl-carousel1').owlCarousel({
+                items: 1,
+                autoplay: true,
+                loop: true,
+                margin: 10,
+                nav: true,
+
+            })
+
+
+        });
+
+
+
+    </script>
+
+    <script src="js_NewDesign/video_gallery.js" type="text/javascript"></script>
+    <script src="carousel_NewDesign/carousel.js" type="text/javascript"></script>
+    <script src="js_NewDesign/fontsizer.js"></script>
+    <script src="quicksearch.js"></script>
+
+
+    <script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox1').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvTownplanning] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox2').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvURBAN] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox3').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvTRADE] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox4').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvHealth] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox5').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvTransport] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox6').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvElectrical] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox7').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gv_Corporator] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox8').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvEngineering] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox9').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvAccounts] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox10').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvcoop] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox11').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvurbcd] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox12').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvPTAX] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox13').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvDeputycommissioner] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox14').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvAddCommissioner] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox15').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvEntomology] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox16').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvMPLS] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox17').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvMLAs] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox18').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvMPsRs] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox19').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_gvMLC] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+
+        $('.search_textbox20').each(function (i) {
+            $(this).quicksearch("[id*= ContentPlaceHolder1_Veterinary] tr:not(:has(th))", {
+                'testQuery': function (query, txt, row) {
+                    return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                }
+            });
+        });
+    });
+</script>
+
+ <script type="text/javascript">
+     $(function () {
+
+         $('.search_textbox21').each(function (i) {
+             $(this).quicksearch("[id*= ContentPlaceHolder1_sanitization] tr:not(:has(th))", {
+                 'testQuery': function (query, txt, row) {
+                     return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                 }
+             });
+         });
+     });
+ </script>
+    <script type="text/javascript">
+        $(function () {
+
+            $('.search_textbox23').each(function (i) {
+                $(this).quicksearch("[id*= ContentPlaceHolder1_gvVnE] tr:not(:has(th))", {
+                    'testQuery': function (query, txt, row) {
+                        return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+
+            $('.search_textbox24').each(function (i) {
+                $(this).quicksearch("[id*= ContentPlaceHolder1_gdvEstates] tr:not(:has(th))", {
+                    'testQuery': function (query, txt, row) {
+                        return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+
+            $('.search_textbox25').each(function (i) {
+                $(this).quicksearch("[id*= ContentPlaceHolder1_gdv_sndp] tr:not(:has(th))", {
+                    'testQuery': function (query, txt, row) {
+                        return $(row).children(":eq(" + i + ")").text().toLowerCase().indexOf(query[0].toLowerCase()) != -1;
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>
+</html>

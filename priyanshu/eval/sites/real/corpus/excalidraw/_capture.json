@@ -1,0 +1,25 @@
+{
+  "slug": "excalidraw",
+  "url": "https://excalidraw.com/",
+  "category": "spa_product_global",
+  "why_hard": "Canvas SPA, empty shell",
+  "captured_at": "2026-09-07T20:46:01.946771+00:00",
+  "pages": [
+    {
+      "requested": "https://excalidraw.com/",
+      "final_url": "https://excalidraw.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 6862,
+      "elapsed_ms": 483,
+      "is_entry": true
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 6862
+}

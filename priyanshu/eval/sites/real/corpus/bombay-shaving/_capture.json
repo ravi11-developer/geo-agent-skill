@@ -1,0 +1,58 @@
+{
+  "slug": "bombay-shaving",
+  "url": "https://bombayshavingcompany.com/",
+  "category": "d2c_retail",
+  "why_hard": "D2C, image-heavy",
+  "captured_at": "2026-09-07T20:45:21.315900+00:00",
+  "pages": [
+    {
+      "requested": "https://bombayshavingcompany.com/",
+      "final_url": "https://www.bombayshavingcompany.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1103807,
+      "elapsed_ms": 1250,
+      "is_entry": true
+    },
+    {
+      "requested": "https://bombayshavingcompany.com/pages/razors-for-men",
+      "final_url": "https://www.bombayshavingcompany.com/pages/razors-for-men",
+      "path": "/pages/razors-for-men/",
+      "file": "pages/razors-for-men/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1087132,
+      "elapsed_ms": 827,
+      "is_entry": false
+    },
+    {
+      "requested": "https://bombayshavingcompany.com/pages/razor-for-mens",
+      "final_url": "https://www.bombayshavingcompany.com/pages/razors-for-men",
+      "path": "/pages/razors-for-men/",
+      "file": "pages/razors-for-men/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1087132,
+      "elapsed_ms": 733,
+      "is_entry": false
+    },
+    {
+      "requested": "https://bombayshavingcompany.com/products/sensi-smart-3",
+      "final_url": "https://www.bombayshavingcompany.com/products/sensi-smart-3",
+      "path": "/products/sensi-smart-3/",
+      "file": "products/sensi-smart-3/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1177015,
+      "elapsed_ms": 703,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 4455086
+}

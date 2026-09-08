@@ -1,0 +1,58 @@
+{
+  "slug": "pratham",
+  "url": "https://www.pratham.org/",
+  "category": "ngo",
+  "why_hard": "NGO, PDF reports as primary facts",
+  "captured_at": "2026-09-07T20:45:07.672864+00:00",
+  "pages": [
+    {
+      "requested": "https://www.pratham.org/",
+      "final_url": "https://www.pratham.org/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 265528,
+      "elapsed_ms": 875,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.pratham.org/our-story/",
+      "final_url": "https://www.pratham.org/our-story/",
+      "path": "/our-story/",
+      "file": "our-story/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 242908,
+      "elapsed_ms": 421,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.pratham.org/about/board/",
+      "final_url": "https://www.pratham.org/about/board/",
+      "path": "/about/board/",
+      "file": "about/board/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 214693,
+      "elapsed_ms": 360,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.pratham.org/about/leadership/",
+      "final_url": "https://www.pratham.org/about/leadership/",
+      "path": "/about/leadership/",
+      "file": "about/leadership/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 199814,
+      "elapsed_ms": 296,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 922943
+}

@@ -1,0 +1,3052 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="flexslider.css" type="text/css" media="screen"/>
+  
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  
+  <script src="js/bootstrap.min.js"></script>
+  <script src="modernizr.js"></script>
+  <script src="jquery.flexslider.js"></script>
+  <meta charset="UTF-8"/>
+<script>
+(function($){
+    $(document).ready(function(){
+        //Put all the jQuery you want to use here
+         $('.flexslider').flexslider(
+		 {
+	 animation: "slide",
+	 /*slideshow: true, */               //Boolean: Animate slider automatically
+	 slideshowSpeed: 7000,           //Integer: Set the speed of the slideshow cycling, in milliseconds
+	 /*animationSpeed: 7000,*/   
+        animationLoop: true,
+        itemWidth: 200,
+        itemMargin: 0,
+        move: 1,
+        minItems: 2,
+        maxItems: 6,
+        pauseOnAction: false
+	  
+		 });
+    });
+})(jQuery);
+</script>
+
+
+<style>
+.marquee {
+  position: relative;
+   animation: marquee linear infinite;
+  animation-delay: 5s;
+  text-align:center;
+  color:#ffffff;
+  direction:up;
+  overflow-x: marquee-line;
+	marquee-style: scroll;
+} 
+@keyframes marquee {
+  0% {
+    transform: translate(10%, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    top: 10em
+  }
+ /* 100% {
+    top: -2em
+  }*/
+}
+/*.marquee-content {
+  display: inline-block;
+  margin-top: 5px;
+  animation: marquee 8s linear infinite;
+}*/
+/*.item-collection-1 {
+  position: relative;
+  left: 0%;
+  animation: swap 15s linear infinite;
+}*/
+
+/* for Chrome and Safari */
+#marquee1 {
+	overflow-x: -webkit-marquee;
+	-webkit-marquee-style: scroll;
+}
+#marquee2 {
+	overflow-x: -webkit-marquee;
+	-webkit-marquee-style: alternate;
+}
+
+p span a {
+    color: #000!important;
+    text-decoration: none;
+} 
+button a {
+    color: white!important;
+    text-decoration: none;
+}
+
+.panel-body a {
+    color: #000!important;
+    text-decoration: none;
+	font-size:17px;
+	font-family:Arial Narrow;
+}
+/* for all */
+#marquee1 {
+	overflow-x: marquee-line;
+	marquee-style: scroll;
+}
+#marquee2 {
+	overflow-x: marquee-line;
+	marquee-style: alternate;
+}
+a{text-decoration:none}
+.flexslider{
+border: 0px solid #fff !important; 
+}
+.next {
+    right: 0px!important; 
+    text-align: right;
+}
+.slides:after {
+    content: "\0020";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.img_c{
+	width: 200px;
+    float: left;
+    display: block;
+} 
+.over{
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background: rgba(0, 0, 0, 0.5); */
+    filter: Alpha(opacity=50);
+    /* height: 100%; */
+    /* width: 100%; */
+    /* opacity: 0.5; */
+    /* transition: .5s ease; */
+    /* background-color: #7f847e80; */
+    background-image: url(shri.jpg);
+} 
+.panel{
+background-image:transparent !important;	
+	
+}
+.panel-success{
+	border-color:#145f0b!important;
+} 
+.panel-success>.panel-heading {
+    color: #e4e8e4!important;
+    background-color: #13690a!important;
+    border-color: #101d05!important;
+} 
+.panel-info>.panel-heading {
+    color: #e2e6e8!important;
+    background-color: #052433!important;
+    border-color: #107084!important;
+} 
+.panel-info{
+border-color:#022229!important;
+} 
+.panel-warning>.panel-heading {
+    color: #f5f4f3!important;
+    background-color: #c3391a!important;
+    border-color: #775b22!important;
+	font-size:19px;
+} 
+.panel-warning {
+    border-color: #c1460c!important;
+}
+</style>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+function popUp(theURL,name,w,h,t,m,st,sc,r,X,Y){
+
+if ( X == -1) {
+X = screen.availWidth - w ;
+X = X/2;
+}
+if (Y == -1) {
+Y = screen.availHeight -h ;
+Y = Y/2;
+}
+p="width=" + w + ",height=" + h + ",toolbar=" + t + ",menubar=" + m + ",status=" + st + ",scrollbars=" + sc + ",resizable=" + r + "directories=0,screenX=" + X + ",screenY=" + Y + ",left=" + X + ",top=" + Y + ",header=0";
+share=window.open(theURL,name,p);
+}
+
+//popUp('message1.htm','message',425,200,0,0,0,0,0,25,0);
+
+</script>
+<script language="javascript" type="text/javascript">
+	function showTender(id){
+			if(id == 1){
+				document.getElementById("idTender1").style.display="";
+				document.getElementById("idTender2").style.display="none";
+			}else if(id == 2){
+				document.getElementById("idTender1").style.display="none";
+				document.getElementById("idTender2").style.display="";
+				document.getElementById("idTender2").style.width="320";
+				document.getElementById("idTender2").style.height="100";
+				document.getElementById("idTender2").style.overflow="scroll";
+			}
+	}
+	function showNew(id){
+			if(id == 1){
+				document.getElementById("idNew1").style.display="";
+				document.getElementById("idNew2").style.display="none";
+			}else if(id == 2){
+				document.getElementById("idNew1").style.display="none";
+				document.getElementById("idNew2").style.display="";
+				document.getElementById("idNew2").style.width="320";
+				document.getElementById("idNew2").style.height="100";
+				document.getElementById("idNew2").style.overflow="scroll";
+			}
+	}
+	
+</script>
+<style type="text/css">
+.panel {
+ font-size:17px;
+ font-family:Arial Narrow;
+ }
+body
+{
+font-family: 'Arial Narrow',Arial, sans-serif;
+
+
+}
+.thumbnail{
+position: relative;
+z-index: 0;
+}
+
+.thumbnail:hover{
+background-color: transparent;
+z-index: 50;
+}
+
+.thumbnail span{ /*CSS for enlarged image*/
+position: absolute;
+background-color: lightyellow;
+padding: 1px;
+
+border: 1px dashed gray;
+visibility: hidden;
+color: black;
+text-decoration: none;
+}
+
+.thumbnail span img{ /*CSS for enlarged image*/
+border-width: 0;
+padding: 2px;
+}
+
+.thumbnail:hover span{ /*CSS for enlarged image on hover*/
+visibility: visible;
+top: -120px;
+left: 0px; /*position where enlarged image should offset horizontally */
+
+}
+</style>
+</head>
+ <div id="NavContainer">
+<div class="container-fluid" style="padding:0px">
+<div class="row" style="margin:0px;padding:0px;">
+<div class="col-md-12" style="padding:0px">
+ 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+<script>
+var images = new Array()
+images[0] = "images/2medium.jpg";
+images[1] = "images/3medium.jpg";
+images[2] = "images/4medium.jpg";
+images[3] = "images/5medium.jpg";
+images[4] = "images/6medium.jpg";
+images[5] = "images/7medium.jpg";
+images[6] = "images/8medium.jpg";
+images[7] = "images/9medium.jpg";
+images[8] = "images/1medium.jpg";
+setInterval("changeImage()", 2500);
+var x=0;
+function changeImage()
+{
+document.getElementById("img").src=images[x]
+if (x!=8)
+{x++;
+} else
+{x=x-8; 
+} 
+}
+</script>
+<style> 
+
+#rm_link{
+font-size:28px!important;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+ #slidewrapper1 { width:350px; height:90px; overflow:hidden;}
+ #slidewrapper1 .slide2 { width:350px; height:90px; margin:0; background-color:#DDDDDD; }
+ #slidewrapper1 .slide2 img { z-index:100; }
+ #slidewrapper1 .slide2 .projektinfo1 { width:100%; height:38px; padding:0px 10px 0px; z-index:15; color:#fff; position:absolute; left:0; bottom:0px; }
+ #slidewrapper1 .slide2 .projektinfo1 p	{ z-index:15; position:relative; padding-top:10px;}
+ .bhashini-dropdown-content{z-index: 9999!important;}
+ 
+ .bhashini-plugin-container{
+     width: fit-content;
+    margin-left: auto;
+ }
+</style>
+	
+
+
+			<meta http-equiv="Content-type" content="text/html">
+
+
+	<script type="text/javascript" src="js/jquery_slideshow.js"></script> 
+    <script type="text/javascript" src="js/sliderscript.js"></script> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link href="images/title_logo.png" rel="icon" >
+	
+		<link href="https://indianrailways.gov.in/railwayboard//css/main.css" rel="stylesheet" type="text/css">
+	
+	<link href="https://indianrailways.gov.in/railwayboard//css/styles0.css" rel="stylesheet" type="text/css">
+	<TITLE>Ministry of Railways (Railway Board)</TITLE>
+	<script language="JavaScript" src="https://indianrailways.gov.in/railwayboard//javascripts/sbankJavascript.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" type="text/css" href="anylinkcssmenu.css" >
+	<link rel="stylesheet" type="text/css" href="contentslider.css" > 
+	<script type="text/javascript" src="contentslider.js"></script> 
+	
+    <script type="text/javascript"> 
+	function brotarefx(){
+        featuredcontentslider.init({
+            id: "slider1",  //id of main slider DIV
+            contentsource: ["inline", ""],  //Valid values: ["inline", ""] or ["ajax", "path_to_file"]
+            toc: "#increment",  //Valid values: "#increment", "markup", ["label1", "label2", etc]
+            nextprev: ["<", ">"],  //labels for "prev" and "next" links. Set to "" to hide.
+            revealtype: "click", //Behavior of pagination links to reveal the slides: "click" or "mouseover"
+            enablefade: [true, 0.1],  //[true/false, fadedegree]
+            autorotate: [true, 4000],  //[true/false, pausetime]
+            onChange: function(previndex, curindex) {  //event handler fired whenever script changes slide
+                //previndex holds index of last slide viewed b4 current (1=1st slide, 2nd=2nd etc)
+                //curindex holds index of currently shown slide (1=1st slide, 2nd=2nd etc)
+            }
+        })
+		}
+        function goTurl(loc) {
+            window.top.location = loc;
+        }
+		
+		 function refreshpage() {
+           // window.location.reload();
+			
+        }
+		
+		//setTimeout("brotarefx()",2);
+		setTimeout("brotarefx()",0);
+		
+		//setTimeout("refreshpage()",27000);
+    </script> 
+	
+
+<script type="text/javascript" src="anylinkcssmenu.js">
+
+/***********************************************
+* AnyLink CSS Menu script v2.0- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Project Page at http://www.dynamicdrive.com/dynamicindex1/anylinkcss.htm for full source code
+***********************************************/
+
+</script>
+<script type="text/javascript">
+//anylinkcssmenu.init("menu_anchors_class") ////Pass in the CSS class of anchor links (that contain a sub menu)
+anylinkcssmenu.init("anchorclass")
+</script>
+<script type="text/javascript">
+	function search(){
+		var strSearchString = document.getElementById("searchString").value;
+		if(strSearchString != ""){
+			var form = document.getElementById("myFormId");
+			document.forms["searchform"].action="cms_search.jsp?searchString="+strSearchString;
+			document.forms["searchform"].submit();
+		}
+	}
+</script>
+<link rel="stylesheet" type="text/css" href="IR/flexdropdown.css"/>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="IR/flexdropdown.js"></script>
+<link rel="stylesheet" type="text/css" href="anylinkmenu/anylinkmenu.css">
+<script type="text/javascript" src="anylinkmenu/menucontents.js"></script>
+<script type="text/javascript" src="anylinkmenu/anylinkmenu.js"></script>
+<script type="text/javascript">
+//anylinkmenu.init("menu_anchors_class") //Pass in the CSS class of anchor links (that contain a sub menu)
+anylinkmenu.init("menuanchorclass")
+
+</script>
+
+<script>
+
+
+/*********Font size resize**********/
+
+ function settheCookie(cname, cvalue, exdays) {
+	  var d = new Date();
+	  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	  var expires = "expires="+ d.toUTCString();
+	  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/railwayboard";
+	}
+ 
+function getCookie(cname) {
+	  var name = cname + "=";
+	  var decodedCookie = decodeURIComponent(document.cookie);
+	  var ca = decodedCookie.split(';');
+	  for(var i = 0; i <ca.length; i++) {
+	    var c = ca[i];
+	    while (c.charAt(0) == ' ') {
+	      c = c.substring(1);
+	    }
+	    if (c.indexOf(name) == 0) {
+	      return c.substring(name.length, c.length);
+	    }
+	  }
+	  return "";
+	}
+
+function set_font_size(fontType){
+var fontSizea =11;
+var fs = getCookie("fs");
+if(fs==""){
+	fs = 0;
+}
+	if(fontType == "large")
+	{
+		if(fs<4){
+			var currentfontSize = 14;
+			currentfontSize = 14*(1.1**fs);
+			fs++;	
+			settheCookie("fs", fs, 1);
+			fontSizea = currentfontSize*1.1;
+			$("a").css("font-size",fontSizea  + "px");
+			$("p").css("font-size",fontSizea  + "px");
+			$("span").css("font-size",fontSizea  + "px");
+			$("font").css("font-size",fontSizea  + "px");
+			var hsize = 21+fs;
+			$("h4").css("font-size",hsize + "px");
+			$("h3").css("font-size",hsize + "px");
+			var asize = 16+fs;
+			$(".btnMid a").css("font-size",asize  + "px");
+			$("body").css("font-size",fontSizea  + "px");
+			$("button").css("font-size",asize  + "px");
+		}
+	}
+	if(fontType == "normal")
+	{
+		fontSizea = 14;
+		settheCookie("fs", 0, 1);
+		$("a").css("font-size",fontSizea  + "px");
+		$("p").css("font-size",fontSizea  + "px");
+		$("span").css("font-size",fontSizea  + "px");
+		$("font").css("font-size",fontSizea  + "px");
+		$("h4").css("font-size","21" + "px");
+		$("h3").css("font-size","21" + "px");
+		$(".btnMid a").css("font-size","16"  + "px");
+		$("body").css("font-size",fontSizea  + "px");
+		$("button").css("font-size","16"  + "px");
+	}
+	if(fontType == "small")
+	{   if(fs>-3){
+			var currentfontSize = 14;
+			currentfontSize = 14*(1.1**fs);			
+		    fontSizea = currentfontSize/1.1;
+			fs--;	
+			settheCookie("fs", fs, 1);
+			$("a").css("font-size",fontSizea  + "px");
+			$("p").css("font-size",fontSizea  + "px");
+			$("span").css("font-size",fontSizea  + "px");
+			$("font").css("font-size",fontSizea  + "px");
+			var hsize = 21+fs;
+			$("h4").css("font-size",hsize + "px");
+			$("h3").css("font-size",hsize + "px");
+			var asize = 16+fs;
+			$(".btnMid a").css("font-size",asize  + "px");
+			$("body").css("font-size",fontSizea  + "px");
+			$("button").css("font-size",asize  + "px");
+	}
+	}
+	//alert($("#NavContainer a").css("font-size"));
+	
+		$("#rm_link").css("font-size","28px");
+
+}
+
+
+    $(function(){
+      $("#includedContent").load("index.jsp"); 
+    });
+</script>
+
+
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9Y4ZTDH3QS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9Y4ZTDH3QS');
+</script>
+
+<div class="row" style="background-color:#FBFBFB;height:30px;line-height:30px">
+<div class="col-md-9"><div class="bhashini-plugin-container"></div></div>
+<div class="col-md-3">
+
+	<a  class="colorblack screenreader rightborder" id="ScreenReaderSpan" href="/ScreenReaderInformation.html" title="Screen Reader">
+		<img  title="Screen Reader Access" alt="Screen Reader Access" src='images/screenreader.png'  ></a>
+
+
+<a href="/railwayboard/FetchFiles.jsp" target="_blank" style="font-weight:bold;" onMouseOver="this.style.color='blue'">Search Documents(Date Wise)</a>&nbsp;&nbsp;
+
+		<a href="/railwayboard/cms_search.jsp?lang=0"  style="font-weight:bold;" onMouseOver="this.style.color='blue'">Search</a>
+		  |
+			
+ | <a class="LangSwitcher"  onclick="set_font_size('large')" ><img src="images/font_increase.gif" title="Increase Font size" alt="Increase Font size"></a>		
+    	<a class="LangSwitcher" onclick="set_font_size('normal')" ><img src="images/font_normal.gif" title="Normal Font size" alt="Increase Font size"></a>
+    	<a class="LangSwitcher" onclick="set_font_size('small')" ><img align="middle" src="images/font_decrease.gif" title="Decrease Font size" alt="Increase Font size"></a>|
+ 		
+</div>
+</div>
+
+
+<div class="col-md-12 top_header clearfix" style="background-color:#FFFFFF;padding-left:0px;padding-right:0px;">
+  
+  <!-- Logo Section -->
+  <div class="col-md-2" align="center" style="display:flex; align-items:center; justify-content:center;">
+  <a href="/railwayboard/">
+    <img alt="Indian Railway main logo" src="images/18 star.png" class="img-responsive" style="height:80px;width:80px;border:0px solid red;border-radius:50px;">
+  </a>
+</div>
+
+<!-- Government of India & Ministry Section -->
+<div class="col-md-3" style="display:flex; align-items:center; padding-left:0px; margin-left:-15px; margin-top:20px;">
+  <div style="line-height:1.3;">
+    <span style="font-size:15px; font-weight:bold; color:#000000; white-space:nowrap;">GOVERNMENT OF INDIA</span>
+    <br/>
+    <span style="font-size:14px; font-weight:normal; color:#000000; white-space:nowrap;">MINISTRY OF RAILWAYS (Railway Board)</span>
+  </div>
+</div>
+  
+  <!-- Center Hindi/English Text -->
+  <div class="col-md-4" align="center" style="line-height:30px">
+    <font style="font-size:22px;"><b>INDIAN RAILWAYS</b></font> Lifeline to the Nation...
+  </div>
+  
+  <!-- Right Side Logos -->
+  <div class="col-md-4" align="center">
+    <div class="row">
+      <div class="col-md-4" style="float:left;">
+        <img class="img-responsive" alt="National Emblem of India" src="image/voters.png" style="height:100px;width:100px;">
+      </div>
+      <div class="col-md-4">
+        <img class="img-responsive" alt="National Emblem of India" src="images/logo.png" style="height:100px;width:100px;">
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+<div class="col-md-12" style="text-align:center;margin-top:10px;padding-left:0px;padding-right:0px;">
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="flexslider.css" type="text/css" media="screen"/>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js"></script>
+ 
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="modernizr.js"></script>
+  <script src="jquery.flexslider.js"></script>
+  <meta charset="UTF-8"/>
+ <style> 
+ 
+.navbar-default {
+  overflow: hidden;
+  background-color: #3E70CB;;
+} 
+
+.navbar-default a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 6px 8px;
+  text-decoration: none;
+  font-size: 16px;
+} 
+
+.navbar-default a:hover {
+  background-color: #3E70CB;
+  color: black;
+} 
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+} 
+
+@media (max-width:771px) and (min-width:200px){
+ 
+  .col-xs-15{
+	 display: block!important; 
+	  
+  } 
+  .small{
+	 display:block!important; 
+  }
+  .large{
+	 display:none!important; 
+	  
+  } 
+  
+} 
+@media (max-width:1440) and (min-width:1200px ){
+	
+.headerNav{
+	width:1500px!important;  
+	  
+  }	
+	
+	
+} 
+@media (max-width:1201) and (min-width:1024px ){
+	
+.headerNav{
+	width:1100px!important;  
+	  
+  }	
+	
+	
+} 
+@media (max-width:1023) and (min-width:766px ){
+	
+.headerNav{
+	width:1100px!important; 
+	  
+  }	
+	
+	
+}
+@media screen and (min-width:770px ) {
+  .col-xs-15{
+	 display: none!important; 
+	  
+  }
+  
+  .mrg {
+	  margin-left:50px;
+  }
+  .col-md-2{
+	 display: block!important; 
+	  width: 150px;
+  } 
+  .col-sm-2{
+	 display: block!important; 
+	 width: 180px; 
+	 
+  } 
+  .large{
+	 display:block!important; 
+	  
+  }
+   .small{
+	 display:none!important; 
+  }
+  
+} 
+
+/*@media (max-width:1200px ) and (min-width:768px){
+  .col-xs-15{
+	 display: none!important; 
+	  
+  }
+  .col-md-2{
+	 display: block!important; 
+	  width: 150px;
+  } 
+  .col-sm-2{
+	 display: block!important; 
+	 width: 180px; 
+  } 
+  .large{
+	 display:block!important; 
+	  
+  }
+   .small{
+	 display:none!important; 
+  }
+  
+} */
+
+@media screen and (max-width: 320px) {
+  .navbar-default.responsive {position: absolute;}
+  .navbar-default.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  } 
+  
+  .navbar-default.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+} 
+
+.font_12px
+{
+margin:0px !important;
+font-size:16px
+}
+.flexdropdownmenu,.flexdropdownmenu ul{ 
+font: normal 16px Arial Narrow;
+margin: 2px;
+padding: 0;
+position: absolute;
+left: 0;
+top: 0;
+list-style-type: none;
+background: red;
+border: 0px solid black;
+border-bottom-width: 0;
+visibility: hidden;
+box-shadow: 0px 0px 0px #818181; 
+-webkit-box-shadow: 0px 0px 0px #818181;
+-moz-box-shadow: 0px 0px 0px #818181;
+}
+.flexdropdownmenu li a{
+display: block;
+/*width: 180px;*/ /*width of menu (not including side paddings)*/
+color: black;
+background: #fae7a9;
+border-bottom: 0px solid black;
+text-decoration: none;
+padding: 6px 8px;
+}
+.flexdropdownmenu{
+ font-family: 'Arial Narrow',Arial, sans-serif;
+ font-size:16px
+} 
+</style> 
+
+  <nav class=" navbar navbar-default"   style="padding:0px; border-radius: 0px; border-bottom: 2px solid red !important;style="padding-left:0px;padding-right:0px;"">
+  <div class="headerNav" style="padding-left:0px;padding-right:0px;">
+    <div class="navbar-header" >
+       <button type="button" class="navbar-toggle" style="padding-left:0px;padding-right:0px;" data-toggle="collapse" aria-expanded="false" aria-controls="myNavbar" data-target=".collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button> 
+	  <a class="navbar-brand small" href="#">
+	     <div style="background-color:#CF343A;width:80px">
+         <img src="home-icon-white.png" style="background-color:#CF343A;height:35px; padding:7px;"/>
+		 </div>
+	  </a>
+    </div>  
+<div class="collapse navbar-collapse" id="myNavbar" style="padding-left:0px;padding-right:0px;">
+      <ul class="nav navbar-nav ">
+  <a class="navbar-brand large" href="/railwayboard/index.jsp">
+	     <div style="background-color:#CF343A;width:80px">
+         <img src="home-icon-white.png" style="background-color:#CF343A;height:35px; padding:7px;"/>
+		 </div>
+	  </a>
+
+
+ 
+
+<div align="center"  class="col-xs-15  col-sm-2 " style="padding:0px;line-height:20px;float:left;background-color:#3E70CB; font-size: 16px; color:white!important; /*padding: 12px; margin-left: 8px;*/" 
+onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#3E70CB'" >
+
+  
+ 
+
+<p class="font_12px">
+<a href="/railwayboard/view_section.jsp?lang=0&amp;id=0,1" data-flexmenu="flexmenu0" style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif; font-size: 16px;;">About Indian Railways</a></p>
+ 
+
+<ul id="flexmenu0"  class="flexdropdownmenu" style="background-color:#CF343A;">
+ 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,1,2550">Honourable Ministers</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,1,304">Corporate Overview</a>
+						
+								<ul  style="background-color:#CF343A;">
+										
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,1,304,305">Organisation Structure</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,1,304,365">Board Members/General Managers</a>
+									
+										
+									</li>
+									
+								</ul>
+							
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,1,304,366,554">Statistics</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,1,388">Railway Board Directorates</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,1,262">Citizen Charter</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,1,265">Portal Policies</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,1,1260">RTI</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,1,2469">IPR of Railway Officers</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,1,1289">Archives</a>
+						
+					</li>
+					
+	</ul>
+	</div>
+	
+
+ 
+
+<div align="center"  class="col-xs-15  col-sm-2 " style="padding:0px;line-height:20px;float:left;background-color:#3E70CB; font-size: 16px; color:white!important; /*padding: 12px; margin-left: 8px;*/" 
+onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#3E70CB'" >
+
+  
+ 
+
+<p class="font_12px">
+<a href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5" data-flexmenu="flexmenu1" style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif; font-size: 16px;;">For IR Personnel</a></p>
+ 
+
+<ul id="flexmenu1"  class="flexdropdownmenu" style="background-color:#CF343A;">
+ 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,373">Vacancy Circulars</a>
+						
+								<ul  style="background-color:#CF343A;">
+										
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,373,3147">Vacancy_Circular_2026</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,373,3067">Vacancy_Circular_2025</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,373,2101">E(O)III_Vacancy_Circulars</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,373,1411"> VC for RB Posting for Executive Directors</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,373,1763">VC for RB Posting for Directors</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,373,2238">Deputation Instructions</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,373,1550">VC for RDSO Posting for Exe. Director</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,373,1487">VC for RDSO Posting for Directors</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,373,3087">VC for Non-Gaz Emp.</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,373,1449">VC for RB Posting- Ex Cadre Post</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,373,2606">VC_RCT</a>
+									
+										
+									</li>
+									
+								</ul>
+							
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1387">Empanelments (Beta Version)</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418">Promotion/Posting/Other Orders</a>
+						
+								<ul  style="background-color:#CF343A;">
+										
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1448">E(O)-II&rsquo;s Orders</a>
+									
+										
+											<ul style="background-color:#CF343A;">
+													
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1448,3153">2026</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1448,2985">2024</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1448,3068">2025</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1448,2432">2021</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1448,2654">2022</a>
+													
+												</li>
+											
+											</ul>
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459">E(O)-III&rsquo;s Orders</a>
+									
+										
+											<ul style="background-color:#CF343A;">
+													
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459,3152">2026</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459,3065">2025</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459,2984">2024</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459,2812">2023</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459,2650">2022</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459,2440">2021</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459,2439">2020</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459,2377">2019</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459,2376">2018</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459,2375">2017</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459,2374">2016</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459,2373">2015</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1459,2372">2014</a>
+													
+												</li>
+											
+											</ul>
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1447">ERB-I Orders</a>
+									
+										
+											<ul style="background-color:#CF343A;">
+													
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1447,1801">Previous_Orders</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1447,1971">Organised Services</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1447,1972">Orders of RBSS/RBSSS</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1447,2020">Misc.Services </a>
+													
+												</li>
+											
+											</ul>
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,2629">E(O)-I Orders</a>
+									
+										
+											<ul style="background-color:#CF343A;">
+													
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,2629,2635">Voluntary Retirement(VR)</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,2629,2636">Seniority</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,2629,2637">Miscellaneous Orders</a>
+													
+												</li>
+											
+											</ul>
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1985">ERB-II Orders</a>
+									
+										
+											<ul style="background-color:#CF343A;">
+													
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1985,3030">2024</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1985,3078">2025</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1985,3237">2026</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1985,2814">2023</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1985,2513">2021</a>
+													
+												</li>
+											
+											</ul>
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,2433">EO-IIs Deputation orders-2020</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1464">ERB_V_Orders</a>
+									
+										
+											<ul style="background-color:#CF343A;">
+													
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1464,3243">2025</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,1464,3058">2024</a>
+													
+												</li>
+											
+											</ul>
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,2784">E(GR)-I&rsquo;s Orders</a>
+									
+										
+											<ul style="background-color:#CF343A;">
+													
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,2784,2993">2024</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,2784,3119">2025</a>
+													
+												</li>
+											
+											
+												<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1418,2784,3214">2026</a>
+													
+												</li>
+											
+											</ul>
+										
+									</li>
+									
+								</ul>
+							
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1749">Recruitment Rules</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,353">IRWO</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377">Codes And Manuals</a>
+						
+								<ul  style="background-color:#CF343A;">
+										
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1345">IRPWM-2019</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1900">IRAC_Vol_1</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1901">IREC</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1902">IRTCC</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1945">Manual for Inspection of Station Accounts</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,2023">IRSC-I</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,2595">IRPWM-2020</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,2866">IRAC_Vol-2</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,2966">IRPWM-2004</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1899">IRA&F</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1896">IRFC_Vol_II</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1895">IRFC_Vol_1</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1685">IRSEM</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1829">AT Welding Manual</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1830">FBW_Manual</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1831">USFD_Manual</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1882">Correction Slip to Manual Glued Insulated Rail Joints</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1886">IREC_Vol_1</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1887">IREC_Vol_II</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,1894">IREM-Vol_I</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,377,3055">IRPWM-2024</a>
+									
+										
+									</li>
+									
+								</ul>
+							
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384">FROA</a>
+						
+								<ul  style="background-color:#CF343A;">
+										
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,819">Governing Council</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,3204">Federation_Units</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,2931">Objectives</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,823">Importent Issues</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,2932">IMPORTANT FACTS</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,824">Important Correspondence</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,826">Promotion/Posting Order</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,827">Vacancies Notices</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,828">Important Circulars</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,829">Meeting/Seminar</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,830">FAQ&rsquo;s</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,831">  Contact_Us</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,832">Disclaimer</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,384,2933">News Flash (Old)</a>
+									
+										
+									</li>
+									
+								</ul>
+							
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,385">Training Circulars</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1144">FEDERATION</a>
+						
+								<ul  style="background-color:#CF343A;">
+										
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1144,1152">AIRF</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1144,1299">IRPOF</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1144,1145">NFIR</a>
+									
+										
+									</li>
+									
+								</ul>
+							
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,1940">IR Good Work Portal</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,3135">Selection for L-17 posts</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,2703">Empanelment to ex-cadre Level 16 posts</a>
+						
+								<ul  style="background-color:#CF343A;">
+										
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,2703,3124">Notification for ex-cadre Level 16 posts</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,2703,3125">List of Empanelled Officers</a>
+									
+										
+									</li>
+									
+								</ul>
+							
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,3036">SPARROW</a>
+						
+								<ul  style="background-color:#CF343A;">
+										
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,3036,3038">Circulars</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,5,3036,3039">Progress report</a>
+									
+										
+									</li>
+									
+								</ul>
+							
+					</li>
+					
+	</ul>
+	</div>
+	
+
+ 
+	
+<div align="center" class="col-xs-15 col-sm-2 " style="padding:0px;line-height:20px;float:left;background-color:#3E70CB; font-size: 16px; color:white!important; /*padding: 12px; margin-left: 8px;*/" 
+onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#3E70CB'" >
+	
+	 
+ 
+
+<p class="font_12px">
+<a href="/railwayboard/view_section.jsp?lang=0&amp;id=0,2" data-flexmenu="flexmenu2" style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif; font-size: 16px;;">Passenger Info</a></p>
+ 
+
+<ul id="flexmenu2"  class="flexdropdownmenu" style="background-color:#CF343A;">
+ 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,2,320">Tourist Information</a>
+						
+								<ul  style="background-color:#CF343A;">
+										
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,2,320,3154">Rail Tourism in India</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,2,320,379">Tourist Cars</a>
+									
+										
+									</li>
+									
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,2,320,381">Hotels</a>
+									
+										
+									</li>
+									
+								</ul>
+							
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,2,1360">Concessions List</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,2,1491">Concession Certificates</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,2,266">Time Table Information </a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,2,330">Reservation & Ticketing</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,2,280">Claims Passenger</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,2,281">Concession Rules</a>
+						
+								<ul  style="background-color:#CF343A;">
+										
+								
+									<li><a  style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,2,281,877">GENERAL RULES FOR CONCESSION</a>
+									
+										
+									</li>
+									
+								</ul>
+							
+					</li>
+					
+	</ul>
+	</div>
+	
+
+ 
+	
+<div align="center" class="col-xs-15 col-sm-2 " style="padding:0px;line-height:20px;float:left;background-color:#3E70CB; font-size: 16px; color:white!important; /*padding: 12px; margin-left: 8px;*/" 
+onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#3E70CB'" >
+	
+	 
+ 
+
+<p class="font_12px">
+<a href="/railwayboard/view_section.jsp?lang=0&amp;id=0,6" data-flexmenu="flexmenu3" style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif; font-size: 16px;;">Freight Info</a></p>
+ 
+
+<ul id="flexmenu3"  class="flexdropdownmenu" style="background-color:#CF343A;">
+ 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,6,287">Claims Freight</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,6,338">Freight Rate</a>
+						
+					</li>
+					
+	</ul>
+	</div>
+	
+
+ 
+
+<div align="center"  class="col-xs-15  col-sm-2 " style="padding:0px;line-height:20px;float:left;background-color:#3E70CB; font-size: 16px; color:white!important; /*padding: 12px; margin-left: 8px;*/" 
+onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#3E70CB'" >
+
+  
+ 
+
+<p class="font_12px">
+<a href="/railwayboard/view_section.jsp?lang=0&amp;id=0,3" data-flexmenu="flexmenu4" style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif; font-size: 16px;;">Tenders</a></p>
+ 
+
+<ul id="flexmenu4"  class="flexdropdownmenu" style="background-color:#CF343A;">
+ 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,3,269">Railway Board Tenders </a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,3,1243">CPP Portal Instructions</a>
+						
+					</li>
+					
+	</ul>
+	</div>
+	
+
+ 
+	
+<div align="center" class="col-xs-15 col-sm-2 " style="padding:0px;line-height:20px;float:left;background-color:#3E70CB; font-size: 16px; color:white!important; /*padding: 12px; margin-left: 8px;*/" 
+onmouseover="style.backgroundColor='#3D76C0';" onmouseout="style.backgroundColor='#3E70CB'" >
+	
+	 
+ 
+
+<p class="font_12px">
+<a href="/railwayboard/view_section.jsp?lang=0&amp;id=0,7" data-flexmenu="flexmenu5" style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif; font-size: 16px;;">Contact Us </a></p>
+ 
+
+<ul id="flexmenu5"  class="flexdropdownmenu" style="background-color:#CF343A;">
+ 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,7,367">Tel. Directory & Email ID</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,7,1281">RRBs Website</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,7,276">Other Railway Sites</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,7,277">Sitemap</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,7,286">Disclaimer</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,7,332">Terms & Conditions</a>
+						
+					</li>
+					 
+					<li> 
+<a style="color:white!important;text-decoration:none; font-family: 'Arial Narrow',Arial, sans-serif;background-color:#CF343A;border-color:#3D76C0; font-size: 16px;;" onmouseover="style.backgroundColor='#3D76C0';" 
+onmouseout="style.backgroundColor='#CF343A'" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,7,333">Privacy Policy</a>
+						
+					</li>
+					
+	</ul>
+	</div>
+	
+</div>
+</div>
+
+</div>
+</div>
+</div>
+ 
+
+<!-- HEADER ENDS HERE -->
+
+
+</div>
+<!--
+<div class="col-md-10 col-md-offset-1" style="background-color:#CF343A;padding:0px;margin-top:10px;font-size:12px;font-family: 'Arial Narrow',Arial, sans-serif;color:white;line-height:25px">
+<div>
+&nbsp;Recent News &raquo;&nbsp;
+
+<iframe  
+src="scrollFontnew.jsp?lang=null" 
+width="810" height="19" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
+</div>
+</div>
+-->
+
+  
+
+<div class="col-md-12" style="padding:0px;margin-top:10px">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+ <!-- <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>-->
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+
+    <div class="item active">
+		<img src="har_ghar2026.jpg" alt="banner" width="100%" border="0" height="300" >
+	  </div>
+    <div class="item ">
+      <img src="banner_1600x544.jpg" alt="banner" width="100%" border="0" height="300" >
+    </div>
+
+    <div class="item">
+      <img src="https://cbpssubscriber.mygov.in/assets/uploads/3rpbtfC38B9muoRQ" id="_7yCsbneY8uXMxwGe" onclick="javascript:window.open('https://cbpssubscriber.mygov.in/aff/7yCsbneY8uXMxwGe')" style="cursor:pointer;width:100%;height:auto" onload="javascript:(function(){if(typeof _done == 'undefined' || !_done){this.setAttribute('src', this.getAttribute('src')+'?'+Math.floor((Math.random() * 100) + 1)); _done=true;}}).call(this)" >
+    </div> 
+
+<!--    
+
+    
+        <div class="item">
+            <a href="https://www.vandemataram150.in/">
+                <img src="English.jpg" alt="english" width="100%" border="0" height="300">
+            </a>
+        </div>
+     -->
+
+       
+   <!--  <div class="item">
+      <img src="iree2025.jpg" alt="iree2025" width="100%" border="0" height="300" >
+    </div> -->
+     <div class="item">
+      <img src="new_image_1.jpg" alt="trai" width="100%" border="0" height="300" >
+    </div>
+   <!-- 
+
+    <div class="item">
+      <img src="Miltes.jpg"  alt="" width="2000" border="0" height="300">
+    </div>-->
+
+    <!-- <div class="item">
+      <img src="lifestyle.jpg"  alt="" width="2000" border="0" height="300" style="height:575px;">
+    </div>-->
+<!--	  <div class="item">
+      <img src="amrit_new.jpg" alt=" "style="height:575px;">
+    </div> -->
+	<!--<div class="item">
+      <img src="pm5.jpg"  alt="" width="2000" border="0" height="300">
+    </div>-->
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev" onclick="prevSlide()">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only" style="font-color:#000000">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next" onclick="nextSlide()">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only" style="font-color:#000000">Next</span>
+  </a>
+</div>
+</div>
+<script>
+  function nextSlide() {
+    var $active = $('.carousel-inner .active');
+    var $next = $active.next('.item');
+    
+    if ($next.length === 0) {
+      $next = $('.carousel-inner .item').first();
+    }
+    
+    $active.removeClass('active');
+    $next.addClass('active');
+  }
+
+  function prevSlide() {
+    var $active = $('.carousel-inner .active');
+    var $prev = $active.prev('.item');
+    
+    if ($prev.length === 0) {
+      $prev = $('.carousel-inner .item').last();
+    }
+    
+    $active.removeClass('active');
+    $prev.addClass('active');
+  }
+  // Get all carousel items
+  const items = document.querySelectorAll('.carousel-inner .item');
+  let currentIndex = 0;
+
+  setInterval(() => {
+    // Remove active class from current item
+    items[currentIndex].classList.remove('active');
+
+    // Move to next item (loop back to start)
+    currentIndex = (currentIndex + 1) % items.length;
+
+    // Add active class to the new item
+    items[currentIndex].classList.add('active');
+  }, 5000); // 2 seconds
+</script>
+<div class="col-md-12"    style=" background-image:url();">
+    <div class="col-md-9" style="text-align:left">
+     
+     	<!--<a href="/railwayboard//view_section_new.jsp?lang=0&id=0,1,304,366,523,1974" target="_blank"  
+     	style="font-size:17px;font-family: 'Arial Narrow',Arial, sans-serif;background-color:#D42716;color:white;text-decoration:tblink ">
+     	&nbsp;What's New&nbsp;&raquo;</a>-->
+    
+     
+     </div>
+    
+	 <div class="col-md-3" style="text-align:right;padding:2px;">
+     <a href="https://www.youtube.com/user/RailMinIndia" target="_blank" rel="nofollow noopener" ><img  src="youtube.jpg"/></a>
+	 <a href="https://twitter.com/RailMinIndia" target="_blank" rel="nofollow noopener" ><img  src="Twitter_logo_blue_sml.jpg"/></a>
+	 <a href="https://www.facebook.com/RailMinIndia" target="_blank" rel="nofollow noopener" ><img  src="Facebook_Logo_sml.jpg"/></a>
+     </div>  
+
+ 
+</div>
+<style>  
+.button3 {
+    background-color: #122952; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 5px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width:100%;
+} 
+
+.button {
+    background-color: #3E70CB; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 5px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width:100%;
+} 
+
+.button1 {
+    background-color: #3E70CB; 
+    color: white!important; 
+    border: 2px solid #3E70CB;
+	font-size:17px;
+}
+.button1:hover {
+    background-color: #CF343A;
+    color: white!important;
+    border: 2px solid #CF343A;
+}
+.button2 {
+    background-color: #3E70CB; 
+    color: white!important; 
+    border: 2px solid #3E70CB;
+	text-decoration:none!important;
+}
+.button2:hover {
+    background-color: #CF343A;
+    color: white!important;
+    border: 2px solid #CF343A;
+}
+p {
+   margin: 2px; 
+}
+</style>
+<style>
+.collapsible {
+
+  
+   background-color: #3E70CB; 
+    color: white!important; 
+    border: 2px solid #3E70CB;
+	font-size:17px;
+}
+
+.active, .collapsible:hover {
+  background-color: #CF343A;
+    color: white!important;
+    border: 2px solid #CF343A;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  text-align:left;
+}
+</style>
+
+<div class="col-md-12 over" style="padding:0px;margin-top:10px">
+<div class="col-md-3" style="padding-left:0px;">
+
+
+<div class=" panel panel-warning">
+<div class="panel-heading" align="center">Links</div>
+<!--<div class="panel-heading" align="center"> Links</div>-->
+<div class="panel-body">
+													<!--<div class="col-md-12" align="center">
+													<a href="/railwayboard/covidreports.jsp" target="_blank"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Covid Status(Zone/Div wise)</button></a>
+</div>-->
+
+													<div class="col-md-12" align="center">
+<a href="https://pgportal.gov.in/" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">CPGRAMS</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a href="https://edrishti.indianrailways.gov.in/eDrishti/login.jsp" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">MIS reports</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a href="/GST/index.html" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">GST-Indian Railways</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a href="https://railtech.indianrailways.gov.in/" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Rail Tech Portal</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a href="http://www.nvsp.in/" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">National Voters Service Portal</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a href="https://pensionersportal.gov.in/" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Pension Portal</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a href="/railwayboard/dashboard/home.jsp" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Constituency Wise Progress</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a href="http://www.india.gov.in/" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">National Portal of India</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a href="/railwayboard/MCDO/HomePage.html" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">MCDO Portal</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a href="https://www.irctctourism.com/" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Rail Tourism in India</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a href="https://egazette.gov.in/(S(23r2kpe1ab11dj4ctogwrz4z))/default.aspx" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">E-Gazette</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a href="/railwayboard/EmpData/HomePage.html" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Indian Railways Employees Information System</button></a></div> 
+
+												 
+										<!-- 
+<div class="col-md-12" align="center">
+<a href="https://www.irctc.co.in/nget/train-search" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Rail Sampark</button></a></div> 
+
+<div class="col-md-12" align="center">
+<a href="/GST/index.html" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">GST-Indian Railways</button></a></div>
+
+<div class="col-md-12" align="center">
+<a href="/railwayboard/view_section.jsp?lang=0&id=0,1,304,366,390,1748" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">NIVARAN-Online Grievances Redressal System</button></a></div>
+
+<div class="col-md-12" align="center">
+<a href="http://pgportal.gov.in/" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Public Grievances</button></a></div> 
+
+<div class="col-md-12" align="center">
+<a href="https://innovate.mygov.in/" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Innovation Challenges of Indian Railways</button></a></div>
+
+<div class="col-md-12" align="center">
+<a href="http://www.nvsp.in" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">National Voters Service Portal</button></a></div>
+
+<div class="col-md-12" align="center">
+<a href="/railwayboard/dashboard/home.jsp" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Pension Portal</button></a></div>
+ 
+<div class="col-md-12" align="center">
+<a href="/railwayboard/dashboard/home.jsp" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Constituency Wise Progress</button></a></div>
+
+<div class="col-md-12" align="center">
+<a href="http://www.india.gov.in/" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">National Portal of India</button></a></div>
+
+<div class="col-md-12" align="center">
+<a href="/railwayboard/MCDO/HomePage.html" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">MCDO Portal</button></a></div>
+
+<div class="col-md-12" align="center">
+<a href="http://www.railtourismindia.com/" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Rail Tourism in India</button></a></div>
+
+<div class="col-md-12" align="center">
+<a href="http://egazette.nic.in/" target="_self"> <button class="button button1" style="border-radius:0px; color:white;" align="center">E-Gazette</button></a></div>
+
+
+				
+<div class="col-md-12" align="center">
+<a href="/railwayboard/EmpData/HomePage.html" target="_self"><button class="button button1" style="border-radius:0px; color:white;" align="center">Indian Railways Employees Information System</button></a></div>
+				
+<div class="col-md-12" align="center">
+<a href="http://10.50.19.92/secretary/om/Power_Function_RB/Power_Function_RB.htm" target="_blank"><button class="button button1" style="border-radius:0px; color:white;" align="center">Acts/Resolutions concerning Railway Board  </button></a></div>
+
+	-->			
+<div class="col-md-12" style="text-align:center;margin-top:10px">
+<a href="http://rti.railnet.gov.in/" target="_blank" rel="nofollow noopener"  class="menuanchorclass" rel="anylinkmenu1" >
+<img  src="images/RTI.gif" alt=""></a>
+<a style="text-align:right;margin-top:10px" href="https://indiacode.nic.in/handle/123456789/1362/simple-search?page-token=18886d0be692&page-token-value=f06215ec7a35a713515fd8af1c58a1e3&nccharset=F0E44214&query=code+website " target="_blank" rel="nofollow noopener" >
+<img  src="images/Constitution_India.jpg" alt=""></a>
+</div>
+
+
+<div class="col-md-12" style="text-align:center;margin-top:10px">
+<p><b> This landing page of Railway Board Website is Beta Version and is opened to your suggestions</b></p>
+</div>
+</div>
+</div>
+</div>
+<style>
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 10px;
+  color: #fff;
+  line-height: 30px;
+  text-align: center;
+  background: #3E70CB;
+  padding:2px;
+}
+</style>
+<!--<div class="col-md-9" >
+<div  style="border-collapse:collapse;border-color:#B0C7E6;font-family: 'Arial Narrow',Arial, sans-serif;font-size:12px;text-decoration:none">
+
+
+																				
+													
+											<p>
+	&nbsp;</p>
+
+<div class="col-sm-12" style="margin-top:auto;">
+         <h3 align="center">
+		        <p style="background-color: #CF343A; color: white">
+					<span style=" font-family: 'Arial Narrow',Arial, sans-serif; font-size: 17px;"> &nbsp;&nbsp; 
+à¤®à¤¹à¤¤à¥à¤µà¤ªà¥à¤°à¥à¤£ à¤à¤¾à¤¨à¤à¤¾à¤°à¥ &nbsp;&nbsp; </span>
+				</p>
+		 </h3>
+        <div class="col-sm-4"  style="border-left: 1px solid grey; /*height:400px; */"> 
+
+		
+		<tbody >
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</tbody>
+						
+		</div>
+		
+		
+		
+		
+		
+		
+		     
+       <div class="col-sm-4" style="border-left: 1px solid grey; /* height:400px; */" > 
+	   
+	  
+          <table cellpadding="2" style="color: black" width="99%">
+					<tbody >
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;">
+								<font class="circle">IR</font>
+								</span></span>
+							</td>
+							<td   style="padding-top:10px">
+								<p>
+									<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;" ><a href="http://gtcir.in" style="color:black"> Global Technology Conference on Indian Railways</a></span></span></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><span style="color: black">
+								
+								<font class="circle">IR</font>
+								</span></span></span></td>
+							<td   style="padding-top:10px">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><a href="/railwayboard/uploads/directorate/infra/downloads/Framework_NGRPLM_FINAL_40_AW.pdf" style="color:black" target="_blank"> Overview framework for Participative Models and Direct &amp; Foreign Direct Investment</a></span></span></td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;">
+								<font class="circle">IR</font></span></span></td>
+							<td   style="padding-top:10px">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><a href="/railwayboard/uploads/irpersonel/List%20of%20twitter%20handles%20of%20GM%20DRM.pdf" style="color:black" target="_blank"> List of Twitter addresses of GMs and DRMs</a></span></span></td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;">
+								<font class="circle">IR</font></span></span></td>
+							<td   style="padding-top:10px">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;">White Paper on Indian Railway&#39;s &nbsp;<a href="/railwayboard/uploads/directorate/finance_budget/Budget_2015-16/White_Paper-_English.pdf" style="color:black" target="_blank">&nbsp;English</a><font color="#0000ff">&nbsp;&nbsp;</font><a href="/railwayboard/uploads/directorate/finance_budget/Budget_2015-16/White_Paper_-Hindi.pdf" style="color:black" target="_blank">Hindi</a></span></span></td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><font class="circle">IR</font></span></span></td>
+							<td   style="padding-top:10px">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><a href="/railwayboard/uploads/directorate/Environment_Management/Environmental_Annual_Report_2016-17.pdf" style="color:black" target="_blank"> Sustainability Role of Indian Railways</a></span></span></td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><font class="circle">IR</font></span></span></td>
+							<td   style="padding-top:10px">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><a href="http://www.cyberswachhtakendra.gov.in/" style="color:black"> Cyber Swachhta Kendra</a></span></span></td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><font class="circle">IR</font></span></span></td>
+							<td  style="padding-top:10px">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><a href="/Reform-Perform-Transform%202022_v10%20(2).pdf" style="color:black" target="_blank">Process Flow to Achieve Vision 2022 - Reform Perform and Transform of Indian Railways</a></span></span></td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><font class="circle">IR</font></span></span></td>
+							<td  style="padding-top:10px">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><a href="/railwayboard/uploads/directorate/cis/downloads/circulars/2017/DSC_Pilicy_210717.pdf" style="color:black" target="_blank"> Digital Signature Certificate (DSC) Policy for Railway Units.</a></span></span></td>
+						</tr>
+						
+						
+					</tbody>
+				</table>
+</div>
+<div class="col-sm-4 " style="border-left: 1px solid grey; /* height:400px;*/">
+ <table cellpadding="2" style="color: black" width="99%">
+					<tbody>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><font class="circle">IR</font></span></span>
+							</td>
+							<td style="text-align: justify;padding-top:10px" >
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><a href="https://www.youtube.com/channel/UCryaZNNjVg5QFbljo5I7b5Q" style="color:black"> Videos of&nbsp;Best Innovations in Indian Railways Suggesion Scheme&nbsp;</a>&nbsp;</span></span>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><font class="circle">IR</font></span></span></td>
+							<td style="text-align: justify;padding-top:10px" >
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><a href="/railwayboard/uploads/directorate/establishment/eg/2018/Degitalization_12012018.pdf" style="color:black" target="_blank"> Digitalization of Service Records of Employees</a></span></span></td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><font class="circle">IR</font></span></span></td>
+							<td style="text-align: justify;padding-top:10px" >
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><a href="https://www.youtube.com/channel/UCs1qII8SODnC5vKSan-19uQ/live" style="color:black"><span style="color: black"> Model Schedule of Power Document for Zonal Railways.</span></a></span></span></td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><font class="circle">IR</font></span></span></td>
+							<td style="text-align: justify;padding-top:10px" >
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><a href="/railwayboard/uploads/directorate/establishment/eg/2017/Employee_Charter_25102017.pdf" style="color:black" target="_blank"> Charter of Commitments on various matters - Timeline thereof</a></span></span></td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;">
+								<font class="circle">IR</font>
+								</span></span></td>
+							<td  style="padding-top:10px">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;"><a href="/Indian%20Railways%20Whistling%20Ahead-%20%20Story%20of%20Growth%20and%20Modernisation-Booklet.pdf" style="color:black"><span style="border-color: windowtext; padding: 0in; line-height: 16.1px; border-width: 1pt; background: rgb(246, 246, 246); text-decoration-line: none;"> I</span><span style="border-color: windowtext; padding: 0in; line-height: 16.1px; border-width: 1pt; outline-style: none; outline-width: 0px; text-decoration-line: none;">ndian Railways Whitlisting Ahead : Story of&nbsp; Growth and Modernisation</span></a></span></span></td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;">
+								<font class="circle" >IR</font></span></span></td>
+							<td  style="padding-top:10px">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;">
+								<a href="/railwayboard/uploads/directorate/Environment_Management/SBD_EnHM_080917.pdf" style="color:black" target="_blank">Standard Bid Documents for Housekeeping of Stations and Trains</a></span></span></td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;">
+								<font class="circle" >IR</font>
+								
+								</span></span></td>
+							<td  style="padding-top:10px">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;">
+								<a href="http://nciipc.gov.in/" style="color:black">National Critical Information Infrastructure Protection Centre</a></span></span></td>
+						</tr>
+						<tr>
+							<td style="padding-top:7px" valign="top" width="10%">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;">
+								<span style="font-size: 17px;;">
+								<font class="circle">IR</font>
+								
+								</span></span></td>
+							<td  style="padding-top:10px">
+								<span style="    font-family: 'Arial Narrow',Arial, sans-serif;"><span style="font-size: 17px;;">
+								<a href="/Presentation%20on%20Achievements%20&amp" style="color:black"> Presentation on Achievement &amp; Plans of Indian Railways</a></span></span></td>
+						</tr>
+					</tbody>
+				</table>
+			
+				</div>
+				
+</div>
+
+</div>
+
+<p>
+	&nbsp;</p> 
+	
+													
+													
+													
+</div>
+</div>-->
+
+
+
+<div class="col-md-9" >  
+<div class="col-md-6">
+    <div class="panel panel-warning">
+	<div class="panel-heading" align="center">Important Informations</div>
+      <!--<div class="panel-heading" align="center">Important Informations</div>-->
+      <div class="panel-body  panel" ><table cellpadding="2" style="color: black;!important; " width="99%">
+					<tbody> 
+					
+					
+													<p style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+													<span style="font-variant-numeric: normal; font-variant-east-asian: normal; color: rgb(0, 0, 0);"><span style="box-sizing: border-box; font-family: verdana, geneva, sans-serif;"><font class="circle">IR&nbsp;</font></span></span><a href="https://apps.apple.com/in/app/railone/id6473384334"><span arial="" font-size:="" style="color: rgb(0, 0, 0); font-family: ">RailOne - Official Indian Railways Super App for IOS</span></a></p>
+													
+												
+													<p style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+													<span style="font-variant-numeric: normal; font-variant-east-asian: normal; color: rgb(0, 0, 0);"><span style="box-sizing: border-box; font-family: verdana, geneva, sans-serif;"><font class="circle">IR&nbsp;</font></span></span><a href="https://play.google.com/store/apps/details?id=org.cris.aikyam&pli=1"><span arial="" font-size:="" style="color: rgb(0, 0, 0); font-family: ">RailOne - Official Indian Railways Super App for Android</span></a></p>
+													
+												 
+					</tbody>
+				</table></div>
+    </div>
+</div>
+ 
+<div class="col-md-6">
+<div class="row">
+<div class=" panel panel-warning">
+
+			<!--<div class="col-md-12" align="center">
+				<a href="/railwayboard/RunForUnity.jsp" target="_blank" >
+				<button class="button button1" style="border-radius:0px;  " align="center">Run For Unity</button></a>
+			</div>
+			<div class="col-md-12" align="center">
+				<a href="/" target="_blank" >
+				<button class="button button1" style="border-radius:0px;  " align="center">IR Web Portal</button></a>
+			</div>
+			<div class="col-md-12" align="center">
+				<a href="http://www.indianrail.gov.in" target="_blank"  >
+				<button class="button button1" style="border-radius:0px;  " align="center">Reservation Status</button></a>
+			</div>
+			<div class="col-md-12" align="center">
+				<a href="http://www.irctc.co.in" target="_blank" >
+				<button class="button button1" style="border-radius:0px;  " align="center">Internet Booking</button></a>
+			</div>
+			<div class="col-md-12" align="center">
+				<a href="http://www.trainenquiry.com" target="_blank" >
+				<button class="button button1" style="border-radius:0px;  " align="center">Spot your Trains</button></a>
+			</div>
+			<div class="col-md-12" align="center">
+				<a href="http://www.pib.gov.in" target="_blank" >
+				<button class="button button1" style="border-radius:0px;  " align="center">Press Release by PIB</button></a>
+			</div>
+			<div class="col-md-12" align="center">
+				<a href="http://pib.nic.in/release/pib_photo.asp?kk=23" target="_blank" >
+				<button class="button button1" style="border-radius:0px;  " align="center">Press Photo Gallery</button></a>
+			</div>
+			<div class="col-md-12" align="center">
+				<a href="/railwayboard/view_section_new.jsp?lang=0&id=0,1,1289" target="_blank" >
+				<button class="button button1" style="border-radius:0px;  " align="center">Important Archived Documents</button></a>
+			</div>-->
+			
+			<div class="panel-heading" align="center">
+  			Quick Links
+  			</div><br>
+  			
+													<div class="col-md-12" align="center">
+<a rel="nofollow noopener"  href="/railwayboard/hospital_list.jsp" target="_new" > <button class="button button1" style="border-radius:0px; color:white; " align="center">List of empanelled hospitals of IR </button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a rel="nofollow noopener"  href="https://ekbharat.gov.in/" target="_new" > <button class="button button1" style="border-radius:0px; color:white; " align="center">Ek Bharat Shreshtha Bharat - Sentence Of The Day</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a rel="nofollow noopener"  href="http://cert-rail.railnet.gov.in/" target="_new" > <button class="button button1" style="border-radius:0px; color:white; " align="center">Computer Emergency Response Team(CERT-Rail) for Railnet users</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a rel="nofollow noopener"  href="http://www.indianrail.gov.in/" target="_new" > <button class="button button1" style="border-radius:0px; color:white; " align="center">Reservation Status</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a rel="nofollow noopener"  href="http://www.irctc.co.in/" target="_new" > <button class="button button1" style="border-radius:0px; color:white; " align="center">Internet Booking</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a rel="nofollow noopener"  href="https://enquiry.indianrail.gov.in/mntes/" target="_new" > <button class="button button1" style="border-radius:0px; color:white; " align="center">Spot your Trains</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a rel="nofollow noopener"  href="http://www.pib.gov.in/" target="_new" > <button class="button button1" style="border-radius:0px; color:white; " align="center">Press Release by PIB</button></a></div> 
+
+												
+													<div class="col-md-12" align="center">
+<a rel="nofollow noopener"  href="/railwayboard/view_section.jsp?lang=0&id=0,1,1289" target="_new" > <button class="button button1" style="border-radius:0px; color:white; " align="center">Important Archived Documents</button></a></div> 
+
+												 
+		<!-- 	
+<div class="col-md-12" align="center">
+<a href="https://ekbharat.gov.in/" target="_new"> <button class="button button1" style="border-radius:0px; color:white; " align="center">EK BHARAT SHRESHTHA BHARAT- SENTENCE OF THE DAY </button></a></div>
+
+<div class="col-md-12" align="center">
+<a href="https://pensionersportal.gov.in/anubhav/" target="_new"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Anubhav Portal for Retired Employees</button></a></div>
+			
+<div class="col-md-12" align="center">
+<a href="http://cert-rail.railnet.gov.in" target="_new"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Computer Emergency Response Team(CERT-Rail) for Railnet users</button></a></div>			
+<div class="col-md-12" align="center">
+<a href="/railwayboard/RunForUnity.jsp" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Run For Unity</button></a></div>
+
+
+
+<div class="col-md-12" align="center">
+<a href="http://www.indianrail.gov.in" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Reservation Status</button></a></div>
+
+<div class="col-md-12" align="center">
+<a href="http://www.irctc.co.in" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Internet Booking</button></a></div>		
+
+<div class="col-md-12" align="center">
+<a href="http://www.trainenquiry.com" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Spot your Trains</button></a></div>
+
+<div class="col-md-12" align="center">
+<a href="http://www.pib.gov.in" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Press Release by PIB</button></a></div>
+
+<div class="col-md-12" align="center">
+<a href="http://pib.nic.in/release/pib_photo.asp?kk=23" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Press Photo Gallery</button></a></div>
+
+<div class="col-md-12" align="center">
+<a href="/railwayboard/view_section.jsp?lang=0&id=0,1,1289" target="_self"> <button class="button button1" style="border-radius:0px; color:white; " align="center">Important Archived Documents</button></a></div>
+
+				-->
+				<div class="panel-body" style="color:black;display:inline-block;">
+				
+				
+					<!--<span style="font-size: 25px;;">
+								<font class="circle">IR</font>
+								
+								</span></span><a href="/railwayboard/RunForUnity.jsp" target="_blank" >Run For Unity</br>
+				
+				
+					<span style="font-size: 25px;;">
+								<font class="circle">IR</font>
+								
+								</span></span><a href="/" target="_blank" >IR Web Portal</br>
+				
+				
+					<span style="font-size: 17px;;">
+								<font class="circle">IR</font>
+								
+								</span></span><a href="http://www.indianrail.gov.in" target="_blank"  >Reservation Status</br>
+				
+				
+					<span style="font-size: 17px;;">
+								<font class="circle">IR</font>
+								
+								</span></span><a href="http://www.irctc.co.in" target="_blank" >Internet Booking</br>
+				
+				
+					<span style="font-size: 17px;;">
+								<font class="circle">IR</font>
+								
+								</span></span><a href="http://www.trainenquiry.com" target="_blank" >Spot your Trains</br>
+				
+				
+					
+					<span style="font-size: 17px;;">
+								<font class="circle">IR</font>
+								
+								</span></span><a href="http://www.pib.gov.in" target="_blank" >Press Release by PIB </br>
+				
+				
+					
+					<span style="font-size: 17px;;">
+								<font class="circle">IR</font>
+								
+								</span></span><a href="http://pib.nic.in/release/pib_photo.asp?kk=23" target="_blank" >Press Photo Gallery</br>
+				
+				
+					
+					<span style="font-size: 17px;;">
+								<font class="circle">IR</font>
+								
+								</span></span><a href="/railwayboard/view_section_new.jsp?lang=0&id=0,1,1289" target="_blank" >Important Archived Documents</br>-->
+					
+			
+			
+			
+			
+</div>
+</div>
+
+
+<div class="panel panel-warning" >
+      <div class="panel-heading" align="center">	
+											
+										News &amp; Announcements&nbsp; 
+										</div>
+      <div class="panel-body">
+	  <table cellpadding="2" style="color: black;!important;" width="99%"> 
+	  
+					<tbody> 
+					
+					
+	
+	<p><strong><a href="/railwayboard/view_section.jsp?lang=0&amp;id=0,1,304,366,530,566">&nbsp;Mission Karmyogi and Training Circulars</a></strong></p>
+<p>&nbsp;</p>
+
+						
+					</tbody>
+				</table>
+	  
+	  </div>
+    </div>
+	</div>
+
+<div class="row">
+    <div class="panel panel-warning">
+      <div class="panel-heading" align="center">	
+										Active Tenders&nbsp;</div>
+      <div class="panel-body"><table cellpadding="2" style="color: black;!important;" width="99%">
+					<tbody>
+						 
+								
+								
+														<a rel="nofollow noopener"  href='' target='_parent' class="linkmarquee1"><p><span style="font-size:17px;"> <span arial="" font-weight:="" style="box-sizing: border-box; color: blue;" text-decoration-line:=""> <span arial="" style="color: rgb(34, 34, 34);"><font class="circle">IR</font><span style="color: rgb(128, 0, 128);"><strong>&nbsp;</strong></span></span></span><span style="font-family:arial,helvetica,sans-serif;">For Railway Tenders, Please visit&nbsp; <a target="_blank" href="https://ireps.gov.in/">https://ireps.gov.in/</a></span></span></p></a>
+													
+										
+					</tbody>
+				</table></div>
+    </div>
+</div>
+
+ 
+ 
+ </div>
+ 
+</div>
+
+<style>
+img.img-circle:hover{
+	border:1px solid white !important;
+}
+</style>
+
+
+
+<div class="col-md-12 slider" style="min-height:177px; padding-top:20px; background:#148041; overflow:hidden">
+  
+        <div class="flexslider carousel" style=" background: #148041;text-align:center;">
+          <ul class="slides">
+            <li class="img_c">
+  	    	   <a rel="nofollow noopener"  href="https://cr.indianrailways.gov.in/" target="_blank"> <img src="images/redlogo.png"  class="img-circle"  alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black"></a>
+  	    	    <div class="caption">
+          <p style="color:white; font-size: 17px;;">Central Railway</p>
+          </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a rel="nofollow noopener"  href="https://ecr.indianrailways.gov.in/" target="_blank">
+  	    	    <img src="images/bluelogo.png"  class="img-circle" onmouseover="style.border:3px solid white" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption" align="center">
+          <p style="color:white; font-size: 17px;;">East Central Railway</p>
+          </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a rel="nofollow noopener"  href="https://eastcoastrail.indianrailways.gov.in/" target="_blank">
+  	    	    <img src="images/redlogo.png"  class="img-circle" onmouseover="style.border:3px solid white" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+          <p style="color:white; font-size: 17px;;">East Coast Railway</p>
+          </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a rel="nofollow noopener"  href="https://er.indianrailways.gov.in/" target="_blank">
+  	    	    <img src="images/bluelogo.png"   class="img-circle" onmouseover="style.border:3px solid white" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+          <p style="color:white; font-size: 17px;;">Eastern Railway</p>
+          </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a rel="nofollow noopener"  href="https://ncr.indianrailways.gov.in/" target="_blank">
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+          <p style="color:white; font-size: 17px;;">North Central Railway</p>
+          </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a rel="nofollow noopener"  href="https://ner.indianrailways.gov.in/" target="_blank">
+  	    	    <img src="images/bluelogo.png"  class="img-circle" onmouseover="style.border:3px solid white" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+          <p style="color:white; font-size: 17px;;">North Eastern Railway</p>
+          </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a rel="nofollow noopener"  href="https://nwr.indianrailways.gov.in/" target="_blank">
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+          <p style="color:white; font-size: 17px;;">North Western Railway</p>
+          </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a rel="nofollow noopener"  href="https://nfr.indianrailways.gov.in/" target="_blank">
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                <p style="color:white; font-size: 17px;;">Northeast Frontier Railway</p>
+                </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a rel="nofollow noopener"  href="https://nr.indianrailways.gov.in/" target="_blank">
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                <p style="color:white; font-size: 17px;;">Northern Railway</p>
+                </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a  rel="nofollow noopener"  href="https://scr.indianrailways.gov.in/" target="_blank">
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                <p style="color:white; font-size: 17px;;">South Central Railway</p>
+                </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a rel="nofollow noopener"   href="https://secr.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                <p style="color:white; font-size: 17px;;">South East Central Railway</p>
+                </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a href="https://ser.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">South Eastern Railway</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://swr.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">South Western Railway</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://sr.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">Southern Railway</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://wcr.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">West Central Railway</p>
+                </div> 
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://wr.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">Western Railway</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://mtp.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();"  onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">Metro Railway, Kolkata</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://clw.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop(); "  onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">CLW</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://dlw.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();"  alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">DLW</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://dmw.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();"  onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">DMW</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://icf.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();"  onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">ICF</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://rcf.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">RCF</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://rwf.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">RWF</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://core.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();"  alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">CORE</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://mcf.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">MCF</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://rwp.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">RWP Bela</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://mrvc.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">MRVC</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://irieen.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">IRIEEN</p>
+                </div>
+  	    		</li>
+				<li class="img_c">
+				 <a href="https://irimee.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">IRIMEE</p>
+                </div>
+  	    		</li>
+					<li class="img_c">
+				 <a href="https://iricen.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">IRICEN</p>
+                </div>
+  	    		</li>
+					<li class="img_c">
+				 <a href="https://rdso.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">RDSO</p>
+                </div>
+  	    		</li>
+					<li class="img_c">
+				 <a href="https://iritm.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">IRITM</p>
+                </div>
+  	    		</li>
+					<li class="img_c">
+				 <a href="/iriset.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">IRISET</p>
+                </div>
+  	    		</li>
+						<li class="img_c">
+				 <a href="/nair.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();"  onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">NAIR</p>
+                </div>
+  	    		</li>
+  	    				<li class="img_c">
+				 <a href="/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">Indian Railways Portal</p>
+                </div>
+  	    		</li>
+  	    				<li class="img_c">
+				 <a href="https://irt.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption"> 
+                 <p style="color:white; font-size: 17px;;">IRT</p>
+                </div>
+  	    		</li>
+  	    			<li class="img_c">
+				 <a href="https://dhr.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();"  onmouseout="this.start();"  alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">DHR</p>
+                </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a href="https://nrm.indianrailways.gov.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">NRM</p>
+                </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a href="https://irts.org.in/" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/redlogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">IRTS</p>
+                </div>
+  	    		</li>
+  	    		<li class="img_c">
+				 <a href="https://claims.indianrail.gov.in//" target="_blank" rel="nofollow noopener" >
+  	    	    <img src="images/bluelogo.png" class="img-circle" onmouseover="style.border:3px solid white;this.stop();" onmouseout="this.start();" alt="Indian_Railway" style="height:80px;width:80px;margin-left:auto;margin-right:auto;border:1px solid black">
+				</a>
+  	    	    <div class="caption">
+                 <p style="color:white; font-size: 17px;;">Railway Board Claims website</p>
+                </div>
+  	    		</li>
+          </ul>
+        </div>
+</div>
+<div class="col-md-12" style="height: 20px;
+    background: white;">
+
+&nbsp;
+</div>
+
+<!-- 
+<div class="col-md-3 left_links" style="background-color:#3E70CB;height:236px;line-height:25px">
+</div>-->
+<div class="col-md-12" style="padding:0px">
+<style>
+.white {
+    color: white;
+	font-size:14px;
+	font-family:Arial Narrow;
+	
+}
+
+/* a:hover{
+    color: white;
+} */
+.grey {
+ 
+    color: #888888;
+}
+</style>
+
+
+<div class="col-md-12 white" style="line-height: 1.12857143; font-family: 'Arial Narrow',Arial, sans-serif;font-weight:bold;text-align:center;background-color:#353535;color:white!important;  ">
+
+						<a class="white" style="color:white!important;text-decoration:none!important;" href="/railwayboard/webadmin/" target="_blank">Admin Login</a> |
+						<a class="white" style="color:white!important;text-decoration:none!important;" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,7,277">&nbsp;Site Map&nbsp;</a>
+						<font class="grey"> | </font>
+						<a class="white"  style="color:white!important;text-decoration:none!important;" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,7">&nbsp;Contact Us&nbsp;</a>
+						<font class="grey"> | </font>
+						<a class="white" style="color:white!important;text-decoration:none!important;" href="https://rtionline.gov.in/">&nbsp;RTI&nbsp;</a>
+						<font class="grey"> | </font>
+						<a class="white" style="color:white!important;text-decoration:none!important;" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,7,286">&nbsp;Disclaimer&nbsp;</a>
+						<font class="grey"> | </font>
+						<a class="white" style="color:white!important;text-decoration:none!important;" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,7,332">&nbsp;Terms & Conditions&nbsp;</a>
+						<!--<font class="grey"> | </font>
+						<a class="white" style="color:white!important;text-decoration:none!important;" href="/railwayboard/view_section.jsp?lang=0&id=0,7,2834">Web Information Manager</a>-->
+						<font class="grey"> | </font>
+						<a class="white" style="color:white!important;text-decoration:none!important;" href="/railwayboard/view_section.jsp?lang=0&amp;id=0,7,333">&nbsp;Privacy Policy&nbsp;</a>
+						
+
+						<a class="white" href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank" style="float:right">
+       <img style="border: 0pt none; width: 70px; height: 20px;" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!">
+   </a><a class="white" href="http://validator.w3.org/check?uri=referer" target="_blank" style="float:right">
+   <img style="border: 0pt none; width: 70px; height: 20px;" src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" ></a>
+   
+   <br/>
+   	
+						<br>© 2016&nbsp; All Rights Reserved.<br><br>
+						This is the Portal of Indian Railways, developed with an objective to enable a 
+						single window access to information and services being provided by the 
+						various Indian Railways entities. The content in this Portal is the result of a 
+						collaborative effort of various Indian Railways Entities and Departments Maintained by CRIS, Ministry of Railways, Government of India.
+						
+   </div>
+   
+<script>
+$(window).on("load",function (){
+	var fontSizea =14;
+	var fs = getCookie("fs");
+	if(fs==""){
+		fs = 0;
+	}
+				var currentfontSize = 14*(1.1**fs);
+				fontSizea = currentfontSize;
+				$("a").css("font-size",fontSizea  + "px");
+				$("p").css("font-size",fontSizea  + "px");
+				$("span").css("font-size",fontSizea  + "px");
+				$("font").css("font-size",fontSizea  + "px");
+				var hsize = 21+fs;
+				$("h4").css("font-size",hsize + "px");
+				$("h3").css("font-size",hsize + "px");
+				var asize = 16+fs;
+				$(".btnMid a").css("font-size",asize  + "px");
+				$("body").css("font-size",fontSizea  + "px");
+			});
+</script>
+<script initial_preferred_language="hi" src="https://translation-plugin.bhashini.co.in/v3/website_translation_utility.js"></script>
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>(function(){var s = document.createElement("script");s.setAttribute("data-account","sYnCngDBRn");s.setAttribute("src","https://cdn.userway.org/widget.js");document.body.appendChild(s);})();</script>
+
+<script>(function(){var s = document.createElement("script");s.setAttribute("data-account","DPwynMwSUY");s.setAttribute("src","https://cdn.userway.org/widget.js");document.body.appendChild(s);})();</script>
+</html>

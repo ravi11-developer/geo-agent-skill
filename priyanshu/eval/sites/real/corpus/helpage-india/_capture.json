@@ -1,0 +1,58 @@
+{
+  "slug": "helpage-india",
+  "url": "https://www.helpageindia.org/",
+  "category": "ngo",
+  "why_hard": "NGO, dated content",
+  "captured_at": "2026-09-07T20:45:10.154943+00:00",
+  "pages": [
+    {
+      "requested": "https://www.helpageindia.org/",
+      "final_url": "https://www.helpageindia.org/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 666150,
+      "elapsed_ms": 1108,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.helpageindia.org/donate",
+      "final_url": "https://www.helpageindia.org/donate",
+      "path": "/donate/",
+      "file": "donate/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 697798,
+      "elapsed_ms": 327,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.helpageindia.org/get-involved",
+      "final_url": "https://www.helpageindia.org/get-involved",
+      "path": "/get-involved/",
+      "file": "get-involved/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 569273,
+      "elapsed_ms": 313,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.helpageindia.org/get-involved/",
+      "final_url": "https://www.helpageindia.org/get-involved",
+      "path": "/get-involved/",
+      "file": "get-involved/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 569273,
+      "elapsed_ms": 625,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 2502494
+}

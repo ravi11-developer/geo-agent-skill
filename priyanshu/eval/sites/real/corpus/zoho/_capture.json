@@ -1,0 +1,58 @@
+{
+  "slug": "zoho",
+  "url": "https://www.zoho.com/",
+  "category": "fintech_saas_in",
+  "why_hard": "Large SaaS, deep site",
+  "captured_at": "2026-09-07T20:45:49.327617+00:00",
+  "pages": [
+    {
+      "requested": "https://www.zoho.com/",
+      "final_url": "https://www.zoho.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 16341,
+      "elapsed_ms": 422,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.zoho.com/privacy-commitment.html",
+      "final_url": "https://www.zoho.com/privacy-commitment.html",
+      "path": "/privacy-commitment.html",
+      "file": "privacy-commitment.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 13333,
+      "elapsed_ms": 63,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.zoho.com/signup.html",
+      "final_url": "https://www.zoho.com/signup.html",
+      "path": "/signup.html",
+      "file": "signup.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 3946,
+      "elapsed_ms": 61,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.zoho.com/agents/",
+      "final_url": "https://www.zoho.com/agents/",
+      "path": "/agents/",
+      "file": "agents/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 18702,
+      "elapsed_ms": 47,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 52322
+}

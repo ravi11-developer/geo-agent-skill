@@ -1,0 +1,58 @@
+{
+  "slug": "aiims",
+  "url": "https://www.aiims.edu/",
+  "category": "healthcare",
+  "why_hard": "Public hospital, legacy markup, stale notices",
+  "captured_at": "2026-09-07T20:45:35.588421+00:00",
+  "pages": [
+    {
+      "requested": "https://www.aiims.edu/",
+      "final_url": "https://www.aiims.edu/index.php/en",
+      "path": "/index.php/en/",
+      "file": "index.php/en/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 225739,
+      "elapsed_ms": 265,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.aiims.edu/index.php/en/screen-reader-access",
+      "final_url": "https://www.aiims.edu/index.php/en/screen-reader-access",
+      "path": "/index.php/en/screen-reader-access/",
+      "file": "index.php/en/screen-reader-access/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 200623,
+      "elapsed_ms": 719,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.aiims.edu/index.php/hi",
+      "final_url": "https://www.aiims.edu/index.php/hi",
+      "path": "/index.php/hi/",
+      "file": "index.php/hi/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 225285,
+      "elapsed_ms": 1015,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.aiims.edu/index.php",
+      "final_url": "https://www.aiims.edu/index.php/en",
+      "path": "/index.php/en/",
+      "file": "index.php/en/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 225739,
+      "elapsed_ms": 733,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 404,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 877386
+}

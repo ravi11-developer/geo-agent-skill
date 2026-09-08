@@ -1,0 +1,58 @@
+{
+  "slug": "saravana-bhavan",
+  "url": "https://www.saravanabhavan.com/",
+  "category": "food_hospitality",
+  "why_hard": "Restaurant, dated site",
+  "captured_at": "2026-09-07T20:45:30.477501+00:00",
+  "pages": [
+    {
+      "requested": "https://www.saravanabhavan.com/",
+      "final_url": "https://saravanabhavan.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 71367,
+      "elapsed_ms": 452,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.saravanabhavan.com/index.html",
+      "final_url": "https://saravanabhavan.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 71367,
+      "elapsed_ms": 594,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.saravanabhavan.com/our_story.html",
+      "final_url": "https://saravanabhavan.com/our_story",
+      "path": "/our_story/",
+      "file": "our_story/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 24699,
+      "elapsed_ms": 687,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.saravanabhavan.com/delight_frames.html",
+      "final_url": "https://saravanabhavan.com/delight_frames",
+      "path": "/delight_frames/",
+      "file": "delight_frames/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 12582,
+      "elapsed_ms": 734,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 180015
+}

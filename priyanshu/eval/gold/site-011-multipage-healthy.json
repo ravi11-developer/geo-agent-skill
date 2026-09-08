@@ -1,0 +1,22 @@
+{
+  "site_id": "site-011-multipage-healthy",
+  "url": "http://localhost:9500/site-011-multipage-healthy/",
+  "holdout": true,
+  "description": "Three-page healthy site (home, about, products) with cross-linked navigation, Organization + Product JSON-LD, current dates and all facts in HTML text.",
+  "expected_findings": [],
+  "expected_non_findings": [
+    {"category": "structured_data", "reason": "Organization JSON-LD on home, Product JSON-LD on products page"},
+    {"category": "rendering", "reason": "All content server-rendered"},
+    {"category": "entity_identity", "reason": "One name across title, h1, JSON-LD and footer on all three pages"},
+    {"category": "freshness", "reason": "All dates 2026"},
+    {"category": "engagement", "reason": "Header and footer navigation, pages cross-link"},
+    {"category": "content_extraction", "reason": "Pricing, contact and company facts all present as text"}
+  ],
+  "expected_proactive": [
+    "Add FAQPage structured data",
+    "Publish an XML sitemap with lastmod dates",
+    "Add breadcrumb navigation on sub-pages"
+  ],
+  "max_acceptable_findings": 1,
+  "notes": "Multi-page false-positive test: sub-pages without their own Organization JSON-LD must not be flagged."
+}

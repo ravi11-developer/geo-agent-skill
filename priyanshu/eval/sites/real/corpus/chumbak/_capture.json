@@ -1,0 +1,58 @@
+{
+  "slug": "chumbak",
+  "url": "https://www.chumbak.com/",
+  "category": "d2c_retail",
+  "why_hard": "D2C, image-only specs",
+  "captured_at": "2026-09-07T20:45:18.230931+00:00",
+  "pages": [
+    {
+      "requested": "https://www.chumbak.com/",
+      "final_url": "https://www.chumbak.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1147104,
+      "elapsed_ms": 890,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.chumbak.com/collections/forest-folklore",
+      "final_url": "https://www.chumbak.com/collections/forest-folklore",
+      "path": "/collections/forest-folklore/",
+      "file": "collections/forest-folklore/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1240757,
+      "elapsed_ms": 702,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.chumbak.com/collections/all-products",
+      "final_url": "https://www.chumbak.com/collections/all-products",
+      "path": "/collections/all-products/",
+      "file": "collections/all-products/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1429325,
+      "elapsed_ms": 828,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.chumbak.com/collections/republic-sale",
+      "final_url": "https://www.chumbak.com/collections/sale-1",
+      "path": "/collections/sale-1/",
+      "file": "collections/sale-1/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1524054,
+      "elapsed_ms": 889,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 5341240
+}

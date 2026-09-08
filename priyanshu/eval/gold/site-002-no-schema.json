@@ -1,0 +1,24 @@
+{
+    "site_id": "site-002-no-schema",
+    "url": "http://localhost:9500/site-002-no-schema/",
+    "description": "Identical to healthy baseline but all JSON-LD structured data removed",
+    "expected_findings": [
+        {
+            "category": "structured_data",
+            "description": "No structured data (JSON-LD) present despite having organization/product information that should be machine-readable",
+            "severity": "medium",
+            "keywords": ["json-ld", "structured data", "schema", "machine-readable", "organization"]
+        }
+    ],
+    "expected_non_findings": [
+        {"category": "rendering", "reason": "All content is in raw HTML"},
+        {"category": "entity_identity", "reason": "Company name is consistent"},
+        {"category": "freshness", "reason": "Content is current"},
+        {"category": "engagement", "reason": "Navigation is present"}
+    ],
+    "expected_proactive": [
+        "Add Organization JSON-LD to make brand facts machine-readable",
+        "Add Product structured data for individual products"
+    ],
+    "max_acceptable_findings": 3
+}

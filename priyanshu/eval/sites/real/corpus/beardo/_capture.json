@@ -1,0 +1,58 @@
+{
+  "slug": "beardo",
+  "url": "https://beardo.in/",
+  "category": "d2c_retail",
+  "why_hard": "D2C, banner-driven facts",
+  "captured_at": "2026-09-07T20:45:21.187129+00:00",
+  "pages": [
+    {
+      "requested": "https://beardo.in/",
+      "final_url": "https://beardo.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 755630,
+      "elapsed_ms": 1609,
+      "is_entry": true
+    },
+    {
+      "requested": "https://beardo.in/collections/all-single-products",
+      "final_url": "https://beardo.in/collections/all-single-products",
+      "path": "/collections/all-single-products/",
+      "file": "collections/all-single-products/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 426308,
+      "elapsed_ms": 1046,
+      "is_entry": false
+    },
+    {
+      "requested": "https://beardo.in/collections/beard-growth-1",
+      "final_url": "https://beardo.in/collections/beard-growth-1",
+      "path": "/collections/beard-growth-1/",
+      "file": "collections/beard-growth-1/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 375593,
+      "elapsed_ms": 983,
+      "is_entry": false
+    },
+    {
+      "requested": "https://beardo.in/collections/beard-styling",
+      "final_url": "https://beardo.in/collections/beard-styling",
+      "path": "/collections/beard-styling/",
+      "file": "collections/beard-styling/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 390259,
+      "elapsed_ms": 875,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1947790
+}

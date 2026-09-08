@@ -1,0 +1,17 @@
+{
+    "site_id": "site-009-weird-but-healthy",
+    "url": "http://localhost:9500/site-009-weird-but-healthy/",
+    "description": "Technically unusual (verbose CSS, multiple JSON-LD blocks, deeply nested ARIA, long title) but actually healthy and well-structured",
+    "expected_findings": [],
+    "expected_non_findings": [
+        {"category": "structured_data", "reason": "Has complete and valid Organization + SoftwareApplication JSON-LD"},
+        {"category": "rendering", "reason": "All content in raw HTML"},
+        {"category": "entity_identity", "reason": "Consistent company name throughout"},
+        {"category": "freshness", "reason": "All dates are 2026, revenue is Q2 2026"},
+        {"category": "engagement", "reason": "Comprehensive navigation in both header and footer"},
+        {"category": "non_text_facts", "reason": "All facts are text-based"}
+    ],
+    "expected_proactive": [],
+    "max_acceptable_findings": 1,
+    "notes": "This site deliberately has unusual HTML patterns that should NOT trigger false positives. Multiple JSON-LD blocks are valid. Verbose CSS is irrelevant. Long title is a minor SEO issue, not an AI discoverability problem."
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "bharat-forge",
+  "url": "https://www.bharatforge.com/",
+  "category": "b2b_manufacturing",
+  "why_hard": "Manufacturer, thin web facts",
+  "captured_at": "2026-09-07T20:46:18.409417+00:00",
+  "pages": [
+    {
+      "requested": "https://www.bharatforge.com/",
+      "final_url": "https://www.bharatforge.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 164066,
+      "elapsed_ms": 656,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.bharatforge.com/media/press-releases",
+      "final_url": "https://www.bharatforge.com/media/press-releases",
+      "path": "/media/press-releases/",
+      "file": "media/press-releases/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 95164,
+      "elapsed_ms": 328,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.bharatforge.com/brand/brand-identity",
+      "final_url": "https://www.bharatforge.com/brand/brand-identity",
+      "path": "/brand/brand-identity/",
+      "file": "brand/brand-identity/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 99383,
+      "elapsed_ms": 264,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.bharatforge.com/media/press-reports",
+      "final_url": "https://www.bharatforge.com/media/press-reports",
+      "path": "/media/press-reports/",
+      "file": "media/press-reports/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 94041,
+      "elapsed_ms": 344,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 452654
+}

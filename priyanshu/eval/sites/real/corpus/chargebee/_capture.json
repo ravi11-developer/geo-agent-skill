@@ -1,0 +1,58 @@
+{
+  "slug": "chargebee",
+  "url": "https://www.chargebee.com/",
+  "category": "fintech_saas_in",
+  "why_hard": "SaaS, marketing JS",
+  "captured_at": "2026-09-07T20:45:48.232755+00:00",
+  "pages": [
+    {
+      "requested": "https://www.chargebee.com/",
+      "final_url": "https://www.chargebee.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 657187,
+      "elapsed_ms": 750,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.chargebee.com/resources/guides/gartner-magic-quadrant-2026/",
+      "final_url": "https://www.chargebee.com/resources/guides/gartner-magic-quadrant-2026/",
+      "path": "/resources/guides/gartner-magic-quadrant-2026/",
+      "file": "resources/guides/gartner-magic-quadrant-2026/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 358899,
+      "elapsed_ms": 327,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.chargebee.com/pricing/",
+      "final_url": "https://www.chargebee.com/pricing/",
+      "path": "/pricing/",
+      "file": "pricing/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 653681,
+      "elapsed_ms": 547,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.chargebee.com/startups/",
+      "final_url": "https://www.chargebee.com/startups/",
+      "path": "/startups/",
+      "file": "startups/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 412883,
+      "elapsed_ms": 359,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 2082650
+}

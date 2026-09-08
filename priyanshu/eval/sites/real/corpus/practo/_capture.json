@@ -1,0 +1,58 @@
+{
+  "slug": "practo",
+  "url": "https://www.practo.com/",
+  "category": "local_marketplace",
+  "why_hard": "Health marketplace, JS",
+  "captured_at": "2026-09-07T20:45:43.284665+00:00",
+  "pages": [
+    {
+      "requested": "https://www.practo.com/",
+      "final_url": "https://www.practo.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 91364,
+      "elapsed_ms": 609,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.practo.com/consult",
+      "final_url": "https://www.practo.com/consult",
+      "path": "/consult/",
+      "file": "consult/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 171535,
+      "elapsed_ms": 343,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.practo.com/doctors",
+      "final_url": "https://www.practo.com/doctors",
+      "path": "/doctors/",
+      "file": "doctors/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 78810,
+      "elapsed_ms": 297,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.practo.com/tests",
+      "final_url": "https://www.practo.com/tests",
+      "path": "/tests/",
+      "file": "tests/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 97248,
+      "elapsed_ms": 234,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 438957
+}

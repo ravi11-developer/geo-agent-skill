@@ -1,0 +1,25 @@
+{
+  "slug": "cii",
+  "url": "https://www.cii.in/",
+  "category": "industry_body",
+  "why_hard": "Industry body, legacy portal",
+  "captured_at": "2026-09-07T20:46:12.076976+00:00",
+  "pages": [
+    {
+      "requested": "https://www.cii.in/",
+      "final_url": "https://www.cii.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 212,
+      "elapsed_ms": 94,
+      "is_entry": true
+    }
+  ],
+  "robots_status": 406,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 212
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "supreme-industries",
+  "url": "https://www.supreme.co.in/",
+  "category": "b2b_manufacturing",
+  "why_hard": "Manufacturer, PDF catalogues",
+  "captured_at": "2026-09-07T20:46:19.710118+00:00",
+  "pages": [
+    {
+      "requested": "https://www.supreme.co.in/",
+      "final_url": "https://www.supreme.co.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 226383,
+      "elapsed_ms": 937,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.supreme.co.in/overview",
+      "final_url": "https://www.supreme.co.in/overview",
+      "path": "/overview/",
+      "file": "overview/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 77419,
+      "elapsed_ms": 1000,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.supreme.co.in/milestones",
+      "final_url": "https://www.supreme.co.in/milestones",
+      "path": "/milestones/",
+      "file": "milestones/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 85338,
+      "elapsed_ms": 1031,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.supreme.co.in/group-locations",
+      "final_url": "https://www.supreme.co.in/group-locations",
+      "path": "/group-locations/",
+      "file": "group-locations/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 102231,
+      "elapsed_ms": 1000,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 491371
+}

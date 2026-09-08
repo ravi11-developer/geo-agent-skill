@@ -1,0 +1,58 @@
+{
+  "slug": "scroll-in",
+  "url": "https://scroll.in/",
+  "category": "media_regional",
+  "why_hard": "News, template-heavy",
+  "captured_at": "2026-09-07T20:46:30.756641+00:00",
+  "pages": [
+    {
+      "requested": "https://scroll.in/",
+      "final_url": "https://scroll.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 114884,
+      "elapsed_ms": 671,
+      "is_entry": true
+    },
+    {
+      "requested": "https://scroll.in/contribute",
+      "final_url": "https://scroll.in/contribute",
+      "path": "/contribute/",
+      "file": "contribute/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 69270,
+      "elapsed_ms": 218,
+      "is_entry": false
+    },
+    {
+      "requested": "https://scroll.in/gift-membership",
+      "final_url": "https://scroll.in/gift-membership",
+      "path": "/gift-membership/",
+      "file": "gift-membership/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 68770,
+      "elapsed_ms": 202,
+      "is_entry": false
+    },
+    {
+      "requested": "https://scroll.in/search",
+      "final_url": "https://scroll.in/search",
+      "path": "/search/",
+      "file": "search/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 69955,
+      "elapsed_ms": 155,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 322879
+}

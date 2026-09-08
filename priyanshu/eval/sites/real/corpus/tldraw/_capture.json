@@ -1,0 +1,25 @@
+{
+  "slug": "tldraw",
+  "url": "https://tldraw.com/",
+  "category": "spa_product_global",
+  "why_hard": "Canvas SPA, empty shell",
+  "captured_at": "2026-09-07T20:46:01.538652+00:00",
+  "pages": [
+    {
+      "requested": "https://tldraw.com/",
+      "final_url": "https://www.tldraw.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 13876,
+      "elapsed_ms": 609,
+      "is_entry": true
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 13876
+}

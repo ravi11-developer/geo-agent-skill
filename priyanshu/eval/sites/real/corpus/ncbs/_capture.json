@@ -1,0 +1,58 @@
+{
+  "slug": "ncbs",
+  "url": "https://www.ncbs.res.in/",
+  "category": "edu_research",
+  "why_hard": "Research centre, JS-driven listings",
+  "captured_at": "2026-09-07T20:44:59.665125+00:00",
+  "pages": [
+    {
+      "requested": "https://www.ncbs.res.in/",
+      "final_url": "https://www.ncbs.res.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 88482,
+      "elapsed_ms": 1608,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.ncbs.res.in/content/azadi-ka-amrit-mahotsav",
+      "final_url": "https://www.ncbs.res.in/content/azadi-ka-amrit-mahotsav",
+      "path": "/content/azadi-ka-amrit-mahotsav/",
+      "file": "content/azadi-ka-amrit-mahotsav/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 87056,
+      "elapsed_ms": 655,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.ncbs.res.in/about-us",
+      "final_url": "https://www.ncbs.res.in/about-us",
+      "path": "/about-us/",
+      "file": "about-us/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 60546,
+      "elapsed_ms": 640,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.ncbs.res.in/who-we-are-and-what-we-do",
+      "final_url": "https://www.ncbs.res.in/who-we-are-and-what-we-do",
+      "path": "/who-we-are-and-what-we-do/",
+      "file": "who-we-are-and-what-we-do/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 61963,
+      "elapsed_ms": 672,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 298047
+}

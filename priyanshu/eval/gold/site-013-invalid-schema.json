@@ -1,0 +1,22 @@
+{
+  "site_id": "site-013-invalid-schema",
+  "url": "http://localhost:9500/site-013-invalid-schema/",
+  "holdout": true,
+  "description": "Otherwise healthy site whose JSON-LD block contains trailing commas and therefore does not parse.",
+  "expected_findings": [
+    {"category": "structured_data", "description": "JSON-LD present but syntactically invalid, so it is discarded by consumers", "severity": "high",
+     "keywords": ["json-ld", "invalid", "parse", "syntax", "schema"]}
+  ],
+  "expected_non_findings": [
+    {"category": "entity_identity", "reason": "Consistent name even though JSON-LD does not parse"},
+    {"category": "rendering", "reason": "All content in raw HTML"},
+    {"category": "freshness", "reason": "Copyright 2026, pricing current as of August 2026"},
+    {"category": "engagement", "reason": "Navigation present"}
+  ],
+  "expected_proactive": [
+    "Validate structured data in CI so a syntax error cannot ship",
+    "Add Product structured data for the instruments"
+  ],
+  "max_acceptable_findings": 3,
+  "notes": "Tests that an unparseable block is reported as invalid rather than as missing, and that the founding year 2011 is not treated as staleness."
+}

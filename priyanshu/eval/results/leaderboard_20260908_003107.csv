@@ -1,0 +1,2 @@
+Agent,Detection_F1,Precision,Recall,FP_Score,Evidence,Actions,Severity,Avg_Runtime,Overall
+hybrid,0.6923,0.7500,0.6429,0.9700,0.3167,0.3833,0.8167,12.9,61.6

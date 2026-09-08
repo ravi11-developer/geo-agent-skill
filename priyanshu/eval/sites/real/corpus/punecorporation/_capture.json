@@ -1,0 +1,58 @@
+{
+  "slug": "punecorporation",
+  "url": "https://www.pmc.gov.in/",
+  "category": "gov_civic",
+  "why_hard": "Municipal site, stale content, image-only notices",
+  "captured_at": "2026-09-07T20:44:46.480848+00:00",
+  "pages": [
+    {
+      "requested": "https://www.pmc.gov.in/",
+      "final_url": "https://www.pmc.gov.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 52922,
+      "elapsed_ms": 530,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.pmc.gov.in/b/maharashtra-right-service-act",
+      "final_url": "https://www.pmc.gov.in/b/maharashtra-right-service-act",
+      "path": "/b/maharashtra-right-service-act/",
+      "file": "b/maharashtra-right-service-act/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 53315,
+      "elapsed_ms": 93,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.pmc.gov.in/about-pune",
+      "final_url": "https://www.pmc.gov.in/about-pune",
+      "path": "/about-pune/",
+      "file": "about-pune/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 53121,
+      "elapsed_ms": 125,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.pmc.gov.in/b/pmc-apps-store",
+      "final_url": "https://www.pmc.gov.in/b/pmc-apps-store",
+      "path": "/b/pmc-apps-store/",
+      "file": "b/pmc-apps-store/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 53150,
+      "elapsed_ms": 94,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 212508
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "urban-company",
+  "url": "https://www.urbancompany.com/",
+  "category": "local_marketplace",
+  "why_hard": "Services marketplace, SPA",
+  "captured_at": "2026-09-07T20:45:40.179093+00:00",
+  "pages": [
+    {
+      "requested": "https://www.urbancompany.com/",
+      "final_url": "https://www.urbancompany.com/hyderabad",
+      "path": "/hyderabad/",
+      "file": "hyderabad/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 957565,
+      "elapsed_ms": 672,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.urbancompany.com/hyderabad-ro-purchase",
+      "final_url": "https://www.urbancompany.com/hyderabad-ro-purchase",
+      "path": "/hyderabad-ro-purchase/",
+      "file": "hyderabad-ro-purchase/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 757418,
+      "elapsed_ms": 187,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.urbancompany.com/hyderabad-epc-stores-smarthome",
+      "final_url": "https://www.urbancompany.com/hyderabad-epc-stores-smarthome",
+      "path": "/hyderabad-epc-stores-smarthome/",
+      "file": "hyderabad-epc-stores-smarthome/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 710460,
+      "elapsed_ms": 203,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.urbancompany.com/hyderabad-salon-luxe",
+      "final_url": "https://www.urbancompany.com/hyderabad-salon-luxe",
+      "path": "/hyderabad-salon-luxe/",
+      "file": "hyderabad-salon-luxe/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 2110127,
+      "elapsed_ms": 389,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 4535570
+}

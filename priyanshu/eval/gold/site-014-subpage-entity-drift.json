@@ -1,0 +1,24 @@
+{
+  "site_id": "site-014-subpage-entity-drift",
+  "url": "http://localhost:9500/site-014-subpage-entity-drift/",
+  "holdout": true,
+  "description": "Home page is clean, but the about page introduces three more company names and the news page is stale with a 2019 copyright. Both faults are only visible if the agent crawls beyond the entry page.",
+  "expected_findings": [
+    {"category": "entity_identity", "description": "Helios Robotics / Helios Robotic Systems / Helios Systems Group / HelioBotics across pages", "severity": "high",
+     "keywords": ["entity", "name", "conflict", "variant", "ambiguity"]},
+    {"category": "freshness", "description": "News page awards, press and market data from 2019-2021 with a 2019 copyright", "severity": "medium",
+     "keywords": ["stale", "outdated", "2019", "2021", "copyright"]}
+  ],
+  "expected_non_findings": [
+    {"category": "rendering", "reason": "All content server-rendered"},
+    {"category": "structured_data", "reason": "Organization JSON-LD present on the home page"},
+    {"category": "engagement", "reason": "Navigation present on all three pages"},
+    {"category": "content_extraction", "reason": "Facts are present as text"}
+  ],
+  "expected_proactive": [
+    "Standardise the company name and use alternateName for variants",
+    "Add dateModified to the news page"
+  ],
+  "max_acceptable_findings": 4,
+  "notes": "Multi-page recall test: an agent that only fetches the entry URL will miss both findings."
+}

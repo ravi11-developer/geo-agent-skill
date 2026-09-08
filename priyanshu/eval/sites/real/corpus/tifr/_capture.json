@@ -1,0 +1,58 @@
+{
+  "slug": "tifr",
+  "url": "https://www.tifr.res.in/",
+  "category": "edu_research",
+  "why_hard": "Research institute, legacy pages",
+  "captured_at": "2026-09-07T20:44:54.326086+00:00",
+  "pages": [
+    {
+      "requested": "https://www.tifr.res.in/",
+      "final_url": "https://www.tifr.res.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 3003425,
+      "elapsed_ms": 1514,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.tifr.res.in/PeopleFinder",
+      "final_url": "https://www.tifr.res.in/PeopleFinder/",
+      "path": "/PeopleFinder/",
+      "file": "PeopleFinder/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 29118,
+      "elapsed_ms": 280,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.tifr.res.in/hindi/",
+      "final_url": "https://www.tifr.res.in/hindi/",
+      "path": "/hindi/",
+      "file": "hindi/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 3000240,
+      "elapsed_ms": 1327,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.tifr.res.in/index.php",
+      "final_url": "https://www.tifr.res.in/index.php",
+      "path": "/index.php/",
+      "file": "index.php/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 3003425,
+      "elapsed_ms": 1343,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 9036208
+}

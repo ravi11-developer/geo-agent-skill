@@ -1,0 +1,58 @@
+{
+  "slug": "modal",
+  "url": "https://modal.com/",
+  "category": "spa_product_global",
+  "why_hard": "Infra SaaS, JS docs",
+  "captured_at": "2026-09-07T20:46:07.274608+00:00",
+  "pages": [
+    {
+      "requested": "https://modal.com/",
+      "final_url": "https://modal.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 413531,
+      "elapsed_ms": 1796,
+      "is_entry": true
+    },
+    {
+      "requested": "https://modal.com/runtime",
+      "final_url": "https://modal.com/runtime",
+      "path": "/runtime/",
+      "file": "runtime/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 52937,
+      "elapsed_ms": 1063,
+      "is_entry": false
+    },
+    {
+      "requested": "https://modal.com/customers",
+      "final_url": "https://modal.com/customers",
+      "path": "/customers/",
+      "file": "customers/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 439901,
+      "elapsed_ms": 1422,
+      "is_entry": false
+    },
+    {
+      "requested": "https://modal.com/pricing",
+      "final_url": "https://modal.com/pricing",
+      "path": "/pricing/",
+      "file": "pricing/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 136197,
+      "elapsed_ms": 1125,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1042566
+}

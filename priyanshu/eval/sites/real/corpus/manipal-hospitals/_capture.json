@@ -1,0 +1,58 @@
+{
+  "slug": "manipal-hospitals",
+  "url": "https://www.manipalhospitals.com/",
+  "category": "healthcare",
+  "why_hard": "Hospital group",
+  "captured_at": "2026-09-07T20:45:34.497277+00:00",
+  "pages": [
+    {
+      "requested": "https://www.manipalhospitals.com/",
+      "final_url": "https://www.manipalhospitals.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 282997,
+      "elapsed_ms": 812,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.manipalhospitals.com/medical-condition/",
+      "final_url": "https://www.manipalhospitals.com/medical-condition/",
+      "path": "/medical-condition/",
+      "file": "medical-condition/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 255495,
+      "elapsed_ms": 94,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.manipalhospitals.com/treatment/",
+      "final_url": "https://www.manipalhospitals.com/treatment/",
+      "path": "/treatment/",
+      "file": "treatment/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 265478,
+      "elapsed_ms": 108,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.manipalhospitals.com/specialities/",
+      "final_url": "https://www.manipalhospitals.com/specialities/",
+      "path": "/specialities/",
+      "file": "specialities/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 559208,
+      "elapsed_ms": 125,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1363178
+}

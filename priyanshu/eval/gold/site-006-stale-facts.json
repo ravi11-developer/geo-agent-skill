@@ -1,0 +1,25 @@
+{
+    "site_id": "site-006-stale-facts",
+    "url": "http://localhost:9500/site-006-stale-facts/",
+    "description": "Extensive staleness: pricing from 2018-2020, awards from 2018-2020, statistics from 2020-2021, team info from 2021, copyright 2021",
+    "expected_findings": [
+        {
+            "category": "freshness",
+            "description": "Content is significantly outdated - pricing, awards, statistics, team information, and press releases are all from 2018-2021 with no recent updates",
+            "severity": "high",
+            "keywords": ["stale", "outdated", "old", "date", "2019", "2020", "2021", "freshness", "last updated"]
+        }
+    ],
+    "expected_non_findings": [
+        {"category": "rendering", "reason": "All content is in raw HTML"},
+        {"category": "entity_identity", "reason": "Consistent company name"},
+        {"category": "engagement", "reason": "Has navigation"}
+    ],
+    "expected_proactive": [
+        "Update pricing to reflect current rates",
+        "Add recent press releases, awards, or news",
+        "Update team page with current leadership",
+        "Update copyright year and industry statistics"
+    ],
+    "max_acceptable_findings": 3
+}

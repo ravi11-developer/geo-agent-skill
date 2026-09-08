@@ -1,0 +1,58 @@
+{
+  "slug": "finolex",
+  "url": "https://www.finolex.com/",
+  "category": "b2b_manufacturing",
+  "why_hard": "Manufacturer, image specs",
+  "captured_at": "2026-09-07T20:46:21.665656+00:00",
+  "pages": [
+    {
+      "requested": "https://www.finolex.com/",
+      "final_url": "https://www.finolex.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 77849,
+      "elapsed_ms": 1141,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.finolex.com/ProductPage/Cat/Wires-and-cables",
+      "final_url": "https://www.finolex.com/ProductPage/Cat/Wires-and-cables",
+      "path": "/ProductPage/Cat/Wires-and-cables/",
+      "file": "ProductPage/Cat/Wires-and-cables/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 85643,
+      "elapsed_ms": 1358,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.finolex.com/ProductPage/Cat/Fans",
+      "final_url": "https://www.finolex.com/ProductPage/Cat/Fans",
+      "path": "/ProductPage/Cat/Fans/",
+      "file": "ProductPage/Cat/Fans/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 67875,
+      "elapsed_ms": 952,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.finolex.com/ProductPage/Cat/Water-Heaters",
+      "final_url": "https://www.finolex.com/ProductPage/Cat/Water-Heaters",
+      "path": "/ProductPage/Cat/Water-Heaters/",
+      "file": "ProductPage/Cat/Water-Heaters/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 63088,
+      "elapsed_ms": 891,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 406,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 294455
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudPeak Technologies</title>
+    <meta name="description" content="Cloud computing.">
+    <link rel="canonical" href="http://localhost:9500/site-008-mixed-faults/">
+    <!-- FAULT 1: No JSON-LD structured data at all -->
+    <style>
+        body { font-family: system-ui, sans-serif; padding: 20px; color: #333; }
+        #dynamic-section { display: none; }
+    </style>
+</head>
+<body>
+    <!-- FAULT 2: No navigation structure -->
+
+    <!-- FAULT 3: Entity name conflicts throughout -->
+    <h1>CloudPeak Technologies</h1>
+    <p>Welcome to Cloud Peak Tech, the premier cloud computing platform. CloudPeak Solutions has been serving customers since our founding.</p>
+
+    <h2>About CP Technologies</h2>
+    <p>CloudPeak (formerly PeakCloud Inc.) provides infrastructure-as-a-service. Contact us at info@cpeak.com.</p>
+
+    <h2>Our Platform</h2>
+    <!-- FAULT 4: Key facts only in JS -->
+    <div id="dynamic-section"></div>
+    <noscript><p>Enable JavaScript to see pricing and features.</p></noscript>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var el = document.getElementById('dynamic-section');
+            el.style.display = 'block';
+            el.innerHTML = '<h3>PeakKube</h3><p>Managed K8s: $399/mo</p><h3>PeakStore</h3><p>Object storage: $0.023/GB/mo</p>';
+        });
+    </script>
+
+    <!-- FAULT 5: Key business info in image only -->
+    <h2>Our Customers and Results</h2>
+    <img src="customer-results.png" alt="results">
+    <img src="partnership-logos.png" alt="partners">
+
+    <!-- FAULT 6: Stale information -->
+    <h2>Awards</h2>
+    <p>Winner of "Best Cloud Startup" at TechSummit 2018.</p>
+    <p>Named a Gartner Cool Vendor in 2019.</p>
+    <p><em>Industry data: Cloud market worth $250B (Statista, 2019)</em></p>
+
+    <h2>Contact</h2>
+    <p>Email: info@cpeak.com</p>
+
+    <!-- FAULT 7: Copyright year is stale -->
+    <p style="color:#999; margin-top:40px;">&copy; 2020 PeakCloud Inc.</p>
+</body>
+</html>

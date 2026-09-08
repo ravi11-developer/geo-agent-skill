@@ -1,0 +1,58 @@
+{
+  "slug": "mokobara",
+  "url": "https://www.mokobara.com/",
+  "category": "d2c_retail",
+  "why_hard": "D2C, JS storefront",
+  "captured_at": "2026-09-07T20:45:15.963435+00:00",
+  "pages": [
+    {
+      "requested": "https://www.mokobara.com/",
+      "final_url": "https://mokobara.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1377027,
+      "elapsed_ms": 1578,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.mokobara.com/collections/luggage-all",
+      "final_url": "https://mokobara.com/collections/luggage-all",
+      "path": "/collections/luggage-all/",
+      "file": "collections/luggage-all/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1726365,
+      "elapsed_ms": 1250,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.mokobara.com/collections/explore-tech-range",
+      "final_url": "https://mokobara.com/collections/explore-tech-range",
+      "path": "/collections/explore-tech-range/",
+      "file": "collections/explore-tech-range/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 829065,
+      "elapsed_ms": 796,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.mokobara.com/collections/explore-cabin-luggage",
+      "final_url": "https://mokobara.com/collections/explore-cabin-luggage",
+      "path": "/collections/explore-cabin-luggage/",
+      "file": "collections/explore-cabin-luggage/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 996284,
+      "elapsed_ms": 843,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 4928741
+}

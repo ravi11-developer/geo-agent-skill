@@ -1,0 +1,20 @@
+{
+    "site_id": "site-001-healthy",
+    "url": "http://localhost:9500/site-001-healthy/",
+    "description": "Healthy baseline - well-structured site with proper schema, metadata, navigation, clear text content, recent dates",
+    "expected_findings": [],
+    "expected_non_findings": [
+        {"category": "structured_data", "reason": "Has complete Organization JSON-LD with all key fields"},
+        {"category": "rendering", "reason": "All content is in raw HTML, no JS dependency"},
+        {"category": "entity_identity", "reason": "Consistent company name throughout"},
+        {"category": "freshness", "reason": "Content dated September 2026, copyright 2026"},
+        {"category": "engagement", "reason": "Has navigation with all key pages linked"},
+        {"category": "non_text_facts", "reason": "All facts are in text, not images"}
+    ],
+    "expected_proactive": [
+        "Consider adding Product structured data for individual products",
+        "Consider adding FAQ structured data if applicable"
+    ],
+    "max_acceptable_findings": 2,
+    "notes": "An agent that reports many findings on this site has a false-positive problem"
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "imsc",
+  "url": "https://www.imsc.res.in/",
+  "category": "edu_research",
+  "why_hard": "Academic site, minimal metadata",
+  "captured_at": "2026-09-07T20:44:54.377866+00:00",
+  "pages": [
+    {
+      "requested": "https://www.imsc.res.in/",
+      "final_url": "https://www.imsc.res.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 54551,
+      "elapsed_ms": 1515,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.imsc.res.in/about_imsc",
+      "final_url": "https://www.imsc.res.in/about_imsc",
+      "path": "/about_imsc/",
+      "file": "about_imsc/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 104669,
+      "elapsed_ms": 640,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.imsc.res.in/imsc_logo",
+      "final_url": "https://www.imsc.res.in/imsc_logo",
+      "path": "/imsc_logo/",
+      "file": "imsc_logo/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41661,
+      "elapsed_ms": 469,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.imsc.res.in/research-areas",
+      "final_url": "https://www.imsc.res.in/research-areas",
+      "path": "/research-areas/",
+      "file": "research-areas/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 39447,
+      "elapsed_ms": 483,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 240328
+}

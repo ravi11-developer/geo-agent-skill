@@ -1,0 +1,16 @@
+{
+    "site_id": "site-010-seo-noise",
+    "url": "http://localhost:9500/site-010-seo-noise/",
+    "description": "Minor SEO issues (keyword-stuffed title, multiple H1s, underscore URLs, generic anchors) that are NOT AI discoverability problems",
+    "expected_findings": [],
+    "expected_non_findings": [
+        {"category": "structured_data", "reason": "Has Organization JSON-LD"},
+        {"category": "rendering", "reason": "All content in HTML"},
+        {"category": "entity_identity", "reason": "Consistent company name"},
+        {"category": "freshness", "reason": "Copyright 2026"},
+        {"category": "engagement", "reason": "Has navigation"}
+    ],
+    "expected_proactive": [],
+    "max_acceptable_findings": 1,
+    "notes": "SEO issues like multiple H1, keyword-stuffed title, underscore URLs, generic anchor text should NOT be reported as AI discoverability problems. An agent that flags these has an over-detection / false-positive problem."
+}

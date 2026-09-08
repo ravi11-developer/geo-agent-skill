@@ -1,0 +1,58 @@
+{
+  "slug": "render",
+  "url": "https://render.com/",
+  "category": "spa_product_global",
+  "why_hard": "SaaS, JS pricing",
+  "captured_at": "2026-09-07T20:45:56.308550+00:00",
+  "pages": [
+    {
+      "requested": "https://render.com/",
+      "final_url": "https://render.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 378222,
+      "elapsed_ms": 765,
+      "is_entry": true
+    },
+    {
+      "requested": "https://render.com/migration-credits",
+      "final_url": "https://render.com/migration-credits",
+      "path": "/migration-credits/",
+      "file": "migration-credits/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 284817,
+      "elapsed_ms": 375,
+      "is_entry": false
+    },
+    {
+      "requested": "https://render.com/platform",
+      "final_url": "https://render.com/platform",
+      "path": "/platform/",
+      "file": "platform/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 270587,
+      "elapsed_ms": 327,
+      "is_entry": false
+    },
+    {
+      "requested": "https://render.com/docs/scaling",
+      "final_url": "https://render.com/docs/scaling",
+      "path": "/docs/scaling/",
+      "file": "docs/scaling/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 474077,
+      "elapsed_ms": 405,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1407703
+}

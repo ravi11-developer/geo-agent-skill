@@ -1,0 +1,58 @@
+{
+  "slug": "cry-india",
+  "url": "https://www.cry.org/",
+  "category": "ngo",
+  "why_hard": "NGO, campaign pages, image-heavy",
+  "captured_at": "2026-09-07T20:45:02.774048+00:00",
+  "pages": [
+    {
+      "requested": "https://www.cry.org/",
+      "final_url": "https://www.cry.org/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 165869,
+      "elapsed_ms": 2797,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.cry.org/about-cry/",
+      "final_url": "https://www.cry.org/about-cry/",
+      "path": "/about-cry/",
+      "file": "about-cry/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 252524,
+      "elapsed_ms": 1203,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.cry.org/why-children/",
+      "final_url": "https://www.cry.org/why-children/",
+      "path": "/why-children/",
+      "file": "why-children/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 161183,
+      "elapsed_ms": 1094,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.cry.org/our-impact/",
+      "final_url": "https://www.cry.org/our-impact/",
+      "path": "/our-impact/",
+      "file": "our-impact/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 186041,
+      "elapsed_ms": 1093,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 765617
+}

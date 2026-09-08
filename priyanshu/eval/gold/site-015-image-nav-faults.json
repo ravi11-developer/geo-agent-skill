@@ -1,0 +1,23 @@
+{
+  "site_id": "site-015-image-nav-faults",
+  "url": "http://localhost:9500/site-015-image-nav-faults/",
+  "holdout": true,
+  "description": "Substantial prose plus four fact-bearing images (capability matrix, pricing tiers, audit results, facility comparison) with generic alt text, and no navigation of any kind.",
+  "expected_findings": [
+    {"category": "non_text_facts", "description": "Capabilities, pricing, audit results and facility data exist only inside images", "severity": "high",
+     "keywords": ["image", "alt", "non-text", "pricing", "table"]},
+    {"category": "engagement", "description": "No navigation, header, footer or internal links", "severity": "high",
+     "keywords": ["navigation", "links", "orientation", "menu"]}
+  ],
+  "expected_non_findings": [
+    {"category": "content_extraction", "reason": "The page carries substantial extractable prose, contact details and company facts; only the tabular facts are in images"},
+    {"category": "structured_data", "reason": "Organization JSON-LD present"},
+    {"category": "freshness", "reason": "Current as of September 2026"}
+  ],
+  "expected_proactive": [
+    "Reproduce the pricing and capability tables as HTML text",
+    "Add descriptive alt text to the fact images"
+  ],
+  "max_acceptable_findings": 3,
+  "notes": "Precision boundary: image-only facts on a page that is otherwise text-rich must NOT also trigger content_extraction."
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "goonj",
+  "url": "https://goonj.org/",
+  "category": "ngo",
+  "why_hard": "NGO, story-led pages, little structured data",
+  "captured_at": "2026-09-07T20:45:02.695150+00:00",
+  "pages": [
+    {
+      "requested": "https://goonj.org/",
+      "final_url": "https://goonj.org/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 559609,
+      "elapsed_ms": 2234,
+      "is_entry": true
+    },
+    {
+      "requested": "https://goonj.org/donate",
+      "final_url": "https://goonj.org/donate/",
+      "path": "/donate/",
+      "file": "donate/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 123213,
+      "elapsed_ms": 2390,
+      "is_entry": false
+    },
+    {
+      "requested": "https://goonj.org/climate-emergencies/",
+      "final_url": "https://goonj.org/climate-emergencies/",
+      "path": "/climate-emergencies/",
+      "file": "climate-emergencies/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 585210,
+      "elapsed_ms": 1703,
+      "is_entry": false
+    },
+    {
+      "requested": "https://goonj.org/our-initiatives/",
+      "final_url": "https://goonj.org/our-initiatives/",
+      "path": "/our-initiatives/",
+      "file": "our-initiatives/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 531842,
+      "elapsed_ms": 985,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1799874
+}

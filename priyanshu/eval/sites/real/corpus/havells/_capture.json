@@ -1,0 +1,58 @@
+{
+  "slug": "havells",
+  "url": "https://www.havells.com/",
+  "category": "b2b_manufacturing",
+  "why_hard": "Catalogue site, JS product data",
+  "captured_at": "2026-09-07T20:46:18.961793+00:00",
+  "pages": [
+    {
+      "requested": "https://www.havells.com/",
+      "final_url": "https://havells.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 1070652,
+      "elapsed_ms": 843,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.havells.com/catalogsearch/advanced/",
+      "final_url": "https://havells.com/catalogsearch/advanced/",
+      "path": "/catalogsearch/advanced/",
+      "file": "catalogsearch/advanced/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 362727,
+      "elapsed_ms": 281,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.havells.com/fans.html",
+      "final_url": "https://havells.com/fans.html",
+      "path": "/fans.html",
+      "file": "fans.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 1228626,
+      "elapsed_ms": 312,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.havells.com/fans/ceiling-fans.html",
+      "final_url": "https://havells.com/fans/ceiling-fans.html",
+      "path": "/fans/ceiling-fans.html",
+      "file": "fans/ceiling-fans.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 1284534,
+      "elapsed_ms": 265,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 3946539
+}

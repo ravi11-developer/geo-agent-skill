@@ -1,0 +1,58 @@
+{
+  "slug": "cred",
+  "url": "https://cred.club/",
+  "category": "fintech_saas_in",
+  "why_hard": "SPA, almost no server-rendered copy",
+  "captured_at": "2026-09-07T20:45:49.334497+00:00",
+  "pages": [
+    {
+      "requested": "https://cred.club/",
+      "final_url": "https://cred.club/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 167111,
+      "elapsed_ms": 452,
+      "is_entry": true
+    },
+    {
+      "requested": "https://cred.club/card",
+      "final_url": "https://cred.club/card",
+      "path": "/card/",
+      "file": "card/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 30703,
+      "elapsed_ms": 78,
+      "is_entry": false
+    },
+    {
+      "requested": "https://cred.club/money",
+      "final_url": "https://cred.club/money",
+      "path": "/money/",
+      "file": "money/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 32239,
+      "elapsed_ms": 77,
+      "is_entry": false
+    },
+    {
+      "requested": "https://cred.club/garage",
+      "final_url": "https://cred.club/garage",
+      "path": "/garage/",
+      "file": "garage/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 29514,
+      "elapsed_ms": 77,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 259567
+}

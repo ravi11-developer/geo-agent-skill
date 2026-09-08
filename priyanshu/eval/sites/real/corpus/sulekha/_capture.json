@@ -1,0 +1,58 @@
+{
+  "slug": "sulekha",
+  "url": "https://www.sulekha.com/",
+  "category": "local_marketplace",
+  "why_hard": "Directory, thin per-page facts",
+  "captured_at": "2026-09-07T20:45:38.928376+00:00",
+  "pages": [
+    {
+      "requested": "https://www.sulekha.com/",
+      "final_url": "https://www.sulekha.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 500437,
+      "elapsed_ms": 1500,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.sulekha.com/business/",
+      "final_url": "https://www.sulekha.com/business/",
+      "path": "/business/",
+      "file": "business/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 50718,
+      "elapsed_ms": 250,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.sulekha.com/user/signin",
+      "final_url": "https://www.sulekha.com/user/signin",
+      "path": "/user/signin/",
+      "file": "user/signin/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 163964,
+      "elapsed_ms": 765,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.sulekha.com/hubs/home",
+      "final_url": "https://www.sulekha.com/hubs/home",
+      "path": "/hubs/home/",
+      "file": "hubs/home/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 408294,
+      "elapsed_ms": 702,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1123413
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "haldiram",
+  "url": "https://www.haldirams.com/",
+  "category": "food_hospitality",
+  "why_hard": "FMCG, catalogue images",
+  "captured_at": "2026-09-07T20:45:24.947206+00:00",
+  "pages": [
+    {
+      "requested": "https://www.haldirams.com/",
+      "final_url": "https://www.haldirams.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 450454,
+      "elapsed_ms": 1093,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.haldirams.com/contact-us",
+      "final_url": "https://www.haldirams.com/contact-us",
+      "path": "/contact-us/",
+      "file": "contact-us/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 96212,
+      "elapsed_ms": 390,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.haldirams.com/api/auth/shopify",
+      "final_url": "https://www.haldirams.com/api/auth/shopify",
+      "path": "/api/auth/shopify/",
+      "file": "api/auth/shopify/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 885,
+      "elapsed_ms": 187,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.haldirams.com/collection/wedding-hampers",
+      "final_url": "https://www.haldirams.com/collection/wedding-hampers",
+      "path": "/collection/wedding-hampers/",
+      "file": "collection/wedding-hampers/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 142898,
+      "elapsed_ms": 406,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 690449
+}

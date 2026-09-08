@@ -1,0 +1,58 @@
+{
+  "slug": "mygov-in",
+  "url": "https://www.mygov.in/",
+  "category": "gov_civic",
+  "why_hard": "Government portal, heavy templating, thin schema",
+  "captured_at": "2026-09-07T20:44:46.480848+00:00",
+  "pages": [
+    {
+      "requested": "https://www.mygov.in/",
+      "final_url": "https://www.mygov.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 218763,
+      "elapsed_ms": 436,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.mygov.in/screenreader",
+      "final_url": "https://www.mygov.in/screenreader",
+      "path": "/screenreader/",
+      "file": "screenreader/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 61863,
+      "elapsed_ms": 47,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.mygov.in/groups",
+      "final_url": "https://www.mygov.in/groups",
+      "path": "/groups/",
+      "file": "groups/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 121056,
+      "elapsed_ms": 202,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.mygov.in/home/do",
+      "final_url": "https://www.mygov.in/home/do",
+      "path": "/home/do/",
+      "file": "home/do/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 147192,
+      "elapsed_ms": 266,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 548874
+}

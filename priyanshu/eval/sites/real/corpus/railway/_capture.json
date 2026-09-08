@@ -1,0 +1,58 @@
+{
+  "slug": "railway",
+  "url": "https://railway.com/",
+  "category": "spa_product_global",
+  "why_hard": "SPA product site",
+  "captured_at": "2026-09-07T20:45:55.545369+00:00",
+  "pages": [
+    {
+      "requested": "https://railway.com/",
+      "final_url": "https://railway.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 348101,
+      "elapsed_ms": 672,
+      "is_entry": true
+    },
+    {
+      "requested": "https://railway.com/pricing",
+      "final_url": "https://railway.com/pricing",
+      "path": "/pricing/",
+      "file": "pricing/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 432043,
+      "elapsed_ms": 141,
+      "is_entry": false
+    },
+    {
+      "requested": "https://railway.com/agents",
+      "final_url": "https://railway.com/agents",
+      "path": "/agents/",
+      "file": "agents/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 345394,
+      "elapsed_ms": 422,
+      "is_entry": false
+    },
+    {
+      "requested": "https://railway.com/new",
+      "final_url": "https://railway.com/new",
+      "path": "/new/",
+      "file": "new/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 157463,
+      "elapsed_ms": 155,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1283001
+}

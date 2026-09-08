@@ -1,0 +1,58 @@
+{
+  "slug": "cal-com",
+  "url": "https://cal.com/",
+  "category": "spa_product_global",
+  "why_hard": "Open-source SaaS, JS pricing",
+  "captured_at": "2026-09-07T20:45:52.305426+00:00",
+  "pages": [
+    {
+      "requested": "https://cal.com/",
+      "final_url": "https://cal.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 2156630,
+      "elapsed_ms": 812,
+      "is_entry": true
+    },
+    {
+      "requested": "https://cal.com/enterprise",
+      "final_url": "https://cal.com/enterprise",
+      "path": "/enterprise/",
+      "file": "enterprise/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 1659769,
+      "elapsed_ms": 218,
+      "is_entry": false
+    },
+    {
+      "requested": "https://cal.com/ai",
+      "final_url": "https://cal.com/ai",
+      "path": "/ai/",
+      "file": "ai/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 1081304,
+      "elapsed_ms": 188,
+      "is_entry": false
+    },
+    {
+      "requested": "https://cal.com/pricing",
+      "final_url": "https://cal.com/pricing",
+      "path": "/pricing/",
+      "file": "pricing/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 1587270,
+      "elapsed_ms": 265,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 6484973
+}

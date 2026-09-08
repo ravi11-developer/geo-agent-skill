@@ -1,0 +1,58 @@
+{
+  "slug": "thermax",
+  "url": "https://www.thermaxglobal.com/",
+  "category": "b2b_manufacturing",
+  "why_hard": "B2B manufacturer, spec sheets as PDFs",
+  "captured_at": "2026-09-07T20:46:16.367749+00:00",
+  "pages": [
+    {
+      "requested": "https://www.thermaxglobal.com/",
+      "final_url": "https://www.thermaxglobal.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 370628,
+      "elapsed_ms": 2280,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.thermaxglobal.com/people",
+      "final_url": "https://www.thermaxglobal.com/people",
+      "path": "/people/",
+      "file": "people/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 356549,
+      "elapsed_ms": 2000,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.thermaxglobal.com/in-the-news",
+      "final_url": "https://www.thermaxglobal.com/in-the-news",
+      "path": "/in-the-news/",
+      "file": "in-the-news/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 345449,
+      "elapsed_ms": 1969,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.thermaxglobal.com/contact-us",
+      "final_url": "https://www.thermaxglobal.com/contact-us",
+      "path": "/contact-us/",
+      "file": "contact-us/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 443195,
+      "elapsed_ms": 1827,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1515821
+}

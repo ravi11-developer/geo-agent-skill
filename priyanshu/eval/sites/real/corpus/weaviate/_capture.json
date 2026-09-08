@@ -1,0 +1,58 @@
+{
+  "slug": "weaviate",
+  "url": "https://weaviate.io/",
+  "category": "spa_product_global",
+  "why_hard": "Infra SaaS",
+  "captured_at": "2026-09-07T20:46:04.769363+00:00",
+  "pages": [
+    {
+      "requested": "https://weaviate.io/",
+      "final_url": "https://weaviate.io/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 178364,
+      "elapsed_ms": 844,
+      "is_entry": true
+    },
+    {
+      "requested": "https://weaviate.io/blog/engram-generally-available",
+      "final_url": "https://weaviate.io/blog/engram-generally-available",
+      "path": "/blog/engram-generally-available/",
+      "file": "blog/engram-generally-available/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 46688,
+      "elapsed_ms": 890,
+      "is_entry": false
+    },
+    {
+      "requested": "https://weaviate.io/product",
+      "final_url": "https://weaviate.io/product",
+      "path": "/product/",
+      "file": "product/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 36748,
+      "elapsed_ms": 734,
+      "is_entry": false
+    },
+    {
+      "requested": "https://weaviate.io/rag",
+      "final_url": "https://weaviate.io/rag",
+      "path": "/rag/",
+      "file": "rag/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 33636,
+      "elapsed_ms": 437,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 295436
+}

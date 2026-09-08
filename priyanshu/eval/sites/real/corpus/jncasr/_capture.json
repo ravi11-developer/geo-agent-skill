@@ -1,0 +1,58 @@
+{
+  "slug": "jncasr",
+  "url": "https://www.jncasr.ac.in/",
+  "category": "edu_research",
+  "why_hard": "Research institute, stale sections",
+  "captured_at": "2026-09-07T20:45:01.160356+00:00",
+  "pages": [
+    {
+      "requested": "https://www.jncasr.ac.in/",
+      "final_url": "https://www.jncasr.ac.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 143100,
+      "elapsed_ms": 530,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.jncasr.ac.in/styleswitcher/switch/custom_theme/custom/default",
+      "final_url": "https://www.jncasr.ac.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 143100,
+      "elapsed_ms": 203,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.jncasr.ac.in/styleswitcher/switch/custom_theme/custom/black",
+      "final_url": "https://www.jncasr.ac.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 143100,
+      "elapsed_ms": 171,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.jncasr.ac.in/styleswitcher/switch/custom_theme/custom/gray",
+      "final_url": "https://www.jncasr.ac.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 143100,
+      "elapsed_ms": 203,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 572400
+}

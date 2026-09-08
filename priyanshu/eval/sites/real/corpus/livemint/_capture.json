@@ -1,0 +1,58 @@
+{
+  "slug": "livemint",
+  "url": "https://www.livemint.com/",
+  "category": "media_regional",
+  "why_hard": "News, JS-heavy",
+  "captured_at": "2026-09-07T20:46:29.069708+00:00",
+  "pages": [
+    {
+      "requested": "https://www.livemint.com/",
+      "final_url": "https://www.livemint.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 368419,
+      "elapsed_ms": 516,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.livemint.com/market/market-stats",
+      "final_url": "https://www.livemint.com/market/market-stats",
+      "path": "/market/market-stats/",
+      "file": "market/market-stats/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 171013,
+      "elapsed_ms": 93,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.livemint.com/market",
+      "final_url": "https://www.livemint.com/market",
+      "path": "/market/",
+      "file": "market/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1440669,
+      "elapsed_ms": 234,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.livemint.com/market/stock-market-news",
+      "final_url": "https://www.livemint.com/market/stock-market-news",
+      "path": "/market/stock-market-news/",
+      "file": "market/stock-market-news/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 259668,
+      "elapsed_ms": 78,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 2239769
+}

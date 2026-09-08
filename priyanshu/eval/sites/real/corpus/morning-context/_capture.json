@@ -1,0 +1,58 @@
+{
+  "slug": "morning-context",
+  "url": "https://themorningcontext.com/",
+  "category": "media_regional",
+  "why_hard": "Paywalled analysis",
+  "captured_at": "2026-09-07T20:46:29.929648+00:00",
+  "pages": [
+    {
+      "requested": "https://themorningcontext.com/",
+      "final_url": "https://themorningcontext.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1206872,
+      "elapsed_ms": 172,
+      "is_entry": true
+    },
+    {
+      "requested": "https://themorningcontext.com/category/internet",
+      "final_url": "https://themorningcontext.com/category/internet",
+      "path": "/category/internet/",
+      "file": "category/internet/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 285333,
+      "elapsed_ms": 172,
+      "is_entry": false
+    },
+    {
+      "requested": "https://themorningcontext.com/internet/pixxel-wants-to-be-more-than-a-hyperspectral-imaging-company",
+      "final_url": "https://themorningcontext.com/internet/pixxel-wants-to-be-more-than-a-hyperspectral-imaging-company",
+      "path": "/internet/pixxel-wants-to-be-more-than-a-hyperspectral-imaging-company/",
+      "file": "internet/pixxel-wants-to-be-more-than-a-hyperspectral-imaging-company/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 379677,
+      "elapsed_ms": 719,
+      "is_entry": false
+    },
+    {
+      "requested": "https://themorningcontext.com/writers/muskaan-gupta",
+      "final_url": "https://themorningcontext.com/writers/muskaan-gupta",
+      "path": "/writers/muskaan-gupta/",
+      "file": "writers/muskaan-gupta/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 213054,
+      "elapsed_ms": 405,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 404,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 2084936
+}

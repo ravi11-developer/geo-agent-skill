@@ -1,0 +1,58 @@
+{
+  "slug": "bikanervala",
+  "url": "https://www.bikanervala.com/",
+  "category": "food_hospitality",
+  "why_hard": "Chain, menu as images",
+  "captured_at": "2026-09-07T20:45:25.732366+00:00",
+  "pages": [
+    {
+      "requested": "https://www.bikanervala.com/",
+      "final_url": "https://bikanervala.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 297625,
+      "elapsed_ms": 891,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.bikanervala.com/cart",
+      "final_url": "https://bikanervala.com/cart",
+      "path": "/cart/",
+      "file": "cart/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 284961,
+      "elapsed_ms": 547,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.bikanervala.com/customer_authentication/redirect",
+      "final_url": "https://account.bikanervala.com/authentication/login?_s=429b9f2c-22d9-4815-9f84-f8f39e344f43&_y=4da0b927-25a3-457c-aa5e-4c01cbed6bea&analytics_trace_id=57d63ecf-687c-43ed-b902-d8f531c094b8&client_id=ccaa857d-a2eb-4c04-832a-30e05e5a70a4&locale=en-IN&redirect_uri=%2Fauthentication%2Foauth%2Fauthorize%3F_cs%3D3.AMPS_INTS___321rV2MXRoK9eG65Jb%252AXOw%26_s%3D429b9f2c-22d9-4815-9f84-f8f39e344f43%26_y%3D4da0b927-25a3-457c-aa5e-4c01cbed6bea%26analytics_trace_id%3D57d63ecf-687c-43ed-b902-d8f531c094b8%26buyer_flags%3DeyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI4Mjk3MTgtMi5teXNob3BpZnkuY29tIiwiZmxhZ3MiOltdLCJleHAiOjE3ODk0MTg3MzIsIm5iZiI6MTc4ODgxMzkzMn0.cbFo8rDXeCViplCZloQzsmFIZF6c2br4SsVEJHLziNw%26client_id%3Dccaa857d-a2eb-4c04-832a-30e05e5a70a4%26locale%3Den-IN%26nonce%3D1ec9e7ba-5aeb-4a3e-8487-a7c14f5fa109%26redirect_uri%3Dhttps%253A%252F%252Faccount.bikanervala.com%252Fcallback%26response_type%3Dcode%26scope%3Dopenid%2Bemail%2Bcustomer-account-api%253Afull%26state%3DhWNGZMAD6wZ9J3F9obaL1ZUg",
+      "path": "/authentication/login/",
+      "file": "authentication/login/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 10244,
+      "elapsed_ms": 3093,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.bikanervala.com/account/register",
+      "final_url": "https://bikanervala.com/account/register",
+      "path": "/account/register/",
+      "file": "account/register/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 253470,
+      "elapsed_ms": 1906,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 846300
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "uidai",
+  "url": "https://uidai.gov.in/",
+  "category": "gov_civic",
+  "why_hard": "Service portal, JS widgets, PDF-heavy",
+  "captured_at": "2026-09-07T20:44:46.480848+00:00",
+  "pages": [
+    {
+      "requested": "https://uidai.gov.in/",
+      "final_url": "https://uidai.gov.in/hi",
+      "path": "/hi/",
+      "file": "hi/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 550868,
+      "elapsed_ms": 625,
+      "is_entry": true
+    },
+    {
+      "requested": "https://uidai.gov.in/hi",
+      "final_url": "https://uidai.gov.in/hi",
+      "path": "/hi/",
+      "file": "hi/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 550868,
+      "elapsed_ms": 233,
+      "is_entry": false
+    },
+    {
+      "requested": "https://uidai.gov.in/hi/about-uidai",
+      "final_url": "https://uidai.gov.in/hi/about-uidai",
+      "path": "/hi/about-uidai/",
+      "file": "hi/about-uidai/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 320230,
+      "elapsed_ms": 235,
+      "is_entry": false
+    },
+    {
+      "requested": "https://uidai.gov.in/hi/vision-and-mission",
+      "final_url": "https://uidai.gov.in/hi/vision-and-mission",
+      "path": "/hi/vision-and-mission/",
+      "file": "hi/vision-and-mission/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 294372,
+      "elapsed_ms": 202,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1716338
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "magicbricks",
+  "url": "https://www.magicbricks.com/",
+  "category": "local_marketplace",
+  "why_hard": "Real estate, JS listings",
+  "captured_at": "2026-09-07T20:45:41.315799+00:00",
+  "pages": [
+    {
+      "requested": "https://www.magicbricks.com/",
+      "final_url": "https://www.magicbricks.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "bytes": 753931,
+      "elapsed_ms": 1188,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.magicbricks.com/property-for-sale-rent/residential-real-estate",
+      "final_url": "https://www.magicbricks.com/property-for-sale-rent/residential-real-estate",
+      "path": "/property-for-sale-rent/residential-real-estate/",
+      "file": "property-for-sale-rent/residential-real-estate/index.html",
+      "status": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "bytes": 753955,
+      "elapsed_ms": 375,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.magicbricks.com/property-for-sale-rent-in-Visakhapatnam/residential-real-estate-Visakhapatnam",
+      "final_url": "https://www.magicbricks.com/property-for-sale-rent-in-Visakhapatnam/residential-real-estate-Visakhapatnam",
+      "path": "/property-for-sale-rent-in-Visakhapatnam/residential-real-estate-Visakhapatnam/",
+      "file": "property-for-sale-rent-in-Visakhapatnam/residential-real-estate-Visakhapatnam/index.html",
+      "status": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "bytes": 464074,
+      "elapsed_ms": 608,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.magicbricks.com/property-for-sale-rent-in-Vijayawada/residential-real-estate-Vijayawada",
+      "final_url": "https://www.magicbricks.com/property-for-sale-rent-in-Vijayawada/residential-real-estate-Vijayawada",
+      "path": "/property-for-sale-rent-in-Vijayawada/residential-real-estate-Vijayawada/",
+      "file": "property-for-sale-rent-in-Vijayawada/residential-real-estate-Vijayawada/index.html",
+      "status": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "bytes": 451717,
+      "elapsed_ms": 375,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 2423677
+}

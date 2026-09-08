@@ -1,0 +1,58 @@
+{
+  "slug": "iiit-hyderabad",
+  "url": "https://www.iiit.ac.in/",
+  "category": "edu_research",
+  "why_hard": "University site, no Organization schema typically",
+  "captured_at": "2026-09-07T20:44:52.171287+00:00",
+  "pages": [
+    {
+      "requested": "https://www.iiit.ac.in/",
+      "final_url": "https://www.iiit.ac.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 899134,
+      "elapsed_ms": 1218,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.iiit.ac.in/contact-us",
+      "final_url": "https://www.iiit.ac.in/contact-us/",
+      "path": "/contact-us/",
+      "file": "contact-us/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 238508,
+      "elapsed_ms": 656,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.iiit.ac.in/at-a-glance/",
+      "final_url": "https://www.iiit.ac.in/at-a-glance/",
+      "path": "/at-a-glance/",
+      "file": "at-a-glance/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 219535,
+      "elapsed_ms": 468,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.iiit.ac.in/vision-and-mission/",
+      "final_url": "https://www.iiit.ac.in/vision-and-mission/",
+      "path": "/vision-and-mission/",
+      "file": "vision-and-mission/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 162589,
+      "elapsed_ms": 438,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1519766
+}

@@ -1,0 +1,4111 @@
+{
+  "run_at": "2026-09-07T20:44:46.200940+00:00",
+  "corpus": {
+    "dir": "C:\\adobe\\eval\\sites\\real\\corpus",
+    "sites": 15,
+    "captured_at": "2026-09-07T20:42:54.689413+00:00",
+    "selection_method": "Hand-curated across verticals where AI answer engines rarely cite the primary source: government and civic portals, universities and research institutes, NGOs, D2C and hospitality brands (image-heavy), healthcare providers, local-services marketplaces (JS-heavy), long-tail B2B and industry bodies, and modern SPA product sites. Domains are over-provisioned; the capture tool skips whatever is dead, blocked or robots-disallowed and reports coverage."
+  },
+  "agents": [
+    "baseline",
+    "deterministic",
+    "reasoning",
+    "specialist",
+    "hybrid",
+    "marketplace"
+  ],
+  "leaderboard": {
+    "baseline": {
+      "sites": 15,
+      "crashes": 0,
+      "crash_rate": 0.0,
+      "tp": 10,
+      "fp": 24,
+      "fn": 11,
+      "precision": 0.2941,
+      "recall": 0.4762,
+      "f1": 0.3636,
+      "unverified_findings": 8,
+      "unverified_rate": 0.029,
+      "findings_total": 276,
+      "findings_per_site": 18.4,
+      "evidence_score": 0.3786,
+      "action_score": 0.2799,
+      "schema_score": 1.0,
+      "recommendations_per_site": 0.0,
+      "avg_runtime_seconds": 2.19
+    },
+    "deterministic": {
+      "sites": 15,
+      "crashes": 0,
+      "crash_rate": 0.0,
+      "tp": 12,
+      "fp": 8,
+      "fn": 9,
+      "precision": 0.6,
+      "recall": 0.5714,
+      "f1": 0.5854,
+      "unverified_findings": 1,
+      "unverified_rate": 0.0476,
+      "findings_total": 21,
+      "findings_per_site": 1.4,
+      "evidence_score": 0.3095,
+      "action_score": 0.6667,
+      "schema_score": 1.0,
+      "recommendations_per_site": 0.0,
+      "avg_runtime_seconds": 1.16
+    },
+    "reasoning": {
+      "sites": 15,
+      "crashes": 0,
+      "crash_rate": 0.0,
+      "tp": 12,
+      "fp": 4,
+      "fn": 9,
+      "precision": 0.75,
+      "recall": 0.5714,
+      "f1": 0.6486,
+      "unverified_findings": 8,
+      "unverified_rate": 0.3333,
+      "findings_total": 24,
+      "findings_per_site": 1.6,
+      "evidence_score": 0.3125,
+      "action_score": 0.5625,
+      "schema_score": 1.0,
+      "recommendations_per_site": 0.0,
+      "avg_runtime_seconds": 0.99
+    },
+    "specialist": {
+      "sites": 15,
+      "crashes": 0,
+      "crash_rate": 0.0,
+      "tp": 12,
+      "fp": 18,
+      "fn": 9,
+      "precision": 0.4,
+      "recall": 0.5714,
+      "f1": 0.4706,
+      "unverified_findings": 5,
+      "unverified_rate": 0.1429,
+      "findings_total": 35,
+      "findings_per_site": 2.33,
+      "evidence_score": 0.4429,
+      "action_score": 0.3857,
+      "schema_score": 1.0,
+      "recommendations_per_site": 0.0,
+      "avg_runtime_seconds": 1.14
+    },
+    "hybrid": {
+      "sites": 15,
+      "crashes": 0,
+      "crash_rate": 0.0,
+      "tp": 12,
+      "fp": 10,
+      "fn": 9,
+      "precision": 0.5455,
+      "recall": 0.5714,
+      "f1": 0.5581,
+      "unverified_findings": 7,
+      "unverified_rate": 0.2414,
+      "findings_total": 29,
+      "findings_per_site": 1.93,
+      "evidence_score": 0.319,
+      "action_score": 0.6552,
+      "schema_score": 1.0,
+      "recommendations_per_site": 0.0,
+      "avg_runtime_seconds": 1.12
+    },
+    "marketplace": {
+      "sites": 15,
+      "crashes": 0,
+      "crash_rate": 0.0,
+      "tp": 11,
+      "fp": 1,
+      "fn": 10,
+      "precision": 0.9167,
+      "recall": 0.5238,
+      "f1": 0.6667,
+      "unverified_findings": 1,
+      "unverified_rate": 0.0769,
+      "findings_total": 13,
+      "findings_per_site": 0.87,
+      "evidence_score": 1.0,
+      "action_score": 1.0,
+      "schema_score": 1.0,
+      "recommendations_per_site": 6.93,
+      "avg_runtime_seconds": 0.39
+    }
+  },
+  "adjudications": {
+    "cmi": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "yes",
+        "rendering": "no",
+        "content_extraction": "abstain",
+        "non_text_facts": "no",
+        "freshness": "no",
+        "entity_identity": "no",
+        "engagement": "abstain"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 0,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 265,
+        "entry_signals": 1,
+        "entry_fact_images": 0,
+        "fact_images": 0,
+        "stale_mentions": 5,
+        "recent_years": [
+          2026
+        ],
+        "copyright_year": null,
+        "names": [
+          "chennai mathematical institute"
+        ],
+        "variant_pairs": 0,
+        "nav_counts": [
+          0,
+          0,
+          0
+        ],
+        "internal_links": [
+          27,
+          29,
+          29
+        ]
+      }
+    },
+    "delhi-gov": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "yes",
+        "rendering": "no",
+        "content_extraction": "no",
+        "non_text_facts": "no",
+        "freshness": "no",
+        "entity_identity": "abstain",
+        "engagement": "no"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 0,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 296,
+        "entry_signals": 2,
+        "entry_fact_images": 0,
+        "fact_images": 0,
+        "stale_mentions": 2,
+        "recent_years": [
+          2025,
+          2026
+        ],
+        "copyright_year": null,
+        "names": [
+          "screen reader",
+          "sitemap"
+        ],
+        "variant_pairs": 0,
+        "nav_counts": [
+          5,
+          5,
+          5
+        ],
+        "internal_links": [
+          70,
+          52,
+          98
+        ]
+      }
+    },
+    "ghmc": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "yes",
+        "rendering": "no",
+        "content_extraction": "abstain",
+        "non_text_facts": "yes",
+        "freshness": "no",
+        "entity_identity": "no",
+        "engagement": "no"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 0,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 409,
+        "entry_signals": 1,
+        "entry_fact_images": 1,
+        "fact_images": 2,
+        "stale_mentions": 15,
+        "recent_years": [
+          2025,
+          2026,
+          2047
+        ],
+        "copyright_year": null,
+        "names": [
+          "welcome to ghmc"
+        ],
+        "variant_pairs": 0,
+        "nav_counts": [
+          1,
+          1,
+          1
+        ],
+        "internal_links": [
+          87,
+          87,
+          71
+        ]
+      }
+    },
+    "iiit-hyderabad": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "no",
+        "rendering": "no",
+        "content_extraction": "abstain",
+        "non_text_facts": "yes",
+        "freshness": "yes",
+        "entity_identity": "abstain",
+        "engagement": "no"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 3,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 496,
+        "entry_signals": 1,
+        "entry_fact_images": 0,
+        "fact_images": 2,
+        "stale_mentions": 29,
+        "recent_years": [
+          2026
+        ],
+        "copyright_year": 2024,
+        "names": [
+          "at a glance",
+          "iiit hyderabad",
+          "iiit hyderabad iiit hyderabad",
+          "international institute of information technology hyderabad"
+        ],
+        "variant_pairs": 0,
+        "nav_counts": [
+          4,
+          4,
+          4
+        ],
+        "internal_links": [
+          165,
+          135,
+          135
+        ]
+      }
+    },
+    "iisc": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "yes",
+        "rendering": "no",
+        "content_extraction": "abstain",
+        "non_text_facts": "no",
+        "freshness": "no",
+        "entity_identity": "abstain",
+        "engagement": "no"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 0,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 395,
+        "entry_signals": 1,
+        "entry_fact_images": 0,
+        "fact_images": 0,
+        "stale_mentions": 4,
+        "recent_years": [
+          2025,
+          2026
+        ],
+        "copyright_year": null,
+        "names": [
+          "indian institute of science",
+          "internal committee against sexual harassment icash"
+        ],
+        "variant_pairs": 0,
+        "nav_counts": [
+          1,
+          1,
+          1
+        ],
+        "internal_links": [
+          274,
+          196,
+          206
+        ]
+      }
+    },
+    "imsc": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "no",
+        "rendering": "no",
+        "content_extraction": "abstain",
+        "non_text_facts": "no",
+        "freshness": "no",
+        "entity_identity": "abstain",
+        "engagement": "no"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 0,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 571,
+        "entry_signals": 1,
+        "entry_fact_images": 0,
+        "fact_images": 0,
+        "stale_mentions": 0,
+        "recent_years": [
+          2026
+        ],
+        "copyright_year": null,
+        "names": [
+          "about imsc",
+          "imsc logo"
+        ],
+        "variant_pairs": 1,
+        "nav_counts": [
+          2,
+          2,
+          2
+        ],
+        "internal_links": [
+          69,
+          66,
+          53
+        ]
+      }
+    },
+    "incometax-in": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "no",
+        "rendering": "no",
+        "content_extraction": "no",
+        "non_text_facts": "yes",
+        "freshness": "no",
+        "entity_identity": "abstain",
+        "engagement": "no"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 1,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 1139,
+        "entry_signals": 2,
+        "entry_fact_images": 0,
+        "fact_images": 6,
+        "stale_mentions": 9,
+        "recent_years": [
+          2025,
+          2026
+        ],
+        "copyright_year": null,
+        "names": [
+          "income tax department",
+          "what s new"
+        ],
+        "variant_pairs": 0,
+        "nav_counts": [
+          8,
+          8,
+          4
+        ],
+        "internal_links": [
+          148,
+          148,
+          136
+        ]
+      }
+    },
+    "indianrailways": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "yes",
+        "rendering": "no",
+        "content_extraction": "no",
+        "non_text_facts": "yes",
+        "freshness": "no",
+        "entity_identity": "abstain",
+        "engagement": "abstain"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 0,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 382,
+        "entry_signals": 2,
+        "entry_fact_images": 1,
+        "fact_images": 3,
+        "stale_mentions": 14,
+        "recent_years": [
+          2026
+        ],
+        "copyright_year": null,
+        "names": [
+          "indian railway",
+          "screen reader information"
+        ],
+        "variant_pairs": 0,
+        "nav_counts": [
+          0,
+          0,
+          0
+        ],
+        "internal_links": [
+          35,
+          35,
+          16
+        ]
+      }
+    },
+    "jncasr": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "no",
+        "rendering": "no",
+        "content_extraction": "abstain",
+        "non_text_facts": "yes",
+        "freshness": "no",
+        "entity_identity": "no",
+        "engagement": "no"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 0,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 341,
+        "entry_signals": 0,
+        "entry_fact_images": 6,
+        "fact_images": 18,
+        "stale_mentions": 0,
+        "recent_years": [
+          2025,
+          2026
+        ],
+        "copyright_year": 2025,
+        "names": [],
+        "variant_pairs": 0,
+        "nav_counts": [
+          6,
+          6,
+          6
+        ],
+        "internal_links": [
+          117,
+          117,
+          117
+        ]
+      }
+    },
+    "mcgm": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "yes",
+        "rendering": "abstain",
+        "content_extraction": "abstain",
+        "non_text_facts": "no",
+        "freshness": "abstain",
+        "entity_identity": "no",
+        "engagement": "yes"
+      },
+      "measurements": {
+        "pages": 1,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 0,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 23,
+        "entry_signals": 0,
+        "entry_fact_images": 0,
+        "fact_images": 0,
+        "stale_mentions": 0,
+        "recent_years": [],
+        "copyright_year": null,
+        "names": [
+          "mybmc"
+        ],
+        "variant_pairs": 0,
+        "nav_counts": [
+          0
+        ],
+        "internal_links": [
+          0
+        ]
+      }
+    },
+    "mygov-in": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "yes",
+        "rendering": "no",
+        "content_extraction": "no",
+        "non_text_facts": "no",
+        "freshness": "no",
+        "entity_identity": "yes",
+        "engagement": "no"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 0,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 2008,
+        "entry_signals": 2,
+        "entry_fact_images": 0,
+        "fact_images": 0,
+        "stale_mentions": 8,
+        "recent_years": [
+          2025,
+          2026,
+          2027,
+          2030
+        ],
+        "copyright_year": null,
+        "names": [
+          "group",
+          "mygov",
+          "mygov in",
+          "screen reader"
+        ],
+        "variant_pairs": 1,
+        "nav_counts": [
+          0,
+          1,
+          2
+        ],
+        "internal_links": [
+          147,
+          78,
+          146
+        ]
+      }
+    },
+    "ncbs": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "yes",
+        "rendering": "no",
+        "content_extraction": "abstain",
+        "non_text_facts": "yes",
+        "freshness": "no",
+        "entity_identity": "abstain",
+        "engagement": "no"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 0,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 349,
+        "entry_signals": 0,
+        "entry_fact_images": 4,
+        "fact_images": 4,
+        "stale_mentions": 10,
+        "recent_years": [
+          2025,
+          2026
+        ],
+        "copyright_year": null,
+        "names": [
+          "azadi ka amrit mahotsav",
+          "ncbs",
+          "research training"
+        ],
+        "variant_pairs": 0,
+        "nav_counts": [
+          5,
+          5,
+          5
+        ],
+        "internal_links": [
+          132,
+          119,
+          118
+        ]
+      }
+    },
+    "punecorporation": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "yes",
+        "rendering": "abstain",
+        "content_extraction": "abstain",
+        "non_text_facts": "no",
+        "freshness": "abstain",
+        "entity_identity": "no",
+        "engagement": "no"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 0,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 0,
+        "entry_signals": 0,
+        "entry_fact_images": 0,
+        "fact_images": 0,
+        "stale_mentions": 0,
+        "recent_years": [],
+        "copyright_year": 2026,
+        "names": [],
+        "variant_pairs": 0,
+        "nav_counts": [
+          1,
+          1,
+          1
+        ],
+        "internal_links": [
+          23,
+          23,
+          23
+        ]
+      }
+    },
+    "tifr": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "yes",
+        "rendering": "abstain",
+        "content_extraction": "abstain",
+        "non_text_facts": "no",
+        "freshness": "abstain",
+        "entity_identity": "abstain",
+        "engagement": "no"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 0,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 13,
+        "entry_signals": 0,
+        "entry_fact_images": 0,
+        "fact_images": 0,
+        "stale_mentions": 0,
+        "recent_years": [],
+        "copyright_year": null,
+        "names": [
+          "people finder",
+          "tata institute of fundamental research"
+        ],
+        "variant_pairs": 0,
+        "nav_counts": [
+          3,
+          2,
+          3
+        ],
+        "internal_links": [
+          42,
+          3,
+          39
+        ]
+      }
+    },
+    "uidai": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "no",
+        "rendering": "no",
+        "content_extraction": "no",
+        "non_text_facts": "yes",
+        "freshness": "no",
+        "entity_identity": "yes",
+        "engagement": "no"
+      },
+      "measurements": {
+        "pages": 3,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 7,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 541,
+        "entry_signals": 3,
+        "entry_fact_images": 1,
+        "fact_images": 3,
+        "stale_mentions": 80,
+        "recent_years": [
+          2025,
+          2026,
+          2027
+        ],
+        "copyright_year": 2026,
+        "names": [
+          "about uidai",
+          "government of india",
+          "unique identification authority of india"
+        ],
+        "variant_pairs": 1,
+        "nav_counts": [
+          0,
+          0,
+          1
+        ],
+        "internal_links": [
+          21,
+          21,
+          21
+        ]
+      }
+    }
+  },
+  "per_site": {
+    "baseline": [
+      {
+        "site": "cmi",
+        "agent": "baseline",
+        "url": "https://www.cmi.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.531,
+        "flagged": [
+          "content_extraction",
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [
+            "content_extraction"
+          ],
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "findings": 16,
+        "evidence": [
+          2,
+          2,
+          2,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          3,
+          1,
+          1
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "delhi-gov",
+        "agent": "baseline",
+        "url": "https://delhi.gov.in/",
+        "error": null,
+        "runtime_seconds": 2.454,
+        "flagged": [
+          "content_extraction",
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.3333333333333333,
+          "recall": 1.0
+        },
+        "findings": 18,
+        "evidence": [
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          3
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "ghmc",
+        "agent": "baseline",
+        "url": "https://www.ghmc.gov.in/",
+        "error": null,
+        "runtime_seconds": 2.594,
+        "flagged": [
+          "content_extraction",
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [
+            "content_extraction"
+          ],
+          "precision": 0.5,
+          "recall": 0.5
+        },
+        "findings": 21,
+        "evidence": [
+          2,
+          2,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          1,
+          3,
+          2,
+          1
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "iiit-hyderabad",
+        "agent": "baseline",
+        "url": "https://www.iiit.ac.in/",
+        "error": null,
+        "runtime_seconds": 2.844,
+        "flagged": [
+          "content_extraction",
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 2,
+          "tn": 2,
+          "unverified": [
+            "content_extraction"
+          ],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 16,
+        "evidence": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "iisc",
+        "agent": "baseline",
+        "url": "https://iisc.ac.in/",
+        "error": null,
+        "runtime_seconds": 3.828,
+        "flagged": [
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "findings": 18,
+        "evidence": [
+          2,
+          2,
+          1,
+          2,
+          2,
+          2,
+          1,
+          1,
+          2,
+          2,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          3,
+          1
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "imsc",
+        "agent": "baseline",
+        "url": "https://www.imsc.res.in/",
+        "error": null,
+        "runtime_seconds": 1.703,
+        "flagged": [
+          "content_extraction",
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [
+            "content_extraction"
+          ],
+          "precision": 0.0,
+          "recall": null
+        },
+        "findings": 17,
+        "evidence": [
+          2,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "incometax-in",
+        "agent": "baseline",
+        "url": "https://www.incometax.gov.in/iec/foportal/",
+        "error": null,
+        "runtime_seconds": 2.406,
+        "flagged": [
+          "content_extraction",
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 3,
+          "fn": 1,
+          "tn": 3,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 26,
+        "evidence": [
+          2,
+          2,
+          1,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          3,
+          1,
+          2
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "indianrailways",
+        "agent": "baseline",
+        "url": "https://indianrailways.gov.in/",
+        "error": null,
+        "runtime_seconds": 2.282,
+        "flagged": [
+          "content_extraction",
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 1,
+          "tn": 2,
+          "unverified": [],
+          "precision": 0.3333333333333333,
+          "recall": 0.5
+        },
+        "findings": 24,
+        "evidence": [
+          2,
+          2,
+          2,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          3,
+          1,
+          1,
+          1,
+          2
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "jncasr",
+        "agent": "baseline",
+        "url": "https://www.jncasr.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.234,
+        "flagged": [
+          "content_extraction",
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [
+            "content_extraction"
+          ],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 22,
+        "evidence": [
+          2,
+          2,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          2
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "mcgm",
+        "agent": "baseline",
+        "url": "https://portal.mcgm.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.422,
+        "flagged": [
+          "content_extraction",
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1,
+          "tn": 2,
+          "unverified": [
+            "content_extraction"
+          ],
+          "precision": 0.5,
+          "recall": 0.5
+        },
+        "findings": 15,
+        "evidence": [
+          2,
+          2,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "mygov-in",
+        "agent": "baseline",
+        "url": "https://www.mygov.in/",
+        "error": null,
+        "runtime_seconds": 3.797,
+        "flagged": [
+          "content_extraction",
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.3333333333333333,
+          "recall": 0.5
+        },
+        "findings": 22,
+        "evidence": [
+          2,
+          2,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          3,
+          1,
+          1
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "ncbs",
+        "agent": "baseline",
+        "url": "https://www.ncbs.res.in/",
+        "error": null,
+        "runtime_seconds": 2.532,
+        "flagged": [
+          "content_extraction",
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1,
+          "tn": 3,
+          "unverified": [
+            "content_extraction"
+          ],
+          "precision": 0.5,
+          "recall": 0.5
+        },
+        "findings": 17,
+        "evidence": [
+          2,
+          2,
+          1,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          3
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "punecorporation",
+        "agent": "baseline",
+        "url": "https://www.pmc.gov.in/",
+        "error": null,
+        "runtime_seconds": 1.64,
+        "flagged": [
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "tn": 3,
+          "unverified": [],
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "findings": 13,
+        "evidence": [
+          2,
+          2,
+          2,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "tifr",
+        "agent": "baseline",
+        "url": "https://www.tifr.res.in/",
+        "error": null,
+        "runtime_seconds": 2.766,
+        "flagged": [
+          "content_extraction",
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "tn": 2,
+          "unverified": [
+            "content_extraction"
+          ],
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "findings": 20,
+        "evidence": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          2,
+          1,
+          3,
+          1,
+          1,
+          1
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "uidai",
+        "agent": "baseline",
+        "url": "https://uidai.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.765,
+        "flagged": [
+          "content_extraction",
+          "crawlability"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 2,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 11,
+        "evidence": [
+          2,
+          2,
+          1,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "actions": [
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      }
+    ],
+    "deterministic": [
+      {
+        "site": "cmi",
+        "agent": "deterministic",
+        "url": "https://www.cmi.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.047,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 5,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "delhi-gov",
+        "agent": "deterministic",
+        "url": "https://delhi.gov.in/",
+        "error": null,
+        "runtime_seconds": 1.265,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "ghmc",
+        "agent": "deterministic",
+        "url": "https://www.ghmc.gov.in/",
+        "error": null,
+        "runtime_seconds": 1.328,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1,
+          "tn": 5,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 0.5
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "iiit-hyderabad",
+        "agent": "deterministic",
+        "url": "https://www.iiit.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.547,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 2,
+          "tn": 3,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "iisc",
+        "agent": "deterministic",
+        "url": "https://iisc.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.594,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 5,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "imsc",
+        "agent": "deterministic",
+        "url": "https://www.imsc.res.in/",
+        "error": null,
+        "runtime_seconds": 1.219,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "tn": 5,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": null
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "incometax-in",
+        "agent": "deterministic",
+        "url": "https://www.incometax.gov.in/iec/foportal/",
+        "error": null,
+        "runtime_seconds": 1.438,
+        "flagged": [
+          "freshness",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          1
+        ],
+        "actions": [
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "indianrailways",
+        "agent": "deterministic",
+        "url": "https://indianrailways.gov.in/",
+        "error": null,
+        "runtime_seconds": 1.218,
+        "flagged": [
+          "freshness",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1,
+          "tn": 3,
+          "unverified": [],
+          "precision": 0.5,
+          "recall": 0.5
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          1
+        ],
+        "actions": [
+          2,
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "jncasr",
+        "agent": "deterministic",
+        "url": "https://www.jncasr.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.203,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1,
+          "tn": 5,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "mcgm",
+        "agent": "deterministic",
+        "url": "https://portal.mcgm.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.078,
+        "flagged": [
+          "engagement",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          3,
+          1
+        ],
+        "actions": [
+          2,
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "mygov-in",
+        "agent": "deterministic",
+        "url": "https://www.mygov.in/",
+        "error": null,
+        "runtime_seconds": 1.781,
+        "flagged": [
+          "entity_identity",
+          "freshness",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0,
+          "tn": 5,
+          "unverified": [],
+          "precision": 0.6666666666666666,
+          "recall": 1.0
+        },
+        "findings": 3,
+        "evidence": [
+          1,
+          2,
+          1
+        ],
+        "actions": [
+          3,
+          2,
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "ncbs",
+        "agent": "deterministic",
+        "url": "https://www.ncbs.res.in/",
+        "error": null,
+        "runtime_seconds": 1.375,
+        "flagged": [
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 1.0,
+          "recall": 0.5
+        },
+        "findings": 2,
+        "evidence": [
+          1,
+          1
+        ],
+        "actions": [
+          3,
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "punecorporation",
+        "agent": "deterministic",
+        "url": "https://www.pmc.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.75,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "tifr",
+        "agent": "deterministic",
+        "url": "https://www.tifr.res.in/",
+        "error": null,
+        "runtime_seconds": 1.344,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "uidai",
+        "agent": "deterministic",
+        "url": "https://uidai.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.157,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 2,
+          "tn": 5,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      }
+    ],
+    "reasoning": [
+      {
+        "site": "cmi",
+        "agent": "reasoning",
+        "url": "https://www.cmi.ac.in/",
+        "error": null,
+        "runtime_seconds": 0.985,
+        "flagged": [
+          "engagement",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 5,
+          "unverified": [
+            "engagement"
+          ],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          1
+        ],
+        "actions": [
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "delhi-gov",
+        "agent": "reasoning",
+        "url": "https://delhi.gov.in/",
+        "error": null,
+        "runtime_seconds": 1.078,
+        "flagged": [
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          1,
+          1
+        ],
+        "actions": [
+          3,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "ghmc",
+        "agent": "reasoning",
+        "url": "https://www.ghmc.gov.in/",
+        "error": null,
+        "runtime_seconds": 1.203,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1,
+          "tn": 5,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 0.5
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "iiit-hyderabad",
+        "agent": "reasoning",
+        "url": "https://www.iiit.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.203,
+        "flagged": [
+          "entity_identity"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "tn": 4,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": null,
+          "recall": 0.0
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "iisc",
+        "agent": "reasoning",
+        "url": "https://iisc.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.422,
+        "flagged": [
+          "engagement",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          1
+        ],
+        "actions": [
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "imsc",
+        "agent": "reasoning",
+        "url": "https://www.imsc.res.in/",
+        "error": null,
+        "runtime_seconds": 1.078,
+        "flagged": [
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "tn": 5,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 0.0,
+          "recall": null
+        },
+        "findings": 2,
+        "evidence": [
+          1,
+          1
+        ],
+        "actions": [
+          3,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "incometax-in",
+        "agent": "reasoning",
+        "url": "https://www.incometax.gov.in/iec/foportal/",
+        "error": null,
+        "runtime_seconds": 1.234,
+        "flagged": [],
+        "detection": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "tn": 6,
+          "unverified": [],
+          "precision": null,
+          "recall": 0.0
+        },
+        "findings": 0,
+        "evidence": [],
+        "actions": [],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "indianrailways",
+        "agent": "reasoning",
+        "url": "https://indianrailways.gov.in/",
+        "error": null,
+        "runtime_seconds": 1.079,
+        "flagged": [
+          "engagement",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [
+            "engagement"
+          ],
+          "precision": 1.0,
+          "recall": 0.5
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          1
+        ],
+        "actions": [
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "jncasr",
+        "agent": "reasoning",
+        "url": "https://www.jncasr.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.063,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1,
+          "tn": 5,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "mcgm",
+        "agent": "reasoning",
+        "url": "https://portal.mcgm.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.078,
+        "flagged": [
+          "engagement",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          1
+        ],
+        "actions": [
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "mygov-in",
+        "agent": "reasoning",
+        "url": "https://www.mygov.in/",
+        "error": null,
+        "runtime_seconds": 1.328,
+        "flagged": [
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          1,
+          1
+        ],
+        "actions": [
+          3,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "ncbs",
+        "agent": "reasoning",
+        "url": "https://www.ncbs.res.in/",
+        "error": null,
+        "runtime_seconds": 1.125,
+        "flagged": [
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 1.0,
+          "recall": 0.5
+        },
+        "findings": 2,
+        "evidence": [
+          1,
+          1
+        ],
+        "actions": [
+          3,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "punecorporation",
+        "agent": "reasoning",
+        "url": "https://www.pmc.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.735,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "tifr",
+        "agent": "reasoning",
+        "url": "https://www.tifr.res.in/",
+        "error": null,
+        "runtime_seconds": 1.187,
+        "flagged": [
+          "entity_identity",
+          "rendering",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3,
+          "unverified": [
+            "rendering",
+            "entity_identity"
+          ],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 3,
+        "evidence": [
+          1,
+          2,
+          1
+        ],
+        "actions": [
+          3,
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "uidai",
+        "agent": "reasoning",
+        "url": "https://uidai.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.093,
+        "flagged": [
+          "engagement"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 2,
+          "tn": 5,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 1,
+        "evidence": [
+          2
+        ],
+        "actions": [
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      }
+    ],
+    "specialist": [
+      {
+        "site": "cmi",
+        "agent": "specialist",
+        "url": "https://www.cmi.ac.in/",
+        "error": null,
+        "runtime_seconds": 0.985,
+        "flagged": [
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          2
+        ],
+        "actions": [
+          1,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "delhi-gov",
+        "agent": "specialist",
+        "url": "https://delhi.gov.in/",
+        "error": null,
+        "runtime_seconds": 1.172,
+        "flagged": [
+          "crawlability",
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "tn": 5,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "findings": 3,
+        "evidence": [
+          2,
+          1,
+          2
+        ],
+        "actions": [
+          1,
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "ghmc",
+        "agent": "specialist",
+        "url": "https://www.ghmc.gov.in/",
+        "error": null,
+        "runtime_seconds": 1.313,
+        "flagged": [
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.5,
+          "recall": 0.5
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          2
+        ],
+        "actions": [
+          1,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "iiit-hyderabad",
+        "agent": "specialist",
+        "url": "https://www.iiit.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.422,
+        "flagged": [
+          "crawlability",
+          "entity_identity"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 2,
+          "tn": 3,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          1
+        ],
+        "actions": [
+          1,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "iisc",
+        "agent": "specialist",
+        "url": "https://iisc.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.562,
+        "flagged": [
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          2
+        ],
+        "actions": [
+          1,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "imsc",
+        "agent": "specialist",
+        "url": "https://www.imsc.res.in/",
+        "error": null,
+        "runtime_seconds": 1.203,
+        "flagged": [
+          "crawlability",
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 0.0,
+          "recall": null
+        },
+        "findings": 3,
+        "evidence": [
+          2,
+          1,
+          2
+        ],
+        "actions": [
+          1,
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "incometax-in",
+        "agent": "specialist",
+        "url": "https://www.incometax.gov.in/iec/foportal/",
+        "error": null,
+        "runtime_seconds": 1.453,
+        "flagged": [
+          "crawlability",
+          "freshness"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          1
+        ],
+        "actions": [
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "indianrailways",
+        "agent": "specialist",
+        "url": "https://indianrailways.gov.in/",
+        "error": null,
+        "runtime_seconds": 1.14,
+        "flagged": [
+          "crawlability",
+          "freshness",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 1,
+          "tn": 2,
+          "unverified": [],
+          "precision": 0.3333333333333333,
+          "recall": 0.5
+        },
+        "findings": 3,
+        "evidence": [
+          2,
+          1,
+          2
+        ],
+        "actions": [
+          1,
+          1,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "jncasr",
+        "agent": "specialist",
+        "url": "https://www.jncasr.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.187,
+        "flagged": [
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          2
+        ],
+        "actions": [
+          1,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "mcgm",
+        "agent": "specialist",
+        "url": "https://portal.mcgm.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.063,
+        "flagged": [
+          "engagement",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          3,
+          2
+        ],
+        "actions": [
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "mygov-in",
+        "agent": "specialist",
+        "url": "https://www.mygov.in/",
+        "error": null,
+        "runtime_seconds": 1.859,
+        "flagged": [
+          "crawlability",
+          "entity_identity",
+          "freshness",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "findings": 4,
+        "evidence": [
+          2,
+          1,
+          1,
+          2
+        ],
+        "actions": [
+          1,
+          1,
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "ncbs",
+        "agent": "specialist",
+        "url": "https://www.ncbs.res.in/",
+        "error": null,
+        "runtime_seconds": 1.406,
+        "flagged": [
+          "crawlability",
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1,
+          "tn": 3,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 0.5,
+          "recall": 0.5
+        },
+        "findings": 3,
+        "evidence": [
+          2,
+          1,
+          2
+        ],
+        "actions": [
+          1,
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "punecorporation",
+        "agent": "specialist",
+        "url": "https://www.pmc.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.75,
+        "flagged": [
+          "crawlability",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "tn": 3,
+          "unverified": [],
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          2
+        ],
+        "actions": [
+          1,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "tifr",
+        "agent": "specialist",
+        "url": "https://www.tifr.res.in/",
+        "error": null,
+        "runtime_seconds": 1.375,
+        "flagged": [
+          "crawlability",
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "tn": 2,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "findings": 3,
+        "evidence": [
+          2,
+          1,
+          2
+        ],
+        "actions": [
+          1,
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "uidai",
+        "agent": "specialist",
+        "url": "https://uidai.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.204,
+        "flagged": [],
+        "detection": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "tn": 6,
+          "unverified": [],
+          "precision": null,
+          "recall": 0.0
+        },
+        "findings": 0,
+        "evidence": [],
+        "actions": [],
+        "schema": 1.0,
+        "recommendations": 0
+      }
+    ],
+    "hybrid": [
+      {
+        "site": "cmi",
+        "agent": "hybrid",
+        "url": "https://www.cmi.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.0,
+        "flagged": [
+          "engagement",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 5,
+          "unverified": [
+            "engagement"
+          ],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          1
+        ],
+        "actions": [
+          2,
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "delhi-gov",
+        "agent": "hybrid",
+        "url": "https://delhi.gov.in/",
+        "error": null,
+        "runtime_seconds": 1.219,
+        "flagged": [
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          1,
+          1
+        ],
+        "actions": [
+          3,
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "ghmc",
+        "agent": "hybrid",
+        "url": "https://www.ghmc.gov.in/",
+        "error": null,
+        "runtime_seconds": 1.297,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1,
+          "tn": 5,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 0.5
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "iiit-hyderabad",
+        "agent": "hybrid",
+        "url": "https://www.iiit.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.5,
+        "flagged": [
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 2,
+          "tn": 3,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 2,
+        "evidence": [
+          1,
+          1
+        ],
+        "actions": [
+          3,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "iisc",
+        "agent": "hybrid",
+        "url": "https://iisc.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.563,
+        "flagged": [
+          "engagement",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          1
+        ],
+        "actions": [
+          2,
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "imsc",
+        "agent": "hybrid",
+        "url": "https://www.imsc.res.in/",
+        "error": null,
+        "runtime_seconds": 1.172,
+        "flagged": [
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "tn": 5,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 0.0,
+          "recall": null
+        },
+        "findings": 2,
+        "evidence": [
+          1,
+          1
+        ],
+        "actions": [
+          3,
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "incometax-in",
+        "agent": "hybrid",
+        "url": "https://www.incometax.gov.in/iec/foportal/",
+        "error": null,
+        "runtime_seconds": 1.344,
+        "flagged": [
+          "freshness",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          1
+        ],
+        "actions": [
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "indianrailways",
+        "agent": "hybrid",
+        "url": "https://indianrailways.gov.in/",
+        "error": null,
+        "runtime_seconds": 1.172,
+        "flagged": [
+          "engagement",
+          "freshness",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1,
+          "tn": 3,
+          "unverified": [
+            "engagement"
+          ],
+          "precision": 0.5,
+          "recall": 0.5
+        },
+        "findings": 3,
+        "evidence": [
+          2,
+          2,
+          1
+        ],
+        "actions": [
+          2,
+          2,
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "jncasr",
+        "agent": "hybrid",
+        "url": "https://www.jncasr.ac.in/",
+        "error": null,
+        "runtime_seconds": 1.156,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1,
+          "tn": 5,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "mcgm",
+        "agent": "hybrid",
+        "url": "https://portal.mcgm.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.109,
+        "flagged": [
+          "engagement",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          1
+        ],
+        "actions": [
+          2,
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "mygov-in",
+        "agent": "hybrid",
+        "url": "https://www.mygov.in/",
+        "error": null,
+        "runtime_seconds": 1.704,
+        "flagged": [
+          "entity_identity",
+          "freshness",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0,
+          "tn": 5,
+          "unverified": [],
+          "precision": 0.6666666666666666,
+          "recall": 1.0
+        },
+        "findings": 3,
+        "evidence": [
+          2,
+          1,
+          1
+        ],
+        "actions": [
+          2,
+          3,
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "ncbs",
+        "agent": "hybrid",
+        "url": "https://www.ncbs.res.in/",
+        "error": null,
+        "runtime_seconds": 1.297,
+        "flagged": [
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 1.0,
+          "recall": 0.5
+        },
+        "findings": 2,
+        "evidence": [
+          1,
+          1
+        ],
+        "actions": [
+          3,
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "punecorporation",
+        "agent": "hybrid",
+        "url": "https://www.pmc.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.781,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 1,
+        "evidence": [
+          1
+        ],
+        "actions": [
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "tifr",
+        "agent": "hybrid",
+        "url": "https://www.tifr.res.in/",
+        "error": null,
+        "runtime_seconds": 1.344,
+        "flagged": [
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          1,
+          1
+        ],
+        "actions": [
+          3,
+          3
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      },
+      {
+        "site": "uidai",
+        "agent": "hybrid",
+        "url": "https://uidai.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.187,
+        "flagged": [
+          "engagement",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 2,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 2,
+        "evidence": [
+          2,
+          1
+        ],
+        "actions": [
+          2,
+          2
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      }
+    ],
+    "marketplace": [
+      {
+        "site": "cmi",
+        "agent": "marketplace",
+        "url": "https://www.cmi.ac.in/",
+        "error": null,
+        "runtime_seconds": 0.187,
+        "flagged": [],
+        "detection": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "tn": 5,
+          "unverified": [],
+          "precision": null,
+          "recall": 0.0
+        },
+        "findings": 0,
+        "evidence": [],
+        "actions": [],
+        "schema": 1.0,
+        "recommendations": 6
+      },
+      {
+        "site": "delhi-gov",
+        "agent": "marketplace",
+        "url": "https://delhi.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.359,
+        "flagged": [],
+        "detection": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "tn": 6,
+          "unverified": [],
+          "precision": null,
+          "recall": 0.0
+        },
+        "findings": 0,
+        "evidence": [],
+        "actions": [],
+        "schema": 1.0,
+        "recommendations": 4
+      },
+      {
+        "site": "ghmc",
+        "agent": "marketplace",
+        "url": "https://www.ghmc.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.422,
+        "flagged": [
+          "entity_identity",
+          "non_text_facts"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 1,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [],
+          "precision": 0.5,
+          "recall": 0.5
+        },
+        "findings": 2,
+        "evidence": [
+          4,
+          4
+        ],
+        "actions": [
+          4,
+          4
+        ],
+        "schema": 1.0,
+        "recommendations": 8
+      },
+      {
+        "site": "iiit-hyderabad",
+        "agent": "marketplace",
+        "url": "https://www.iiit.ac.in/",
+        "error": null,
+        "runtime_seconds": 0.484,
+        "flagged": [
+          "freshness"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 0.5
+        },
+        "findings": 1,
+        "evidence": [
+          4
+        ],
+        "actions": [
+          4
+        ],
+        "schema": 1.0,
+        "recommendations": 8
+      },
+      {
+        "site": "iisc",
+        "agent": "marketplace",
+        "url": "https://iisc.ac.in/",
+        "error": null,
+        "runtime_seconds": 0.547,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 5,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 1,
+        "evidence": [
+          4
+        ],
+        "actions": [
+          4
+        ],
+        "schema": 1.0,
+        "recommendations": 7
+      },
+      {
+        "site": "imsc",
+        "agent": "marketplace",
+        "url": "https://www.imsc.res.in/",
+        "error": null,
+        "runtime_seconds": 0.328,
+        "flagged": [
+          "entity_identity"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6,
+          "unverified": [
+            "entity_identity"
+          ],
+          "precision": null,
+          "recall": null
+        },
+        "findings": 1,
+        "evidence": [
+          4
+        ],
+        "actions": [
+          4
+        ],
+        "schema": 1.0,
+        "recommendations": 8
+      },
+      {
+        "site": "incometax-in",
+        "agent": "marketplace",
+        "url": "https://www.incometax.gov.in/iec/foportal/",
+        "error": null,
+        "runtime_seconds": 0.406,
+        "flagged": [
+          "non_text_facts"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 1,
+        "evidence": [
+          4
+        ],
+        "actions": [
+          4
+        ],
+        "schema": 1.0,
+        "recommendations": 8
+      },
+      {
+        "site": "indianrailways",
+        "agent": "marketplace",
+        "url": "https://indianrailways.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.234,
+        "flagged": [],
+        "detection": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "tn": 4,
+          "unverified": [],
+          "precision": null,
+          "recall": 0.0
+        },
+        "findings": 0,
+        "evidence": [],
+        "actions": [],
+        "schema": 1.0,
+        "recommendations": 8
+      },
+      {
+        "site": "jncasr",
+        "agent": "marketplace",
+        "url": "https://www.jncasr.ac.in/",
+        "error": null,
+        "runtime_seconds": 0.313,
+        "flagged": [
+          "non_text_facts"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 1,
+        "evidence": [
+          4
+        ],
+        "actions": [
+          4
+        ],
+        "schema": 1.0,
+        "recommendations": 8
+      },
+      {
+        "site": "mcgm",
+        "agent": "marketplace",
+        "url": "https://portal.mcgm.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.047,
+        "flagged": [
+          "engagement"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1,
+          "tn": 3,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 0.5
+        },
+        "findings": 1,
+        "evidence": [
+          4
+        ],
+        "actions": [
+          4
+        ],
+        "schema": 1.0,
+        "recommendations": 5
+      },
+      {
+        "site": "mygov-in",
+        "agent": "marketplace",
+        "url": "https://www.mygov.in/",
+        "error": null,
+        "runtime_seconds": 0.64,
+        "flagged": [
+          "entity_identity",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "tn": 6,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          4,
+          4
+        ],
+        "actions": [
+          4,
+          4
+        ],
+        "schema": 1.0,
+        "recommendations": 8
+      },
+      {
+        "site": "ncbs",
+        "agent": "marketplace",
+        "url": "https://www.ncbs.res.in/",
+        "error": null,
+        "runtime_seconds": 0.453,
+        "flagged": [
+          "non_text_facts",
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "tn": 4,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 2,
+        "evidence": [
+          4,
+          4
+        ],
+        "actions": [
+          4,
+          4
+        ],
+        "schema": 1.0,
+        "recommendations": 8
+      },
+      {
+        "site": "punecorporation",
+        "agent": "marketplace",
+        "url": "https://www.pmc.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.125,
+        "flagged": [],
+        "detection": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "tn": 4,
+          "unverified": [],
+          "precision": null,
+          "recall": 0.0
+        },
+        "findings": 0,
+        "evidence": [],
+        "actions": [],
+        "schema": 1.0,
+        "recommendations": 5
+      },
+      {
+        "site": "tifr",
+        "agent": "marketplace",
+        "url": "https://www.tifr.res.in/",
+        "error": null,
+        "runtime_seconds": 1.203,
+        "flagged": [
+          "structured_data"
+        ],
+        "detection": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3,
+          "unverified": [],
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "findings": 1,
+        "evidence": [
+          4
+        ],
+        "actions": [
+          4
+        ],
+        "schema": 1.0,
+        "recommendations": 7
+      },
+      {
+        "site": "uidai",
+        "agent": "marketplace",
+        "url": "https://uidai.gov.in/",
+        "error": null,
+        "runtime_seconds": 0.125,
+        "flagged": [],
+        "detection": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "tn": 6,
+          "unverified": [],
+          "precision": null,
+          "recall": 0.0
+        },
+        "findings": 0,
+        "evidence": [],
+        "actions": [],
+        "schema": 1.0,
+        "recommendations": 6
+      }
+    ]
+  },
+  "label_counts": {
+    "crawlability": {
+      "yes": 0,
+      "no": 15,
+      "abstain": 0
+    },
+    "rendering": {
+      "yes": 0,
+      "no": 12,
+      "abstain": 3
+    },
+    "content_extraction": {
+      "yes": 0,
+      "no": 5,
+      "abstain": 10
+    },
+    "structured_data": {
+      "yes": 10,
+      "no": 5,
+      "abstain": 0
+    },
+    "non_text_facts": {
+      "yes": 7,
+      "no": 8,
+      "abstain": 0
+    },
+    "freshness": {
+      "yes": 1,
+      "no": 11,
+      "abstain": 3
+    },
+    "entity_identity": {
+      "yes": 2,
+      "no": 5,
+      "abstain": 8
+    },
+    "engagement": {
+      "yes": 1,
+      "no": 12,
+      "abstain": 2
+    }
+  },
+  "adjudicator_validation": {
+    "agreement": null,
+    "agree": 0,
+    "disagree": 0,
+    "abstained": 0,
+    "mistakes": []
+  }
+}

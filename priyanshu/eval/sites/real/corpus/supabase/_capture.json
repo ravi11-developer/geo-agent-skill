@@ -1,0 +1,58 @@
+{
+  "slug": "supabase",
+  "url": "https://supabase.com/",
+  "category": "spa_product_global",
+  "why_hard": "SaaS, JS pricing tables",
+  "captured_at": "2026-09-07T20:45:54.450399+00:00",
+  "pages": [
+    {
+      "requested": "https://supabase.com/",
+      "final_url": "https://supabase.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1332122,
+      "elapsed_ms": 546,
+      "is_entry": true
+    },
+    {
+      "requested": "https://supabase.com/pricing",
+      "final_url": "https://supabase.com/pricing",
+      "path": "/pricing/",
+      "file": "pricing/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 378590,
+      "elapsed_ms": 108,
+      "is_entry": false
+    },
+    {
+      "requested": "https://supabase.com/docs",
+      "final_url": "https://supabase.com/docs",
+      "path": "/docs/",
+      "file": "docs/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 266861,
+      "elapsed_ms": 141,
+      "is_entry": false
+    },
+    {
+      "requested": "https://supabase.com/blog",
+      "final_url": "https://supabase.com/blog",
+      "path": "/blog/",
+      "file": "blog/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 182099,
+      "elapsed_ms": 1077,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 2159672
+}

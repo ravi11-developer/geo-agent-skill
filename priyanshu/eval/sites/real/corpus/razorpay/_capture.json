@@ -1,0 +1,58 @@
+{
+  "slug": "razorpay",
+  "url": "https://razorpay.com/",
+  "category": "fintech_saas_in",
+  "why_hard": "Fintech, JS pricing",
+  "captured_at": "2026-09-07T20:45:46.351931+00:00",
+  "pages": [
+    {
+      "requested": "https://razorpay.com/",
+      "final_url": "https://razorpay.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 2741357,
+      "elapsed_ms": 734,
+      "is_entry": true
+    },
+    {
+      "requested": "https://razorpay.com/accept-international-payments/",
+      "final_url": "https://razorpay.com/accept-international-payments/",
+      "path": "/accept-international-payments/",
+      "file": "accept-international-payments/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 2530254,
+      "elapsed_ms": 281,
+      "is_entry": false
+    },
+    {
+      "requested": "https://razorpay.com/engage/",
+      "final_url": "https://razorpay.com/engage/",
+      "path": "/engage/",
+      "file": "engage/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1356114,
+      "elapsed_ms": 140,
+      "is_entry": false
+    },
+    {
+      "requested": "https://razorpay.com/m/startup-perks/",
+      "final_url": "https://razorpay.com/m/startup-perks/",
+      "path": "/m/startup-perks/",
+      "file": "m/startup-perks/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 2726821,
+      "elapsed_ms": 186,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 9354546
+}

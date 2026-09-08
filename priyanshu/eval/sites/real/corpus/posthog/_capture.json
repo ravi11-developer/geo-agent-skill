@@ -1,0 +1,58 @@
+{
+  "slug": "posthog",
+  "url": "https://posthog.com/",
+  "category": "spa_product_global",
+  "why_hard": "Docs-heavy SaaS",
+  "captured_at": "2026-09-07T20:45:52.366398+00:00",
+  "pages": [
+    {
+      "requested": "https://posthog.com/",
+      "final_url": "https://posthog.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1434063,
+      "elapsed_ms": 609,
+      "is_entry": true
+    },
+    {
+      "requested": "https://posthog.com/pricing",
+      "final_url": "https://posthog.com/pricing",
+      "path": "/pricing/",
+      "file": "pricing/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1273705,
+      "elapsed_ms": 155,
+      "is_entry": false
+    },
+    {
+      "requested": "https://posthog.com/self-driving",
+      "final_url": "https://posthog.com/self-driving",
+      "path": "/self-driving/",
+      "file": "self-driving/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1289244,
+      "elapsed_ms": 186,
+      "is_entry": false
+    },
+    {
+      "requested": "https://posthog.com/context-warehouse",
+      "final_url": "https://posthog.com/context-warehouse",
+      "path": "/context-warehouse/",
+      "file": "context-warehouse/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 2493190,
+      "elapsed_ms": 203,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 6490202
+}

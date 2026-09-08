@@ -1,0 +1,58 @@
+{
+  "slug": "neon",
+  "url": "https://neon.com/",
+  "category": "spa_product_global",
+  "why_hard": "SaaS, JS pricing",
+  "captured_at": "2026-09-07T20:45:58.070868+00:00",
+  "pages": [
+    {
+      "requested": "https://neon.com/",
+      "final_url": "https://neon.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 411292,
+      "elapsed_ms": 530,
+      "is_entry": true
+    },
+    {
+      "requested": "https://neon.com/blog/comparing-token-economics-across-42-ai-models",
+      "final_url": "https://neon.com/blog/comparing-token-economics-across-42-ai-models",
+      "path": "/blog/comparing-token-economics-across-42-ai-models/",
+      "file": "blog/comparing-token-economics-across-42-ai-models/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 312035,
+      "elapsed_ms": 375,
+      "is_entry": false
+    },
+    {
+      "requested": "https://neon.com/docs",
+      "final_url": "https://neon.com/docs/introduction",
+      "path": "/docs/introduction/",
+      "file": "docs/introduction/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 383722,
+      "elapsed_ms": 610,
+      "is_entry": false
+    },
+    {
+      "requested": "https://neon.com/pricing",
+      "final_url": "https://neon.com/pricing",
+      "path": "/pricing/",
+      "file": "pricing/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 661512,
+      "elapsed_ms": 233,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1768561
+}

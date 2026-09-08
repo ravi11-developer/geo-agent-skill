@@ -1,0 +1,58 @@
+{
+  "slug": "indianrailways",
+  "url": "https://indianrailways.gov.in/",
+  "category": "gov_civic",
+  "why_hard": "Legacy portal, tables as layout",
+  "captured_at": "2026-09-07T20:44:51.994136+00:00",
+  "pages": [
+    {
+      "requested": "https://indianrailways.gov.in/",
+      "final_url": "https://indianrailways.gov.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 52379,
+      "elapsed_ms": 187,
+      "is_entry": true
+    },
+    {
+      "requested": "https://indianrailways.gov.in/index.html",
+      "final_url": "https://indianrailways.gov.in/index.html",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 52379,
+      "elapsed_ms": 156,
+      "is_entry": false
+    },
+    {
+      "requested": "https://indianrailways.gov.in/ScreenReaderInformation.html",
+      "final_url": "https://indianrailways.gov.in/ScreenReaderInformation.html",
+      "path": "/ScreenReaderInformation.html",
+      "file": "ScreenReaderInformation.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 32377,
+      "elapsed_ms": 61,
+      "is_entry": false
+    },
+    {
+      "requested": "https://indianrailways.gov.in/railwayboard/",
+      "final_url": "https://indianrailways.gov.in/railwayboard/",
+      "path": "/railwayboard/",
+      "file": "railwayboard/index.html",
+      "status": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "bytes": 150487,
+      "elapsed_ms": 327,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 404,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 287622
+}

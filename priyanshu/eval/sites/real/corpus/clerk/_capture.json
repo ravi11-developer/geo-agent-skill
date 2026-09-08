@@ -1,0 +1,58 @@
+{
+  "slug": "clerk",
+  "url": "https://clerk.com/",
+  "category": "spa_product_global",
+  "why_hard": "SaaS, component-driven",
+  "captured_at": "2026-09-07T20:45:58.676290+00:00",
+  "pages": [
+    {
+      "requested": "https://clerk.com/",
+      "final_url": "https://clerk.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1193971,
+      "elapsed_ms": 594,
+      "is_entry": true
+    },
+    {
+      "requested": "https://clerk.com/pricing",
+      "final_url": "https://clerk.com/pricing",
+      "path": "/pricing/",
+      "file": "pricing/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 622795,
+      "elapsed_ms": 156,
+      "is_entry": false
+    },
+    {
+      "requested": "https://clerk.com/blog/series-c",
+      "final_url": "https://clerk.com/blog/series-c",
+      "path": "/blog/series-c/",
+      "file": "blog/series-c/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 278783,
+      "elapsed_ms": 125,
+      "is_entry": false
+    },
+    {
+      "requested": "https://clerk.com/components/theme-editor",
+      "final_url": "https://clerk.com/components/theme-editor",
+      "path": "/components/theme-editor/",
+      "file": "components/theme-editor/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 158343,
+      "elapsed_ms": 391,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 2253892
+}

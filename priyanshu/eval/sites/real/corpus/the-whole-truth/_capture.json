@@ -1,0 +1,58 @@
+{
+  "slug": "the-whole-truth",
+  "url": "https://www.thewholetruthfoods.com/",
+  "category": "d2c_retail",
+  "why_hard": "D2C, long image copy",
+  "captured_at": "2026-09-07T20:45:14.766318+00:00",
+  "pages": [
+    {
+      "requested": "https://www.thewholetruthfoods.com/",
+      "final_url": "https://thewholetruthfoods.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 457682,
+      "elapsed_ms": 547,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.thewholetruthfoods.com/categories/all",
+      "final_url": "https://thewholetruthfoods.com/categories/all",
+      "path": "/categories/all/",
+      "file": "categories/all/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 2799574,
+      "elapsed_ms": 358,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.thewholetruthfoods.com/categories/next-gen",
+      "final_url": "https://thewholetruthfoods.com/categories/next-gen",
+      "path": "/categories/next-gen/",
+      "file": "categories/next-gen/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1062365,
+      "elapsed_ms": 327,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.thewholetruthfoods.com/pages/our-story",
+      "final_url": "https://thewholetruthfoods.com/pages/our-story",
+      "path": "/pages/our-story/",
+      "file": "pages/our-story/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 258294,
+      "elapsed_ms": 219,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 4577915
+}

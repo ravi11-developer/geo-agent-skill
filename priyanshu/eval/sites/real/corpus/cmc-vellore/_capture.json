@@ -1,0 +1,58 @@
+{
+  "slug": "cmc-vellore",
+  "url": "https://www.cmch-vellore.edu/",
+  "category": "healthcare",
+  "why_hard": "Hospital, dated site",
+  "captured_at": "2026-09-07T20:45:37.682264+00:00",
+  "pages": [
+    {
+      "requested": "https://www.cmch-vellore.edu/",
+      "final_url": "https://www.cmch-vellore.edu/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 72180,
+      "elapsed_ms": 30,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.cmch-vellore.edu/whats-new/",
+      "final_url": "https://www.cmch-vellore.edu/whats-new/",
+      "path": "/whats-new/",
+      "file": "whats-new/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 64008,
+      "elapsed_ms": 62,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.cmch-vellore.edu/faqs/",
+      "final_url": "https://www.cmch-vellore.edu/faqs/",
+      "path": "/faqs/",
+      "file": "faqs/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 93799,
+      "elapsed_ms": 155,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.cmch-vellore.edu/patient-portal/",
+      "final_url": "https://www.cmch-vellore.edu/patient-portal/",
+      "path": "/patient-portal/",
+      "file": "patient-portal/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 59020,
+      "elapsed_ms": 30,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 404,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 289007
+}

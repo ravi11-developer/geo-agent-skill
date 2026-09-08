@@ -1,0 +1,58 @@
+{
+  "slug": "cmi",
+  "url": "https://www.cmi.ac.in/",
+  "category": "edu_research",
+  "why_hard": "Small institute, hand-written HTML",
+  "captured_at": "2026-09-07T20:44:58.323900+00:00",
+  "pages": [
+    {
+      "requested": "https://www.cmi.ac.in/",
+      "final_url": "https://www.cmi.ac.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 6292,
+      "elapsed_ms": 844,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.cmi.ac.in/about/",
+      "final_url": "https://www.cmi.ac.in/about/",
+      "path": "/about/",
+      "file": "about/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 4424,
+      "elapsed_ms": 280,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.cmi.ac.in/people/",
+      "final_url": "https://www.cmi.ac.in/people/",
+      "path": "/people/",
+      "file": "people/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 4163,
+      "elapsed_ms": 188,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.cmi.ac.in/teaching/",
+      "final_url": "https://www.cmi.ac.in/teaching/",
+      "path": "/teaching/",
+      "file": "teaching/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 6173,
+      "elapsed_ms": 343,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 404,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 21052
+}

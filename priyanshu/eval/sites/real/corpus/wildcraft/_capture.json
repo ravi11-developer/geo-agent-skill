@@ -1,0 +1,25 @@
+{
+  "slug": "wildcraft",
+  "url": "https://www.wildcraft.com/",
+  "category": "d2c_retail",
+  "why_hard": "Retail, thin text",
+  "captured_at": "2026-09-07T20:45:22.177771+00:00",
+  "pages": [
+    {
+      "requested": "https://www.wildcraft.com/",
+      "final_url": "https://wildcraft.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "bytes": 6889,
+      "elapsed_ms": 797,
+      "is_entry": true
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 6889
+}

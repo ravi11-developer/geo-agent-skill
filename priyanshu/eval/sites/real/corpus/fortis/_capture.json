@@ -1,0 +1,58 @@
+{
+  "slug": "fortis",
+  "url": "https://www.fortishealthcare.com/",
+  "category": "healthcare",
+  "why_hard": "Hospital group, template-heavy",
+  "captured_at": "2026-09-07T20:45:33.040432+00:00",
+  "pages": [
+    {
+      "requested": "https://www.fortishealthcare.com/",
+      "final_url": "https://www.fortishealthcare.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 110412,
+      "elapsed_ms": 438,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.fortishealthcare.com/doctors",
+      "final_url": "https://www.fortishealthcare.com/doctors",
+      "path": "/doctors/",
+      "file": "doctors/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 145770,
+      "elapsed_ms": 63,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.fortishealthcare.com/investors",
+      "final_url": "https://www.fortishealthcare.com/investors",
+      "path": "/investors/",
+      "file": "investors/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 185457,
+      "elapsed_ms": 218,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.fortishealthcare.com/about-us",
+      "final_url": "https://www.fortishealthcare.com/about-us",
+      "path": "/about-us/",
+      "file": "about-us/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 117803,
+      "elapsed_ms": 78,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 559442
+}

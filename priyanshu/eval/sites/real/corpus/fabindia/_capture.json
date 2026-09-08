@@ -1,0 +1,25 @@
+{
+  "slug": "fabindia",
+  "url": "https://www.fabindia.com/",
+  "category": "d2c_retail",
+  "why_hard": "Retail, JS catalogue",
+  "captured_at": "2026-09-07T20:45:20.045239+00:00",
+  "pages": [
+    {
+      "requested": "https://www.fabindia.com/",
+      "final_url": "https://www.fabindia.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 237972,
+      "elapsed_ms": 2014,
+      "is_entry": true
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 237972
+}

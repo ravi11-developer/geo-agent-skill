@@ -1,0 +1,58 @@
+{
+  "slug": "zerodha",
+  "url": "https://zerodha.com/",
+  "category": "fintech_saas_in",
+  "why_hard": "Fintech, pricing in JS tables",
+  "captured_at": "2026-09-07T20:45:44.256394+00:00",
+  "pages": [
+    {
+      "requested": "https://zerodha.com/",
+      "final_url": "https://zerodha.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 28181,
+      "elapsed_ms": 405,
+      "is_entry": true
+    },
+    {
+      "requested": "https://zerodha.com/open-account/",
+      "final_url": "https://zerodha.com/open-account/",
+      "path": "/open-account/",
+      "file": "open-account/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 41292,
+      "elapsed_ms": 62,
+      "is_entry": false
+    },
+    {
+      "requested": "https://zerodha.com/about/",
+      "final_url": "https://zerodha.com/about/",
+      "path": "/about/",
+      "file": "about/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 29982,
+      "elapsed_ms": 77,
+      "is_entry": false
+    },
+    {
+      "requested": "https://zerodha.com/products/",
+      "final_url": "https://zerodha.com/products/",
+      "path": "/products/",
+      "file": "products/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 30548,
+      "elapsed_ms": 63,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 130003
+}

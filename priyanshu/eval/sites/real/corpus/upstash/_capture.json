@@ -1,0 +1,58 @@
+{
+  "slug": "upstash",
+  "url": "https://upstash.com/",
+  "category": "spa_product_global",
+  "why_hard": "SaaS, JS pricing",
+  "captured_at": "2026-09-07T20:46:04.440349+00:00",
+  "pages": [
+    {
+      "requested": "https://upstash.com/",
+      "final_url": "https://upstash.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 281812,
+      "elapsed_ms": 608,
+      "is_entry": true
+    },
+    {
+      "requested": "https://upstash.com/docs",
+      "final_url": "https://upstash.com/docs/introduction",
+      "path": "/docs/introduction/",
+      "file": "docs/introduction/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 192651,
+      "elapsed_ms": 735,
+      "is_entry": false
+    },
+    {
+      "requested": "https://upstash.com/pricing/redis",
+      "final_url": "https://upstash.com/pricing/redis",
+      "path": "/pricing/redis/",
+      "file": "pricing/redis/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 248639,
+      "elapsed_ms": 155,
+      "is_entry": false
+    },
+    {
+      "requested": "https://upstash.com/customers",
+      "final_url": "https://upstash.com/customers",
+      "path": "/customers/",
+      "file": "customers/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 179619,
+      "elapsed_ms": 437,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 902721
+}

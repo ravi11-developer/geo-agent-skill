@@ -1,0 +1,5044 @@
+{
+  "captured_at": "2026-09-07T20:46:43.432087+00:00",
+  "user_agent": "AIDiscoverabilityAuditBot/1.0 (+read-only research crawler; Adobe University Hackathon 2026 benchmark; obeys robots.txt)",
+  "max_pages_per_site": 4,
+  "requested": 104,
+  "captured": 88,
+  "skipped_by_robots": 0,
+  "failed": 16,
+  "total_pages": 326,
+  "meta": {
+    "name": "Hard-to-cite real-web corpus",
+    "version": "1.0.0",
+    "selection_method": "Hand-curated across verticals where AI answer engines rarely cite the primary source: government and civic portals, universities and research institutes, NGOs, D2C and hospitality brands (image-heavy), healthcare providers, local-services marketplaces (JS-heavy), long-tail B2B and industry bodies, and modern SPA product sites. Domains are over-provisioned; the capture tool skips whatever is dead, blocked or robots-disallowed and reports coverage.",
+    "caveats": "Curated from prior knowledge, so some domains will be dead, renamed or bot-protected. The capture report lists every exclusion with its reason, and the corpus manifest records exactly what was audited."
+  },
+  "sites": [
+    {
+      "slug": "aiims",
+      "url": "https://www.aiims.edu/",
+      "category": "healthcare",
+      "why_hard": "Public hospital, legacy markup, stale notices",
+      "captured_at": "2026-09-07T20:45:35.588421+00:00",
+      "pages": [
+        {
+          "requested": "https://www.aiims.edu/",
+          "final_url": "https://www.aiims.edu/index.php/en",
+          "path": "/index.php/en/",
+          "file": "index.php/en/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 225739,
+          "elapsed_ms": 265,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.aiims.edu/index.php/en/screen-reader-access",
+          "final_url": "https://www.aiims.edu/index.php/en/screen-reader-access",
+          "path": "/index.php/en/screen-reader-access/",
+          "file": "index.php/en/screen-reader-access/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 200623,
+          "elapsed_ms": 719,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.aiims.edu/index.php/hi",
+          "final_url": "https://www.aiims.edu/index.php/hi",
+          "path": "/index.php/hi/",
+          "file": "index.php/hi/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 225285,
+          "elapsed_ms": 1015,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.aiims.edu/index.php",
+          "final_url": "https://www.aiims.edu/index.php/en",
+          "path": "/index.php/en/",
+          "file": "index.php/en/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 225739,
+          "elapsed_ms": 733,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 404,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 877386
+    },
+    {
+      "slug": "akshaya-patra",
+      "url": "https://www.akshayapatra.org/",
+      "category": "ngo",
+      "why_hard": "NGO, statistics inside images",
+      "captured_at": "2026-09-07T20:45:06.720966+00:00",
+      "pages": [
+        {
+          "requested": "https://www.akshayapatra.org/",
+          "final_url": "https://www.akshayapatra.org/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 171560,
+          "elapsed_ms": 655,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.akshayapatra.org/tender-notice",
+          "final_url": "https://www.akshayapatra.org/tender-notice",
+          "path": "/tender-notice/",
+          "file": "tender-notice/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 120644,
+          "elapsed_ms": 594,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.akshayapatra.org/about-us",
+          "final_url": "https://www.akshayapatra.org/about-us",
+          "path": "/about-us/",
+          "file": "about-us/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 120309,
+          "elapsed_ms": 421,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.akshayapatra.org/our-vision-and-mission",
+          "final_url": "https://www.akshayapatra.org/our-vision-and-mission",
+          "path": "/our-vision-and-mission/",
+          "file": "our-vision-and-mission/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 118212,
+          "elapsed_ms": 406,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 530725
+    },
+    {
+      "slug": "apollo-hospitals",
+      "url": "https://www.apollohospitals.com/",
+      "category": "healthcare",
+      "why_hard": "Hospital group, deep JS navigation",
+      "captured_at": "2026-09-07T20:45:32.622037+00:00",
+      "pages": [],
+      "robots_status": 403,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "entry returned HTTP 403",
+      "bytes_total": 0
+    },
+    {
+      "slug": "assocham",
+      "url": "https://www.assocham.org/",
+      "category": "industry_body",
+      "why_hard": "Industry body, dated content",
+      "captured_at": "2026-09-07T20:46:12.577241+00:00",
+      "pages": [
+        {
+          "requested": "https://www.assocham.org/",
+          "final_url": "https://www.assocham.org/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 441115,
+          "elapsed_ms": 577,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.assocham.org/index.php",
+          "final_url": "https://www.assocham.org/index.php",
+          "path": "/index.php/",
+          "file": "index.php/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 441315,
+          "elapsed_ms": 156,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.assocham.org/about-us.php",
+          "final_url": "https://www.assocham.org/about-us.php",
+          "path": "/about-us.php/",
+          "file": "about-us.php/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 216985,
+          "elapsed_ms": 171,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.assocham.org/employeeRecord.php",
+          "final_url": "https://www.assocham.org/employeeRecord.php",
+          "path": "/employeeRecord.php/",
+          "file": "employeeRecord.php/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 156321,
+          "elapsed_ms": 140,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1255736
+    },
+    {
+      "slug": "barbeque-nation",
+      "url": "https://www.barbequenation.com/",
+      "category": "food_hospitality",
+      "why_hard": "Restaurant chain, menu in images",
+      "captured_at": "2026-09-07T20:45:23.977330+00:00",
+      "pages": [
+        {
+          "requested": "https://www.barbequenation.com/",
+          "final_url": "https://www.barbequenation.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 92664,
+          "elapsed_ms": 1436,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.barbequenation.com/vouchers",
+          "final_url": "https://www.barbequenation.com/vouchers",
+          "path": "/vouchers/",
+          "file": "vouchers/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 203525,
+          "elapsed_ms": 531,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.barbequenation.com/promotion",
+          "final_url": "https://www.barbequenation.com/promotion",
+          "path": "/promotion/",
+          "file": "promotion/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 423533,
+          "elapsed_ms": 656,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.barbequenation.com/deals",
+          "final_url": "https://www.barbequenation.com/deals",
+          "path": "/deals/",
+          "file": "deals/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1328538,
+          "elapsed_ms": 859,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 2048260
+    },
+    {
+      "slug": "beardo",
+      "url": "https://beardo.in/",
+      "category": "d2c_retail",
+      "why_hard": "D2C, banner-driven facts",
+      "captured_at": "2026-09-07T20:45:21.187129+00:00",
+      "pages": [
+        {
+          "requested": "https://beardo.in/",
+          "final_url": "https://beardo.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 755630,
+          "elapsed_ms": 1609,
+          "is_entry": true
+        },
+        {
+          "requested": "https://beardo.in/collections/all-single-products",
+          "final_url": "https://beardo.in/collections/all-single-products",
+          "path": "/collections/all-single-products/",
+          "file": "collections/all-single-products/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 426308,
+          "elapsed_ms": 1046,
+          "is_entry": false
+        },
+        {
+          "requested": "https://beardo.in/collections/beard-growth-1",
+          "final_url": "https://beardo.in/collections/beard-growth-1",
+          "path": "/collections/beard-growth-1/",
+          "file": "collections/beard-growth-1/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 375593,
+          "elapsed_ms": 983,
+          "is_entry": false
+        },
+        {
+          "requested": "https://beardo.in/collections/beard-styling",
+          "final_url": "https://beardo.in/collections/beard-styling",
+          "path": "/collections/beard-styling/",
+          "file": "collections/beard-styling/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 390259,
+          "elapsed_ms": 875,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1947790
+    },
+    {
+      "slug": "bharat-forge",
+      "url": "https://www.bharatforge.com/",
+      "category": "b2b_manufacturing",
+      "why_hard": "Manufacturer, thin web facts",
+      "captured_at": "2026-09-07T20:46:18.409417+00:00",
+      "pages": [
+        {
+          "requested": "https://www.bharatforge.com/",
+          "final_url": "https://www.bharatforge.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 164066,
+          "elapsed_ms": 656,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.bharatforge.com/media/press-releases",
+          "final_url": "https://www.bharatforge.com/media/press-releases",
+          "path": "/media/press-releases/",
+          "file": "media/press-releases/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 95164,
+          "elapsed_ms": 328,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.bharatforge.com/brand/brand-identity",
+          "final_url": "https://www.bharatforge.com/brand/brand-identity",
+          "path": "/brand/brand-identity/",
+          "file": "brand/brand-identity/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 99383,
+          "elapsed_ms": 264,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.bharatforge.com/media/press-reports",
+          "final_url": "https://www.bharatforge.com/media/press-reports",
+          "path": "/media/press-reports/",
+          "file": "media/press-reports/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 94041,
+          "elapsed_ms": 344,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 452654
+    },
+    {
+      "slug": "bhel",
+      "url": "https://www.bhel.com/",
+      "category": "b2b_manufacturing",
+      "why_hard": "Heavy engineering, catalogue PDFs",
+      "captured_at": "2026-09-07T20:46:15.736354+00:00",
+      "pages": [
+        {
+          "requested": "https://www.bhel.com/",
+          "final_url": "https://www.bhel.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 145595,
+          "elapsed_ms": 1672,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.bhel.com/notice-board",
+          "final_url": "https://www.bhel.com/notice-board",
+          "path": "/notice-board/",
+          "file": "notice-board/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 72160,
+          "elapsed_ms": 344,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.bhel.com/press-release",
+          "final_url": "https://www.bhel.com/press-release",
+          "path": "/press-release/",
+          "file": "press-release/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 70515,
+          "elapsed_ms": 436,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.bhel.com/announcements",
+          "final_url": "https://www.bhel.com/announcements",
+          "path": "/announcements/",
+          "file": "announcements/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 73148,
+          "elapsed_ms": 406,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 361418
+    },
+    {
+      "slug": "bikanervala",
+      "url": "https://www.bikanervala.com/",
+      "category": "food_hospitality",
+      "why_hard": "Chain, menu as images",
+      "captured_at": "2026-09-07T20:45:25.732366+00:00",
+      "pages": [
+        {
+          "requested": "https://www.bikanervala.com/",
+          "final_url": "https://bikanervala.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 297625,
+          "elapsed_ms": 891,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.bikanervala.com/cart",
+          "final_url": "https://bikanervala.com/cart",
+          "path": "/cart/",
+          "file": "cart/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 284961,
+          "elapsed_ms": 547,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.bikanervala.com/customer_authentication/redirect",
+          "final_url": "https://account.bikanervala.com/authentication/login?_s=429b9f2c-22d9-4815-9f84-f8f39e344f43&_y=4da0b927-25a3-457c-aa5e-4c01cbed6bea&analytics_trace_id=57d63ecf-687c-43ed-b902-d8f531c094b8&client_id=ccaa857d-a2eb-4c04-832a-30e05e5a70a4&locale=en-IN&redirect_uri=%2Fauthentication%2Foauth%2Fauthorize%3F_cs%3D3.AMPS_INTS___321rV2MXRoK9eG65Jb%252AXOw%26_s%3D429b9f2c-22d9-4815-9f84-f8f39e344f43%26_y%3D4da0b927-25a3-457c-aa5e-4c01cbed6bea%26analytics_trace_id%3D57d63ecf-687c-43ed-b902-d8f531c094b8%26buyer_flags%3DeyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI4Mjk3MTgtMi5teXNob3BpZnkuY29tIiwiZmxhZ3MiOltdLCJleHAiOjE3ODk0MTg3MzIsIm5iZiI6MTc4ODgxMzkzMn0.cbFo8rDXeCViplCZloQzsmFIZF6c2br4SsVEJHLziNw%26client_id%3Dccaa857d-a2eb-4c04-832a-30e05e5a70a4%26locale%3Den-IN%26nonce%3D1ec9e7ba-5aeb-4a3e-8487-a7c14f5fa109%26redirect_uri%3Dhttps%253A%252F%252Faccount.bikanervala.com%252Fcallback%26response_type%3Dcode%26scope%3Dopenid%2Bemail%2Bcustomer-account-api%253Afull%26state%3DhWNGZMAD6wZ9J3F9obaL1ZUg",
+          "path": "/authentication/login/",
+          "file": "authentication/login/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 10244,
+          "elapsed_ms": 3093,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.bikanervala.com/account/register",
+          "final_url": "https://bikanervala.com/account/register",
+          "path": "/account/register/",
+          "file": "account/register/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 253470,
+          "elapsed_ms": 1906,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 846300
+    },
+    {
+      "slug": "bluetokai",
+      "url": "https://bluetokaicoffee.com/",
+      "category": "d2c_retail",
+      "why_hard": "Shopify D2C, facts in product images",
+      "captured_at": "2026-09-07T20:45:14.515467+00:00",
+      "pages": [
+        {
+          "requested": "https://bluetokaicoffee.com/",
+          "final_url": "https://bluetokaicoffee.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 374957,
+          "elapsed_ms": 686,
+          "is_entry": true
+        },
+        {
+          "requested": "https://bluetokaicoffee.com/collections/roasted-and-ground-coffee-beans",
+          "final_url": "https://bluetokaicoffee.com/collections/roasted-and-ground-coffee-beans",
+          "path": "/collections/roasted-and-ground-coffee-beans/",
+          "file": "collections/roasted-and-ground-coffee-beans/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 497031,
+          "elapsed_ms": 406,
+          "is_entry": false
+        },
+        {
+          "requested": "https://bluetokaicoffee.com/collections/aluminium-coffee-capsule",
+          "final_url": "https://bluetokaicoffee.com/collections/aluminium-coffee-capsule",
+          "path": "/collections/aluminium-coffee-capsule/",
+          "file": "collections/aluminium-coffee-capsule/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 263705,
+          "elapsed_ms": 406,
+          "is_entry": false
+        },
+        {
+          "requested": "https://bluetokaicoffee.com/collections/no-equipment-collection",
+          "final_url": "https://bluetokaicoffee.com/collections/no-equipment-collection",
+          "path": "/collections/no-equipment-collection/",
+          "file": "collections/no-equipment-collection/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 438245,
+          "elapsed_ms": 390,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1573938
+    },
+    {
+      "slug": "bombay-shaving",
+      "url": "https://bombayshavingcompany.com/",
+      "category": "d2c_retail",
+      "why_hard": "D2C, image-heavy",
+      "captured_at": "2026-09-07T20:45:21.315900+00:00",
+      "pages": [
+        {
+          "requested": "https://bombayshavingcompany.com/",
+          "final_url": "https://www.bombayshavingcompany.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1103807,
+          "elapsed_ms": 1250,
+          "is_entry": true
+        },
+        {
+          "requested": "https://bombayshavingcompany.com/pages/razors-for-men",
+          "final_url": "https://www.bombayshavingcompany.com/pages/razors-for-men",
+          "path": "/pages/razors-for-men/",
+          "file": "pages/razors-for-men/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1087132,
+          "elapsed_ms": 827,
+          "is_entry": false
+        },
+        {
+          "requested": "https://bombayshavingcompany.com/pages/razor-for-mens",
+          "final_url": "https://www.bombayshavingcompany.com/pages/razors-for-men",
+          "path": "/pages/razors-for-men/",
+          "file": "pages/razors-for-men/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1087132,
+          "elapsed_ms": 733,
+          "is_entry": false
+        },
+        {
+          "requested": "https://bombayshavingcompany.com/products/sensi-smart-3",
+          "final_url": "https://www.bombayshavingcompany.com/products/sensi-smart-3",
+          "path": "/products/sensi-smart-3/",
+          "file": "products/sensi-smart-3/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1177015,
+          "elapsed_ms": 703,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 4455086
+    },
+    {
+      "slug": "cafe-coffee-day",
+      "url": "https://www.cafecoffeeday.com/",
+      "category": "food_hospitality",
+      "why_hard": "Chain, thin metadata",
+      "captured_at": "2026-09-07T20:45:32.527463+00:00",
+      "pages": [],
+      "robots_status": null,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "SSLError: HTTPSConnectionPool(host='www.cafecoffeeday.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)')))",
+      "bytes_total": 0
+    },
+    {
+      "slug": "cal-com",
+      "url": "https://cal.com/",
+      "category": "spa_product_global",
+      "why_hard": "Open-source SaaS, JS pricing",
+      "captured_at": "2026-09-07T20:45:52.305426+00:00",
+      "pages": [
+        {
+          "requested": "https://cal.com/",
+          "final_url": "https://cal.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 2156630,
+          "elapsed_ms": 812,
+          "is_entry": true
+        },
+        {
+          "requested": "https://cal.com/enterprise",
+          "final_url": "https://cal.com/enterprise",
+          "path": "/enterprise/",
+          "file": "enterprise/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 1659769,
+          "elapsed_ms": 218,
+          "is_entry": false
+        },
+        {
+          "requested": "https://cal.com/ai",
+          "final_url": "https://cal.com/ai",
+          "path": "/ai/",
+          "file": "ai/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 1081304,
+          "elapsed_ms": 188,
+          "is_entry": false
+        },
+        {
+          "requested": "https://cal.com/pricing",
+          "final_url": "https://cal.com/pricing",
+          "path": "/pricing/",
+          "file": "pricing/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 1587270,
+          "elapsed_ms": 265,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 6484973
+    },
+    {
+      "slug": "chaayos",
+      "url": "https://chaayos.com/",
+      "category": "food_hospitality",
+      "why_hard": "Cafe chain, JS site",
+      "captured_at": "2026-09-07T20:45:26.232749+00:00",
+      "pages": [
+        {
+          "requested": "https://chaayos.com/",
+          "final_url": "https://chaayos.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 234865,
+          "elapsed_ms": 718,
+          "is_entry": true
+        },
+        {
+          "requested": "https://chaayos.com/collections",
+          "final_url": "https://chaayos.com/collections",
+          "path": "/collections/",
+          "file": "collections/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 172119,
+          "elapsed_ms": 281,
+          "is_entry": false
+        },
+        {
+          "requested": "https://chaayos.com/products/meri-wali-chai-patti",
+          "final_url": "https://chaayos.com/products/meri-wali-chai-patti",
+          "path": "/products/meri-wali-chai-patti/",
+          "file": "products/meri-wali-chai-patti/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 236399,
+          "elapsed_ms": 312,
+          "is_entry": false
+        },
+        {
+          "requested": "https://chaayos.com/collections/instant-chai",
+          "final_url": "https://chaayos.com/collections/instant-chai",
+          "path": "/collections/instant-chai/",
+          "file": "collections/instant-chai/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 385836,
+          "elapsed_ms": 358,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1029219
+    },
+    {
+      "slug": "chargebee",
+      "url": "https://www.chargebee.com/",
+      "category": "fintech_saas_in",
+      "why_hard": "SaaS, marketing JS",
+      "captured_at": "2026-09-07T20:45:48.232755+00:00",
+      "pages": [
+        {
+          "requested": "https://www.chargebee.com/",
+          "final_url": "https://www.chargebee.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 657187,
+          "elapsed_ms": 750,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.chargebee.com/resources/guides/gartner-magic-quadrant-2026/",
+          "final_url": "https://www.chargebee.com/resources/guides/gartner-magic-quadrant-2026/",
+          "path": "/resources/guides/gartner-magic-quadrant-2026/",
+          "file": "resources/guides/gartner-magic-quadrant-2026/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 358899,
+          "elapsed_ms": 327,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.chargebee.com/pricing/",
+          "final_url": "https://www.chargebee.com/pricing/",
+          "path": "/pricing/",
+          "file": "pricing/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 653681,
+          "elapsed_ms": 547,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.chargebee.com/startups/",
+          "final_url": "https://www.chargebee.com/startups/",
+          "path": "/startups/",
+          "file": "startups/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 412883,
+          "elapsed_ms": 359,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 2082650
+    },
+    {
+      "slug": "chumbak",
+      "url": "https://www.chumbak.com/",
+      "category": "d2c_retail",
+      "why_hard": "D2C, image-only specs",
+      "captured_at": "2026-09-07T20:45:18.230931+00:00",
+      "pages": [
+        {
+          "requested": "https://www.chumbak.com/",
+          "final_url": "https://www.chumbak.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1147104,
+          "elapsed_ms": 890,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.chumbak.com/collections/forest-folklore",
+          "final_url": "https://www.chumbak.com/collections/forest-folklore",
+          "path": "/collections/forest-folklore/",
+          "file": "collections/forest-folklore/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1240757,
+          "elapsed_ms": 702,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.chumbak.com/collections/all-products",
+          "final_url": "https://www.chumbak.com/collections/all-products",
+          "path": "/collections/all-products/",
+          "file": "collections/all-products/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1429325,
+          "elapsed_ms": 828,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.chumbak.com/collections/republic-sale",
+          "final_url": "https://www.chumbak.com/collections/sale-1",
+          "path": "/collections/sale-1/",
+          "file": "collections/sale-1/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1524054,
+          "elapsed_ms": 889,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 5341240
+    },
+    {
+      "slug": "cii",
+      "url": "https://www.cii.in/",
+      "category": "industry_body",
+      "why_hard": "Industry body, legacy portal",
+      "captured_at": "2026-09-07T20:46:12.076976+00:00",
+      "pages": [
+        {
+          "requested": "https://www.cii.in/",
+          "final_url": "https://www.cii.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 212,
+          "elapsed_ms": 94,
+          "is_entry": true
+        }
+      ],
+      "robots_status": 406,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 212
+    },
+    {
+      "slug": "clerk",
+      "url": "https://clerk.com/",
+      "category": "spa_product_global",
+      "why_hard": "SaaS, component-driven",
+      "captured_at": "2026-09-07T20:45:58.676290+00:00",
+      "pages": [
+        {
+          "requested": "https://clerk.com/",
+          "final_url": "https://clerk.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1193971,
+          "elapsed_ms": 594,
+          "is_entry": true
+        },
+        {
+          "requested": "https://clerk.com/pricing",
+          "final_url": "https://clerk.com/pricing",
+          "path": "/pricing/",
+          "file": "pricing/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 622795,
+          "elapsed_ms": 156,
+          "is_entry": false
+        },
+        {
+          "requested": "https://clerk.com/blog/series-c",
+          "final_url": "https://clerk.com/blog/series-c",
+          "path": "/blog/series-c/",
+          "file": "blog/series-c/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 278783,
+          "elapsed_ms": 125,
+          "is_entry": false
+        },
+        {
+          "requested": "https://clerk.com/components/theme-editor",
+          "final_url": "https://clerk.com/components/theme-editor",
+          "path": "/components/theme-editor/",
+          "file": "components/theme-editor/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 158343,
+          "elapsed_ms": 391,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 2253892
+    },
+    {
+      "slug": "cmc-vellore",
+      "url": "https://www.cmch-vellore.edu/",
+      "category": "healthcare",
+      "why_hard": "Hospital, dated site",
+      "captured_at": "2026-09-07T20:45:37.682264+00:00",
+      "pages": [
+        {
+          "requested": "https://www.cmch-vellore.edu/",
+          "final_url": "https://www.cmch-vellore.edu/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 72180,
+          "elapsed_ms": 30,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.cmch-vellore.edu/whats-new/",
+          "final_url": "https://www.cmch-vellore.edu/whats-new/",
+          "path": "/whats-new/",
+          "file": "whats-new/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 64008,
+          "elapsed_ms": 62,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.cmch-vellore.edu/faqs/",
+          "final_url": "https://www.cmch-vellore.edu/faqs/",
+          "path": "/faqs/",
+          "file": "faqs/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 93799,
+          "elapsed_ms": 155,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.cmch-vellore.edu/patient-portal/",
+          "final_url": "https://www.cmch-vellore.edu/patient-portal/",
+          "path": "/patient-portal/",
+          "file": "patient-portal/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 59020,
+          "elapsed_ms": 30,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 404,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 289007
+    },
+    {
+      "slug": "cmi",
+      "url": "https://www.cmi.ac.in/",
+      "category": "edu_research",
+      "why_hard": "Small institute, hand-written HTML",
+      "captured_at": "2026-09-07T20:44:58.323900+00:00",
+      "pages": [
+        {
+          "requested": "https://www.cmi.ac.in/",
+          "final_url": "https://www.cmi.ac.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 6292,
+          "elapsed_ms": 844,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.cmi.ac.in/about/",
+          "final_url": "https://www.cmi.ac.in/about/",
+          "path": "/about/",
+          "file": "about/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 4424,
+          "elapsed_ms": 280,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.cmi.ac.in/people/",
+          "final_url": "https://www.cmi.ac.in/people/",
+          "path": "/people/",
+          "file": "people/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 4163,
+          "elapsed_ms": 188,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.cmi.ac.in/teaching/",
+          "final_url": "https://www.cmi.ac.in/teaching/",
+          "path": "/teaching/",
+          "file": "teaching/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 6173,
+          "elapsed_ms": 343,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 404,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 21052
+    },
+    {
+      "slug": "cred",
+      "url": "https://cred.club/",
+      "category": "fintech_saas_in",
+      "why_hard": "SPA, almost no server-rendered copy",
+      "captured_at": "2026-09-07T20:45:49.334497+00:00",
+      "pages": [
+        {
+          "requested": "https://cred.club/",
+          "final_url": "https://cred.club/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 167111,
+          "elapsed_ms": 452,
+          "is_entry": true
+        },
+        {
+          "requested": "https://cred.club/card",
+          "final_url": "https://cred.club/card",
+          "path": "/card/",
+          "file": "card/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 30703,
+          "elapsed_ms": 78,
+          "is_entry": false
+        },
+        {
+          "requested": "https://cred.club/money",
+          "final_url": "https://cred.club/money",
+          "path": "/money/",
+          "file": "money/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 32239,
+          "elapsed_ms": 77,
+          "is_entry": false
+        },
+        {
+          "requested": "https://cred.club/garage",
+          "final_url": "https://cred.club/garage",
+          "path": "/garage/",
+          "file": "garage/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 29514,
+          "elapsed_ms": 77,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 259567
+    },
+    {
+      "slug": "cry-india",
+      "url": "https://www.cry.org/",
+      "category": "ngo",
+      "why_hard": "NGO, campaign pages, image-heavy",
+      "captured_at": "2026-09-07T20:45:02.774048+00:00",
+      "pages": [
+        {
+          "requested": "https://www.cry.org/",
+          "final_url": "https://www.cry.org/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 165869,
+          "elapsed_ms": 2797,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.cry.org/about-cry/",
+          "final_url": "https://www.cry.org/about-cry/",
+          "path": "/about-cry/",
+          "file": "about-cry/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 252524,
+          "elapsed_ms": 1203,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.cry.org/why-children/",
+          "final_url": "https://www.cry.org/why-children/",
+          "path": "/why-children/",
+          "file": "why-children/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 161183,
+          "elapsed_ms": 1094,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.cry.org/our-impact/",
+          "final_url": "https://www.cry.org/our-impact/",
+          "path": "/our-impact/",
+          "file": "our-impact/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 186041,
+          "elapsed_ms": 1093,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 765617
+    },
+    {
+      "slug": "delhi-gov",
+      "url": "https://delhi.gov.in/",
+      "category": "gov_civic",
+      "why_hard": "State portal, thin metadata",
+      "captured_at": "2026-09-07T20:44:50.373760+00:00",
+      "pages": [
+        {
+          "requested": "https://delhi.gov.in/",
+          "final_url": "https://delhi.gov.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 51253,
+          "elapsed_ms": 1172,
+          "is_entry": true
+        },
+        {
+          "requested": "https://delhi.gov.in/screen-reader-access",
+          "final_url": "https://delhi.gov.in/screen-reader-access",
+          "path": "/screen-reader-access/",
+          "file": "screen-reader-access/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 37605,
+          "elapsed_ms": 1186,
+          "is_entry": false
+        },
+        {
+          "requested": "https://delhi.gov.in/sitemap",
+          "final_url": "https://delhi.gov.in/sitemap",
+          "path": "/sitemap/",
+          "file": "sitemap/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 44617,
+          "elapsed_ms": 1078,
+          "is_entry": false
+        },
+        {
+          "requested": "https://delhi.gov.in/user/login",
+          "final_url": "https://delhi.gov.in/user/login",
+          "path": "/user/login/",
+          "file": "user/login/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 9455,
+          "elapsed_ms": 969,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 403,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 142930
+    },
+    {
+      "slug": "excalidraw",
+      "url": "https://excalidraw.com/",
+      "category": "spa_product_global",
+      "why_hard": "Canvas SPA, empty shell",
+      "captured_at": "2026-09-07T20:46:01.946771+00:00",
+      "pages": [
+        {
+          "requested": "https://excalidraw.com/",
+          "final_url": "https://excalidraw.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 6862,
+          "elapsed_ms": 483,
+          "is_entry": true
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 6862
+    },
+    {
+      "slug": "fabindia",
+      "url": "https://www.fabindia.com/",
+      "category": "d2c_retail",
+      "why_hard": "Retail, JS catalogue",
+      "captured_at": "2026-09-07T20:45:20.045239+00:00",
+      "pages": [
+        {
+          "requested": "https://www.fabindia.com/",
+          "final_url": "https://www.fabindia.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 237972,
+          "elapsed_ms": 2014,
+          "is_entry": true
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 237972
+    },
+    {
+      "slug": "ficci",
+      "url": "https://ficci.in/",
+      "category": "industry_body",
+      "why_hard": "Industry body, PDF-first",
+      "captured_at": "2026-09-07T20:46:11.310185+00:00",
+      "pages": [],
+      "robots_status": 403,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "entry returned HTTP 403",
+      "bytes_total": 0
+    },
+    {
+      "slug": "finolex",
+      "url": "https://www.finolex.com/",
+      "category": "b2b_manufacturing",
+      "why_hard": "Manufacturer, image specs",
+      "captured_at": "2026-09-07T20:46:21.665656+00:00",
+      "pages": [
+        {
+          "requested": "https://www.finolex.com/",
+          "final_url": "https://www.finolex.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 77849,
+          "elapsed_ms": 1141,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.finolex.com/ProductPage/Cat/Wires-and-cables",
+          "final_url": "https://www.finolex.com/ProductPage/Cat/Wires-and-cables",
+          "path": "/ProductPage/Cat/Wires-and-cables/",
+          "file": "ProductPage/Cat/Wires-and-cables/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 85643,
+          "elapsed_ms": 1358,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.finolex.com/ProductPage/Cat/Fans",
+          "final_url": "https://www.finolex.com/ProductPage/Cat/Fans",
+          "path": "/ProductPage/Cat/Fans/",
+          "file": "ProductPage/Cat/Fans/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 67875,
+          "elapsed_ms": 952,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.finolex.com/ProductPage/Cat/Water-Heaters",
+          "final_url": "https://www.finolex.com/ProductPage/Cat/Water-Heaters",
+          "path": "/ProductPage/Cat/Water-Heaters/",
+          "file": "ProductPage/Cat/Water-Heaters/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 63088,
+          "elapsed_ms": 891,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 406,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 294455
+    },
+    {
+      "slug": "fortis",
+      "url": "https://www.fortishealthcare.com/",
+      "category": "healthcare",
+      "why_hard": "Hospital group, template-heavy",
+      "captured_at": "2026-09-07T20:45:33.040432+00:00",
+      "pages": [
+        {
+          "requested": "https://www.fortishealthcare.com/",
+          "final_url": "https://www.fortishealthcare.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 110412,
+          "elapsed_ms": 438,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.fortishealthcare.com/doctors",
+          "final_url": "https://www.fortishealthcare.com/doctors",
+          "path": "/doctors/",
+          "file": "doctors/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 145770,
+          "elapsed_ms": 63,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.fortishealthcare.com/investors",
+          "final_url": "https://www.fortishealthcare.com/investors",
+          "path": "/investors/",
+          "file": "investors/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 185457,
+          "elapsed_ms": 218,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.fortishealthcare.com/about-us",
+          "final_url": "https://www.fortishealthcare.com/about-us",
+          "path": "/about-us/",
+          "file": "about-us/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 117803,
+          "elapsed_ms": 78,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 559442
+    },
+    {
+      "slug": "freshworks",
+      "url": "https://www.freshworks.com/",
+      "category": "fintech_saas_in",
+      "why_hard": "SaaS, heavy templating",
+      "captured_at": "2026-09-07T20:45:48.403189+00:00",
+      "pages": [],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "entry returned HTTP 403",
+      "bytes_total": 0
+    },
+    {
+      "slug": "ghmc",
+      "url": "https://www.ghmc.gov.in/",
+      "category": "gov_civic",
+      "why_hard": "Municipal site, legacy markup",
+      "captured_at": "2026-09-07T20:44:46.480848+00:00",
+      "pages": [
+        {
+          "requested": "https://www.ghmc.gov.in/",
+          "final_url": "https://www.ghmc.gov.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 102973,
+          "elapsed_ms": 485,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.ghmc.gov.in/Ghmc_Home.aspx",
+          "final_url": "https://www.ghmc.gov.in/Ghmc_Home.aspx",
+          "path": "/Ghmc_Home.aspx/",
+          "file": "Ghmc_Home.aspx/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 102987,
+          "elapsed_ms": 311,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.ghmc.gov.in/EODB.aspx",
+          "final_url": "https://www.ghmc.gov.in/EODB.aspx",
+          "path": "/EODB.aspx/",
+          "file": "EODB.aspx/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 71607,
+          "elapsed_ms": 266,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.ghmc.gov.in/Building.aspx",
+          "final_url": "https://www.ghmc.gov.in/Building.aspx",
+          "path": "/Building.aspx/",
+          "file": "Building.aspx/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 70544,
+          "elapsed_ms": 218,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 404,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 348111
+    },
+    {
+      "slug": "give-india",
+      "url": "https://www.giveindia.org/",
+      "category": "ngo",
+      "why_hard": "Donation platform, SPA-ish",
+      "captured_at": "2026-09-07T20:45:14.341647+00:00",
+      "pages": [
+        {
+          "requested": "https://www.giveindia.org/",
+          "final_url": "https://www.giveindia.org/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 37382,
+          "elapsed_ms": 62,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.giveindia.org/aboutus",
+          "final_url": "https://www.giveindia.org/aboutus/",
+          "path": "/aboutus/",
+          "file": "aboutus/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 37965,
+          "elapsed_ms": 156,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.giveindia.org/aboutus/",
+          "final_url": "https://www.giveindia.org/aboutus/",
+          "path": "/aboutus/",
+          "file": "aboutus/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 37965,
+          "elapsed_ms": 61,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 403,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 113312
+    },
+    {
+      "slug": "goonj",
+      "url": "https://goonj.org/",
+      "category": "ngo",
+      "why_hard": "NGO, story-led pages, little structured data",
+      "captured_at": "2026-09-07T20:45:02.695150+00:00",
+      "pages": [
+        {
+          "requested": "https://goonj.org/",
+          "final_url": "https://goonj.org/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 559609,
+          "elapsed_ms": 2234,
+          "is_entry": true
+        },
+        {
+          "requested": "https://goonj.org/donate",
+          "final_url": "https://goonj.org/donate/",
+          "path": "/donate/",
+          "file": "donate/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 123213,
+          "elapsed_ms": 2390,
+          "is_entry": false
+        },
+        {
+          "requested": "https://goonj.org/climate-emergencies/",
+          "final_url": "https://goonj.org/climate-emergencies/",
+          "path": "/climate-emergencies/",
+          "file": "climate-emergencies/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 585210,
+          "elapsed_ms": 1703,
+          "is_entry": false
+        },
+        {
+          "requested": "https://goonj.org/our-initiatives/",
+          "final_url": "https://goonj.org/our-initiatives/",
+          "path": "/our-initiatives/",
+          "file": "our-initiatives/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 531842,
+          "elapsed_ms": 985,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1799874
+    },
+    {
+      "slug": "greaves",
+      "url": "https://greavescotton.com/",
+      "category": "b2b_manufacturing",
+      "why_hard": "Manufacturer, dated content",
+      "captured_at": "2026-09-07T20:46:23.754589+00:00",
+      "pages": [
+        {
+          "requested": "https://greavescotton.com/",
+          "final_url": "https://greavescotton.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 409418,
+          "elapsed_ms": 1405,
+          "is_entry": true
+        },
+        {
+          "requested": "https://greavescotton.com/about-us/",
+          "final_url": "https://greavescotton.com/about-us/",
+          "path": "/about-us/",
+          "file": "about-us/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 326158,
+          "elapsed_ms": 922,
+          "is_entry": false
+        },
+        {
+          "requested": "https://greavescotton.com/our-businesses/",
+          "final_url": "https://greavescotton.com/our-businesses/",
+          "path": "/our-businesses/",
+          "file": "our-businesses/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 258476,
+          "elapsed_ms": 906,
+          "is_entry": false
+        },
+        {
+          "requested": "https://greavescotton.com/energy-solutions/",
+          "final_url": "https://greavescotton.com/energy-solutions/",
+          "path": "/energy-solutions/",
+          "file": "energy-solutions/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 403997,
+          "elapsed_ms": 1234,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1398049
+    },
+    {
+      "slug": "groww",
+      "url": "https://groww.in/",
+      "category": "fintech_saas_in",
+      "why_hard": "Fintech, SPA",
+      "captured_at": "2026-09-07T20:45:46.254489+00:00",
+      "pages": [
+        {
+          "requested": "https://groww.in/",
+          "final_url": "https://groww.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 202633,
+          "elapsed_ms": 438,
+          "is_entry": true
+        },
+        {
+          "requested": "https://groww.in/stocks",
+          "final_url": "https://groww.in/stocks",
+          "path": "/stocks/",
+          "file": "stocks/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 153403,
+          "elapsed_ms": 155,
+          "is_entry": false
+        },
+        {
+          "requested": "https://groww.in/stocks/intraday",
+          "final_url": "https://groww.in/stocks/intraday",
+          "path": "/stocks/intraday/",
+          "file": "stocks/intraday/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 837723,
+          "elapsed_ms": 125,
+          "is_entry": false
+        },
+        {
+          "requested": "https://groww.in/etfs",
+          "final_url": "https://groww.in/etfs",
+          "path": "/etfs/",
+          "file": "etfs/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 838507,
+          "elapsed_ms": 125,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 2032266
+    },
+    {
+      "slug": "haldiram",
+      "url": "https://www.haldirams.com/",
+      "category": "food_hospitality",
+      "why_hard": "FMCG, catalogue images",
+      "captured_at": "2026-09-07T20:45:24.947206+00:00",
+      "pages": [
+        {
+          "requested": "https://www.haldirams.com/",
+          "final_url": "https://www.haldirams.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 450454,
+          "elapsed_ms": 1093,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.haldirams.com/contact-us",
+          "final_url": "https://www.haldirams.com/contact-us",
+          "path": "/contact-us/",
+          "file": "contact-us/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 96212,
+          "elapsed_ms": 390,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.haldirams.com/api/auth/shopify",
+          "final_url": "https://www.haldirams.com/api/auth/shopify",
+          "path": "/api/auth/shopify/",
+          "file": "api/auth/shopify/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 885,
+          "elapsed_ms": 187,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.haldirams.com/collection/wedding-hampers",
+          "final_url": "https://www.haldirams.com/collection/wedding-hampers",
+          "path": "/collection/wedding-hampers/",
+          "file": "collection/wedding-hampers/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 142898,
+          "elapsed_ms": 406,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 690449
+    },
+    {
+      "slug": "havells",
+      "url": "https://www.havells.com/",
+      "category": "b2b_manufacturing",
+      "why_hard": "Catalogue site, JS product data",
+      "captured_at": "2026-09-07T20:46:18.961793+00:00",
+      "pages": [
+        {
+          "requested": "https://www.havells.com/",
+          "final_url": "https://havells.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 1070652,
+          "elapsed_ms": 843,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.havells.com/catalogsearch/advanced/",
+          "final_url": "https://havells.com/catalogsearch/advanced/",
+          "path": "/catalogsearch/advanced/",
+          "file": "catalogsearch/advanced/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 362727,
+          "elapsed_ms": 281,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.havells.com/fans.html",
+          "final_url": "https://havells.com/fans.html",
+          "path": "/fans.html",
+          "file": "fans.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 1228626,
+          "elapsed_ms": 312,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.havells.com/fans/ceiling-fans.html",
+          "final_url": "https://havells.com/fans/ceiling-fans.html",
+          "path": "/fans/ceiling-fans.html",
+          "file": "fans/ceiling-fans.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 1284534,
+          "elapsed_ms": 265,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 3946539
+    },
+    {
+      "slug": "helpage-india",
+      "url": "https://www.helpageindia.org/",
+      "category": "ngo",
+      "why_hard": "NGO, dated content",
+      "captured_at": "2026-09-07T20:45:10.154943+00:00",
+      "pages": [
+        {
+          "requested": "https://www.helpageindia.org/",
+          "final_url": "https://www.helpageindia.org/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 666150,
+          "elapsed_ms": 1108,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.helpageindia.org/donate",
+          "final_url": "https://www.helpageindia.org/donate",
+          "path": "/donate/",
+          "file": "donate/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 697798,
+          "elapsed_ms": 327,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.helpageindia.org/get-involved",
+          "final_url": "https://www.helpageindia.org/get-involved",
+          "path": "/get-involved/",
+          "file": "get-involved/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 569273,
+          "elapsed_ms": 313,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.helpageindia.org/get-involved/",
+          "final_url": "https://www.helpageindia.org/get-involved",
+          "path": "/get-involved/",
+          "file": "get-involved/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 569273,
+          "elapsed_ms": 625,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 2502494
+    },
+    {
+      "slug": "housing-com",
+      "url": "https://housing.com/",
+      "category": "local_marketplace",
+      "why_hard": "Real estate, SPA",
+      "captured_at": "2026-09-07T20:45:42.658448+00:00",
+      "pages": [],
+      "robots_status": 406,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "entry returned HTTP 406",
+      "bytes_total": 0
+    },
+    {
+      "slug": "hri",
+      "url": "https://www.hri.res.in/",
+      "category": "edu_research",
+      "why_hard": "Small research institute",
+      "captured_at": "2026-09-07T20:45:00.833299+00:00",
+      "pages": [],
+      "robots_status": null,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "SSLError: HTTPSConnectionPool(host='www.hri.res.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)')))",
+      "bytes_total": 0
+    },
+    {
+      "slug": "iiit-delhi",
+      "url": "https://www.iiitd.ac.in/",
+      "category": "edu_research",
+      "why_hard": "University site, dated markup",
+      "captured_at": "2026-09-07T20:44:52.405175+00:00",
+      "pages": [],
+      "robots_status": null,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "SSLError: HTTPSConnectionPool(host='www.iiitd.ac.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)')))",
+      "bytes_total": 0
+    },
+    {
+      "slug": "iiit-hyderabad",
+      "url": "https://www.iiit.ac.in/",
+      "category": "edu_research",
+      "why_hard": "University site, no Organization schema typically",
+      "captured_at": "2026-09-07T20:44:52.171287+00:00",
+      "pages": [
+        {
+          "requested": "https://www.iiit.ac.in/",
+          "final_url": "https://www.iiit.ac.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 899134,
+          "elapsed_ms": 1218,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.iiit.ac.in/contact-us",
+          "final_url": "https://www.iiit.ac.in/contact-us/",
+          "path": "/contact-us/",
+          "file": "contact-us/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 238508,
+          "elapsed_ms": 656,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.iiit.ac.in/at-a-glance/",
+          "final_url": "https://www.iiit.ac.in/at-a-glance/",
+          "path": "/at-a-glance/",
+          "file": "at-a-glance/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 219535,
+          "elapsed_ms": 468,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.iiit.ac.in/vision-and-mission/",
+          "final_url": "https://www.iiit.ac.in/vision-and-mission/",
+          "path": "/vision-and-mission/",
+          "file": "vision-and-mission/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 162589,
+          "elapsed_ms": 438,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1519766
+    },
+    {
+      "slug": "iisc",
+      "url": "https://iisc.ac.in/",
+      "category": "edu_research",
+      "why_hard": "Research institute, thin structured data",
+      "captured_at": "2026-09-07T20:44:52.499146+00:00",
+      "pages": [
+        {
+          "requested": "https://iisc.ac.in/",
+          "final_url": "https://www.iisc.ac.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 121173,
+          "elapsed_ms": 1077,
+          "is_entry": true
+        },
+        {
+          "requested": "https://iisc.ac.in/icash/",
+          "final_url": "https://www.iisc.ac.in/icash/",
+          "path": "/icash/",
+          "file": "icash/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 98535,
+          "elapsed_ms": 594,
+          "is_entry": false
+        },
+        {
+          "requested": "https://iisc.ac.in/about/",
+          "final_url": "https://www.iisc.ac.in/about/",
+          "path": "/about/",
+          "file": "about/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 98697,
+          "elapsed_ms": 702,
+          "is_entry": false
+        },
+        {
+          "requested": "https://iisc.ac.in/about/foreword-from-the-director/",
+          "final_url": "https://www.iisc.ac.in/about/foreword-from-the-director/",
+          "path": "/about/foreword-from-the-director/",
+          "file": "about/foreword-from-the-director/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 102569,
+          "elapsed_ms": 655,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 420974
+    },
+    {
+      "slug": "imsc",
+      "url": "https://www.imsc.res.in/",
+      "category": "edu_research",
+      "why_hard": "Academic site, minimal metadata",
+      "captured_at": "2026-09-07T20:44:54.377866+00:00",
+      "pages": [
+        {
+          "requested": "https://www.imsc.res.in/",
+          "final_url": "https://www.imsc.res.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 54551,
+          "elapsed_ms": 1515,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.imsc.res.in/about_imsc",
+          "final_url": "https://www.imsc.res.in/about_imsc",
+          "path": "/about_imsc/",
+          "file": "about_imsc/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 104669,
+          "elapsed_ms": 640,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.imsc.res.in/imsc_logo",
+          "final_url": "https://www.imsc.res.in/imsc_logo",
+          "path": "/imsc_logo/",
+          "file": "imsc_logo/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 41661,
+          "elapsed_ms": 469,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.imsc.res.in/research-areas",
+          "final_url": "https://www.imsc.res.in/research-areas",
+          "path": "/research-areas/",
+          "file": "research-areas/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 39447,
+          "elapsed_ms": 483,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 240328
+    },
+    {
+      "slug": "incometax-in",
+      "url": "https://www.incometax.gov.in/iec/foportal/",
+      "category": "gov_civic",
+      "why_hard": "Angular portal, almost no server-rendered text",
+      "captured_at": "2026-09-07T20:44:46.480848+00:00",
+      "pages": [
+        {
+          "requested": "https://www.incometax.gov.in/iec/foportal/",
+          "final_url": "https://www.incometax.gov.in/iec/foportal/",
+          "path": "/iec/foportal/",
+          "file": "iec/foportal/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 227187,
+          "elapsed_ms": 125,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.incometax.gov.in/",
+          "final_url": "https://www.incometax.gov.in/iec/foportal/",
+          "path": "/iec/foportal/",
+          "file": "iec/foportal/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 227187,
+          "elapsed_ms": 155,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.incometax.gov.in/iec/foportal/contact-us",
+          "final_url": "https://www.incometax.gov.in/iec/foportal/contact-us",
+          "path": "/iec/foportal/contact-us/",
+          "file": "iec/foportal/contact-us/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 126783,
+          "elapsed_ms": 109,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.incometax.gov.in/iec/foportal/help/all-topics/tax-payer/individual/how-to-file-tax-returns",
+          "final_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/tax-payer/individual/how-to-file-tax-returns",
+          "path": "/iec/foportal/help/all-topics/tax-payer/individual/how-to-file-tax-returns/",
+          "file": "iec/foportal/help/all-topics/tax-payer/individual/how-to-file-tax-returns/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 118388,
+          "elapsed_ms": 109,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 503,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 699545
+    },
+    {
+      "slug": "india-gov",
+      "url": "https://www.india.gov.in/",
+      "category": "gov_civic",
+      "why_hard": "National portal, legacy markup",
+      "captured_at": "2026-09-07T20:44:46.480848+00:00",
+      "pages": [],
+      "robots_status": 403,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "entry returned HTTP 403",
+      "bytes_total": 0
+    },
+    {
+      "slug": "indianrailways",
+      "url": "https://indianrailways.gov.in/",
+      "category": "gov_civic",
+      "why_hard": "Legacy portal, tables as layout",
+      "captured_at": "2026-09-07T20:44:51.994136+00:00",
+      "pages": [
+        {
+          "requested": "https://indianrailways.gov.in/",
+          "final_url": "https://indianrailways.gov.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 52379,
+          "elapsed_ms": 187,
+          "is_entry": true
+        },
+        {
+          "requested": "https://indianrailways.gov.in/index.html",
+          "final_url": "https://indianrailways.gov.in/index.html",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 52379,
+          "elapsed_ms": 156,
+          "is_entry": false
+        },
+        {
+          "requested": "https://indianrailways.gov.in/ScreenReaderInformation.html",
+          "final_url": "https://indianrailways.gov.in/ScreenReaderInformation.html",
+          "path": "/ScreenReaderInformation.html",
+          "file": "ScreenReaderInformation.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 32377,
+          "elapsed_ms": 61,
+          "is_entry": false
+        },
+        {
+          "requested": "https://indianrailways.gov.in/railwayboard/",
+          "final_url": "https://indianrailways.gov.in/railwayboard/",
+          "path": "/railwayboard/",
+          "file": "railwayboard/index.html",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8",
+          "bytes": 150487,
+          "elapsed_ms": 327,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 404,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 287622
+    },
+    {
+      "slug": "isical",
+      "url": "https://www.isical.ac.in/",
+      "category": "edu_research",
+      "why_hard": "Legacy academic site",
+      "captured_at": "2026-09-07T20:44:59.280700+00:00",
+      "pages": [],
+      "robots_status": null,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "SSLError: HTTPSConnectionPool(host='www.isical.ac.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1006)')))",
+      "bytes_total": 0
+    },
+    {
+      "slug": "iso-org",
+      "url": "https://www.iso.org/",
+      "category": "industry_body",
+      "why_hard": "Standards body, paywalled facts",
+      "captured_at": "2026-09-07T20:46:13.785519+00:00",
+      "pages": [],
+      "robots_status": 403,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "entry returned HTTP 403",
+      "bytes_total": 0
+    },
+    {
+      "slug": "jncasr",
+      "url": "https://www.jncasr.ac.in/",
+      "category": "edu_research",
+      "why_hard": "Research institute, stale sections",
+      "captured_at": "2026-09-07T20:45:01.160356+00:00",
+      "pages": [
+        {
+          "requested": "https://www.jncasr.ac.in/",
+          "final_url": "https://www.jncasr.ac.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 143100,
+          "elapsed_ms": 530,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.jncasr.ac.in/styleswitcher/switch/custom_theme/custom/default",
+          "final_url": "https://www.jncasr.ac.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 143100,
+          "elapsed_ms": 203,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.jncasr.ac.in/styleswitcher/switch/custom_theme/custom/black",
+          "final_url": "https://www.jncasr.ac.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 143100,
+          "elapsed_ms": 171,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.jncasr.ac.in/styleswitcher/switch/custom_theme/custom/gray",
+          "final_url": "https://www.jncasr.ac.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 143100,
+          "elapsed_ms": 203,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 572400
+    },
+    {
+      "slug": "justdial",
+      "url": "https://www.justdial.com/",
+      "category": "local_marketplace",
+      "why_hard": "Directory, JS-rendered listings",
+      "captured_at": "2026-09-07T20:45:38.469987+00:00",
+      "pages": [],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "entry returned HTTP 403",
+      "bytes_total": 0
+    },
+    {
+      "slug": "kirloskar",
+      "url": "https://www.kirloskarpumps.com/",
+      "category": "b2b_manufacturing",
+      "why_hard": "Manufacturer, spec tables as images",
+      "captured_at": "2026-09-07T20:46:18.075077+00:00",
+      "pages": [],
+      "robots_status": 503,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "entry returned HTTP 503",
+      "bytes_total": 0
+    },
+    {
+      "slug": "linear",
+      "url": "https://linear.app/",
+      "category": "spa_product_global",
+      "why_hard": "Design-led SPA, facts in components",
+      "captured_at": "2026-09-07T20:45:51.623079+00:00",
+      "pages": [
+        {
+          "requested": "https://linear.app/",
+          "final_url": "https://linear.app/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1267210,
+          "elapsed_ms": 2390,
+          "is_entry": true
+        },
+        {
+          "requested": "https://linear.app/homepage",
+          "final_url": "https://linear.app/homepage",
+          "path": "/homepage/",
+          "file": "homepage/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1267374,
+          "elapsed_ms": 1952,
+          "is_entry": false
+        },
+        {
+          "requested": "https://linear.app/customers",
+          "final_url": "https://linear.app/customers",
+          "path": "/customers/",
+          "file": "customers/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 724729,
+          "elapsed_ms": 562,
+          "is_entry": false
+        },
+        {
+          "requested": "https://linear.app/pricing",
+          "final_url": "https://linear.app/pricing",
+          "path": "/pricing/",
+          "file": "pricing/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 797632,
+          "elapsed_ms": 469,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 4056945
+    },
+    {
+      "slug": "livemint",
+      "url": "https://www.livemint.com/",
+      "category": "media_regional",
+      "why_hard": "News, JS-heavy",
+      "captured_at": "2026-09-07T20:46:29.069708+00:00",
+      "pages": [
+        {
+          "requested": "https://www.livemint.com/",
+          "final_url": "https://www.livemint.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 368419,
+          "elapsed_ms": 516,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.livemint.com/market/market-stats",
+          "final_url": "https://www.livemint.com/market/market-stats",
+          "path": "/market/market-stats/",
+          "file": "market/market-stats/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 171013,
+          "elapsed_ms": 93,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.livemint.com/market",
+          "final_url": "https://www.livemint.com/market",
+          "path": "/market/",
+          "file": "market/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1440669,
+          "elapsed_ms": 234,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.livemint.com/market/stock-market-news",
+          "final_url": "https://www.livemint.com/market/stock-market-news",
+          "path": "/market/stock-market-news/",
+          "file": "market/stock-market-news/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 259668,
+          "elapsed_ms": 78,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 2239769
+    },
+    {
+      "slug": "magicbricks",
+      "url": "https://www.magicbricks.com/",
+      "category": "local_marketplace",
+      "why_hard": "Real estate, JS listings",
+      "captured_at": "2026-09-07T20:45:41.315799+00:00",
+      "pages": [
+        {
+          "requested": "https://www.magicbricks.com/",
+          "final_url": "https://www.magicbricks.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8",
+          "bytes": 753931,
+          "elapsed_ms": 1188,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.magicbricks.com/property-for-sale-rent/residential-real-estate",
+          "final_url": "https://www.magicbricks.com/property-for-sale-rent/residential-real-estate",
+          "path": "/property-for-sale-rent/residential-real-estate/",
+          "file": "property-for-sale-rent/residential-real-estate/index.html",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8",
+          "bytes": 753955,
+          "elapsed_ms": 375,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.magicbricks.com/property-for-sale-rent-in-Visakhapatnam/residential-real-estate-Visakhapatnam",
+          "final_url": "https://www.magicbricks.com/property-for-sale-rent-in-Visakhapatnam/residential-real-estate-Visakhapatnam",
+          "path": "/property-for-sale-rent-in-Visakhapatnam/residential-real-estate-Visakhapatnam/",
+          "file": "property-for-sale-rent-in-Visakhapatnam/residential-real-estate-Visakhapatnam/index.html",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8",
+          "bytes": 464074,
+          "elapsed_ms": 608,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.magicbricks.com/property-for-sale-rent-in-Vijayawada/residential-real-estate-Vijayawada",
+          "final_url": "https://www.magicbricks.com/property-for-sale-rent-in-Vijayawada/residential-real-estate-Vijayawada",
+          "path": "/property-for-sale-rent-in-Vijayawada/residential-real-estate-Vijayawada/",
+          "file": "property-for-sale-rent-in-Vijayawada/residential-real-estate-Vijayawada/index.html",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8",
+          "bytes": 451717,
+          "elapsed_ms": 375,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 2423677
+    },
+    {
+      "slug": "manipal-hospitals",
+      "url": "https://www.manipalhospitals.com/",
+      "category": "healthcare",
+      "why_hard": "Hospital group",
+      "captured_at": "2026-09-07T20:45:34.497277+00:00",
+      "pages": [
+        {
+          "requested": "https://www.manipalhospitals.com/",
+          "final_url": "https://www.manipalhospitals.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 282997,
+          "elapsed_ms": 812,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.manipalhospitals.com/medical-condition/",
+          "final_url": "https://www.manipalhospitals.com/medical-condition/",
+          "path": "/medical-condition/",
+          "file": "medical-condition/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 255495,
+          "elapsed_ms": 94,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.manipalhospitals.com/treatment/",
+          "final_url": "https://www.manipalhospitals.com/treatment/",
+          "path": "/treatment/",
+          "file": "treatment/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 265478,
+          "elapsed_ms": 108,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.manipalhospitals.com/specialities/",
+          "final_url": "https://www.manipalhospitals.com/specialities/",
+          "path": "/specialities/",
+          "file": "specialities/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 559208,
+          "elapsed_ms": 125,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1363178
+    },
+    {
+      "slug": "max-healthcare",
+      "url": "https://www.maxhealthcare.in/",
+      "category": "healthcare",
+      "why_hard": "Hospital group, JS listings",
+      "captured_at": "2026-09-07T20:45:33.671409+00:00",
+      "pages": [],
+      "robots_status": 403,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "entry returned HTTP 403",
+      "bytes_total": 0
+    },
+    {
+      "slug": "mcgm",
+      "url": "https://portal.mcgm.gov.in/",
+      "category": "gov_civic",
+      "why_hard": "Municipal portal, framesets and JS menus",
+      "captured_at": "2026-09-07T20:44:48.566604+00:00",
+      "pages": [],
+      "robots_status": 404,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "entry returned HTTP 500",
+      "bytes_total": 0
+    },
+    {
+      "slug": "meesho",
+      "url": "https://www.meesho.com/",
+      "category": "fintech_saas_in",
+      "why_hard": "Marketplace SPA",
+      "captured_at": "2026-09-07T20:45:50.527693+00:00",
+      "pages": [],
+      "robots_status": 403,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "entry returned HTTP 403",
+      "bytes_total": 0
+    },
+    {
+      "slug": "mintlify",
+      "url": "https://mintlify.com/",
+      "category": "spa_product_global",
+      "why_hard": "Docs platform, SPA docs",
+      "captured_at": "2026-09-07T20:46:07.465606+00:00",
+      "pages": [
+        {
+          "requested": "https://mintlify.com/",
+          "final_url": "https://www.mintlify.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 382462,
+          "elapsed_ms": 952,
+          "is_entry": true
+        },
+        {
+          "requested": "https://mintlify.com/pricing",
+          "final_url": "https://www.mintlify.com/pricing",
+          "path": "/pricing/",
+          "file": "pricing/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 426974,
+          "elapsed_ms": 890,
+          "is_entry": false
+        },
+        {
+          "requested": "https://mintlify.com/contact/sales",
+          "final_url": "https://www.mintlify.com/contact/sales",
+          "path": "/contact/sales/",
+          "file": "contact/sales/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 233680,
+          "elapsed_ms": 390,
+          "is_entry": false
+        },
+        {
+          "requested": "https://mintlify.com/data",
+          "final_url": "https://www.mintlify.com/data",
+          "path": "/data/",
+          "file": "data/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 282683,
+          "elapsed_ms": 405,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1325799
+    },
+    {
+      "slug": "modal",
+      "url": "https://modal.com/",
+      "category": "spa_product_global",
+      "why_hard": "Infra SaaS, JS docs",
+      "captured_at": "2026-09-07T20:46:07.274608+00:00",
+      "pages": [
+        {
+          "requested": "https://modal.com/",
+          "final_url": "https://modal.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 413531,
+          "elapsed_ms": 1796,
+          "is_entry": true
+        },
+        {
+          "requested": "https://modal.com/runtime",
+          "final_url": "https://modal.com/runtime",
+          "path": "/runtime/",
+          "file": "runtime/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 52937,
+          "elapsed_ms": 1063,
+          "is_entry": false
+        },
+        {
+          "requested": "https://modal.com/customers",
+          "final_url": "https://modal.com/customers",
+          "path": "/customers/",
+          "file": "customers/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 439901,
+          "elapsed_ms": 1422,
+          "is_entry": false
+        },
+        {
+          "requested": "https://modal.com/pricing",
+          "final_url": "https://modal.com/pricing",
+          "path": "/pricing/",
+          "file": "pricing/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 136197,
+          "elapsed_ms": 1125,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1042566
+    },
+    {
+      "slug": "mokobara",
+      "url": "https://www.mokobara.com/",
+      "category": "d2c_retail",
+      "why_hard": "D2C, JS storefront",
+      "captured_at": "2026-09-07T20:45:15.963435+00:00",
+      "pages": [
+        {
+          "requested": "https://www.mokobara.com/",
+          "final_url": "https://mokobara.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1377027,
+          "elapsed_ms": 1578,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.mokobara.com/collections/luggage-all",
+          "final_url": "https://mokobara.com/collections/luggage-all",
+          "path": "/collections/luggage-all/",
+          "file": "collections/luggage-all/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1726365,
+          "elapsed_ms": 1250,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.mokobara.com/collections/explore-tech-range",
+          "final_url": "https://mokobara.com/collections/explore-tech-range",
+          "path": "/collections/explore-tech-range/",
+          "file": "collections/explore-tech-range/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 829065,
+          "elapsed_ms": 796,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.mokobara.com/collections/explore-cabin-luggage",
+          "final_url": "https://mokobara.com/collections/explore-cabin-luggage",
+          "path": "/collections/explore-cabin-luggage/",
+          "file": "collections/explore-cabin-luggage/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 996284,
+          "elapsed_ms": 843,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 4928741
+    },
+    {
+      "slug": "morning-context",
+      "url": "https://themorningcontext.com/",
+      "category": "media_regional",
+      "why_hard": "Paywalled analysis",
+      "captured_at": "2026-09-07T20:46:29.929648+00:00",
+      "pages": [
+        {
+          "requested": "https://themorningcontext.com/",
+          "final_url": "https://themorningcontext.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1206872,
+          "elapsed_ms": 172,
+          "is_entry": true
+        },
+        {
+          "requested": "https://themorningcontext.com/category/internet",
+          "final_url": "https://themorningcontext.com/category/internet",
+          "path": "/category/internet/",
+          "file": "category/internet/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 285333,
+          "elapsed_ms": 172,
+          "is_entry": false
+        },
+        {
+          "requested": "https://themorningcontext.com/internet/pixxel-wants-to-be-more-than-a-hyperspectral-imaging-company",
+          "final_url": "https://themorningcontext.com/internet/pixxel-wants-to-be-more-than-a-hyperspectral-imaging-company",
+          "path": "/internet/pixxel-wants-to-be-more-than-a-hyperspectral-imaging-company/",
+          "file": "internet/pixxel-wants-to-be-more-than-a-hyperspectral-imaging-company/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 379677,
+          "elapsed_ms": 719,
+          "is_entry": false
+        },
+        {
+          "requested": "https://themorningcontext.com/writers/muskaan-gupta",
+          "final_url": "https://themorningcontext.com/writers/muskaan-gupta",
+          "path": "/writers/muskaan-gupta/",
+          "file": "writers/muskaan-gupta/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 213054,
+          "elapsed_ms": 405,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 404,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 2084936
+    },
+    {
+      "slug": "msme-gov",
+      "url": "https://msme.gov.in/",
+      "category": "gov_civic",
+      "why_hard": "Ministry site, PDF-first content",
+      "captured_at": "2026-09-07T20:44:51.796912+00:00",
+      "pages": [],
+      "robots_status": 403,
+      "robots_disallows_entry": false,
+      "status": "failed",
+      "reason": "entry returned HTTP 403",
+      "bytes_total": 0
+    },
+    {
+      "slug": "mygov-in",
+      "url": "https://www.mygov.in/",
+      "category": "gov_civic",
+      "why_hard": "Government portal, heavy templating, thin schema",
+      "captured_at": "2026-09-07T20:44:46.480848+00:00",
+      "pages": [
+        {
+          "requested": "https://www.mygov.in/",
+          "final_url": "https://www.mygov.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 218763,
+          "elapsed_ms": 436,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.mygov.in/screenreader",
+          "final_url": "https://www.mygov.in/screenreader",
+          "path": "/screenreader/",
+          "file": "screenreader/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 61863,
+          "elapsed_ms": 47,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.mygov.in/groups",
+          "final_url": "https://www.mygov.in/groups",
+          "path": "/groups/",
+          "file": "groups/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 121056,
+          "elapsed_ms": 202,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.mygov.in/home/do",
+          "final_url": "https://www.mygov.in/home/do",
+          "path": "/home/do/",
+          "file": "home/do/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 147192,
+          "elapsed_ms": 266,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 548874
+    },
+    {
+      "slug": "narayana-health",
+      "url": "https://www.narayanahealth.org/",
+      "category": "healthcare",
+      "why_hard": "Hospital group, large templated site",
+      "captured_at": "2026-09-07T20:45:34.179922+00:00",
+      "pages": [
+        {
+          "requested": "https://www.narayanahealth.org/",
+          "final_url": "https://www.narayanahealth.org/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 3056909,
+          "elapsed_ms": 2233,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.narayanahealth.org/emergency",
+          "final_url": "https://www.narayanahealth.org/emergency",
+          "path": "/emergency/",
+          "file": "emergency/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 137732,
+          "elapsed_ms": 639,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.narayanahealth.org/ocaapp/doctors/undefined",
+          "final_url": "https://www.narayanahealth.org/ocaapp/doctors/undefined",
+          "path": "/ocaapp/doctors/undefined/",
+          "file": "ocaapp/doctors/undefined/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 199256,
+          "elapsed_ms": 687,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 3393897
+    },
+    {
+      "slug": "nasscom",
+      "url": "https://nasscom.in/",
+      "category": "industry_body",
+      "why_hard": "Industry body, report-led",
+      "captured_at": "2026-09-07T20:46:10.443890+00:00",
+      "pages": [
+        {
+          "requested": "https://nasscom.in/",
+          "final_url": "https://nasscom.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 105467,
+          "elapsed_ms": 890,
+          "is_entry": true
+        },
+        {
+          "requested": "https://nasscom.in/membership",
+          "final_url": "https://nasscom.in/membership",
+          "path": "/membership/",
+          "file": "membership/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 67817,
+          "elapsed_ms": 530,
+          "is_entry": false
+        },
+        {
+          "requested": "https://nasscom.in/nasscom-membership",
+          "final_url": "https://www.nasscom.in/nasscom-membership",
+          "path": "/nasscom-membership/",
+          "file": "nasscom-membership/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 121313,
+          "elapsed_ms": 1687,
+          "is_entry": false
+        },
+        {
+          "requested": "https://nasscom.in/regional",
+          "final_url": "https://nasscom.in/regional",
+          "path": "/regional/",
+          "file": "regional/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 193979,
+          "elapsed_ms": 531,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 488576
+    },
+    {
+      "slug": "ncbs",
+      "url": "https://www.ncbs.res.in/",
+      "category": "edu_research",
+      "why_hard": "Research centre, JS-driven listings",
+      "captured_at": "2026-09-07T20:44:59.665125+00:00",
+      "pages": [
+        {
+          "requested": "https://www.ncbs.res.in/",
+          "final_url": "https://www.ncbs.res.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 88482,
+          "elapsed_ms": 1608,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.ncbs.res.in/content/azadi-ka-amrit-mahotsav",
+          "final_url": "https://www.ncbs.res.in/content/azadi-ka-amrit-mahotsav",
+          "path": "/content/azadi-ka-amrit-mahotsav/",
+          "file": "content/azadi-ka-amrit-mahotsav/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 87056,
+          "elapsed_ms": 655,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.ncbs.res.in/about-us",
+          "final_url": "https://www.ncbs.res.in/about-us",
+          "path": "/about-us/",
+          "file": "about-us/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 60546,
+          "elapsed_ms": 640,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.ncbs.res.in/who-we-are-and-what-we-do",
+          "final_url": "https://www.ncbs.res.in/who-we-are-and-what-we-do",
+          "path": "/who-we-are-and-what-we-do/",
+          "file": "who-we-are-and-what-we-do/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 61963,
+          "elapsed_ms": 672,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 298047
+    },
+    {
+      "slug": "neon",
+      "url": "https://neon.com/",
+      "category": "spa_product_global",
+      "why_hard": "SaaS, JS pricing",
+      "captured_at": "2026-09-07T20:45:58.070868+00:00",
+      "pages": [
+        {
+          "requested": "https://neon.com/",
+          "final_url": "https://neon.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 411292,
+          "elapsed_ms": 530,
+          "is_entry": true
+        },
+        {
+          "requested": "https://neon.com/blog/comparing-token-economics-across-42-ai-models",
+          "final_url": "https://neon.com/blog/comparing-token-economics-across-42-ai-models",
+          "path": "/blog/comparing-token-economics-across-42-ai-models/",
+          "file": "blog/comparing-token-economics-across-42-ai-models/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 312035,
+          "elapsed_ms": 375,
+          "is_entry": false
+        },
+        {
+          "requested": "https://neon.com/docs",
+          "final_url": "https://neon.com/docs/introduction",
+          "path": "/docs/introduction/",
+          "file": "docs/introduction/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 383722,
+          "elapsed_ms": 610,
+          "is_entry": false
+        },
+        {
+          "requested": "https://neon.com/pricing",
+          "final_url": "https://neon.com/pricing",
+          "path": "/pricing/",
+          "file": "pricing/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 661512,
+          "elapsed_ms": 233,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1768561
+    },
+    {
+      "slug": "nobroker",
+      "url": "https://www.nobroker.in/",
+      "category": "local_marketplace",
+      "why_hard": "Real estate, SPA",
+      "captured_at": "2026-09-07T20:45:40.493447+00:00",
+      "pages": [
+        {
+          "requested": "https://www.nobroker.in/",
+          "final_url": "https://www.nobroker.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 620093,
+          "elapsed_ms": 703,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.nobroker.in/list-your-property-for-rent-sale",
+          "final_url": "https://www.nobroker.in/list-your-property-for-rent-sale",
+          "path": "/list-your-property-for-rent-sale/",
+          "file": "list-your-property-for-rent-sale/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 601738,
+          "elapsed_ms": 125,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.nobroker.in/about/tenants",
+          "final_url": "https://www.nobroker.in/about/tenants",
+          "path": "/about/tenants/",
+          "file": "about/tenants/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 52761,
+          "elapsed_ms": 140,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.nobroker.in/rental-agreement",
+          "final_url": "https://www.nobroker.in/rental-agreement",
+          "path": "/rental-agreement/",
+          "file": "rental-agreement/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 257914,
+          "elapsed_ms": 250,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1532506
+    },
+    {
+      "slug": "posthog",
+      "url": "https://posthog.com/",
+      "category": "spa_product_global",
+      "why_hard": "Docs-heavy SaaS",
+      "captured_at": "2026-09-07T20:45:52.366398+00:00",
+      "pages": [
+        {
+          "requested": "https://posthog.com/",
+          "final_url": "https://posthog.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1434063,
+          "elapsed_ms": 609,
+          "is_entry": true
+        },
+        {
+          "requested": "https://posthog.com/pricing",
+          "final_url": "https://posthog.com/pricing",
+          "path": "/pricing/",
+          "file": "pricing/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1273705,
+          "elapsed_ms": 155,
+          "is_entry": false
+        },
+        {
+          "requested": "https://posthog.com/self-driving",
+          "final_url": "https://posthog.com/self-driving",
+          "path": "/self-driving/",
+          "file": "self-driving/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1289244,
+          "elapsed_ms": 186,
+          "is_entry": false
+        },
+        {
+          "requested": "https://posthog.com/context-warehouse",
+          "final_url": "https://posthog.com/context-warehouse",
+          "path": "/context-warehouse/",
+          "file": "context-warehouse/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 2493190,
+          "elapsed_ms": 203,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 6490202
+    },
+    {
+      "slug": "practo",
+      "url": "https://www.practo.com/",
+      "category": "local_marketplace",
+      "why_hard": "Health marketplace, JS",
+      "captured_at": "2026-09-07T20:45:43.284665+00:00",
+      "pages": [
+        {
+          "requested": "https://www.practo.com/",
+          "final_url": "https://www.practo.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 91364,
+          "elapsed_ms": 609,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.practo.com/consult",
+          "final_url": "https://www.practo.com/consult",
+          "path": "/consult/",
+          "file": "consult/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 171535,
+          "elapsed_ms": 343,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.practo.com/doctors",
+          "final_url": "https://www.practo.com/doctors",
+          "path": "/doctors/",
+          "file": "doctors/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 78810,
+          "elapsed_ms": 297,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.practo.com/tests",
+          "final_url": "https://www.practo.com/tests",
+          "path": "/tests/",
+          "file": "tests/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 97248,
+          "elapsed_ms": 234,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 438957
+    },
+    {
+      "slug": "pratham",
+      "url": "https://www.pratham.org/",
+      "category": "ngo",
+      "why_hard": "NGO, PDF reports as primary facts",
+      "captured_at": "2026-09-07T20:45:07.672864+00:00",
+      "pages": [
+        {
+          "requested": "https://www.pratham.org/",
+          "final_url": "https://www.pratham.org/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 265528,
+          "elapsed_ms": 875,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.pratham.org/our-story/",
+          "final_url": "https://www.pratham.org/our-story/",
+          "path": "/our-story/",
+          "file": "our-story/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 242908,
+          "elapsed_ms": 421,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.pratham.org/about/board/",
+          "final_url": "https://www.pratham.org/about/board/",
+          "path": "/about/board/",
+          "file": "about/board/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 214693,
+          "elapsed_ms": 360,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.pratham.org/about/leadership/",
+          "final_url": "https://www.pratham.org/about/leadership/",
+          "path": "/about/leadership/",
+          "file": "about/leadership/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 199814,
+          "elapsed_ms": 296,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 922943
+    },
+    {
+      "slug": "punecorporation",
+      "url": "https://www.pmc.gov.in/",
+      "category": "gov_civic",
+      "why_hard": "Municipal site, stale content, image-only notices",
+      "captured_at": "2026-09-07T20:44:46.480848+00:00",
+      "pages": [
+        {
+          "requested": "https://www.pmc.gov.in/",
+          "final_url": "https://www.pmc.gov.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 52922,
+          "elapsed_ms": 530,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.pmc.gov.in/b/maharashtra-right-service-act",
+          "final_url": "https://www.pmc.gov.in/b/maharashtra-right-service-act",
+          "path": "/b/maharashtra-right-service-act/",
+          "file": "b/maharashtra-right-service-act/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 53315,
+          "elapsed_ms": 93,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.pmc.gov.in/about-pune",
+          "final_url": "https://www.pmc.gov.in/about-pune",
+          "path": "/about-pune/",
+          "file": "about-pune/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 53121,
+          "elapsed_ms": 125,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.pmc.gov.in/b/pmc-apps-store",
+          "final_url": "https://www.pmc.gov.in/b/pmc-apps-store",
+          "path": "/b/pmc-apps-store/",
+          "file": "b/pmc-apps-store/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 53150,
+          "elapsed_ms": 94,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 212508
+    },
+    {
+      "slug": "qdrant",
+      "url": "https://qdrant.tech/",
+      "category": "spa_product_global",
+      "why_hard": "Infra SaaS",
+      "captured_at": "2026-09-07T20:46:04.712053+00:00",
+      "pages": [
+        {
+          "requested": "https://qdrant.tech/",
+          "final_url": "https://qdrant.tech/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 782453,
+          "elapsed_ms": 860,
+          "is_entry": true
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 782453
+    },
+    {
+      "slug": "railway",
+      "url": "https://railway.com/",
+      "category": "spa_product_global",
+      "why_hard": "SPA product site",
+      "captured_at": "2026-09-07T20:45:55.545369+00:00",
+      "pages": [
+        {
+          "requested": "https://railway.com/",
+          "final_url": "https://railway.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 348101,
+          "elapsed_ms": 672,
+          "is_entry": true
+        },
+        {
+          "requested": "https://railway.com/pricing",
+          "final_url": "https://railway.com/pricing",
+          "path": "/pricing/",
+          "file": "pricing/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 432043,
+          "elapsed_ms": 141,
+          "is_entry": false
+        },
+        {
+          "requested": "https://railway.com/agents",
+          "final_url": "https://railway.com/agents",
+          "path": "/agents/",
+          "file": "agents/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 345394,
+          "elapsed_ms": 422,
+          "is_entry": false
+        },
+        {
+          "requested": "https://railway.com/new",
+          "final_url": "https://railway.com/new",
+          "path": "/new/",
+          "file": "new/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 157463,
+          "elapsed_ms": 155,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1283001
+    },
+    {
+      "slug": "razorpay",
+      "url": "https://razorpay.com/",
+      "category": "fintech_saas_in",
+      "why_hard": "Fintech, JS pricing",
+      "captured_at": "2026-09-07T20:45:46.351931+00:00",
+      "pages": [
+        {
+          "requested": "https://razorpay.com/",
+          "final_url": "https://razorpay.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 2741357,
+          "elapsed_ms": 734,
+          "is_entry": true
+        },
+        {
+          "requested": "https://razorpay.com/accept-international-payments/",
+          "final_url": "https://razorpay.com/accept-international-payments/",
+          "path": "/accept-international-payments/",
+          "file": "accept-international-payments/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 2530254,
+          "elapsed_ms": 281,
+          "is_entry": false
+        },
+        {
+          "requested": "https://razorpay.com/engage/",
+          "final_url": "https://razorpay.com/engage/",
+          "path": "/engage/",
+          "file": "engage/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1356114,
+          "elapsed_ms": 140,
+          "is_entry": false
+        },
+        {
+          "requested": "https://razorpay.com/m/startup-perks/",
+          "final_url": "https://razorpay.com/m/startup-perks/",
+          "path": "/m/startup-perks/",
+          "file": "m/startup-perks/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 2726821,
+          "elapsed_ms": 186,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 9354546
+    },
+    {
+      "slug": "render",
+      "url": "https://render.com/",
+      "category": "spa_product_global",
+      "why_hard": "SaaS, JS pricing",
+      "captured_at": "2026-09-07T20:45:56.308550+00:00",
+      "pages": [
+        {
+          "requested": "https://render.com/",
+          "final_url": "https://render.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 378222,
+          "elapsed_ms": 765,
+          "is_entry": true
+        },
+        {
+          "requested": "https://render.com/migration-credits",
+          "final_url": "https://render.com/migration-credits",
+          "path": "/migration-credits/",
+          "file": "migration-credits/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 284817,
+          "elapsed_ms": 375,
+          "is_entry": false
+        },
+        {
+          "requested": "https://render.com/platform",
+          "final_url": "https://render.com/platform",
+          "path": "/platform/",
+          "file": "platform/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 270587,
+          "elapsed_ms": 327,
+          "is_entry": false
+        },
+        {
+          "requested": "https://render.com/docs/scaling",
+          "final_url": "https://render.com/docs/scaling",
+          "path": "/docs/scaling/",
+          "file": "docs/scaling/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 474077,
+          "elapsed_ms": 405,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1407703
+    },
+    {
+      "slug": "resend",
+      "url": "https://resend.com/",
+      "category": "spa_product_global",
+      "why_hard": "SaaS, minimal HTML",
+      "captured_at": "2026-09-07T20:46:00.837973+00:00",
+      "pages": [
+        {
+          "requested": "https://resend.com/",
+          "final_url": "https://resend.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 409997,
+          "elapsed_ms": 516,
+          "is_entry": true
+        },
+        {
+          "requested": "https://resend.com/home",
+          "final_url": "https://resend.com/home",
+          "path": "/home/",
+          "file": "home/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 404888,
+          "elapsed_ms": 360,
+          "is_entry": false
+        },
+        {
+          "requested": "https://resend.com/pricing",
+          "final_url": "https://resend.com/pricing",
+          "path": "/pricing/",
+          "file": "pricing/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 472443,
+          "elapsed_ms": 358,
+          "is_entry": false
+        },
+        {
+          "requested": "https://resend.com/login",
+          "final_url": "https://resend.com/login",
+          "path": "/login/",
+          "file": "login/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 82589,
+          "elapsed_ms": 296,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1369917
+    },
+    {
+      "slug": "saravana-bhavan",
+      "url": "https://www.saravanabhavan.com/",
+      "category": "food_hospitality",
+      "why_hard": "Restaurant, dated site",
+      "captured_at": "2026-09-07T20:45:30.477501+00:00",
+      "pages": [
+        {
+          "requested": "https://www.saravanabhavan.com/",
+          "final_url": "https://saravanabhavan.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 71367,
+          "elapsed_ms": 452,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.saravanabhavan.com/index.html",
+          "final_url": "https://saravanabhavan.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 71367,
+          "elapsed_ms": 594,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.saravanabhavan.com/our_story.html",
+          "final_url": "https://saravanabhavan.com/our_story",
+          "path": "/our_story/",
+          "file": "our_story/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 24699,
+          "elapsed_ms": 687,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.saravanabhavan.com/delight_frames.html",
+          "final_url": "https://saravanabhavan.com/delight_frames",
+          "path": "/delight_frames/",
+          "file": "delight_frames/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 12582,
+          "elapsed_ms": 734,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 180015
+    },
+    {
+      "slug": "scroll-in",
+      "url": "https://scroll.in/",
+      "category": "media_regional",
+      "why_hard": "News, template-heavy",
+      "captured_at": "2026-09-07T20:46:30.756641+00:00",
+      "pages": [
+        {
+          "requested": "https://scroll.in/",
+          "final_url": "https://scroll.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 114884,
+          "elapsed_ms": 671,
+          "is_entry": true
+        },
+        {
+          "requested": "https://scroll.in/contribute",
+          "final_url": "https://scroll.in/contribute",
+          "path": "/contribute/",
+          "file": "contribute/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 69270,
+          "elapsed_ms": 218,
+          "is_entry": false
+        },
+        {
+          "requested": "https://scroll.in/gift-membership",
+          "final_url": "https://scroll.in/gift-membership",
+          "path": "/gift-membership/",
+          "file": "gift-membership/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 68770,
+          "elapsed_ms": 202,
+          "is_entry": false
+        },
+        {
+          "requested": "https://scroll.in/search",
+          "final_url": "https://scroll.in/search",
+          "path": "/search/",
+          "file": "search/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 69955,
+          "elapsed_ms": 155,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 322879
+    },
+    {
+      "slug": "sidbi",
+      "url": "https://www.sidbi.in/",
+      "category": "industry_body",
+      "why_hard": "Development bank, PDF-first",
+      "captured_at": "2026-09-07T20:46:12.793261+00:00",
+      "pages": [
+        {
+          "requested": "https://www.sidbi.in/",
+          "final_url": "https://www.sidbi.in/en/",
+          "path": "/en/",
+          "file": "en/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 252136,
+          "elapsed_ms": 1530,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.sidbi.in/en/index",
+          "final_url": "https://www.sidbi.in/en/index",
+          "path": "/en/index/",
+          "file": "en/index/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 252136,
+          "elapsed_ms": 1077,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.sidbi.in/index",
+          "final_url": "https://www.sidbi.in/index",
+          "path": "/index/",
+          "file": "index/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 252091,
+          "elapsed_ms": 860,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.sidbi.in/about",
+          "final_url": "https://www.sidbi.in/about",
+          "path": "/about/",
+          "file": "about/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 208777,
+          "elapsed_ms": 686,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 403,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 965140
+    },
+    {
+      "slug": "sleepy-owl",
+      "url": "https://sleepyowl.co/",
+      "category": "d2c_retail",
+      "why_hard": "D2C, image-led PDPs",
+      "captured_at": "2026-09-07T20:45:14.678319+00:00",
+      "pages": [
+        {
+          "requested": "https://sleepyowl.co/",
+          "final_url": "https://sleepyowl.co/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 899013,
+          "elapsed_ms": 937,
+          "is_entry": true
+        },
+        {
+          "requested": "https://sleepyowl.co/collections/premium-instant-coffee",
+          "final_url": "https://sleepyowl.co/collections/premium-instant-coffee",
+          "path": "/collections/premium-instant-coffee/",
+          "file": "collections/premium-instant-coffee/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 938863,
+          "elapsed_ms": 578,
+          "is_entry": false
+        },
+        {
+          "requested": "https://sleepyowl.co/collections/best-sellers",
+          "final_url": "https://sleepyowl.co/collections/best-sellers",
+          "path": "/collections/best-sellers/",
+          "file": "collections/best-sellers/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 851675,
+          "elapsed_ms": 561,
+          "is_entry": false
+        },
+        {
+          "requested": "https://sleepyowl.co/pages/bulk-special-orders",
+          "final_url": "https://sleepyowl.co/pages/bulk-special-orders",
+          "path": "/pages/bulk-special-orders/",
+          "file": "pages/bulk-special-orders/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1229149,
+          "elapsed_ms": 516,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 3918700
+    },
+    {
+      "slug": "smile-foundation",
+      "url": "https://www.smilefoundationindia.org/",
+      "category": "ngo",
+      "why_hard": "NGO, image-only infographics",
+      "captured_at": "2026-09-07T20:45:04.500221+00:00",
+      "pages": [
+        {
+          "requested": "https://www.smilefoundationindia.org/",
+          "final_url": "https://www.smilefoundationindia.org/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 646645,
+          "elapsed_ms": 687,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.smilefoundationindia.org/donation/disaster-relief",
+          "final_url": "https://www.smilefoundationindia.org/donation/disaster-relief",
+          "path": "/donation/disaster-relief/",
+          "file": "donation/disaster-relief/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 86799,
+          "elapsed_ms": 62,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.smilefoundationindia.org/our-story/",
+          "final_url": "https://www.smilefoundationindia.org/our-story/",
+          "path": "/our-story/",
+          "file": "our-story/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 602766,
+          "elapsed_ms": 187,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.smilefoundationindia.org/leadership/",
+          "final_url": "https://www.smilefoundationindia.org/leadership/",
+          "path": "/leadership/",
+          "file": "leadership/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 647009,
+          "elapsed_ms": 77,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1983219
+    },
+    {
+      "slug": "souled-store",
+      "url": "https://www.thesouledstore.com/",
+      "category": "d2c_retail",
+      "why_hard": "Marketplace-style catalogue",
+      "captured_at": "2026-09-07T20:45:17.716728+00:00",
+      "pages": [
+        {
+          "requested": "https://www.thesouledstore.com/",
+          "final_url": "https://www.thesouledstore.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 21725,
+          "elapsed_ms": 594,
+          "is_entry": true
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 21725
+    },
+    {
+      "slug": "sulekha",
+      "url": "https://www.sulekha.com/",
+      "category": "local_marketplace",
+      "why_hard": "Directory, thin per-page facts",
+      "captured_at": "2026-09-07T20:45:38.928376+00:00",
+      "pages": [
+        {
+          "requested": "https://www.sulekha.com/",
+          "final_url": "https://www.sulekha.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 500437,
+          "elapsed_ms": 1500,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.sulekha.com/business/",
+          "final_url": "https://www.sulekha.com/business/",
+          "path": "/business/",
+          "file": "business/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 50718,
+          "elapsed_ms": 250,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.sulekha.com/user/signin",
+          "final_url": "https://www.sulekha.com/user/signin",
+          "path": "/user/signin/",
+          "file": "user/signin/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 163964,
+          "elapsed_ms": 765,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.sulekha.com/hubs/home",
+          "final_url": "https://www.sulekha.com/hubs/home",
+          "path": "/hubs/home/",
+          "file": "hubs/home/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 408294,
+          "elapsed_ms": 702,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1123413
+    },
+    {
+      "slug": "supabase",
+      "url": "https://supabase.com/",
+      "category": "spa_product_global",
+      "why_hard": "SaaS, JS pricing tables",
+      "captured_at": "2026-09-07T20:45:54.450399+00:00",
+      "pages": [
+        {
+          "requested": "https://supabase.com/",
+          "final_url": "https://supabase.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1332122,
+          "elapsed_ms": 546,
+          "is_entry": true
+        },
+        {
+          "requested": "https://supabase.com/pricing",
+          "final_url": "https://supabase.com/pricing",
+          "path": "/pricing/",
+          "file": "pricing/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 378590,
+          "elapsed_ms": 108,
+          "is_entry": false
+        },
+        {
+          "requested": "https://supabase.com/docs",
+          "final_url": "https://supabase.com/docs",
+          "path": "/docs/",
+          "file": "docs/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 266861,
+          "elapsed_ms": 141,
+          "is_entry": false
+        },
+        {
+          "requested": "https://supabase.com/blog",
+          "final_url": "https://supabase.com/blog",
+          "path": "/blog/",
+          "file": "blog/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 182099,
+          "elapsed_ms": 1077,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 2159672
+    },
+    {
+      "slug": "supreme-industries",
+      "url": "https://www.supreme.co.in/",
+      "category": "b2b_manufacturing",
+      "why_hard": "Manufacturer, PDF catalogues",
+      "captured_at": "2026-09-07T20:46:19.710118+00:00",
+      "pages": [
+        {
+          "requested": "https://www.supreme.co.in/",
+          "final_url": "https://www.supreme.co.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 226383,
+          "elapsed_ms": 937,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.supreme.co.in/overview",
+          "final_url": "https://www.supreme.co.in/overview",
+          "path": "/overview/",
+          "file": "overview/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 77419,
+          "elapsed_ms": 1000,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.supreme.co.in/milestones",
+          "final_url": "https://www.supreme.co.in/milestones",
+          "path": "/milestones/",
+          "file": "milestones/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 85338,
+          "elapsed_ms": 1031,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.supreme.co.in/group-locations",
+          "final_url": "https://www.supreme.co.in/group-locations",
+          "path": "/group-locations/",
+          "file": "group-locations/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 102231,
+          "elapsed_ms": 1000,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 491371
+    },
+    {
+      "slug": "teach-for-india",
+      "url": "https://www.teachforindia.org/",
+      "category": "ngo",
+      "why_hard": "NGO, JS-driven site",
+      "captured_at": "2026-09-07T20:45:08.357579+00:00",
+      "pages": [
+        {
+          "requested": "https://www.teachforindia.org/",
+          "final_url": "https://www.teachforindia.org/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 38586,
+          "elapsed_ms": 610,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.teachforindia.org/education-crisis",
+          "final_url": "https://www.teachforindia.org/education-crisis",
+          "path": "/education-crisis/",
+          "file": "education-crisis/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 31240,
+          "elapsed_ms": 125,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.teachforindia.org/who-we-are",
+          "final_url": "https://www.teachforindia.org/who-we-are",
+          "path": "/who-we-are/",
+          "file": "who-we-are/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 92801,
+          "elapsed_ms": 61,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.teachforindia.org/fellowship",
+          "final_url": "https://www.teachforindia.org/fellowship",
+          "path": "/fellowship/",
+          "file": "fellowship/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 38234,
+          "elapsed_ms": 61,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 200861
+    },
+    {
+      "slug": "the-ken",
+      "url": "https://the-ken.com/",
+      "category": "media_regional",
+      "why_hard": "Paywalled analysis",
+      "captured_at": "2026-09-07T20:46:29.204742+00:00",
+      "pages": [
+        {
+          "requested": "https://the-ken.com/",
+          "final_url": "https://the-ken.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 325728,
+          "elapsed_ms": 2639,
+          "is_entry": true
+        },
+        {
+          "requested": "https://the-ken.com/pricing/",
+          "final_url": "https://the-ken.com/pricing/",
+          "path": "/pricing/",
+          "file": "pricing/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 260427,
+          "elapsed_ms": 1219,
+          "is_entry": false
+        },
+        {
+          "requested": "https://the-ken.com/all-stories/",
+          "final_url": "https://the-ken.com/all-stories/",
+          "path": "/all-stories/",
+          "file": "all-stories/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 598603,
+          "elapsed_ms": 1266,
+          "is_entry": false
+        },
+        {
+          "requested": "https://the-ken.com/trade-tricks/stories/",
+          "final_url": "https://the-ken.com/trade-tricks/stories/",
+          "path": "/trade-tricks/stories/",
+          "file": "trade-tricks/stories/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 184068,
+          "elapsed_ms": 1062,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1368826
+    },
+    {
+      "slug": "the-whole-truth",
+      "url": "https://www.thewholetruthfoods.com/",
+      "category": "d2c_retail",
+      "why_hard": "D2C, long image copy",
+      "captured_at": "2026-09-07T20:45:14.766318+00:00",
+      "pages": [
+        {
+          "requested": "https://www.thewholetruthfoods.com/",
+          "final_url": "https://thewholetruthfoods.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 457682,
+          "elapsed_ms": 547,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.thewholetruthfoods.com/categories/all",
+          "final_url": "https://thewholetruthfoods.com/categories/all",
+          "path": "/categories/all/",
+          "file": "categories/all/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 2799574,
+          "elapsed_ms": 358,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.thewholetruthfoods.com/categories/next-gen",
+          "final_url": "https://thewholetruthfoods.com/categories/next-gen",
+          "path": "/categories/next-gen/",
+          "file": "categories/next-gen/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 1062365,
+          "elapsed_ms": 327,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.thewholetruthfoods.com/pages/our-story",
+          "final_url": "https://thewholetruthfoods.com/pages/our-story",
+          "path": "/pages/our-story/",
+          "file": "pages/our-story/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 258294,
+          "elapsed_ms": 219,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 4577915
+    },
+    {
+      "slug": "thehindu-businessline",
+      "url": "https://www.thehindubusinessline.com/",
+      "category": "media_regional",
+      "why_hard": "News, paywall and JS",
+      "captured_at": "2026-09-07T20:46:24.590767+00:00",
+      "pages": [
+        {
+          "requested": "https://www.thehindubusinessline.com/",
+          "final_url": "https://www.thehindubusinessline.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 230359,
+          "elapsed_ms": 437,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.thehindubusinessline.com/subscription/",
+          "final_url": "https://www.thehindubusinessline.com/subscription/",
+          "path": "/subscription/",
+          "file": "subscription/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 69684,
+          "elapsed_ms": 156,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.thehindubusinessline.com/companies/",
+          "final_url": "https://www.thehindubusinessline.com/companies/",
+          "path": "/companies/",
+          "file": "companies/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 191301,
+          "elapsed_ms": 140,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.thehindubusinessline.com/markets/",
+          "final_url": "https://www.thehindubusinessline.com/markets/",
+          "path": "/markets/",
+          "file": "markets/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 208163,
+          "elapsed_ms": 109,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 699507
+    },
+    {
+      "slug": "thermax",
+      "url": "https://www.thermaxglobal.com/",
+      "category": "b2b_manufacturing",
+      "why_hard": "B2B manufacturer, spec sheets as PDFs",
+      "captured_at": "2026-09-07T20:46:16.367749+00:00",
+      "pages": [
+        {
+          "requested": "https://www.thermaxglobal.com/",
+          "final_url": "https://www.thermaxglobal.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 370628,
+          "elapsed_ms": 2280,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.thermaxglobal.com/people",
+          "final_url": "https://www.thermaxglobal.com/people",
+          "path": "/people/",
+          "file": "people/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 356549,
+          "elapsed_ms": 2000,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.thermaxglobal.com/in-the-news",
+          "final_url": "https://www.thermaxglobal.com/in-the-news",
+          "path": "/in-the-news/",
+          "file": "in-the-news/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 345449,
+          "elapsed_ms": 1969,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.thermaxglobal.com/contact-us",
+          "final_url": "https://www.thermaxglobal.com/contact-us",
+          "path": "/contact-us/",
+          "file": "contact-us/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 443195,
+          "elapsed_ms": 1827,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1515821
+    },
+    {
+      "slug": "third-wave-coffee",
+      "url": "https://www.thirdwavecoffee.in/",
+      "category": "food_hospitality",
+      "why_hard": "Cafe chain, image menus",
+      "captured_at": "2026-09-07T20:45:30.187689+00:00",
+      "pages": [
+        {
+          "requested": "https://www.thirdwavecoffee.in/",
+          "final_url": "https://www.thirdwavecoffeeroasters.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 243484,
+          "elapsed_ms": 875,
+          "is_entry": true
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 243484
+    },
+    {
+      "slug": "tifr",
+      "url": "https://www.tifr.res.in/",
+      "category": "edu_research",
+      "why_hard": "Research institute, legacy pages",
+      "captured_at": "2026-09-07T20:44:54.326086+00:00",
+      "pages": [
+        {
+          "requested": "https://www.tifr.res.in/",
+          "final_url": "https://www.tifr.res.in/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 3003425,
+          "elapsed_ms": 1514,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.tifr.res.in/PeopleFinder",
+          "final_url": "https://www.tifr.res.in/PeopleFinder/",
+          "path": "/PeopleFinder/",
+          "file": "PeopleFinder/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 29118,
+          "elapsed_ms": 280,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.tifr.res.in/hindi/",
+          "final_url": "https://www.tifr.res.in/hindi/",
+          "path": "/hindi/",
+          "file": "hindi/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 3000240,
+          "elapsed_ms": 1327,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.tifr.res.in/index.php",
+          "final_url": "https://www.tifr.res.in/index.php",
+          "path": "/index.php/",
+          "file": "index.php/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 3003425,
+          "elapsed_ms": 1343,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 9036208
+    },
+    {
+      "slug": "tldraw",
+      "url": "https://tldraw.com/",
+      "category": "spa_product_global",
+      "why_hard": "Canvas SPA, empty shell",
+      "captured_at": "2026-09-07T20:46:01.538652+00:00",
+      "pages": [
+        {
+          "requested": "https://tldraw.com/",
+          "final_url": "https://www.tldraw.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 13876,
+          "elapsed_ms": 609,
+          "is_entry": true
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 13876
+    },
+    {
+      "slug": "trigger-dev",
+      "url": "https://trigger.dev/",
+      "category": "spa_product_global",
+      "why_hard": "SaaS, JS content",
+      "captured_at": "2026-09-07T20:46:03.950312+00:00",
+      "pages": [
+        {
+          "requested": "https://trigger.dev/",
+          "final_url": "https://trigger.dev/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 430465,
+          "elapsed_ms": 1312,
+          "is_entry": true
+        },
+        {
+          "requested": "https://trigger.dev/product",
+          "final_url": "https://trigger.dev/product",
+          "path": "/product/",
+          "file": "product/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 306028,
+          "elapsed_ms": 531,
+          "is_entry": false
+        },
+        {
+          "requested": "https://trigger.dev/product/ai-agents",
+          "final_url": "https://trigger.dev/product/ai-agents",
+          "path": "/product/ai-agents/",
+          "file": "product/ai-agents/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 324438,
+          "elapsed_ms": 452,
+          "is_entry": false
+        },
+        {
+          "requested": "https://trigger.dev/product/realtime",
+          "final_url": "https://trigger.dev/product/realtime",
+          "path": "/product/realtime/",
+          "file": "product/realtime/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 179455,
+          "elapsed_ms": 577,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1240386
+    },
+    {
+      "slug": "uidai",
+      "url": "https://uidai.gov.in/",
+      "category": "gov_civic",
+      "why_hard": "Service portal, JS widgets, PDF-heavy",
+      "captured_at": "2026-09-07T20:44:46.480848+00:00",
+      "pages": [
+        {
+          "requested": "https://uidai.gov.in/",
+          "final_url": "https://uidai.gov.in/hi",
+          "path": "/hi/",
+          "file": "hi/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 550868,
+          "elapsed_ms": 625,
+          "is_entry": true
+        },
+        {
+          "requested": "https://uidai.gov.in/hi",
+          "final_url": "https://uidai.gov.in/hi",
+          "path": "/hi/",
+          "file": "hi/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 550868,
+          "elapsed_ms": 233,
+          "is_entry": false
+        },
+        {
+          "requested": "https://uidai.gov.in/hi/about-uidai",
+          "final_url": "https://uidai.gov.in/hi/about-uidai",
+          "path": "/hi/about-uidai/",
+          "file": "hi/about-uidai/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 320230,
+          "elapsed_ms": 235,
+          "is_entry": false
+        },
+        {
+          "requested": "https://uidai.gov.in/hi/vision-and-mission",
+          "final_url": "https://uidai.gov.in/hi/vision-and-mission",
+          "path": "/hi/vision-and-mission/",
+          "file": "hi/vision-and-mission/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 294372,
+          "elapsed_ms": 202,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 1716338
+    },
+    {
+      "slug": "upstash",
+      "url": "https://upstash.com/",
+      "category": "spa_product_global",
+      "why_hard": "SaaS, JS pricing",
+      "captured_at": "2026-09-07T20:46:04.440349+00:00",
+      "pages": [
+        {
+          "requested": "https://upstash.com/",
+          "final_url": "https://upstash.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 281812,
+          "elapsed_ms": 608,
+          "is_entry": true
+        },
+        {
+          "requested": "https://upstash.com/docs",
+          "final_url": "https://upstash.com/docs/introduction",
+          "path": "/docs/introduction/",
+          "file": "docs/introduction/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 192651,
+          "elapsed_ms": 735,
+          "is_entry": false
+        },
+        {
+          "requested": "https://upstash.com/pricing/redis",
+          "final_url": "https://upstash.com/pricing/redis",
+          "path": "/pricing/redis/",
+          "file": "pricing/redis/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 248639,
+          "elapsed_ms": 155,
+          "is_entry": false
+        },
+        {
+          "requested": "https://upstash.com/customers",
+          "final_url": "https://upstash.com/customers",
+          "path": "/customers/",
+          "file": "customers/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 179619,
+          "elapsed_ms": 437,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 902721
+    },
+    {
+      "slug": "urban-company",
+      "url": "https://www.urbancompany.com/",
+      "category": "local_marketplace",
+      "why_hard": "Services marketplace, SPA",
+      "captured_at": "2026-09-07T20:45:40.179093+00:00",
+      "pages": [
+        {
+          "requested": "https://www.urbancompany.com/",
+          "final_url": "https://www.urbancompany.com/hyderabad",
+          "path": "/hyderabad/",
+          "file": "hyderabad/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 957565,
+          "elapsed_ms": 672,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.urbancompany.com/hyderabad-ro-purchase",
+          "final_url": "https://www.urbancompany.com/hyderabad-ro-purchase",
+          "path": "/hyderabad-ro-purchase/",
+          "file": "hyderabad-ro-purchase/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 757418,
+          "elapsed_ms": 187,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.urbancompany.com/hyderabad-epc-stores-smarthome",
+          "final_url": "https://www.urbancompany.com/hyderabad-epc-stores-smarthome",
+          "path": "/hyderabad-epc-stores-smarthome/",
+          "file": "hyderabad-epc-stores-smarthome/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 710460,
+          "elapsed_ms": 203,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.urbancompany.com/hyderabad-salon-luxe",
+          "final_url": "https://www.urbancompany.com/hyderabad-salon-luxe",
+          "path": "/hyderabad-salon-luxe/",
+          "file": "hyderabad-salon-luxe/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 2110127,
+          "elapsed_ms": 389,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 4535570
+    },
+    {
+      "slug": "val-town",
+      "url": "https://www.val.town/",
+      "category": "spa_product_global",
+      "why_hard": "SPA product",
+      "captured_at": "2026-09-07T20:46:02.951114+00:00",
+      "pages": [
+        {
+          "requested": "https://www.val.town/",
+          "final_url": "https://www.val.town/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 94296,
+          "elapsed_ms": 1265,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.val.town/features",
+          "final_url": "https://www.val.town/features",
+          "path": "/features/",
+          "file": "features/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 64869,
+          "elapsed_ms": 483,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.val.town/pricing",
+          "final_url": "https://www.val.town/pricing",
+          "path": "/pricing/",
+          "file": "pricing/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 75167,
+          "elapsed_ms": 562,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.val.town/auth/signin",
+          "final_url": "https://www.val.town/auth/signin",
+          "path": "/auth/signin/",
+          "file": "auth/signin/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 28006,
+          "elapsed_ms": 531,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 262338
+    },
+    {
+      "slug": "weaviate",
+      "url": "https://weaviate.io/",
+      "category": "spa_product_global",
+      "why_hard": "Infra SaaS",
+      "captured_at": "2026-09-07T20:46:04.769363+00:00",
+      "pages": [
+        {
+          "requested": "https://weaviate.io/",
+          "final_url": "https://weaviate.io/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 178364,
+          "elapsed_ms": 844,
+          "is_entry": true
+        },
+        {
+          "requested": "https://weaviate.io/blog/engram-generally-available",
+          "final_url": "https://weaviate.io/blog/engram-generally-available",
+          "path": "/blog/engram-generally-available/",
+          "file": "blog/engram-generally-available/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 46688,
+          "elapsed_ms": 890,
+          "is_entry": false
+        },
+        {
+          "requested": "https://weaviate.io/product",
+          "final_url": "https://weaviate.io/product",
+          "path": "/product/",
+          "file": "product/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 36748,
+          "elapsed_ms": 734,
+          "is_entry": false
+        },
+        {
+          "requested": "https://weaviate.io/rag",
+          "final_url": "https://weaviate.io/rag",
+          "path": "/rag/",
+          "file": "rag/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 33636,
+          "elapsed_ms": 437,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 295436
+    },
+    {
+      "slug": "wildcraft",
+      "url": "https://www.wildcraft.com/",
+      "category": "d2c_retail",
+      "why_hard": "Retail, thin text",
+      "captured_at": "2026-09-07T20:45:22.177771+00:00",
+      "pages": [
+        {
+          "requested": "https://www.wildcraft.com/",
+          "final_url": "https://wildcraft.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8",
+          "bytes": 6889,
+          "elapsed_ms": 797,
+          "is_entry": true
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 6889
+    },
+    {
+      "slug": "zerodha",
+      "url": "https://zerodha.com/",
+      "category": "fintech_saas_in",
+      "why_hard": "Fintech, pricing in JS tables",
+      "captured_at": "2026-09-07T20:45:44.256394+00:00",
+      "pages": [
+        {
+          "requested": "https://zerodha.com/",
+          "final_url": "https://zerodha.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 28181,
+          "elapsed_ms": 405,
+          "is_entry": true
+        },
+        {
+          "requested": "https://zerodha.com/open-account/",
+          "final_url": "https://zerodha.com/open-account/",
+          "path": "/open-account/",
+          "file": "open-account/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 41292,
+          "elapsed_ms": 62,
+          "is_entry": false
+        },
+        {
+          "requested": "https://zerodha.com/about/",
+          "final_url": "https://zerodha.com/about/",
+          "path": "/about/",
+          "file": "about/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 29982,
+          "elapsed_ms": 77,
+          "is_entry": false
+        },
+        {
+          "requested": "https://zerodha.com/products/",
+          "final_url": "https://zerodha.com/products/",
+          "path": "/products/",
+          "file": "products/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 30548,
+          "elapsed_ms": 63,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 130003
+    },
+    {
+      "slug": "zoho",
+      "url": "https://www.zoho.com/",
+      "category": "fintech_saas_in",
+      "why_hard": "Large SaaS, deep site",
+      "captured_at": "2026-09-07T20:45:49.327617+00:00",
+      "pages": [
+        {
+          "requested": "https://www.zoho.com/",
+          "final_url": "https://www.zoho.com/",
+          "path": "/",
+          "file": "index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 16341,
+          "elapsed_ms": 422,
+          "is_entry": true
+        },
+        {
+          "requested": "https://www.zoho.com/privacy-commitment.html",
+          "final_url": "https://www.zoho.com/privacy-commitment.html",
+          "path": "/privacy-commitment.html",
+          "file": "privacy-commitment.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 13333,
+          "elapsed_ms": 63,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.zoho.com/signup.html",
+          "final_url": "https://www.zoho.com/signup.html",
+          "path": "/signup.html",
+          "file": "signup.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 3946,
+          "elapsed_ms": 61,
+          "is_entry": false
+        },
+        {
+          "requested": "https://www.zoho.com/agents/",
+          "final_url": "https://www.zoho.com/agents/",
+          "path": "/agents/",
+          "file": "agents/index.html",
+          "status": 200,
+          "content_type": "text/html",
+          "bytes": 18702,
+          "elapsed_ms": 47,
+          "is_entry": false
+        }
+      ],
+      "robots_status": 200,
+      "robots_disallows_entry": false,
+      "status": "ok",
+      "reason": "",
+      "bytes_total": 52322
+    }
+  ]
+}

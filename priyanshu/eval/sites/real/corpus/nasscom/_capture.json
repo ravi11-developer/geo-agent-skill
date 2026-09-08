@@ -1,0 +1,58 @@
+{
+  "slug": "nasscom",
+  "url": "https://nasscom.in/",
+  "category": "industry_body",
+  "why_hard": "Industry body, report-led",
+  "captured_at": "2026-09-07T20:46:10.443890+00:00",
+  "pages": [
+    {
+      "requested": "https://nasscom.in/",
+      "final_url": "https://nasscom.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 105467,
+      "elapsed_ms": 890,
+      "is_entry": true
+    },
+    {
+      "requested": "https://nasscom.in/membership",
+      "final_url": "https://nasscom.in/membership",
+      "path": "/membership/",
+      "file": "membership/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 67817,
+      "elapsed_ms": 530,
+      "is_entry": false
+    },
+    {
+      "requested": "https://nasscom.in/nasscom-membership",
+      "final_url": "https://www.nasscom.in/nasscom-membership",
+      "path": "/nasscom-membership/",
+      "file": "nasscom-membership/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 121313,
+      "elapsed_ms": 1687,
+      "is_entry": false
+    },
+    {
+      "requested": "https://nasscom.in/regional",
+      "final_url": "https://nasscom.in/regional",
+      "path": "/regional/",
+      "file": "regional/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 193979,
+      "elapsed_ms": 531,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 488576
+}

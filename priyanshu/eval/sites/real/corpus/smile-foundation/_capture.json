@@ -1,0 +1,58 @@
+{
+  "slug": "smile-foundation",
+  "url": "https://www.smilefoundationindia.org/",
+  "category": "ngo",
+  "why_hard": "NGO, image-only infographics",
+  "captured_at": "2026-09-07T20:45:04.500221+00:00",
+  "pages": [
+    {
+      "requested": "https://www.smilefoundationindia.org/",
+      "final_url": "https://www.smilefoundationindia.org/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 646645,
+      "elapsed_ms": 687,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.smilefoundationindia.org/donation/disaster-relief",
+      "final_url": "https://www.smilefoundationindia.org/donation/disaster-relief",
+      "path": "/donation/disaster-relief/",
+      "file": "donation/disaster-relief/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 86799,
+      "elapsed_ms": 62,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.smilefoundationindia.org/our-story/",
+      "final_url": "https://www.smilefoundationindia.org/our-story/",
+      "path": "/our-story/",
+      "file": "our-story/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 602766,
+      "elapsed_ms": 187,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.smilefoundationindia.org/leadership/",
+      "final_url": "https://www.smilefoundationindia.org/leadership/",
+      "path": "/leadership/",
+      "file": "leadership/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 647009,
+      "elapsed_ms": 77,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1983219
+}

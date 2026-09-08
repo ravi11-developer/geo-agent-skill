@@ -1,0 +1,58 @@
+{
+  "slug": "nobroker",
+  "url": "https://www.nobroker.in/",
+  "category": "local_marketplace",
+  "why_hard": "Real estate, SPA",
+  "captured_at": "2026-09-07T20:45:40.493447+00:00",
+  "pages": [
+    {
+      "requested": "https://www.nobroker.in/",
+      "final_url": "https://www.nobroker.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 620093,
+      "elapsed_ms": 703,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.nobroker.in/list-your-property-for-rent-sale",
+      "final_url": "https://www.nobroker.in/list-your-property-for-rent-sale",
+      "path": "/list-your-property-for-rent-sale/",
+      "file": "list-your-property-for-rent-sale/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 601738,
+      "elapsed_ms": 125,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.nobroker.in/about/tenants",
+      "final_url": "https://www.nobroker.in/about/tenants",
+      "path": "/about/tenants/",
+      "file": "about/tenants/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 52761,
+      "elapsed_ms": 140,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.nobroker.in/rental-agreement",
+      "final_url": "https://www.nobroker.in/rental-agreement",
+      "path": "/rental-agreement/",
+      "file": "rental-agreement/index.html",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 257914,
+      "elapsed_ms": 250,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1532506
+}

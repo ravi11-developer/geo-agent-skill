@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-09-07T19:59:57.513521+00:00",
+  "agents": [
+    "baseline"
+  ],
+  "sites": [
+    "site-001-healthy"
+  ],
+  "leaderboard": {
+    "baseline": {
+      "overall": 0,
+      "error": "All sites failed"
+    }
+  },
+  "detailed_results": {
+    "baseline": [
+      {
+        "agent": "baseline",
+        "site": "site-001-healthy",
+        "url": "http://localhost:9500/site-001-healthy/",
+        "runtime_seconds": 0,
+        "error": "ModuleNotFoundError: No module named 'trafilatura'\nTraceback (most recent call last):\n  File \"/sessions/rcw-01pwahrh8omeo59heuguw6o5/mnt/adobe/eval/runners/run_suite.py\", line 131, in run_single\n    mod = __import__(f\"eval.agents.{agent_name}.run\", fromlist=[\"run_audit\"])\n  File \"/sessions/rcw-01pwahrh8omeo59heuguw6o5/mnt/adobe/eval/agents/baseline/run.py\", line 26, in <module>\n    import crawler as _crawler\n  File \"/sessions/rcw-01pwahrh8omeo59heuguw6o5/mnt/adobe/anti/web-intelligence-crawler/scripts/crawler.py\", line 25, in <module>\n    import trafilatura\nModuleNotFoundError: No module named 'trafilatura'\n",
+        "scores": {}
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "teach-for-india",
+  "url": "https://www.teachforindia.org/",
+  "category": "ngo",
+  "why_hard": "NGO, JS-driven site",
+  "captured_at": "2026-09-07T20:45:08.357579+00:00",
+  "pages": [
+    {
+      "requested": "https://www.teachforindia.org/",
+      "final_url": "https://www.teachforindia.org/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 38586,
+      "elapsed_ms": 610,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.teachforindia.org/education-crisis",
+      "final_url": "https://www.teachforindia.org/education-crisis",
+      "path": "/education-crisis/",
+      "file": "education-crisis/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 31240,
+      "elapsed_ms": 125,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.teachforindia.org/who-we-are",
+      "final_url": "https://www.teachforindia.org/who-we-are",
+      "path": "/who-we-are/",
+      "file": "who-we-are/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 92801,
+      "elapsed_ms": 61,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.teachforindia.org/fellowship",
+      "final_url": "https://www.teachforindia.org/fellowship",
+      "path": "/fellowship/",
+      "file": "fellowship/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 38234,
+      "elapsed_ms": 61,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 200861
+}

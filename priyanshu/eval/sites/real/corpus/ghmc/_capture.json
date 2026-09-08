@@ -1,0 +1,58 @@
+{
+  "slug": "ghmc",
+  "url": "https://www.ghmc.gov.in/",
+  "category": "gov_civic",
+  "why_hard": "Municipal site, legacy markup",
+  "captured_at": "2026-09-07T20:44:46.480848+00:00",
+  "pages": [
+    {
+      "requested": "https://www.ghmc.gov.in/",
+      "final_url": "https://www.ghmc.gov.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 102973,
+      "elapsed_ms": 485,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.ghmc.gov.in/Ghmc_Home.aspx",
+      "final_url": "https://www.ghmc.gov.in/Ghmc_Home.aspx",
+      "path": "/Ghmc_Home.aspx/",
+      "file": "Ghmc_Home.aspx/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 102987,
+      "elapsed_ms": 311,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.ghmc.gov.in/EODB.aspx",
+      "final_url": "https://www.ghmc.gov.in/EODB.aspx",
+      "path": "/EODB.aspx/",
+      "file": "EODB.aspx/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 71607,
+      "elapsed_ms": 266,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.ghmc.gov.in/Building.aspx",
+      "final_url": "https://www.ghmc.gov.in/Building.aspx",
+      "path": "/Building.aspx/",
+      "file": "Building.aspx/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 70544,
+      "elapsed_ms": 218,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 404,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 348111
+}

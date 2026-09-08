@@ -1,0 +1,58 @@
+{
+  "slug": "bluetokai",
+  "url": "https://bluetokaicoffee.com/",
+  "category": "d2c_retail",
+  "why_hard": "Shopify D2C, facts in product images",
+  "captured_at": "2026-09-07T20:45:14.515467+00:00",
+  "pages": [
+    {
+      "requested": "https://bluetokaicoffee.com/",
+      "final_url": "https://bluetokaicoffee.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 374957,
+      "elapsed_ms": 686,
+      "is_entry": true
+    },
+    {
+      "requested": "https://bluetokaicoffee.com/collections/roasted-and-ground-coffee-beans",
+      "final_url": "https://bluetokaicoffee.com/collections/roasted-and-ground-coffee-beans",
+      "path": "/collections/roasted-and-ground-coffee-beans/",
+      "file": "collections/roasted-and-ground-coffee-beans/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 497031,
+      "elapsed_ms": 406,
+      "is_entry": false
+    },
+    {
+      "requested": "https://bluetokaicoffee.com/collections/aluminium-coffee-capsule",
+      "final_url": "https://bluetokaicoffee.com/collections/aluminium-coffee-capsule",
+      "path": "/collections/aluminium-coffee-capsule/",
+      "file": "collections/aluminium-coffee-capsule/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 263705,
+      "elapsed_ms": 406,
+      "is_entry": false
+    },
+    {
+      "requested": "https://bluetokaicoffee.com/collections/no-equipment-collection",
+      "final_url": "https://bluetokaicoffee.com/collections/no-equipment-collection",
+      "path": "/collections/no-equipment-collection/",
+      "file": "collections/no-equipment-collection/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 438245,
+      "elapsed_ms": 390,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1573938
+}

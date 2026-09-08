@@ -1,0 +1,58 @@
+{
+  "slug": "val-town",
+  "url": "https://www.val.town/",
+  "category": "spa_product_global",
+  "why_hard": "SPA product",
+  "captured_at": "2026-09-07T20:46:02.951114+00:00",
+  "pages": [
+    {
+      "requested": "https://www.val.town/",
+      "final_url": "https://www.val.town/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 94296,
+      "elapsed_ms": 1265,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.val.town/features",
+      "final_url": "https://www.val.town/features",
+      "path": "/features/",
+      "file": "features/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 64869,
+      "elapsed_ms": 483,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.val.town/pricing",
+      "final_url": "https://www.val.town/pricing",
+      "path": "/pricing/",
+      "file": "pricing/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 75167,
+      "elapsed_ms": 562,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.val.town/auth/signin",
+      "final_url": "https://www.val.town/auth/signin",
+      "path": "/auth/signin/",
+      "file": "auth/signin/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 28006,
+      "elapsed_ms": 531,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 262338
+}

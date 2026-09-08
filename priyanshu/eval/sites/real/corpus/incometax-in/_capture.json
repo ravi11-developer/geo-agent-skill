@@ -1,0 +1,58 @@
+{
+  "slug": "incometax-in",
+  "url": "https://www.incometax.gov.in/iec/foportal/",
+  "category": "gov_civic",
+  "why_hard": "Angular portal, almost no server-rendered text",
+  "captured_at": "2026-09-07T20:44:46.480848+00:00",
+  "pages": [
+    {
+      "requested": "https://www.incometax.gov.in/iec/foportal/",
+      "final_url": "https://www.incometax.gov.in/iec/foportal/",
+      "path": "/iec/foportal/",
+      "file": "iec/foportal/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 227187,
+      "elapsed_ms": 125,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.incometax.gov.in/",
+      "final_url": "https://www.incometax.gov.in/iec/foportal/",
+      "path": "/iec/foportal/",
+      "file": "iec/foportal/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 227187,
+      "elapsed_ms": 155,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.incometax.gov.in/iec/foportal/contact-us",
+      "final_url": "https://www.incometax.gov.in/iec/foportal/contact-us",
+      "path": "/iec/foportal/contact-us/",
+      "file": "iec/foportal/contact-us/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 126783,
+      "elapsed_ms": 109,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.incometax.gov.in/iec/foportal/help/all-topics/tax-payer/individual/how-to-file-tax-returns",
+      "final_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/tax-payer/individual/how-to-file-tax-returns",
+      "path": "/iec/foportal/help/all-topics/tax-payer/individual/how-to-file-tax-returns/",
+      "file": "iec/foportal/help/all-topics/tax-payer/individual/how-to-file-tax-returns/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 118388,
+      "elapsed_ms": 109,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 503,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 699545
+}

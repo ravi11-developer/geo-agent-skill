@@ -1,0 +1,25 @@
+{
+  "slug": "qdrant",
+  "url": "https://qdrant.tech/",
+  "category": "spa_product_global",
+  "why_hard": "Infra SaaS",
+  "captured_at": "2026-09-07T20:46:04.712053+00:00",
+  "pages": [
+    {
+      "requested": "https://qdrant.tech/",
+      "final_url": "https://qdrant.tech/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 782453,
+      "elapsed_ms": 860,
+      "is_entry": true
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 782453
+}

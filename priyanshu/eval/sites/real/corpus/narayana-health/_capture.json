@@ -1,0 +1,47 @@
+{
+  "slug": "narayana-health",
+  "url": "https://www.narayanahealth.org/",
+  "category": "healthcare",
+  "why_hard": "Hospital group, large templated site",
+  "captured_at": "2026-09-07T20:45:34.179922+00:00",
+  "pages": [
+    {
+      "requested": "https://www.narayanahealth.org/",
+      "final_url": "https://www.narayanahealth.org/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 3056909,
+      "elapsed_ms": 2233,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.narayanahealth.org/emergency",
+      "final_url": "https://www.narayanahealth.org/emergency",
+      "path": "/emergency/",
+      "file": "emergency/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 137732,
+      "elapsed_ms": 639,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.narayanahealth.org/ocaapp/doctors/undefined",
+      "final_url": "https://www.narayanahealth.org/ocaapp/doctors/undefined",
+      "path": "/ocaapp/doctors/undefined/",
+      "file": "ocaapp/doctors/undefined/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 199256,
+      "elapsed_ms": 687,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 3393897
+}

@@ -1,0 +1,58 @@
+{
+  "slug": "bhel",
+  "url": "https://www.bhel.com/",
+  "category": "b2b_manufacturing",
+  "why_hard": "Heavy engineering, catalogue PDFs",
+  "captured_at": "2026-09-07T20:46:15.736354+00:00",
+  "pages": [
+    {
+      "requested": "https://www.bhel.com/",
+      "final_url": "https://www.bhel.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 145595,
+      "elapsed_ms": 1672,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.bhel.com/notice-board",
+      "final_url": "https://www.bhel.com/notice-board",
+      "path": "/notice-board/",
+      "file": "notice-board/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 72160,
+      "elapsed_ms": 344,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.bhel.com/press-release",
+      "final_url": "https://www.bhel.com/press-release",
+      "path": "/press-release/",
+      "file": "press-release/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 70515,
+      "elapsed_ms": 436,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.bhel.com/announcements",
+      "final_url": "https://www.bhel.com/announcements",
+      "path": "/announcements/",
+      "file": "announcements/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 73148,
+      "elapsed_ms": 406,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 361418
+}

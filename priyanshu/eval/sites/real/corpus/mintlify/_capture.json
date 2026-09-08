@@ -1,0 +1,58 @@
+{
+  "slug": "mintlify",
+  "url": "https://mintlify.com/",
+  "category": "spa_product_global",
+  "why_hard": "Docs platform, SPA docs",
+  "captured_at": "2026-09-07T20:46:07.465606+00:00",
+  "pages": [
+    {
+      "requested": "https://mintlify.com/",
+      "final_url": "https://www.mintlify.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 382462,
+      "elapsed_ms": 952,
+      "is_entry": true
+    },
+    {
+      "requested": "https://mintlify.com/pricing",
+      "final_url": "https://www.mintlify.com/pricing",
+      "path": "/pricing/",
+      "file": "pricing/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 426974,
+      "elapsed_ms": 890,
+      "is_entry": false
+    },
+    {
+      "requested": "https://mintlify.com/contact/sales",
+      "final_url": "https://www.mintlify.com/contact/sales",
+      "path": "/contact/sales/",
+      "file": "contact/sales/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 233680,
+      "elapsed_ms": 390,
+      "is_entry": false
+    },
+    {
+      "requested": "https://mintlify.com/data",
+      "final_url": "https://www.mintlify.com/data",
+      "path": "/data/",
+      "file": "data/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 282683,
+      "elapsed_ms": 405,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 1325799
+}

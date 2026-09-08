@@ -1,0 +1,58 @@
+{
+  "slug": "barbeque-nation",
+  "url": "https://www.barbequenation.com/",
+  "category": "food_hospitality",
+  "why_hard": "Restaurant chain, menu in images",
+  "captured_at": "2026-09-07T20:45:23.977330+00:00",
+  "pages": [
+    {
+      "requested": "https://www.barbequenation.com/",
+      "final_url": "https://www.barbequenation.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 92664,
+      "elapsed_ms": 1436,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.barbequenation.com/vouchers",
+      "final_url": "https://www.barbequenation.com/vouchers",
+      "path": "/vouchers/",
+      "file": "vouchers/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 203525,
+      "elapsed_ms": 531,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.barbequenation.com/promotion",
+      "final_url": "https://www.barbequenation.com/promotion",
+      "path": "/promotion/",
+      "file": "promotion/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 423533,
+      "elapsed_ms": 656,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.barbequenation.com/deals",
+      "final_url": "https://www.barbequenation.com/deals",
+      "path": "/deals/",
+      "file": "deals/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1328538,
+      "elapsed_ms": 859,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 2048260
+}

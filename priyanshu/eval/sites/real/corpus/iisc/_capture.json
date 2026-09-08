@@ -1,0 +1,58 @@
+{
+  "slug": "iisc",
+  "url": "https://iisc.ac.in/",
+  "category": "edu_research",
+  "why_hard": "Research institute, thin structured data",
+  "captured_at": "2026-09-07T20:44:52.499146+00:00",
+  "pages": [
+    {
+      "requested": "https://iisc.ac.in/",
+      "final_url": "https://www.iisc.ac.in/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 121173,
+      "elapsed_ms": 1077,
+      "is_entry": true
+    },
+    {
+      "requested": "https://iisc.ac.in/icash/",
+      "final_url": "https://www.iisc.ac.in/icash/",
+      "path": "/icash/",
+      "file": "icash/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 98535,
+      "elapsed_ms": 594,
+      "is_entry": false
+    },
+    {
+      "requested": "https://iisc.ac.in/about/",
+      "final_url": "https://www.iisc.ac.in/about/",
+      "path": "/about/",
+      "file": "about/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 98697,
+      "elapsed_ms": 702,
+      "is_entry": false
+    },
+    {
+      "requested": "https://iisc.ac.in/about/foreword-from-the-director/",
+      "final_url": "https://www.iisc.ac.in/about/foreword-from-the-director/",
+      "path": "/about/foreword-from-the-director/",
+      "file": "about/foreword-from-the-director/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 102569,
+      "elapsed_ms": 655,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 420974
+}

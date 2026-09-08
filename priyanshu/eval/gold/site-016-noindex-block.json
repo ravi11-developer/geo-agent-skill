@@ -1,0 +1,22 @@
+{
+  "site_id": "site-016-noindex-block",
+  "url": "http://localhost:9500/site-016-noindex-block/",
+  "holdout": true,
+  "description": "Well-built page that excludes itself from every index with meta robots noindex, nofollow.",
+  "expected_findings": [
+    {"category": "crawlability", "description": "Public content page carries a noindex directive, so retrieval systems discard it after fetching", "severity": "high",
+     "keywords": ["noindex", "robots", "crawl", "index", "directive"]}
+  ],
+  "expected_non_findings": [
+    {"category": "structured_data", "reason": "Organization JSON-LD present"},
+    {"category": "rendering", "reason": "Server-rendered"},
+    {"category": "entity_identity", "reason": "Consistent naming"},
+    {"category": "freshness", "reason": "2026 dates"},
+    {"category": "engagement", "reason": "Navigation present"}
+  ],
+  "expected_proactive": [
+    "Remove noindex from public pages",
+    "Add Product structured data for SettleCore and LedgerSync"
+  ],
+  "max_acceptable_findings": 2
+}

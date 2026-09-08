@@ -1,0 +1,58 @@
+{
+  "slug": "thehindu-businessline",
+  "url": "https://www.thehindubusinessline.com/",
+  "category": "media_regional",
+  "why_hard": "News, paywall and JS",
+  "captured_at": "2026-09-07T20:46:24.590767+00:00",
+  "pages": [
+    {
+      "requested": "https://www.thehindubusinessline.com/",
+      "final_url": "https://www.thehindubusinessline.com/",
+      "path": "/",
+      "file": "index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 230359,
+      "elapsed_ms": 437,
+      "is_entry": true
+    },
+    {
+      "requested": "https://www.thehindubusinessline.com/subscription/",
+      "final_url": "https://www.thehindubusinessline.com/subscription/",
+      "path": "/subscription/",
+      "file": "subscription/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 69684,
+      "elapsed_ms": 156,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.thehindubusinessline.com/companies/",
+      "final_url": "https://www.thehindubusinessline.com/companies/",
+      "path": "/companies/",
+      "file": "companies/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 191301,
+      "elapsed_ms": 140,
+      "is_entry": false
+    },
+    {
+      "requested": "https://www.thehindubusinessline.com/markets/",
+      "final_url": "https://www.thehindubusinessline.com/markets/",
+      "path": "/markets/",
+      "file": "markets/index.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 208163,
+      "elapsed_ms": 109,
+      "is_entry": false
+    }
+  ],
+  "robots_status": 200,
+  "robots_disallows_entry": false,
+  "status": "ok",
+  "reason": "",
+  "bytes_total": 699507
+}

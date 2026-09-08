@@ -1,0 +1,28 @@
+{
+    "site_id": "site-003-js-only-facts",
+    "url": "http://localhost:9500/site-003-js-only-facts/",
+    "description": "Key business facts (products, pricing, company details) only available via JS rendering. Raw HTML has only a skeleton.",
+    "expected_findings": [
+        {
+            "category": "rendering",
+            "description": "Important business content (products, pricing, company facts) is unavailable in raw HTML and only appears after client-side JavaScript execution",
+            "severity": "high",
+            "keywords": ["javascript", "client-side", "rendering", "raw html", "js", "dynamic", "noscript"]
+        },
+        {
+            "category": "content_extraction",
+            "description": "Key facts about products, pricing, and company are not accessible to non-rendering crawlers",
+            "severity": "high",
+            "keywords": ["content", "facts", "products", "pricing", "extraction", "unavailable"]
+        }
+    ],
+    "expected_non_findings": [
+        {"category": "entity_identity", "reason": "Company name is consistent in what's visible"},
+        {"category": "structured_data", "reason": "Has basic Organization JSON-LD (though minimal)"}
+    ],
+    "expected_proactive": [
+        "Render critical business information in the initial HTML response",
+        "Use server-side rendering or static generation for product/pricing content"
+    ],
+    "max_acceptable_findings": 4
+}

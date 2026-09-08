@@ -1,0 +1,532 @@
+{
+  "timestamp": "2026-09-07T18:19:10.630112+00:00",
+  "agents": [
+    "baseline",
+    "deterministic",
+    "reasoning",
+    "specialist"
+  ],
+  "sites": [
+    "site-001-healthy"
+  ],
+  "leaderboard": {
+    "baseline": {
+      "sites_tested": 1,
+      "sites_failed": 0,
+      "detection": {
+        "tp": 0,
+        "fp": 3,
+        "fn": 0,
+        "precision": 0.0,
+        "recall": 1.0,
+        "f1": 0.0
+      },
+      "false_positive_score": 0.55,
+      "evidence_score": 0.0,
+      "action_score": 0.0,
+      "severity_score": 0.5,
+      "proactive_score": 0.5,
+      "schema_score": 1.0,
+      "runtime_score": 1.0,
+      "avg_runtime_seconds": 21.14,
+      "overall": 28.0
+    },
+    "deterministic": {
+      "sites_tested": 1,
+      "sites_failed": 0,
+      "detection": {
+        "tp": 0,
+        "fp": 5,
+        "fn": 0,
+        "precision": 0.0,
+        "recall": 1.0,
+        "f1": 0.0
+      },
+      "false_positive_score": 0.25,
+      "evidence_score": 0.0,
+      "action_score": 0.0,
+      "severity_score": 0.5,
+      "proactive_score": 0.5,
+      "schema_score": 1.0,
+      "runtime_score": 0.9691,
+      "avg_runtime_seconds": 35.56,
+      "overall": 24.8
+    },
+    "reasoning": {
+      "sites_tested": 1,
+      "sites_failed": 0,
+      "detection": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 0,
+        "precision": 0.0,
+        "recall": 1.0,
+        "f1": 0.0
+      },
+      "false_positive_score": 0.4,
+      "evidence_score": 0.0,
+      "action_score": 0.0,
+      "severity_score": 0.5,
+      "proactive_score": 0.5,
+      "schema_score": 1.0,
+      "runtime_score": 0.9923,
+      "avg_runtime_seconds": 31.39,
+      "overall": 26.5
+    },
+    "specialist": {
+      "sites_tested": 1,
+      "sites_failed": 0,
+      "detection": {
+        "tp": 0,
+        "fp": 6,
+        "fn": 0,
+        "precision": 0.0,
+        "recall": 1.0,
+        "f1": 0.0
+      },
+      "false_positive_score": 0.1,
+      "evidence_score": 0.0,
+      "action_score": 0.0,
+      "severity_score": 0.5,
+      "proactive_score": 0.5,
+      "schema_score": 1.0,
+      "runtime_score": 0.991,
+      "avg_runtime_seconds": 31.62,
+      "overall": 23.5
+    }
+  },
+  "detailed_results": {
+    "baseline": [
+      {
+        "agent": "baseline",
+        "site": "site-001-healthy",
+        "url": "http://localhost:9500/site-001-healthy/",
+        "runtime_seconds": 21.14,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 3,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 1.0,
+            "f1": 0.0,
+            "tp_categories": [],
+            "fp_categories": [
+              "content_extraction",
+              "crawlability",
+              "structured_data"
+            ],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [
+              {
+                "category": "structured_data",
+                "agent_finding": {
+                  "id": "F-011",
+                  "title": "Missing JSON-LD",
+                  "category": "structured_data",
+                  "original_category": "structured-data",
+                  "severity": "medium",
+                  "evidence": "No JSON-LD script tags found.",
+                  "suggested_action": {
+                    "summary": "Implement JSON-LD structured data to enhance rich snippets.",
+                    "priority": "medium"
+                  }
+                }
+              },
+              {
+                "category": "crawlability",
+                "agent_finding": {
+                  "id": "F-005",
+                  "title": "Missing Canonical Tag",
+                  "category": "crawlability",
+                  "original_category": "technical-seo",
+                  "severity": "high",
+                  "evidence": "No <link rel=\"canonical\"> tag found.",
+                  "suggested_action": {
+                    "summary": "Add a self-referencing canonical tag to prevent duplicate content issues.",
+                    "priority": "high"
+                  }
+                }
+              },
+              {
+                "category": "content_extraction",
+                "agent_finding": {
+                  "id": "F-004",
+                  "title": "Thin Content",
+                  "category": "content_extraction",
+                  "original_category": "content-quality",
+                  "severity": "high",
+                  "evidence": "Word count is 201.",
+                  "suggested_action": {
+                    "summary": "Expand the page content to provide more value (aim for >300 words).",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "missed": []
+          },
+          "false_positive": 0.55,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      }
+    ],
+    "deterministic": [
+      {
+        "agent": "deterministic",
+        "site": "site-001-healthy",
+        "url": "http://localhost:9500/site-001-healthy/",
+        "runtime_seconds": 35.56,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 5,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 1.0,
+            "f1": 0.0,
+            "tp_categories": [],
+            "fp_categories": [
+              "engagement",
+              "entity_identity",
+              "freshness",
+              "non_text_facts",
+              "rendering"
+            ],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [
+              {
+                "category": "freshness",
+                "agent_finding": {
+                  "id": "F-003",
+                  "title": "Outdated Content Detected",
+                  "category": "freshness",
+                  "original_category": "freshness",
+                  "severity": "high",
+                  "evidence": "Multiple freshness signals indicate stale content. Years referenced range from 2015 to 2026 (current year: 2026). Specific indicators: Last updated date: 2019 on http://localhost:9500/site-006-stale-facts/; Pricing date: 2020 on http://localhost:9500/site-006-stale-facts/; Copyright year: 2021 on http://localhost:9500/site-006-stale-facts/; Copyright year: 2020 on http://localhost:9500/site-008-mixed-faults/. AI systems may cite outdated information as current facts.",
+                  "suggested_action": {
+                    "summary": "Update pricing, team information, statistics, and press releases to reflect current data. Add visible 'last updated' dates to time-sensitive content. Update the copyright year in the footer.",
+                    "priority": "high"
+                  }
+                }
+              },
+              {
+                "category": "non_text_facts",
+                "agent_finding": {
+                  "id": "F-004",
+                  "title": "Key Business Information Locked in Images",
+                  "category": "non_text_facts",
+                  "original_category": "non_text_facts",
+                  "severity": "high",
+                  "evidence": "Page http://localhost:9500/site-004-image-only-facts/ contains 3 images with names suggesting they contain business-critical information (products-table.png (alt='products'), pricing-comparison.png (alt='pricing'), feature-matrix.png (alt='features')) but only 285 characters of text content. AI systems and screen readers cannot extract facts from images.",
+                  "suggested_action": {
+                    "summary": "Reproduce the information currently in images as machine-readable HTML text. Add descriptive alt text to images that contain factual information. Keep images as supplementary visual content.",
+                    "priority": "high"
+                  }
+                }
+              },
+              {
+                "category": "entity_identity",
+                "agent_finding": {
+                  "id": "F-002",
+                  "title": "Inconsistent Entity/Brand Names",
+                  "category": "entity_identity",
+                  "original_category": "entity_identity",
+                  "severity": "high",
+                  "evidence": "The website uses 9 different names to refer to the same entity: 'Acme Cloud Solutions', 'Acme Cloud Solutions, Inc', 'Cloud Peak Tech', 'CloudPeak Technologies', 'Directory listing for /', 'Nova Technical Corp'. This creates ambiguity for AI systems trying to identify and cite the brand. An AI assistant may not recognize these as the same company.",
+                  "suggested_action": {
+                    "summary": "Establish one canonical company name and use it consistently in the title tag, H1, JSON-LD, footer copyright, and body text across all pages. Use the 'alternateName' property in JSON-LD only for well-known abbreviations.",
+                    "priority": "high"
+                  }
+                }
+              },
+              {
+                "category": "rendering",
+                "agent_finding": {
+                  "id": "F-001",
+                  "title": "Critical Content Requires JavaScript Rendering",
+                  "category": "rendering",
+                  "original_category": "rendering",
+                  "severity": "high",
+                  "evidence": "Page http://localhost:9500/site-003-js-only-facts/ contains a noscript warning ('') and the raw HTML contains only 173 characters of visible text. Non-rendering crawlers and AI systems will see minimal content.",
+                  "suggested_action": {
+                    "summary": "Render critical business content (products, pricing, company facts) in the initial HTML response using server-side rendering or static generation.",
+                    "priority": "high"
+                  }
+                }
+              },
+              {
+                "category": "engagement",
+                "agent_finding": {
+                  "id": "F-005",
+                  "title": "Weak Navigation and Page Orientation",
+                  "category": "engagement",
+                  "original_category": "engagement",
+                  "severity": "high",
+                  "evidence": "Page http://localhost:9500/site-007-poor-navigation/ lacks a navigation element (<nav>) and contains only 0 internal links. Header present: False. Footer present: False. Users and AI crawlers cannot discover related content or understand the site structure.",
+                  "suggested_action": {
+                    "summary": "Add a navigation menu linking to key pages (About, Products, Pricing, Contact). Add breadcrumb navigation. Add header and footer with site-wide context. Link to related content from within page body.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "missed": []
+          },
+          "false_positive": 0.25,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "schema": 1.0,
+          "runtime": 0.9691
+        }
+      }
+    ],
+    "reasoning": [
+      {
+        "agent": "reasoning",
+        "site": "site-001-healthy",
+        "url": "http://localhost:9500/site-001-healthy/",
+        "runtime_seconds": 31.39,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 1.0,
+            "f1": 0.0,
+            "tp_categories": [],
+            "fp_categories": [
+              "entity_identity",
+              "rendering"
+            ],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [
+              {
+                "category": "rendering",
+                "agent_finding": {
+                  "id": "F-002",
+                  "title": "Business-Critical Content Hidden Behind JavaScript",
+                  "category": "rendering",
+                  "original_category": "rendering",
+                  "severity": "high",
+                  "evidence": "The site explicitly warns that JavaScript is required to view content. Only 7388 characters of text are in the raw HTML. AI crawlers that do not execute JavaScript will miss products, pricing, and company facts.",
+                  "suggested_action": {
+                    "summary": "Use server-side rendering to include product descriptions, pricing, and key facts in the initial HTML. Mirror these facts in JSON-LD structured data.",
+                    "priority": "high"
+                  }
+                }
+              },
+              {
+                "category": "entity_identity",
+                "agent_finding": {
+                  "id": "F-001",
+                  "title": "Entity Identity Ambiguity",
+                  "category": "entity_identity",
+                  "original_category": "entity_identity",
+                  "severity": "high",
+                  "evidence": "An AI system attempting to identify this brand would encounter 9 different names: 'Nova Technical Corporation', 'Directory listing for /', 'CloudPeak Technologies', 'Acme Cloud Solutions, Inc', 'Nova Technical Corp', 'Acme Cloud'. These map to 8 distinct root names. This makes it impossible for AI to confidently associate facts with a single entity.",
+                  "suggested_action": {
+                    "summary": "Choose one canonical name and use it in the title, H1, JSON-LD 'name' field, footer, and body text. Use 'alternateName' in JSON-LD for any well-known abbreviation.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "missed": []
+          },
+          "false_positive": 0.4,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "schema": 1.0,
+          "runtime": 0.9923
+        }
+      }
+    ],
+    "specialist": [
+      {
+        "agent": "specialist",
+        "site": "site-001-healthy",
+        "url": "http://localhost:9500/site-001-healthy/",
+        "runtime_seconds": 31.62,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 6,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 1.0,
+            "f1": 0.0,
+            "tp_categories": [],
+            "fp_categories": [
+              "crawlability",
+              "engagement",
+              "entity_identity",
+              "freshness",
+              "non_text_facts",
+              "rendering"
+            ],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [
+              {
+                "category": "freshness",
+                "agent_finding": {
+                  "id": "F-004",
+                  "title": "Stale Content",
+                  "category": "freshness",
+                  "original_category": "freshness",
+                  "severity": "high",
+                  "evidence": "Stale signals: update date=2019; pricing date=2020; copyright=2021; copyright=2020. Most recent year: 2026.",
+                  "suggested_action": {
+                    "summary": "Update all time-sensitive content and add visible publication dates.",
+                    "priority": "high"
+                  }
+                }
+              },
+              {
+                "category": "non_text_facts",
+                "agent_finding": {
+                  "id": "F-003",
+                  "title": "Business Facts Locked in Images",
+                  "category": "non_text_facts",
+                  "original_category": "non_text_facts",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-004-image-only-facts/: 4 info-bearing images, only 285 chars of text.",
+                  "suggested_action": {
+                    "summary": "Reproduce image content as HTML text with descriptive alt attributes.",
+                    "priority": "high"
+                  }
+                }
+              },
+              {
+                "category": "entity_identity",
+                "agent_finding": {
+                  "id": "F-005",
+                  "title": "Entity Name Inconsistency",
+                  "category": "entity_identity",
+                  "original_category": "entity_identity",
+                  "severity": "high",
+                  "evidence": "9 distinct names across 8 roots: 'Cloud Peak Tech', 'Nova Technical Corporation', 'Nova Technical Corp', 'Directory listing for /', 'CloudPeak Technologies', 'Acme Cloud Solutions, Inc'.",
+                  "suggested_action": {
+                    "summary": "Use one canonical name consistently across all pages and JSON-LD.",
+                    "priority": "high"
+                  }
+                }
+              },
+              {
+                "category": "rendering",
+                "agent_finding": {
+                  "id": "F-002",
+                  "title": "Content Requires JavaScript",
+                  "category": "rendering",
+                  "original_category": "rendering",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-003-js-only-facts/: noscript warning present, only 173 chars of text in raw HTML.",
+                  "suggested_action": {
+                    "summary": "Use server-side rendering for critical content.",
+                    "priority": "high"
+                  }
+                }
+              },
+              {
+                "category": "crawlability",
+                "agent_finding": {
+                  "id": "F-001",
+                  "title": "HTTP 404 Error",
+                  "category": "crawlability",
+                  "original_category": "crawlability",
+                  "severity": "critical",
+                  "evidence": "GET http://localhost:9500/site-001-healthy/products.html returned 404.",
+                  "suggested_action": {
+                    "summary": "Fix the HTTP error.",
+                    "priority": "critical"
+                  }
+                }
+              },
+              {
+                "category": "engagement",
+                "agent_finding": {
+                  "id": "F-006",
+                  "title": "Poor Navigation Structure",
+                  "category": "engagement",
+                  "original_category": "engagement",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-007-poor-navigation/: no <nav>, 0 internal links.",
+                  "suggested_action": {
+                    "summary": "Add navigation menu with links to key sections.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "missed": []
+          },
+          "false_positive": 0.10000000000000009,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "schema": 1.0,
+          "runtime": 0.991
+        }
+      }
+    ]
+  }
+}

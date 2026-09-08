@@ -1,0 +1,336 @@
+{
+  "timestamp": "2026-09-07T18:26:05.611384+00:00",
+  "agents": [
+    "baseline",
+    "deterministic",
+    "reasoning",
+    "specialist"
+  ],
+  "sites": [
+    "site-001-healthy"
+  ],
+  "leaderboard": {
+    "baseline": {
+      "sites_tested": 1,
+      "sites_failed": 0,
+      "detection": {
+        "tp": 0,
+        "fp": 3,
+        "fn": 0,
+        "precision": 0.0,
+        "recall": 1.0,
+        "f1": 0.0
+      },
+      "false_positive_score": 0.55,
+      "evidence_score": 0.0,
+      "action_score": 0.0,
+      "severity_score": 0.5,
+      "proactive_score": 0.5,
+      "schema_score": 1.0,
+      "runtime_score": 1.0,
+      "avg_runtime_seconds": 18.56,
+      "overall": 28.0
+    },
+    "deterministic": {
+      "sites_tested": 1,
+      "sites_failed": 0,
+      "detection": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "false_positive_score": 1.0,
+      "evidence_score": 0.0,
+      "action_score": 0.0,
+      "severity_score": 0.5,
+      "proactive_score": 0.5,
+      "schema_score": 1.0,
+      "runtime_score": 1.0,
+      "avg_runtime_seconds": 18.73,
+      "overall": 52.5
+    },
+    "reasoning": {
+      "sites_tested": 1,
+      "sites_failed": 0,
+      "detection": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "false_positive_score": 1.0,
+      "evidence_score": 0.0,
+      "action_score": 0.0,
+      "severity_score": 0.5,
+      "proactive_score": 0.5,
+      "schema_score": 1.0,
+      "runtime_score": 1.0,
+      "avg_runtime_seconds": 14.72,
+      "overall": 52.5
+    },
+    "specialist": {
+      "sites_tested": 1,
+      "sites_failed": 0,
+      "detection": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.0,
+        "recall": 1.0,
+        "f1": 0.0
+      },
+      "false_positive_score": 0.7,
+      "evidence_score": 0.0,
+      "action_score": 0.0,
+      "severity_score": 0.5,
+      "proactive_score": 0.5,
+      "schema_score": 1.0,
+      "runtime_score": 1.0,
+      "avg_runtime_seconds": 14.67,
+      "overall": 29.5
+    }
+  },
+  "detailed_results": {
+    "baseline": [
+      {
+        "agent": "baseline",
+        "site": "site-001-healthy",
+        "url": "http://localhost:9500/site-001-healthy/",
+        "runtime_seconds": 18.56,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 3,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 1.0,
+            "f1": 0.0,
+            "tp_categories": [],
+            "fp_categories": [
+              "content_extraction",
+              "crawlability",
+              "structured_data"
+            ],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [
+              {
+                "category": "content_extraction",
+                "agent_finding": {
+                  "id": "F-003",
+                  "title": "Thin Content",
+                  "category": "content_extraction",
+                  "original_category": "content-quality",
+                  "severity": "high",
+                  "evidence": "Word count is 201.",
+                  "suggested_action": {
+                    "summary": "Expand the page content to provide more value (aim for >300 words).",
+                    "priority": "high"
+                  }
+                }
+              },
+              {
+                "category": "structured_data",
+                "agent_finding": {
+                  "id": "F-008",
+                  "title": "Missing Twitter Card",
+                  "category": "structured_data",
+                  "original_category": "structured-data",
+                  "severity": "low",
+                  "evidence": "No twitter:card meta tag found.",
+                  "suggested_action": {
+                    "summary": "Add a twitter:card meta tag to optimize sharing on Twitter.",
+                    "priority": "low"
+                  }
+                }
+              },
+              {
+                "category": "crawlability",
+                "agent_finding": {
+                  "id": "F-004",
+                  "title": "Missing XML Sitemap",
+                  "category": "crawlability",
+                  "original_category": "technical-seo",
+                  "severity": "high",
+                  "evidence": "No sitemap URLs found in site data.",
+                  "suggested_action": {
+                    "summary": "Provide an XML sitemap and reference it in robots.txt.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "missed": []
+          },
+          "false_positive": 0.55,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      }
+    ],
+    "deterministic": [
+      {
+        "agent": "deterministic",
+        "site": "site-001-healthy",
+        "url": "http://localhost:9500/site-001-healthy/",
+        "runtime_seconds": 18.73,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      }
+    ],
+    "reasoning": [
+      {
+        "agent": "reasoning",
+        "site": "site-001-healthy",
+        "url": "http://localhost:9500/site-001-healthy/",
+        "runtime_seconds": 14.72,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      }
+    ],
+    "specialist": [
+      {
+        "agent": "specialist",
+        "site": "site-001-healthy",
+        "url": "http://localhost:9500/site-001-healthy/",
+        "runtime_seconds": 14.67,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 1.0,
+            "f1": 0.0,
+            "tp_categories": [],
+            "fp_categories": [
+              "crawlability"
+            ],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [
+              {
+                "category": "crawlability",
+                "agent_finding": {
+                  "id": "F-001",
+                  "title": "HTTP 404 Error",
+                  "category": "crawlability",
+                  "original_category": "crawlability",
+                  "severity": "critical",
+                  "evidence": "GET http://localhost:9500/site-001-healthy/products.html returned 404.",
+                  "suggested_action": {
+                    "summary": "Fix the HTTP error.",
+                    "priority": "critical"
+                  }
+                }
+              }
+            ],
+            "missed": []
+          },
+          "false_positive": 0.7,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "schema": 1.0,
+          "runtime": 1.0
+        }
+      }
+    ]
+  }
+}

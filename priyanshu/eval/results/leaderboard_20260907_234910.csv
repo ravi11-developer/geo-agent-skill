@@ -1,0 +1,5 @@
+Agent,Detection_F1,Precision,Recall,FP_Score,Evidence,Actions,Severity,Avg_Runtime,Overall
+baseline,0.0000,0.0000,1.0000,0.5500,0.0000,0.0000,0.5000,21.1,28.0
+reasoning,0.0000,0.0000,1.0000,0.4000,0.0000,0.0000,0.5000,31.4,26.5
+deterministic,0.0000,0.0000,1.0000,0.2500,0.0000,0.0000,0.5000,35.6,24.8
+specialist,0.0000,0.0000,1.0000,0.1000,0.0000,0.0000,0.5000,31.6,23.5
