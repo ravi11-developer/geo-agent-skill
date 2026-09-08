@@ -17,7 +17,7 @@ from urllib.parse import urlparse
 
 # Add the existing implementation to the path
 _ANTI_SCRIPTS = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "..", "..", "..", "anti", "web-intelligence-crawler", "scripts")
+    os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "Ravi", "anti", "web-intelligence-crawler", "scripts")
 )
 if _ANTI_SCRIPTS not in sys.path:
     sys.path.insert(0, _ANTI_SCRIPTS)

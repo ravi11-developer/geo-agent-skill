@@ -82,6 +82,10 @@ Thumbs.db
 desktop.ini
 
 # Temporary Test Outputs & Local Scratches
-
 *.tmp
 *.log
+
+# Huge Benchmark Caches & Results
+priyanshu/eval/sites/real/corpus*/
+priyanshu/eval/results/
+priyanshu/testing site/*.md

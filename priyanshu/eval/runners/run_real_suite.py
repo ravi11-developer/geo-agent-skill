@@ -116,16 +116,77 @@ def flagged_categories(report: dict[str, Any]) -> set[str]:
     return flagged
 
 
+def process_single_site(site: dict, corpus_dir: str, agents: list[str]) -> dict:
+    slug = site["slug"]
+    site_dir = os.path.join(corpus_dir, slug)
+    content_types = {p["file"]: p.get("content_type", "") for p in site["pages"]}
+    adjudication = adjudicate_site(site_dir, site)
+    labels = adjudication["labels"]
+
+    entry = next((p for p in site["pages"] if p.get("is_entry")), site["pages"][0])
+    server = serve(site_dir, content_types, 0)
+    actual_port = server.server_address[1]
+    url = f"http://127.0.0.1:{actual_port}{entry.get('path', '/')}"
+
+    site_agent_rows = {agent: [] for agent in agents}
+    site_finding_rows = []
+    line_summary = ""
+
+    try:
+        for agent in agents:
+            run = run_agent_on(agent, url)
+            report = run["report"]
+            flagged = flagged_categories(report) if report else set()
+            scored = score_report(flagged, labels)
+            findings = (report or {}).get("findings", []) or []
+            normalized = [normalize_finding(f) for f in findings]
+            row = {
+                "site": slug, "agent": agent, "url": site["url"],
+                "error": run["error"], "runtime_seconds": run["runtime_seconds"],
+                "flagged": sorted(flagged), "detection": scored,
+                "findings": len(findings),
+                "evidence": [score_evidence(f) for f in normalized],
+                "actions": [score_action(f) for f in normalized],
+                "schema": score_schema_validity(report) if report else 0.0,
+                "recommendations": len((report or {}).get("recommendations", []) or []),
+            }
+            site_agent_rows[agent].append(row)
+            for finding, norm in zip(findings, normalized):
+                site_finding_rows.append({
+                    "site": slug, "site_url": site["url"], "agent": agent,
+                    "category": norm.get("category"), "severity": norm.get("severity"),
+                    "adjudicator": labels.get(norm.get("category"), "abstain"),
+                    "title": (finding.get("title") or "")[:120],
+                    "evidence": (norm.get("evidence") or "")[:300],
+                    "human_verdict": "",
+                })
+            line_summary += f" {agent[:4]}:{len(findings)}{'!' if run['error'] else ''}"
+    finally:
+        server.shutdown()
+        server.server_close()
+
+    return {
+        "slug": slug,
+        "adjudication": adjudication,
+        "site_agent_rows": site_agent_rows,
+        "site_finding_rows": site_finding_rows,
+        "line_summary": line_summary,
+    }
+
+
 # ---------------------------------------------------------------------------
 # Suite
 # ---------------------------------------------------------------------------
 
 def main() -> None:
+    from concurrent.futures import ProcessPoolExecutor, as_completed
+
     ap = argparse.ArgumentParser(description="Run all agents against the captured real-web corpus")
     ap.add_argument("--corpus", default=CORPUS_DIR)
     ap.add_argument("--agent", action="append", help="restrict to these agents (repeatable)")
     ap.add_argument("--limit", type=int, default=0, help="cap the number of sites")
     ap.add_argument("--offset", type=int, default=0, help="skip the first N sites (for chunked runs)")
+    ap.add_argument("--workers", type=int, default=16, help="number of concurrent site workers")
     ap.add_argument("--port", type=int, default=PORT)
     ap.add_argument("--out", default=None, help="results JSON path")
     args = ap.parse_args()
@@ -146,57 +207,26 @@ def main() -> None:
 
     print(f"Corpus: {len(sites)} sites, {sum(len(s['pages']) for s in sites)} pages "
           f"(captured {manifest.get('captured_at', '?')})")
-    print(f"Agents: {', '.join(agents)}\n")
+    print(f"Agents: {', '.join(agents)}")
+    print(f"Concurrency: {args.workers} parallel workers\n")
 
     per_agent: dict[str, list[dict]] = {agent: [] for agent in agents}
     adjudications: dict[str, dict] = {}
     finding_rows: list[dict] = []
+    print_lock = threading.Lock()
 
-    for index, site in enumerate(sites, start=1):
-        slug = site["slug"]
-        site_dir = os.path.join(args.corpus, slug)
-        content_types = {p["file"]: p.get("content_type", "") for p in site["pages"]}
-        adjudication = adjudicate_site(site_dir, site)
-        adjudications[slug] = adjudication
-        labels = adjudication["labels"]
+    with ProcessPoolExecutor(max_workers=args.workers) as pool:
+        futures = {pool.submit(process_single_site, site, args.corpus, agents): site for site in sites}
+        for done, future in enumerate(as_completed(futures), start=1):
+            res = future.result()
+            slug = res["slug"]
+            adjudications[slug] = res["adjudication"]
+            for agent, rows in res["site_agent_rows"].items():
+                per_agent[agent].extend(rows)
+            finding_rows.extend(res["site_finding_rows"])
 
-        entry = next((p for p in site["pages"] if p.get("is_entry")), site["pages"][0])
-        server = serve(site_dir, content_types, args.port)
-        url = f"http://127.0.0.1:{args.port}{entry.get('path', '/')}"
-        try:
-            line = f"  [{index:>3}/{len(sites)}] {slug:<26}"
-            for agent in agents:
-                run = run_agent_on(agent, url)
-                report = run["report"]
-                flagged = flagged_categories(report) if report else set()
-                scored = score_report(flagged, labels)
-                findings = (report or {}).get("findings", []) or []
-                normalized = [normalize_finding(f) for f in findings]
-                row = {
-                    "site": slug, "agent": agent, "url": site["url"],
-                    "error": run["error"], "runtime_seconds": run["runtime_seconds"],
-                    "flagged": sorted(flagged), "detection": scored,
-                    "findings": len(findings),
-                    "evidence": [score_evidence(f) for f in normalized],
-                    "actions": [score_action(f) for f in normalized],
-                    "schema": score_schema_validity(report) if report else 0.0,
-                    "recommendations": len((report or {}).get("recommendations", []) or []),
-                }
-                per_agent[agent].append(row)
-                for finding, norm in zip(findings, normalized):
-                    finding_rows.append({
-                        "site": slug, "site_url": site["url"], "agent": agent,
-                        "category": norm.get("category"), "severity": norm.get("severity"),
-                        "adjudicator": labels.get(norm.get("category"), "abstain"),
-                        "title": (finding.get("title") or "")[:120],
-                        "evidence": (norm.get("evidence") or "")[:300],
-                        "human_verdict": "",
-                    })
-                line += f" {agent[:4]}:{len(findings)}{'!' if run['error'] else ''}"
-            print(line)
-        finally:
-            server.shutdown()
-            server.server_close()
+            with print_lock:
+                print(f"  [{done:>4}/{len(sites)}] {slug:<26} {res['line_summary']}")
 
     # ---------------- aggregate ----------------
     leaderboard: dict[str, dict] = {}
