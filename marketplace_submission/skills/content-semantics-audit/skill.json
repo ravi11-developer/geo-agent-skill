@@ -1,0 +1,48 @@
+{
+  "id": "content-semantics-audit",
+  "name": "Content & Semantics Audit",
+  "version": "1.0.0",
+  "kind": "audit",
+  "entrypoint": "scripts/content_semantics.py",
+  "function": "run(context: dict) -> SkillResult",
+  "provides": [
+    "content_extraction",
+    "structured_data",
+    "non_text_facts"
+  ],
+  "consumes": [
+    "snapshot"
+  ],
+  "produces": [
+    "fact_coverage"
+  ],
+  "detectors": {
+    "content_extraction": [
+      "fact_families_present <= 1",
+      "content_words < 60",
+      "identifiable_cause(js_render|image_only)",
+      "entry_page_affected"
+    ],
+    "structured_data": [
+      "jsonld_parse_failure",
+      "zero_structured_data_with_existing_metadata_layer"
+    ],
+    "non_text_facts": [
+      ">=2 fact-bearing images without text equivalent"
+    ]
+  },
+  "severity_model": {
+    "content_extraction": "high",
+    "structured_data": "high (invalid) | medium (absent)",
+    "non_text_facts": "high (>=4 images) | medium (2-3)"
+  },
+  "safety": {
+    "read_only": true,
+    "network": "none"
+  },
+  "skill_md": "SKILL.md",
+  "references": [
+    "detection-rules.md",
+    "fact-families.md"
+  ]
+}

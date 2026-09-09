@@ -1,0 +1,40 @@
+{
+  "id": "engagement-audit",
+  "name": "Engagement & Orientation Audit",
+  "version": "1.0.0",
+  "kind": "audit",
+  "entrypoint": "scripts/engagement.py",
+  "function": "run(context: dict) -> SkillResult",
+  "provides": [
+    "engagement"
+  ],
+  "consumes": [
+    "snapshot"
+  ],
+  "produces": [
+    "navigation_profile"
+  ],
+  "detectors": {
+    "engagement": [
+      "0 nav landmarks AND <2 internal links on every crawled page, including the entry page"
+    ]
+  },
+  "severity_model": {
+    "engagement": "high (may be down-ranked to medium by the orchestrator on multi-fault sites)"
+  },
+  "non_defects": [
+    "generic anchor text",
+    "missing breadcrumbs when navigation exists",
+    "multiple H1s",
+    "underscore URLs",
+    "keyword-stuffed titles"
+  ],
+  "safety": {
+    "read_only": true,
+    "network": "none"
+  },
+  "skill_md": "SKILL.md",
+  "references": [
+    "detection-rules.md"
+  ]
+}

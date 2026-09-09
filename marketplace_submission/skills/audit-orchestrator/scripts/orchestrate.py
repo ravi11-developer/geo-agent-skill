@@ -29,6 +29,7 @@ from lib.contracts import (
     BLOCKING_CATEGORIES,
     CATEGORIES,
     SECONDARY_CATEGORIES,
+    SEVERITIES,
     SEVERITY_RANK,
     SkillResult,
     recommendation,
@@ -41,7 +42,7 @@ CATEGORY_ORDER = {name: index for index, name in enumerate(CATEGORIES)}
 ID_PREFIX = {
     "crawlability": "CRAWL", "rendering": "REND", "content_extraction": "EXTR",
     "structured_data": "SCHEMA", "non_text_facts": "IMG", "freshness": "FRESH",
-    "entity_identity": "ENTITY", "engagement": "ENGAGE",
+    "entity_identity": "ENTITY", "corroboration": "TRUST", "engagement": "ENGAGE",
 }
 
 
@@ -128,6 +129,8 @@ def run_audit(url: str, config: dict[str, Any] | None = None) -> dict[str, Any]:
         "artifacts": {},
         "config": config,
         "max_pages": config.get("max_pages", manifest.get("safety", {}).get("max_pages_per_run", 12)),
+        "budget_seconds": config.get("budget_seconds",
+                                     manifest.get("safety", {}).get("max_runtime_seconds", 60)),
     }
 
     raw_findings: list[dict[str, Any]] = []
@@ -191,9 +194,10 @@ def run_audit(url: str, config: dict[str, Any] | None = None) -> dict[str, Any]:
         for category in CATEGORIES
     }
 
-    by_severity: dict[str, int] = {}
-    for finding in findings:
-        by_severity[finding["severity"]] = by_severity.get(finding["severity"], 0) + 1
+    # The published schema requires a flat count per severity, always present
+    # (zero when absent) so consumers can read summary["high"] without guarding.
+    # ``by_severity`` is kept as a convenience view over the same numbers.
+    by_severity = {sev: sum(1 for f in findings if f["severity"] == sev) for sev in SEVERITIES}
 
     snapshot = context["artifacts"].get("snapshot")
     elapsed = time.monotonic() - started
@@ -212,6 +216,10 @@ def run_audit(url: str, config: dict[str, Any] | None = None) -> dict[str, Any]:
         },
         "summary": {
             "total_findings": len(findings),
+            "critical": by_severity["critical"],
+            "high": by_severity["high"],
+            "medium": by_severity["medium"],
+            "low": by_severity["low"],
             "by_severity": by_severity,
             "categories_flagged": sorted(flagged),
             "categories_clean": sorted(c for c, state in coverage.items() if state == "clean"),
