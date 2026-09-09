@@ -228,8 +228,8 @@ def main():
     all_findings.sort(key=lambda f: _SEV_ORDER.get(f.get("severity", "low"), 9))
 
     # ---- Step 5: Re-assign sequential IDs ----
-    for i, f in enumerate(all_findings, start=1):
-        f["id"] = "F-{:03d}".format(i)
+    # for i, f in enumerate(all_findings, start=1):
+    #     f["id"] = "F-{:03d}".format(i)
 
     # ---- Step 6: Compute summary ----
     summary = {"total_findings": len(all_findings), "critical": 0, "high": 0, "medium": 0, "low": 0}

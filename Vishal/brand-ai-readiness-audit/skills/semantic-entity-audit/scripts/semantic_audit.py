@@ -171,6 +171,7 @@ def audit_page(url):
         "_brand_candidates": {},
         "_has_sameas": False,
         "_sameas_urls": [],
+        "_has_structured_data": False,
     }
 
     # ---- 1. Title ----
@@ -196,17 +197,11 @@ def audit_page(url):
     # ---- 3. Structured data presence ----
     has_jsonld = len(parsed.jsonld_blocks) > 0
     has_og = len(parsed.og_tags) > 0
+    
+    if has_jsonld or has_og or parsed.has_microdata:
+        page_info["_has_structured_data"] = True
 
-    if not has_jsonld and not has_og:
-        findings.append(make_finding(
-            "SEMANTIC-003", "No machine-readable structured data", "high",
-            "{} has no JSON-LD scripts and no OpenGraph tags. Without structured "
-            "data, AI systems must infer entity facts from unstructured text, "
-            "which is error-prone.".format(url),
-            "Implement Schema.org JSON-LD (Organization, Product, Service, Article) "
-            "and OpenGraph meta tags.",
-            affected_urls=[url],
-        ))
+    # SEMANTIC-003 has been moved to main() as a site-level check
 
     # ---- 4. JSON-LD syntax validation ----
     for i, block in enumerate(parsed.jsonld_blocks):
@@ -611,12 +606,15 @@ def main():
     all_page_info = []
     any_has_speakable = False
     any_has_faq_schema = False
+    site_has_semantics = False
 
     for url in pages:
         page_findings, info = audit_page(url)
         all_findings.extend(page_findings)
         if info:
             all_page_info.append(info)
+            if info.get("_has_structured_data"):
+                site_has_semantics = True
 
         # Check for speakable/FAQ schema by re-examining JSON-LD
         r = None  # We already fetched in audit_page, but we need the parsed data
@@ -652,6 +650,16 @@ def main():
             affected_urls=[pages[0]] if pages else [],
             confidence="medium", finding_type="recommendation",
         ))
+
+    if pages and not site_has_semantics:
+        all_findings.append({
+            "id": "SEMANTIC-003",
+            "title": "No machine-readable structured data",
+            "severity": "high",
+            "evidence": "None of the sampled pages contain JSON-LD scripts, microdata, or OpenGraph tags.",
+            "suggested_action": "Implement Schema.org JSON-LD (Organization, Product, Service, Article) and OpenGraph meta tags.",
+            "affected_urls": pages
+        })
 
     print(json.dumps(all_findings, indent=2, ensure_ascii=False))
 

@@ -141,6 +141,9 @@ class FullParser(HTMLParser):
         self._skip_tags = {"script", "style", "noscript"}
         self._skip_depth = 0
         self.paragraph_count = 0
+        
+        # --- Microdata ---
+        self.has_microdata = False
 
         # --- Hidden content ---
         self.hidden_elements = 0
@@ -201,7 +204,7 @@ class FullParser(HTMLParser):
         if tag != "input" and "hidden" in d:
             self.hidden_elements += 1
             is_hidden = True
-        style = d.get("style", "").lower().replace(" ", "")
+        style = (d.get("style") or "").lower().replace(" ", "")
         if "display:none" in style:
             self.display_none_elements += 1
             is_hidden = True
@@ -209,6 +212,9 @@ class FullParser(HTMLParser):
             self.aria_hidden_elements += 1
             is_hidden = True
         self._element_stack.append({"tag": tag, "hidden": is_hidden})
+        
+        if "itemtype" in d or "typeof" in d:
+            self.has_microdata = True
 
         if tag == "html":
             self.lang_attr = d.get("lang", "")
