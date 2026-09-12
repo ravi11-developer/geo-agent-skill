@@ -8,7 +8,6 @@ between them.
 agents/A-precision/     marketplace root — zip this directly
 agents/B-coverage/      marketplace root — zip this directly
 bench/                  gold sites, scoring, runners, agent registry
-archive/                superseded trees, kept for history
 geo                     CLI
 ```
 
@@ -57,6 +56,10 @@ a requirement A does not, not because it detects better.
 
 Adding a third candidate is a filesystem operation: drop a directory under
 `agents/` containing an `agent.json`, and the bench discovers it.
+
+See [RUNNING.md](RUNNING.md) for running each agent standalone, prompting an AI
+agent to invoke the `SKILL.md` directly instead of the CLI, and inspecting the
+JSON findings a report produces.
 
 ## Requirements
 
