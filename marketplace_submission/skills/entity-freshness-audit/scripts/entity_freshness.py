@@ -48,11 +48,6 @@ NAME_STOPWORDS = {
 }
 CAP_TOKEN = r"[A-Z][\w&'’.\-]*"
 NAME_PHRASE = rf"{CAP_TOKEN}(?:\s+{CAP_TOKEN}){{0,4}}"
-# MediaWiki-style namespace routes ("Help:Contents", "Wikipedia:About", "User:Jimbo",
-# "Category:Foo") are structural page addresses, not brand names. The namespace is a
-# single token followed by a colon and the page name with NO surrounding space, which
-# distinguishes it from a "Brand: tagline" separator (colon + space) that we keep.
-WIKI_NAMESPACE_RE = re.compile(r"^[A-Za-z][\w-]{1,20}:\S")
 
 WELCOME_RE = re.compile(rf"\bWelcome to\s+({NAME_PHRASE})")
 FORMERLY_RE = re.compile(rf"\b(?:formerly|previously known as|f/k/a|rebranded from)\s+({NAME_PHRASE})", re.I)
@@ -157,16 +152,10 @@ def _title_prefix(text: str) -> str:
     """
     parts = [part.strip() for part in re.split(SEPARATOR_RE, text) if part.strip()]
     if len(parts) > 1:
-        # A generic page word OR a wiki namespace route ("Help:Contents",
-        # "Wikipedia:About") in the leading segment is structural, not the brand, so
-        # the trailing segment carries the real name ("... - Wikipedia").
-        if normalise_name(parts[0]) in GENERIC_TITLE_SEGMENTS or WIKI_NAMESPACE_RE.match(parts[0]):
+        if normalise_name(parts[0]) in GENERIC_TITLE_SEGMENTS:
             return parts[-1]
         return parts[0]
-    single = text.strip()
-    if WIKI_NAMESPACE_RE.match(single):
-        return ""  # a bare namespace route with no brand segment is not an entity name
-    return single if len(single.split()) <= 5 else ""
+    return text.strip() if len(text.split()) <= 5 else ""
 
 
 def extract_names(page: Page) -> list[tuple[str, str]]:
@@ -264,15 +253,6 @@ def build_entity_profile(snapshot: SiteSnapshot) -> dict[str, Any]:
     variants = []
     for key in keys:
         if key == canonical:
-            continue
-        # A name that merely extends the canonical with additional whole words
-        # ("Google Maps", "Google Workspace", "Samsung Galaxy") is a product or service
-        # sub-brand, not a misspelling of the company. Genuine identity conflicts are
-        # re-spellings - typos, spacing, abbreviations - that normalise to a *different*
-        # stem; legal suffixes ("Acme Corp") are already stripped by normalise_name. So a
-        # whole-word "<canonical> <extra>" (either direction) is a sibling brand, not a
-        # variant. Without this, every product on a mega-portal reads as a competing name.
-        if key.startswith(canonical + " ") or canonical.startswith(key + " "):
             continue
         if len(squashed[key]) > len(squashed[canonical]) * 2.2 + 4:
             continue  # a phrase, not a name variant
