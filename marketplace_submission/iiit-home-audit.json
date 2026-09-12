@@ -1,0 +1,336 @@
+{
+  "site": "https://www.iiit.ac.in/",
+  "audited_at": "2026-09-11T18:46:51.867072+00:00",
+  "agent": "marketplace",
+  "marketplace": {
+    "id": "ai-discoverability-engagement-marketplace",
+    "name": "AI Discoverability & Engagement Audit Marketplace",
+    "version": "1.0.0",
+    "entrypoint": "audit-orchestrator",
+    "skills_invoked": [
+      "crawl-render-audit",
+      "content-semantics-audit",
+      "entity-freshness-audit",
+      "engagement-audit"
+    ],
+    "read_only": true
+  },
+  "summary": {
+    "total_findings": 2,
+    "critical": 0,
+    "high": 2,
+    "medium": 0,
+    "low": 0,
+    "by_severity": {
+      "critical": 0,
+      "high": 2,
+      "medium": 0,
+      "low": 0
+    },
+    "categories_flagged": [
+      "freshness",
+      "non_text_facts"
+    ],
+    "categories_clean": [
+      "content_extraction",
+      "corroboration",
+      "crawlability",
+      "engagement",
+      "entity_identity",
+      "rendering",
+      "structured_data"
+    ],
+    "health_score": 56,
+    "top_priority": "Business facts are published only inside images, with no text equivalent",
+    "pages_crawled": 12,
+    "pages_retrievable": 12,
+    "recommendation_count": 8,
+    "runtime_seconds": 26.204
+  },
+  "findings": [
+    {
+      "id": "MKT-IMG-01",
+      "title": "Business facts are published only inside images, with no text equivalent",
+      "category": "non_text_facts",
+      "_category": "non_text_facts",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": "https://www.iiit.ac.in/achievements/ (HTTP 200) presents 100 fact-bearing images (100 images across 1 pages) whose alt text is missing or generic, and whose surrounding sections contain fewer than 30 words of prose: https://www.iiit.ac.in/wp-content/uploads/2026/09/SERC-VRSpecML.jpg (alt=\"\", under \"Achievements and Awards\"); https://www.iiit.ac.in/wp-content/uploads/2026/09/SERC-EMNLP-2026.jpg (alt=\"\", under \"Achievements and Awards\"); https://www.iiit.ac.in/wp-content/uploads/2026/09/India-Today-Ranking.jpg (alt=\"\", under \"Achievements and Awards\"); https://www.iiit.ac.in/wp-content/uploads/2026/08/PLO-IOL-2026-1.jpg (alt=\"\", under \"Achievements and Awards\"). The page's own extractable text is 27358 characters, so these facts exist nowhere in machine-readable form.",
+      "locations": [
+        "https://www.iiit.ac.in/achievements/"
+      ],
+      "proof": {
+        "fact_images": 100,
+        "pages_affected": 1
+      },
+      "suggested_action": {
+        "summary": "Reproduce the content of each image as HTML text next to it - a real <table> for the pricing and feature matrix, a text block for the company infographic, and vCard-style markup for the contact card - then add descriptive alt text (or a <figcaption>) stating the specific facts shown. Mirror the same values in Product/Offer JSON-LD so the numbers are machine-readable and AI systems can extract and cite them from the HTML instead of ignoring the images.",
+        "priority": "high",
+        "mechanism": "Text extractors and LLM retrieval pipelines do not OCR images; a fact that exists only as pixels is invisible to the model even though a human sees it immediately."
+      },
+      "detected_by": "content-semantics-audit",
+      "rank": 1
+    },
+    {
+      "id": "MKT-FRESH-02",
+      "title": "Published facts are visibly out of date",
+      "category": "freshness",
+      "_category": "freshness",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": "Across 85223 characters of body text, 85 dated claims on https://www.iiit.ac.in/ (HTTP 200) reference 1998-2024, i.e. 2+ years before the current year 2026; the spread covers undated claim x75, statistic x4, award x4, update stamp x2. Examples: \"May 2026 Load More View All Copyright \u00a9 2024, International Institute\"; \"rabad. All rights reserved. Copyright \u00a9 2024, International Institute\"; \"t public private partnership (N-PPP) in 1998, and is the first IIIT i\". 1 of 12 crawled pages carry no current-year date at all, and the copyright on them still reads 2024, 2 years stale. Only 2 current-era year references were found ([2026, 2028]).",
+      "locations": [
+        "https://www.iiit.ac.in/history/"
+      ],
+      "proof": {
+        "stale_mentions": 85,
+        "years": [
+          1998,
+          2001,
+          2002,
+          2003,
+          2005,
+          2007,
+          2008,
+          2009,
+          2010,
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "stale_pages": [
+          "https://www.iiit.ac.in/history/"
+        ],
+        "copyright_year": 2024,
+        "oldest_copyright": 2024,
+        "recent_years": [
+          2026,
+          2028
+        ]
+      },
+      "suggested_action": {
+        "summary": "Refresh the dated blocks in priority order - pricing tables first, then statistics, awards, team and press - stamp each with a visible 'Last updated' date plus a machine-readable `dateModified` in the page's JSON-LD, and generate the footer copyright year from the server clock so the HTML never contradicts the content. Label genuinely historical facts as such ('award received in 2019'). Recency that AI systems can extract is what keeps the page eligible to be cited rather than skipped.",
+        "priority": "high",
+        "mechanism": "Recency is a ranking and trust signal for AI answer engines: when the newest date on a page is years old, retrieval systems down-rank it and assistants prefer a competitor's current page, even if your facts are still accurate."
+      },
+      "detected_by": "entity-freshness-audit",
+      "rank": 2
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Extend structured data to Product/Offer nodes",
+      "detail": "Organization schema is present but individual products and prices are not modelled. Adding Product with an Offer (price, priceCurrency, availability) lets assistants quote your pricing with attribution instead of paraphrasing a table.",
+      "category": "structured_data",
+      "effort": "medium"
+    },
+    {
+      "title": "Add structured data reflecting the facts currently only in images",
+      "detail": "Mirror the values shown in the pricing, capability and contact images into Product/Offer and ContactPoint JSON-LD, so the same numbers reach AI systems through a machine-readable channel regardless of how the visual design evolves.",
+      "category": "non_text_facts",
+      "effort": "medium"
+    },
+    {
+      "title": "Put the dated pages on a review cadence",
+      "detail": "Pricing, team and press pages drift fastest. Give each an owner and a quarterly review date, and update the copyright year and industry statistics from a single source so they cannot disagree with each other.",
+      "category": "freshness",
+      "effort": "medium"
+    },
+    {
+      "title": "Publish an XML sitemap with lastmod dates",
+      "detail": "No /sitemap.xml was served. A sitemap with accurate <lastmod> values gives crawlers a cheap freshness signal and a complete URL inventory, which improves how quickly new facts are picked up.",
+      "category": "crawlability",
+      "effort": "low"
+    },
+    {
+      "title": "Validate structured data in CI so a syntax error cannot ship",
+      "detail": "The site already relies on JSON-LD, so a single malformed block silently removes every machine-readable fact on that page. Add a schema validation step to the build (a JSON parse plus a schema.org type check) to keep the markup trustworthy.",
+      "category": "structured_data",
+      "effort": "low"
+    },
+    {
+      "title": "Add FAQPage schema for the questions buyers actually ask",
+      "detail": "FAQ structured data is the cheapest way to get exact question/answer pairs into AI answers, and it reuses copy you already have on product and support pages.",
+      "category": "structured_data",
+      "effort": "low"
+    },
+    {
+      "title": "Add descriptive alt text to every image that contains factual information",
+      "detail": "Even before the tables are reproduced as HTML text, alt text that states the actual facts (\"Pricing: Starter $299/month, Pro $499/month\") makes them extractable, and it is a same-day change that also fixes the accessibility gap.",
+      "category": "non_text_facts",
+      "effort": "low"
+    },
+    {
+      "title": "Add dateModified and publish recent news",
+      "detail": "Expose `dateModified` in each page's JSON-LD and `lastmod` in the sitemap, and publish recent press releases, awards or product news. Both are explicit recency signals that retrieval systems read directly.",
+      "category": "freshness",
+      "effort": "low"
+    }
+  ],
+  "coverage": {
+    "crawlability": "clean",
+    "rendering": "clean",
+    "content_extraction": "clean",
+    "structured_data": "clean",
+    "non_text_facts": "flagged",
+    "freshness": "flagged",
+    "entity_identity": "clean",
+    "corroboration": "clean",
+    "engagement": "clean"
+  },
+  "checks_performed": [
+    {
+      "skill": "crawl-render-audit",
+      "check": "entry_url_retrievable",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "robots_allows_ai_agents",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "content_present_without_javascript",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "pages_crawled",
+      "value": 12,
+      "value_ok": 12
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "structured_data_present",
+      "passed": true
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "facts_extractable_as_text",
+      "passed": true,
+      "value": 2
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "no_image_only_facts",
+      "passed": false
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "fact_families_covered",
+      "value": {
+        "pricing": false,
+        "contact": false,
+        "company_facts": true,
+        "product_detail": true
+      }
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "single_canonical_entity_name",
+      "passed": true,
+      "value": 1,
+      "canonical": "activities reports"
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "content_is_current",
+      "passed": false,
+      "value": 85
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "externally_corroborated",
+      "passed": true,
+      "value": 126
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "navigation_landmarks_present",
+      "passed": true,
+      "value": 4
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "internal_links_present",
+      "value": 74
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "breadcrumbs_present",
+      "value": true
+    }
+  ],
+  "telemetry": {
+    "skills": [
+      {
+        "skill": "crawl-render-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 1,
+        "runtime_seconds": 25.296,
+        "provides": [
+          "crawlability",
+          "rendering"
+        ]
+      },
+      {
+        "skill": "content-semantics-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 1,
+        "recommendations": 5,
+        "runtime_seconds": 0.579,
+        "provides": [
+          "content_extraction",
+          "structured_data",
+          "non_text_facts"
+        ]
+      },
+      {
+        "skill": "entity-freshness-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 1,
+        "recommendations": 2,
+        "runtime_seconds": 0.109,
+        "provides": [
+          "entity_identity",
+          "freshness",
+          "corroboration"
+        ]
+      },
+      {
+        "skill": "engagement-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 0,
+        "runtime_seconds": 0.141,
+        "provides": [
+          "engagement"
+        ]
+      }
+    ],
+    "runtime_seconds": 26.204,
+    "pages_fetched": 12,
+    "broken_links": []
+  }
+}

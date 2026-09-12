@@ -1,0 +1,330 @@
+{
+  "site": "http://127.0.0.1:9700/",
+  "audited_at": "2026-09-09T08:23:42.619651+00:00",
+  "agent": "marketplace",
+  "marketplace": {
+    "id": "ai-discoverability-marketplace",
+    "name": "AI Discoverability & Engagement Audit Marketplace",
+    "version": "1.0.0",
+    "entrypoint": "audit-orchestrator",
+    "skills_invoked": [
+      "crawl-render-audit",
+      "content-semantics-audit",
+      "entity-freshness-audit",
+      "engagement-audit"
+    ],
+    "read_only": true
+  },
+  "summary": {
+    "total_findings": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 1,
+    "by_severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 1
+    },
+    "categories_flagged": [
+      "corroboration"
+    ],
+    "categories_clean": [
+      "content_extraction",
+      "crawlability",
+      "engagement",
+      "entity_identity",
+      "freshness",
+      "non_text_facts",
+      "rendering",
+      "structured_data"
+    ],
+    "health_score": 96,
+    "top_priority": "No independently verifiable identity or citation signals anywhere on the site",
+    "pages_crawled": 12,
+    "pages_retrievable": 1,
+    "recommendation_count": 8,
+    "runtime_seconds": 0.686
+  },
+  "findings": [
+    {
+      "id": "MKT-TRUST-01",
+      "title": "No independently verifiable identity or citation signals anywhere on the site",
+      "category": "corroboration",
+      "_category": "corroboration",
+      "severity": "low",
+      "confidence": "high",
+      "evidence": "Across 14107 characters of text on 1 crawled pages from http://127.0.0.1:9700/ (HTTP 200), the site publishes 0 schema sameAs entries, 0 links to third-party identity platforms (LinkedIn, Crunchbase, Wikidata, app stores, review sites) out of 54 external links, and 0 citation elements (<cite>, rel=author, rel=publisher). Every claim made about \"mokobara lifestyle private\" rests on the site's own assertion.",
+      "locations": [
+        "http://127.0.0.1:9700/"
+      ],
+      "proof": {
+        "same_as": [],
+        "platform_links": [],
+        "external_links": 54,
+        "schema_keys": [],
+        "citation_elements": 0,
+        "signals": 0
+      },
+      "suggested_action": {
+        "summary": "Add a `sameAs` array to the Organization JSON-LD listing the company's LinkedIn, Crunchbase and app-store or registry profiles, link those profiles from the footer HTML, and cite the source next to any statistic you quote. Independent corroboration is what lets an AI system treat your machine-readable claims as trustworthy enough to repeat.",
+        "priority": "low",
+        "mechanism": "Assistants weigh a claim by how many independent sources agree with it. A site that no external record links back to is a single unverifiable source, so its numbers get hedged or dropped even when they are correct."
+      },
+      "detected_by": "entity-freshness-audit",
+      "rank": 1
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Extend structured data to Product/Offer nodes",
+      "detail": "Organization schema is present but individual products and prices are not modelled. Adding Product with an Offer (price, priceCurrency, availability) lets assistants quote your pricing with attribution instead of paraphrasing a table.",
+      "category": "structured_data",
+      "effort": "medium"
+    },
+    {
+      "title": "Give every page an explicit next step",
+      "detail": "No contact, demo or pricing call-to-action was detected in the body copy. A single clear next step converts the attention that an AI citation sends to the page.",
+      "category": "engagement",
+      "effort": "medium"
+    },
+    {
+      "title": "Publish an XML sitemap with lastmod dates",
+      "detail": "No /sitemap.xml was served. A sitemap with accurate <lastmod> values gives crawlers a cheap freshness signal and a complete URL inventory, which improves how quickly new facts are picked up.",
+      "category": "crawlability",
+      "effort": "low"
+    },
+    {
+      "title": "Add an explicit robots.txt that names AI user agents",
+      "detail": "No robots.txt was served. An explicit allow-list for GPTBot, ClaudeBot, PerplexityBot and Google-Extended documents your intent and prevents defensive bot rules from silently blocking assistants.",
+      "category": "crawlability",
+      "effort": "low"
+    },
+    {
+      "title": "Validate structured data in CI so a syntax error cannot ship",
+      "detail": "The site already relies on JSON-LD, so a single malformed block silently removes every machine-readable fact on that page. Add a schema validation step to the build (a JSON parse plus a schema.org type check) to keep the markup trustworthy.",
+      "category": "structured_data",
+      "effort": "low"
+    },
+    {
+      "title": "Add FAQPage schema for the questions buyers actually ask",
+      "detail": "FAQ structured data is the cheapest way to get exact question/answer pairs into AI answers, and it reuses copy you already have on product and support pages.",
+      "category": "structured_data",
+      "effort": "low"
+    },
+    {
+      "title": "Use one spelling of the company name in every identity slot",
+      "detail": "Two closely related spellings were observed (\"Mokobara Lifestyle Private Limited\" and \"Mokobara\", 50% similar). This is not yet ambiguous, but standardising the shorter form as `alternateName` in Organization JSON-LD keeps entity resolution unambiguous as the site grows.",
+      "category": "entity_identity",
+      "effort": "low"
+    },
+    {
+      "title": "Add `sameAs` links to social profiles in Organization JSON-LD",
+      "detail": "Even if your site is otherwise healthy, adding `sameAs` links to your LinkedIn, Crunchbase, and Twitter profiles inside your Organization JSON-LD explicitly binds those distinct sources together into one entity graph. AI assistants heavily rely on this to merge facts from different domains into a single confident answer.",
+      "category": "entity_identity",
+      "effort": "low"
+    }
+  ],
+  "coverage": {
+    "crawlability": "clean",
+    "rendering": "clean",
+    "content_extraction": "clean",
+    "structured_data": "clean",
+    "non_text_facts": "clean",
+    "freshness": "clean",
+    "entity_identity": "clean",
+    "corroboration": "flagged",
+    "engagement": "clean"
+  },
+  "checks_performed": [
+    {
+      "skill": "crawl-render-audit",
+      "check": "entry_url_retrievable",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "robots_allows_ai_agents",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "content_present_without_javascript",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "pages_crawled",
+      "value": 12,
+      "value_ok": 1
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "structured_data_present",
+      "passed": true
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "facts_extractable_as_text",
+      "passed": true,
+      "value": 4
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "no_image_only_facts",
+      "passed": true
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "fact_families_covered",
+      "value": {
+        "pricing": true,
+        "contact": true,
+        "company_facts": true,
+        "product_detail": true
+      }
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "single_canonical_entity_name",
+      "passed": true,
+      "value": 2,
+      "canonical": "mokobara lifestyle private"
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "content_is_current",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "externally_corroborated",
+      "passed": false,
+      "value": 0
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "navigation_landmarks_present",
+      "passed": true,
+      "value": 2
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "internal_links_present",
+      "value": 75
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "breadcrumbs_present",
+      "value": true
+    }
+  ],
+  "telemetry": {
+    "skills": [
+      {
+        "skill": "crawl-render-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 2,
+        "runtime_seconds": 0.576,
+        "provides": [
+          "crawlability",
+          "rendering"
+        ]
+      },
+      {
+        "skill": "content-semantics-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 3,
+        "runtime_seconds": 0.046,
+        "provides": [
+          "content_extraction",
+          "structured_data",
+          "non_text_facts"
+        ]
+      },
+      {
+        "skill": "entity-freshness-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 1,
+        "recommendations": 1,
+        "runtime_seconds": 0.026,
+        "provides": [
+          "entity_identity",
+          "freshness",
+          "corroboration"
+        ]
+      },
+      {
+        "skill": "engagement-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 1,
+        "runtime_seconds": 0.036,
+        "provides": [
+          "engagement"
+        ]
+      }
+    ],
+    "runtime_seconds": 0.686,
+    "pages_fetched": 12,
+    "broken_links": [
+      {
+        "url": "http://127.0.0.1:9700/collections/luggage-all",
+        "status": 404
+      },
+      {
+        "url": "http://127.0.0.1:9700/collections/explore-tech-range",
+        "status": 404
+      },
+      {
+        "url": "http://127.0.0.1:9700/collections/explore-cabin-luggage",
+        "status": 404
+      },
+      {
+        "url": "http://127.0.0.1:9700/collections/explore-check-in-luggage",
+        "status": 404
+      },
+      {
+        "url": "http://127.0.0.1:9700/collections/explore-check-in-large-luggage",
+        "status": 404
+      },
+      {
+        "url": "http://127.0.0.1:9700/collections/explore-trunk-luggage",
+        "status": 404
+      },
+      {
+        "url": "http://127.0.0.1:9700/collections/moko-blocks",
+        "status": 404
+      },
+      {
+        "url": "http://127.0.0.1:9700/collections/explore-sets",
+        "status": 404
+      },
+      {
+        "url": "http://127.0.0.1:9700/collections/explore-iconic-luggage",
+        "status": 404
+      },
+      {
+        "url": "http://127.0.0.1:9700/collections/the-access-luggage",
+        "status": 404
+      },
+      {
+        "url": "http://127.0.0.1:9700/collections/explore-transit-luggage",
+        "status": 404
+      }
+    ]
+  },
+  "_site_slug": "mokobara"
+}

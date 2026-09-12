@@ -1,0 +1,315 @@
+{
+  "site": "http://127.0.0.1:9700/",
+  "audited_at": "2026-09-09T08:24:07.457040+00:00",
+  "agent": "marketplace",
+  "marketplace": {
+    "id": "ai-discoverability-marketplace",
+    "name": "AI Discoverability & Engagement Audit Marketplace",
+    "version": "1.0.0",
+    "entrypoint": "audit-orchestrator",
+    "skills_invoked": [
+      "crawl-render-audit",
+      "content-semantics-audit",
+      "entity-freshness-audit",
+      "engagement-audit"
+    ],
+    "read_only": true
+  },
+  "summary": {
+    "total_findings": 2,
+    "critical": 0,
+    "high": 2,
+    "medium": 0,
+    "low": 0,
+    "by_severity": {
+      "critical": 0,
+      "high": 2,
+      "medium": 0,
+      "low": 0
+    },
+    "categories_flagged": [
+      "content_extraction",
+      "rendering"
+    ],
+    "categories_clean": [
+      "corroboration",
+      "crawlability",
+      "engagement",
+      "entity_identity",
+      "freshness",
+      "non_text_facts",
+      "structured_data"
+    ],
+    "health_score": 56,
+    "top_priority": "Business-critical content is only present after client-side JavaScript execution",
+    "pages_crawled": 1,
+    "pages_retrievable": 1,
+    "recommendation_count": 8,
+    "runtime_seconds": 0.018
+  },
+  "findings": [
+    {
+      "id": "MKT-REND-01",
+      "title": "Business-critical content is only present after client-side JavaScript execution",
+      "category": "rendering",
+      "_category": "rendering",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": "http://127.0.0.1:9700/ (HTTP 200) serves only 34 characters (5 words) of extractable body text; the element #root is empty in the raw HTML and is populated at runtime by inline JavaScript carrying 0 characters of markup (0 words) across 0 injection sites. The framework root element carries no server-rendered children.",
+      "locations": [
+        "http://127.0.0.1:9700/"
+      ],
+      "proof": {
+        "selector": "#root",
+        "reason": "empty_framework_root",
+        "raw_words": 5,
+        "js_payload_chars": 0,
+        "js_only_prices": [],
+        "pages_affected": 1
+      },
+      "suggested_action": {
+        "summary": "Server-side render (SSR) or statically pre-render the product, pricing and company sections into the initial HTML response for #root inside <main>, keeping JavaScript for enhancement only, and mirror the same values in Product/Offer JSON-LD structured data. Verify with a text-only fetch (`curl`) that the raw HTML already carries the prices, so the facts are machine-readable for AI crawlers and assistants that never execute JavaScript and can be extracted and cited.",
+        "priority": "high",
+        "mechanism": "Most AI retrieval pipelines index the raw HTTP response; content injected by the browser after load is invisible to them, so JS-only facts are simply absent from the model's evidence."
+      },
+      "detected_by": "crawl-render-audit",
+      "rank": 1
+    },
+    {
+      "id": "MKT-EXTR-02",
+      "title": "Key business facts cannot be extracted from the HTML by a text-based crawler",
+      "category": "content_extraction",
+      "_category": "content_extraction",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": "http://127.0.0.1:9700/ (HTTP 200) yields only 34 characters (5 words) of extractable text, and 4 of 4 fact families are absent from it (missing: company_facts, contact, pricing, product_detail). The page advertises 0 fact sections () but supplies no prices, contact details or company figures in HTML text. Root cause measured on this page: client-side rendering.",
+      "locations": [
+        "http://127.0.0.1:9700/"
+      ],
+      "proof": {
+        "extractable_words": 5,
+        "missing_fact_families": [
+          "company_facts",
+          "contact",
+          "pricing",
+          "product_detail"
+        ],
+        "cause": "client-side rendering",
+        "pages_affected": 1
+      },
+      "suggested_action": {
+        "summary": "Publish the product, pricing, company and contact facts as server-rendered HTML text in the initial response - real <h2> headings, paragraphs and tables rather than JavaScript payloads or images - and back them with Organization and Product JSON-LD structured data. Then verify with a text-only fetch: whatever `curl` returns is the machine-readable evidence an AI assistant can extract, quote and cite.",
+        "priority": "high",
+        "mechanism": "Retrieval-augmented assistants chunk and embed the text of the HTTP response. If the response has no facts, the site is either omitted from the answer or represented by a competitor's page that does state them."
+      },
+      "detected_by": "content-semantics-audit",
+      "rank": 2
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Use server-side rendering or static generation for product and pricing content",
+      "detail": "Beyond the immediate fix, make pre-rendering the default for any route that carries commercial facts: render critical business information into the initial HTML response at build or request time, and treat client-side injection as enhancement only.",
+      "category": "rendering",
+      "effort": "high"
+    },
+    {
+      "title": "Mirror the JavaScript-rendered facts in Product/Offer structured data",
+      "detail": "Structured data is served in the initial HTML response even when the visible page hydrates later, so publishing the same prices and product names as JSON-LD gives AI systems a machine-readable copy while the rendering work is in progress.",
+      "category": "rendering",
+      "effort": "medium"
+    },
+    {
+      "title": "Re-check navigation once the initial HTML is server-rendered",
+      "detail": "Every crawled page is a JavaScript shell, so navigation landmarks and internal links could not be measured from the HTML response. Fix the rendering gap first, then re-run this audit; crawlers build their link graph from the served HTML, so client-side-only navigation is invisible to them.",
+      "category": "engagement",
+      "effort": "medium"
+    },
+    {
+      "title": "Publish an XML sitemap with lastmod dates",
+      "detail": "No /sitemap.xml was served. A sitemap with accurate <lastmod> values gives crawlers a cheap freshness signal and a complete URL inventory, which improves how quickly new facts are picked up.",
+      "category": "crawlability",
+      "effort": "low"
+    },
+    {
+      "title": "Add an explicit robots.txt that names AI user agents",
+      "detail": "No robots.txt was served. An explicit allow-list for GPTBot, ClaudeBot, PerplexityBot and Google-Extended documents your intent and prevents defensive bot rules from silently blocking assistants.",
+      "category": "crawlability",
+      "effort": "low"
+    },
+    {
+      "title": "Add Organization schema alongside the existing structured data",
+      "detail": "Structured data is present (SoftwareApplication) but no Organization/LocalBusiness node was found. Organization markup is what ties products, reviews and articles to a single citable entity.",
+      "category": "structured_data",
+      "effort": "low"
+    },
+    {
+      "title": "Validate structured data in CI so a syntax error cannot ship",
+      "detail": "The site already relies on JSON-LD, so a single malformed block silently removes every machine-readable fact on that page. Add a schema validation step to the build (a JSON parse plus a schema.org type check) to keep the markup trustworthy.",
+      "category": "structured_data",
+      "effort": "low"
+    },
+    {
+      "title": "Add FAQPage schema for the questions buyers actually ask",
+      "detail": "FAQ structured data is the cheapest way to get exact question/answer pairs into AI answers, and it reuses copy you already have on product and support pages.",
+      "category": "structured_data",
+      "effort": "low"
+    }
+  ],
+  "coverage": {
+    "crawlability": "clean",
+    "rendering": "flagged",
+    "content_extraction": "flagged",
+    "structured_data": "clean",
+    "non_text_facts": "clean",
+    "freshness": "clean",
+    "entity_identity": "clean",
+    "corroboration": "clean",
+    "engagement": "clean"
+  },
+  "checks_performed": [
+    {
+      "skill": "crawl-render-audit",
+      "check": "entry_url_retrievable",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "robots_allows_ai_agents",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "content_present_without_javascript",
+      "passed": false
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "pages_crawled",
+      "value": 1,
+      "value_ok": 1
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "structured_data_present",
+      "passed": true
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "facts_extractable_as_text",
+      "passed": false,
+      "value": 0
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "no_image_only_facts",
+      "passed": true
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "fact_families_covered",
+      "value": {
+        "pricing": false,
+        "contact": false,
+        "company_facts": false,
+        "product_detail": false
+      }
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "single_canonical_entity_name",
+      "passed": true,
+      "value": 1,
+      "canonical": ""
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "content_is_current",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "externally_corroborated",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "navigation_landmarks_present",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "internal_links_present",
+      "value": 0
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "breadcrumbs_present",
+      "value": false
+    }
+  ],
+  "telemetry": {
+    "skills": [
+      {
+        "skill": "crawl-render-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 1,
+        "recommendations": 4,
+        "runtime_seconds": 0.014,
+        "provides": [
+          "crawlability",
+          "rendering"
+        ]
+      },
+      {
+        "skill": "content-semantics-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 1,
+        "recommendations": 3,
+        "runtime_seconds": 0.001,
+        "provides": [
+          "content_extraction",
+          "structured_data",
+          "non_text_facts"
+        ]
+      },
+      {
+        "skill": "entity-freshness-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 0,
+        "runtime_seconds": 0.0,
+        "provides": [
+          "entity_identity",
+          "freshness",
+          "corroboration"
+        ]
+      },
+      {
+        "skill": "engagement-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 1,
+        "runtime_seconds": 0.001,
+        "provides": [
+          "engagement"
+        ]
+      }
+    ],
+    "runtime_seconds": 0.018,
+    "pages_fetched": 1,
+    "broken_links": []
+  },
+  "_site_slug": "tldraw"
+}

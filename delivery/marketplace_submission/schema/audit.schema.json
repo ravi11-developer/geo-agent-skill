@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.org/ai-discoverability-marketplace/audit.schema.json",
+  "title": "AI Discoverability Audit Report",
+  "type": "object",
+  "required": ["site", "audited_at", "summary", "findings"],
+  "additionalProperties": true,
+  "properties": {
+    "site": {"type": "string", "minLength": 1},
+    "audited_at": {"type": "string", "minLength": 10},
+    "agent": {"type": "string"},
+    "marketplace": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"}, "name": {"type": "string"}, "version": {"type": "string"},
+        "entrypoint": {"type": "string"},
+        "skills_invoked": {"type": "array", "items": {"type": "string"}},
+        "read_only": {"type": "boolean"}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["total_findings", "critical", "high", "medium"],
+      "properties": {
+        "total_findings": {"type": "integer", "minimum": 0},
+        "critical": {"type": "integer", "minimum": 0},
+        "high": {"type": "integer", "minimum": 0},
+        "medium": {"type": "integer", "minimum": 0},
+        "low": {"type": "integer", "minimum": 0},
+        "by_severity": {"type": "object"},
+        "categories_flagged": {"type": "array", "items": {"type": "string"}},
+        "categories_clean": {"type": "array", "items": {"type": "string"}},
+        "health_score": {"type": "integer", "minimum": 0, "maximum": 100},
+        "top_priority": {"type": "string"},
+        "pages_crawled": {"type": "integer", "minimum": 0},
+        "pages_retrievable": {"type": "integer", "minimum": 0},
+        "recommendation_count": {"type": "integer", "minimum": 0},
+        "runtime_seconds": {"type": "number", "minimum": 0}
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "severity", "evidence", "suggested_action"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^MKT-[A-Z]+-[0-9]{2}$"},
+          "title": {"type": "string", "minLength": 8},
+          "category": {
+            "type": "string",
+            "enum": ["crawlability", "rendering", "content_extraction", "structured_data",
+                     "non_text_facts", "freshness", "entity_identity", "corroboration", "engagement"]
+          },
+          "severity": {"type": "string", "enum": ["critical", "high", "medium", "low"]},
+          "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+          "evidence": {"type": "string", "minLength": 40},
+          "locations": {"type": "array", "items": {"type": "string"}},
+          "proof": {"type": "object"},
+          "severity_note": {"type": "string"},
+          "corroborated_by": {"type": "array"},
+          "rank": {"type": "integer", "minimum": 1},
+          "detected_by": {"type": "string"},
+          "suggested_action": {
+            "type": "object",
+            "required": ["summary", "priority"],
+            "properties": {
+              "summary": {"type": "string", "minLength": 20},
+              "priority": {"type": "string", "enum": ["critical", "high", "medium", "low"]},
+              "mechanism": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "detail", "category"],
+        "properties": {
+          "title": {"type": "string"}, "detail": {"type": "string"},
+          "category": {"type": "string"}, "effort": {"type": "string", "enum": ["high", "medium", "low"]}
+        }
+      }
+    },
+    "coverage": {"type": "object", "additionalProperties": {"type": "string", "enum": ["flagged", "clean", "not_checked"]}},
+    "checks_performed": {"type": "array"},
+    "telemetry": {"type": "object"}
+  }
+}
