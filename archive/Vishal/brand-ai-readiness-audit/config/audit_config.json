@@ -1,7 +1,0 @@
-{
-  "max_crawl_depth": 3,
-  "max_pages": 50,
-  "timeout_seconds": 300,
-  "user_agent": "BrandAIReadinessAuditBot/1.0",
-  "respect_robots_txt": true
-}

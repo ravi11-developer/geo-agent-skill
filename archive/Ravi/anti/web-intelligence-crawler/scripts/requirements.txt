@@ -1,4 +1,0 @@
-requests>=2.31,<3
-trafilatura>=1.6,<2
-beautifulsoup4>=4.12,<5
-lxml>=4.9,<6
