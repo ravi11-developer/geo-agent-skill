@@ -93,7 +93,23 @@ def check_engagement(snapshot: SiteSnapshot, profiles: list[dict[str, Any]]) -> 
     stranded = [p for p in measurable if p["nav_landmarks"] == 0 and p["internal_links"] < 2]
     entry_profile = measurable[0]
 
-    if len(stranded) == len(measurable) and entry_profile in stranded:
+    # A single-page site is not evidence of a dead end: with no second page to
+    # link to, "every crawled page is stranded" is trivially true (1 == 1) and
+    # said nothing about the site. A deliberate one-page site is a healthy
+    # shape, so it gets anchor-navigation advice instead of a defect.
+    if len(measurable) == 1 and entry_profile in stranded:
+        recs.append(recommendation(
+            "Give the single page anchor-based navigation for orientation",
+            f"{entry_profile['url']} is the only page crawled, so a site-wide dead end could not be "
+            f"established from the link graph: it carries {entry_profile['nav_landmarks']} <nav> landmarks "
+            f"and {entry_profile['internal_links']} internal links. On a one-page site, an in-page <nav> of "
+            "anchor links to each section, with an id on every section heading, gives a visitor arriving from "
+            "an AI citation a way to orient, and gives assistants addressable fragments to cite.",
+            "engagement", "medium",
+        ))
+        return findings, recs
+
+    if len(measurable) >= 2 and len(stranded) == len(measurable) and entry_profile in stranded:
         worst = entry_profile
         landmarks = sum(1 for key in ("has_header", "has_footer", "breadcrumbs") if worst[key])
         findings.append(make_finding(

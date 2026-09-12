@@ -14,7 +14,6 @@
       "non_text_facts",
       "freshness",
       "entity_identity",
-      "corroboration",
       "engagement"
     ]
   },
@@ -68,7 +67,7 @@
       "kind": "audit",
       "path": "skills/entity-freshness-audit",
       "entrypoint": "scripts/entity_freshness.py",
-      "provides": ["entity_identity", "freshness", "corroboration"],
+      "provides": ["entity_identity", "freshness"],
       "consumes": ["snapshot"],
       "produces": ["entity_profile", "corroboration"],
       "enabled": true

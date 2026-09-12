@@ -167,10 +167,7 @@
         "engagement_sentiment"
       ],
       "consumes": [
-        "snapshot",
-        "fact_coverage",
-        "entity_profile",
-        "navigation_profile"
+        "snapshot"
       ],
       "produces": [
         "semantic_observations",

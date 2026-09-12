@@ -7,8 +7,7 @@
   "function": "run(context: dict) -> SkillResult",
   "provides": [
     "entity_identity",
-    "freshness",
-    "corroboration"
+    "freshness"
   ],
   "consumes": [
     "snapshot"
@@ -38,17 +37,17 @@
       "copyright_year <= current_year - 2",
       ">=3 stale dated claims with no current-era year"
     ],
-    "corroboration": [
+    "external_corroboration_advice": [
       "zero sameAs/citation/review schema keys",
       "zero links to identity platforms",
       "zero cite/rel=author elements",
-      "site has a canonical name and >=120 words"
+      "site has a canonical name and >=120 words",
+      "emitted as an entity_identity recommendation, never a finding"
     ]
   },
   "severity_model": {
     "entity_identity": "high",
-    "freshness": "high (>=8 stale claims) | medium",
-    "corroboration": "low"
+    "freshness": "high (>=8 stale claims) | medium"
   },
   "safety": {
     "read_only": true,

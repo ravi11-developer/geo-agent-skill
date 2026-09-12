@@ -1,0 +1,528 @@
+AI Brand Readiness: Adobe GEO Research and Implementation Specification
+Research cut-off: 9 September 2026
+Executive Summary
+This report benchmarks the proposed AI Brand Readiness / AI Discoverability Audit against Adobe Brand Visibility (formerly Adobe LLM Optimizer), Adobe Research, Google’s official guidance for AI Search, the foundational GEO research literature, Semrush research, and recent independent studies. The conclusion is that the project is addressing a real and rapidly forming category: measuring whether a brand can be discovered, understood, cited, represented accurately, and recommended by AI-powered search and agentic systems.Adobe is the closest enterprise benchmark. Its 2026 Brand Visibility platform combines AI visibility intelligence, prompt research, recurring prompt monitoring, competitive gap analysis, citation/source analysis, agentic traffic from CDN logs, referral/business-impact measurement, and prioritized optimization opportunities. Adobe therefore validates the core audit → measurement → recommendation → optimization → re-measurement loop.However, the proposed project should not simply reproduce Adobe. A stronger product position is an explainable, rubric-driven AI Brand Readiness Audit that diagnoses the underlying causes of visibility: crawlability, content accessibility, entity clarity, factual consistency, source authority, citation readiness, freshness, structured data, technical errors, third-party representation, prompt coverage, and model-specific behavior. The system should make every score traceable to evidence and every recommendation traceable to a failing control.The implementation plan in this document converts the research into concrete engineering requirements: a crawler/technical auditor, content and entity auditors, off-site authority/citation analysis, prompt generation and testing, multi-engine response evaluation, agentic-traffic/log analysis, scoring/rubric infrastructure, recommendation engine, re-test loop, reporting layer, and a monitoring data model. It also identifies tactics that should NOT be treated as universal GEO requirements, including llms.txt as a Google ranking requirement, arbitrary “chunking,” keyword stuffing, and manufactured mentions.
+1. Problem Definition and Category
+The problem can be described as AI Brand Readiness, AI Search Visibility, Generative Engine Optimization (GEO), or LLM/AI Optimization. The most useful product definition for this project is: “Measure and improve a brand’s ability to be discovered, understood, trusted, cited and recommended by AI-powered search and agentic systems.”
+Traditional SEO is largely page/ranking oriented. AI search adds additional outcomes: whether the brand is mentioned, whether owned or third-party sources are cited, what the model says about the brand, which competitors are recommended, which pages are retrieved, how often the brand appears across related prompts, and whether AI agents can actually access the underlying pages.
+The important architectural implication is that there is no single “AI-ready” switch. Readiness is a multi-dimensional property spanning technical accessibility, content quality, entity clarity, source authority, freshness, third-party representation, model retrieval behavior, and business outcomes.
+2. What Adobe Is Doing
+Adobe is now the strongest commercial reference point for this category. Adobe Brand Visibility, announced in June 2026, combines Semrush AI visibility intelligence with Adobe’s content optimization capabilities. Adobe describes the product as a unified GEO solution that moves from AI signals to optimization actions and business outcomes.
+Core Adobe capabilities found in the current documentation include:
+AI Visibility: broad-market benchmarking using a large shared AI prompt dataset.
+Prompt Research: discovery of topics, prompts, brands and cited domains.
+Market Comparison: competitor visibility and topic/source gaps.
+Prompt Management: curated prompt strategy and recurring monitoring.
+Brand Presence: ongoing measurement of mentions, citations and visibility.
+Optimization Opportunities: technical, on-page and off-site recommendations.
+Agentic Traffic: CDN-log analysis of AI crawlers/chatbots, including URL, user agent, status, referrer and TTFB.
+Referral Traffic / Business Impact: connection of AI discovery to traffic, engagement and conversions.
+Citation Attempt / Agentic prompt suggestions: using observed agent activity to expand the prompt set.
+Cited Sentiment Analysis and related off-site opportunities: analysis of pages that AI systems cite when discussing the brand.
+Adobe’s current AI Visibility documentation says its shared AI dataset contains more than 289 million prompts and supports analysis across ChatGPT, Google AI Overviews, Google AI Mode and Gemini. Adobe’s June announcement described the database as nearly 300 million real-world AI search prompts and positioned the system as a continuous closed loop.
+3. Adobe Research: What Is Actually Relevant
+Adobe Research does not appear, from its public research index, to have a large standalone academic program specifically named “GEO” comparable to the Adobe Brand Visibility product. Its broader research is highly relevant to the underlying technology: natural-language search, knowledge acquisition and representation, intelligent assistants, retrieval, query expansion, factual consistency, agentic systems, and multimodal understanding.
+Examples include Adobe Research’s 2025 work on Knowledge-Aware Query Expansion with LLMs for textual and relational retrieval. The paper shows why semantic similarity alone is insufficient for complex search: retrieval can benefit from structured relations and knowledge graphs. This is directly relevant to entity-aware brand auditing.
+Adobe researchers also publish on continual knowledge streams, agentic RAG, LLM agents, question answering, and factual consistency. These areas support a broader conclusion: an AI-readiness audit should not treat a website as a bag of keywords. It should model entities, relations, evidence, retrieval pathways, and answer faithfulness.
+4. Foundational GEO Research
+The foundational academic GEO paper is “GEO: Generative Engine Optimization” by Aggarwal et al., published at KDD 2024. The authors formalize generative engines as systems that synthesize answers from multiple sources and introduce GEO as a black-box optimization framework for visibility. Their GEO-bench evaluation reported visibility gains of up to 40%, with strategy effectiveness varying by domain.
+The important lesson for this project is methodological: visibility must be measured experimentally. A static checklist cannot tell us whether a change actually improves model selection or citation. The audit should therefore support controlled before/after prompt runs, repeated sampling, engine-specific results, and statistically cautious interpretation.
+More recent work shows that the ecosystem is not stable. A 2025 study of AI-search citations found substantial response-to-response fluctuation, while a 2026 study on GEO-optimized pages raises concerns about optimized content receiving visibility disproportionate to authority or relevance. Therefore the product should score not just visibility, but evidence quality, provenance, correctness and stability.
+5. Google’s Position: What We Should Not Get Wrong
+Google’s current official guidance is unusually important because it rejects several common GEO myths. Google states that the foundations of SEO remain relevant to AI Overviews and AI Mode. Pages need to be crawlable, indexable and eligible for normal Search; there are no additional special technical requirements for AI features.
+Google explicitly says that sites do not need special AI text files or special schema to appear in AI Search. It specifically says llms.txt does not improve Google Search visibility, and that there is no ideal content chunk size or requirement to rewrite content solely for AI systems. Structured data remains useful, but it should match visible page content and follow normal guidelines.
+Implementation consequence: our auditor must distinguish evidence-backed requirements from speculative GEO tactics. “Has llms.txt” should never be a high-severity failure. “Important content is inaccessible to crawlers” can be high severity. “Structured data conflicts with visible content” can be high severity. “Content is generic, duplicated or non-authoritative” can be a content-quality finding.
+6. AI Crawler and Agent Accessibility
+AI visibility has at least two different technical pathways: search/retrieval systems and direct agent/crawler access. Adobe’s Agentic Traffic dashboard uses CDN logs to identify AI agents, URLs, status codes, referrers, TTFB and success rates. Adobe specifically audits 404, 403 and 5xx errors for AI agents.
+Perplexity documents separate crawlers/fetchers for search and user-triggered retrieval. This demonstrates why a generic “AI bot allowed” check is insufficient. The system should maintain a crawler registry with user-agent patterns and documented purpose, while clearly labeling what is verified versus inferred.
+Implementation:
+1. Fetch robots.txt.
+2. Test sitemap.xml and sitemap indexes.
+3. Crawl representative important URLs.
+4. Record HTTP status, redirects, content type, canonical, robots directives and rendered text.
+5. Test whether important content is server-accessible without fragile client-side execution.
+6. Identify AI-agent access from supplied logs when available.
+7. Compare human-browser and agent responses where technically possible.
+8. Track 403/404/5xx and latency.
+9. Never recommend bypassing access controls or robots policies.
+7. Metrics We Should Implement
+The project should implement a metric hierarchy rather than one “AI score.”
+A. Technical Readiness
+Crawl success rate
+Indexability / discoverability
+Robots accessibility
+Sitemap coverage
+HTTP error rate
+Redirect quality
+Canonical consistency
+Content availability in HTML
+Rendering dependency
+TTFB for important pages
+B. Content / Entity Readiness
+Entity clarity
+Brand-name consistency
+Product/service definition completeness
+Attribute completeness
+Factual consistency across pages
+Freshness
+Originality / non-commodity value
+Evidence and source quality
+FAQ / summary usefulness
+Structured-data consistency
+C. AI Visibility
+Mention rate
+Citation rate
+Recommendation rate
+Share of voice
+Topic coverage
+Prompt coverage
+Citation-domain diversity
+Owned-page citation rate
+Third-party citation rate
+Sentiment / representation
+Placement / prominence
+Stability across repeated runs
+D. Agentic / Business Signals
+AI-agent hits
+Agent success rate
+AI-referred sessions
+Engagement
+Conversion rate
+Revenue or lead contribution where available
+Do not collapse these into a single score until the underlying dimensions are visible. A top-level score is useful for communication; dimension scores are necessary for diagnosis.
+8. Prompt Strategy and Evaluation
+Adobe’s architecture strongly validates a prompt-library concept. Its Prompt Management separates discovery from recurring monitoring, and its Prompt Strategy draws suggestions from multiple sources such as Semrush, Google Search Console, synthetic personas and citation-attempt signals.
+Our implementation should generate prompts across the customer journey:
+Informational: “What is…?”
+Problem-solving: “How do I…?”
+Comparative: “Best alternatives to…”
+Commercial: “Best providers for…”
+Transactional: “Where can I buy/book…?”
+Brand: “What is [brand] known for?”
+Trust: “Is [brand] reliable?”
+Competitor: “[brand] vs [competitor]”
+Use-case: “Best [category] for [scenario]”
+Negative/reputation: “Problems with [brand]”
+Local/regional/language variants where relevant.
+Each prompt should be stored with intent, topic, geography, language, target entity, competitor set, expected evidence, and engine/model. Results should be versioned because AI answers change.
+9. Off-Site Authority and Citation Ecosystem
+A major lesson from Adobe and independent GEO research is that AI visibility is not an owned-website-only problem. Adobe explicitly identifies source opportunities and cited sentiment on third-party pages. Recent empirical GEO work also reports strong use of earned/third-party sources in AI search.
+Therefore the audit must inspect the “citation ecosystem”:
+Which third-party domains are cited for the target topics?
+Which sources cite competitors but not the target brand?
+Is the brand represented consistently on authoritative sites?
+Are reviews, community pages, editorial articles and reference pages accurate?
+What sentiment and claims appear on the pages AI systems cite?
+Are there important claims for which the brand has no credible external corroboration?
+The product should recommend legitimate authority-building actions—improving factual profiles, correcting inaccurate information, earning editorial coverage, publishing original research, strengthening expert references—not manufactured mentions or spam.
+10. Proposed System Architecture
+Recommended high-level architecture:
+INPUT
+↓
+Site + brand + competitors + markets + optional analytics/CDN logs
+↓
+AUDIT ORCHESTRATOR
+├─ Technical/Crawl Agent
+├─ Content Quality Agent
+├─ Entity & Brand Consistency Agent
+├─ Structured Data Agent
+├─ Citation/Source Agent
+├─ Off-site Authority Agent
+├─ Prompt Strategy Agent
+├─ LLM Visibility Test Agent
+├─ Agentic Traffic Agent
+└─ Evidence/Fact Verification Agent
+↓
+RUBRIC + EVIDENCE ENGINE
+↓
+READINESS SCORECARD
+↓
+OPPORTUNITY / PRIORITIZATION ENGINE
+↓
+RECOMMENDATIONS
+↓
+OPTIONAL HUMAN-APPROVED OPTIMIZATION
+↓
+RE-CRAWL / RE-RUN PROMPTS
+↓
+IMPACT REPORT
+The orchestrator should not itself contain every audit rule. Rules belong in versioned Markdown rubrics so they can be updated without rewriting the agent runtime.
+11. Agent Specification
+1. Audit Orchestrator — decomposes the audit, schedules agents, validates dependencies, aggregates findings.
+2. Technical Agent — crawlability, HTTP, redirects, robots, sitemap, canonical, rendering and page accessibility.
+3. Content Agent — originality, completeness, helpfulness, structure, freshness and evidence.
+4. Entity Agent — brand/product/service entity definition, naming consistency, attributes and relationships.
+5. Schema Agent — validates JSON-LD/schema.org where present and checks consistency with visible content.
+6. Citation Agent — runs/ingests AI responses, extracts cited URLs, classifies owned vs third-party citations and maps citations to claims.
+7. Prompt Agent — builds prompt sets, detects gaps, clusters topics and assigns intent.
+8. Visibility Agent — measures mentions, citations, recommendations, sentiment and share of voice across supported engines.
+9. Agentic Traffic Agent — analyzes CDN/server logs for AI-agent access, errors, latency and page-level behavior.
+10. Off-site Agent — evaluates cited third-party sources, reputation, sentiment and competitor source gaps.
+11. Evidence Agent — verifies important claims and assigns confidence/provenance.
+12. Recommendation Agent — converts findings into prioritized, evidence-backed actions.
+13. Re-test Agent — measures before/after changes and records outcome.
+14. Reporting Agent — generates executive and technical reports.
+Each agent should emit structured findings rather than prose-only answers.
+12. Markdown Rubric System
+Recommended rubric files:
+rubrics/
+technical/
+crawlability.md
+robots.md
+sitemap.md
+http-errors.md
+rendering.md
+canonical.md
+content/
+originality.md
+completeness.md
+freshness.md
+evidence.md
+structure.md
+entity/
+brand-identity.md
+entity-clarity.md
+consistency.md
+structured-data/
+schema-consistency.md
+schema-validity.md
+ai/
+prompt-coverage.md
+mention.md
+citation.md
+recommendation.md
+sentiment.md
+stability.md
+offsite/
+authority.md
+citation-sources.md
+third-party-representation.md
+agentic/
+crawler-access.md
+agent-errors.md
+performance.md
+governance/
+evidence-confidence.md
+recommendation-quality.md
+Every rubric should define: purpose, inputs, checks, severity levels, scoring, evidence required, false-positive conditions, remediation guidance, and test cases.
+13. Data Model
+Core entities:
+Brand
+Domain
+URL
+PageSnapshot
+Entity
+Claim
+Source
+Citation
+Prompt
+PromptRun
+AIResponse
+Mention
+Recommendation
+Finding
+Rubric
+AgentRun
+CrawlEvent
+AgenticRequest
+Competitor
+Topic
+Intent
+MetricSnapshot
+Every Finding should contain:
+finding_id, rubric_id, severity, score, evidence_refs, affected_urls, explanation, confidence, remediation, owner, created_at, rubric_version.
+Every AIResponse should contain:
+engine, model/version if known, prompt_id, timestamp, response_text, cited_urls, mentioned_brands, recommended_entities, sentiment, extraction_confidence.
+This creates the audit trail needed to explain why a score changed.
+14. Scoring Model
+Use a weighted multi-dimensional score with transparent components.
+Example:
+Technical 20%
+Content 20%
+Entity & Brand 15%
+Authority / Citations 15%
+AI Visibility 15%
+Agentic Accessibility 10%
+Measurement & Governance 5%
+Each dimension is itself a weighted set of controls. Scores should be normalized to 0–100, but raw findings remain visible.
+Severity:
+Critical — blocks discovery/access or creates major factual/reputational risk.
+High — materially reduces retrieval, citation or correct representation.
+Medium — measurable weakness with a practical improvement.
+Low — optimization opportunity.
+Informational — observation with no direct failure.
+Confidence:
+High — directly observed or verified.
+Medium — strong inference from evidence.
+Low — model-based hypothesis requiring validation.
+Do not let an LLM invent a pass. Every pass/fail should point to evidence.
+15. Prioritization Formula
+A practical opportunity score can combine:
+Impact × Confidence × Coverage × Business Relevance ÷ Effort.
+Where:
+Impact = estimated visibility/readiness effect.
+Confidence = evidence confidence.
+Coverage = number/value of affected pages, prompts or topics.
+Business Relevance = importance to revenue/customer journey.
+Effort = estimated implementation cost.
+Adobe similarly prioritizes opportunities using competitive gaps, trending topics and performance data. Our differentiation should be that the priority score is explainable and tied directly to the failed rubric control.
+16. What We Should Implement From the Research
+P0 — Must implement for MVP
+Versioned Markdown rubrics.
+Central audit orchestrator.
+Technical crawl/indexability audit.
+robots.txt + sitemap checks.
+HTTP/redirect/canonical checks.
+Important-content accessibility checks.
+Content quality/originality/freshness checks.
+Brand/entity consistency checks.
+Structured-data validation and visible-content consistency.
+Prompt library with intent/topic/competitor metadata.
+Multi-run AI response capture.
+Mention/citation/recommendation extraction.
+Competitor share-of-voice comparison.
+Citation URL/source classification.
+Evidence-backed findings.
+Explainable readiness score.
+Prioritized recommendations.
+Re-test workflow.
+P1 — Strong second phase
+Agentic traffic ingestion from CDN/server logs.
+AI crawler registry.
+AI-agent 403/404/5xx monitoring.
+TTFB/performance for agent requests.
+Third-party citation/source-gap analysis.
+Cited-page sentiment and representation analysis.
+Search Console / analytics integration.
+Business-impact metrics.
+Synthetic personas.
+Prompt discovery from search/analytics data.
+Topic-level visibility measurement.
+P2 — Advanced
+Automated controlled experiments.
+Statistical stability/confidence estimates.
+Engine-specific optimization strategies.
+Claim-level citation attribution.
+Entity graph / knowledge graph.
+Continuous monitoring.
+Human approval workflow for optimization changes.
+Agent-friendly transaction/commerce checks.
+Automated regression testing for AI visibility.
+P3 — Research/experimental
+GEO manipulation detection.
+Source-quality robustness scoring.
+Cross-language stability analysis.
+Cross-interface comparison.
+Causal measurement of optimization changes.
+17. Things We Should NOT Implement as Hard Requirements
+1. llms.txt as a universal requirement. Google explicitly says it is not required and does not improve Google Search visibility.
+2. Arbitrary content chunking. Google says there is no special chunk-size requirement.
+3. Keyword stuffing or unnatural AI-only rewrites.
+4. Manufactured mentions, fake reviews or spammy third-party placement.
+5. A single universal “GEO score” with no evidence.
+6. Treating one successful prompt as proof of topic ownership.
+7. Assuming an AI citation is automatically a trustworthy citation.
+8. Assuming a crawler user-agent string proves the traffic is genuinely an AI system without corroboration.
+9. Treating all AI engines as identical.
+10. Promising that an optimization guarantees ranking/citation in an AI system.
+These exclusions are important because the project should be a diagnostic and evidence system, not a collection of speculative GEO hacks.
+18. Differentiation From Adobe
+Adobe’s strength is enterprise scale, integrated analytics, market intelligence, prompt data, agentic traffic, and content/experience activation. The proposed system should differentiate through explainability and audit depth.
+Potential differentiation:
+Rubric-first rather than dashboard-first.
+Evidence-first findings.
+Open, inspectable Markdown rules.
+Clear separation of observed facts, model inferences and recommendations.
+Technical readiness + semantic/entity readiness in one audit.
+Model-agnostic architecture.
+Local/self-hostable or API-first deployment option.
+Reproducible audit snapshots.
+Explicit confidence and false-positive handling.
+Developer-friendly output: JSON findings, CI checks, machine-readable reports.
+“Why did we fail?” explanations tied to exact URLs, claims, prompts and citations.
+The goal is not to beat Adobe at prompt volume. The goal is to create a transparent AI-readiness diagnostic engine that can plug into any GEO/SEO workflow.
+19. MVP Build Order
+Phase 1 — Foundation
+Define finding schema.
+Define rubric schema/versioning.
+Build crawler.
+Build URL/page snapshot store.
+Build orchestrator.
+Build technical and content agents.
+Phase 2 — Semantic Readiness
+Entity extraction.
+Brand consistency.
+Claims/evidence.
+Structured data.
+Third-party source collection.
+Phase 3 — AI Visibility
+Prompt generator.
+Prompt library.
+LLM runner adapters.
+Response parser.
+Mention/citation/recommendation extraction.
+Competitor comparison.
+Phase 4 — Recommendation Loop
+Opportunity scoring.
+Recommendation engine.
+Human approval.
+Re-test.
+Before/after comparison.
+Phase 5 — Production Monitoring
+CDN/log ingestion.
+Agentic traffic.
+Referral/business impact.
+Scheduled re-audits.
+Regression alerts.
+This order keeps the project useful before expensive continuous LLM testing is introduced.
+20. Final Implementation Checklist
+Architecture
+Orchestrator exists
+Agents have clear responsibilities
+Agents return structured outputs
+Rubrics are versioned
+Evidence is persisted
+Audit runs are reproducible
+Technical
+robots
+sitemap
+HTTP
+redirects
+canonical
+indexability
+rendering
+content availability
+performance
+Semantic
+entity clarity
+brand consistency
+claim extraction
+factual consistency
+structured data
+freshness
+content quality
+AI
+prompt generation
+prompt library
+intent/topic classification
+engine adapters
+repeated runs
+mention extraction
+citation extraction
+recommendation extraction
+sentiment
+stability
+competitor share of voice
+Authority
+citation source map
+source quality
+third-party gaps
+cited-page sentiment
+off-site recommendations
+Agentic
+crawler registry
+CDN log ingestion
+agent errors
+success rate
+TTFB
+page-level agent activity
+Output
+readiness score
+dimension scores
+findings
+evidence
+confidence
+recommendations
+priority
+owners
+re-test result
+report/export
+Governance
+no unsupported GEO hacks
+no fabricated evidence
+no guaranteed ranking claims
+human approval for external content changes
+privacy-safe log processing
+21. Bottom-Line Conclusions
+The research strongly supports building the project. Adobe’s 2026 product is evidence that AI visibility has become a commercial measurement and optimization category, while the academic GEO literature establishes a research basis for experimental visibility optimization.
+The most important architectural lesson is that AI brand readiness is not equivalent to “SEO for ChatGPT.” It is an evidence-driven system spanning the entire path from web accessibility → retrieval → source selection → citation → answer representation → recommendation → user/referral/business outcome.
+The project should therefore be built as an audit platform with a continuous learning loop:
+AUDIT → MEASURE → EXPLAIN → PRIORITIZE → OPTIMIZE → RE-TEST → LEARN.
+The most defensible product promise is not “we will make AI rank your brand.” It is: “we can show, with evidence, how AI systems can discover and represent your brand, where the gaps are, what should be fixed, and whether the changes improved measurable AI visibility.”
+Sources and Evidence Base
+Primary sources are preferred. Product documentation is treated as evidence of Adobe’s implementation; independent papers and studies are used to validate or qualify claims.
+1. Adobe. Introducing Adobe Brand Visibility: A Unified Solution for the AI Search Era. 17 Jun 2026. https://news.adobe.com/news/2026/06/introducing-adobe-brand-visibility
+2. Adobe Experience League. AI Visibility. Updated 4 Sep 2026. https://experienceleague.adobe.com/en/docs/brand-visibility/using/dashboards/ai-visibility
+3. Adobe Experience League. Prompt Management. Updated 31 Jul 2026. https://experienceleague.adobe.com/en/docs/brand-visibility/using/dashboards/prompt-management
+4. Adobe Experience League. Brand Visibility Overview. Updated 21 Aug 2026. https://experienceleague.adobe.com/en/docs/brand-visibility/using/dashboards/brand-visibility/brand-visibility-overview
+5. Adobe Experience League. Optimization Opportunities. Updated 6 Aug 2026. https://experienceleague.adobe.com/en/docs/brand-visibility/using/dashboards/opportunities/opportunities-overview
+6. Adobe Experience League. Agentic Traffic. Updated 6 Aug 2026. https://experienceleague.adobe.com/en/docs/brand-visibility/using/dashboards/agentic-traffic
+7. Adobe Experience League. Agentic Traffic Errors. Updated 6 Aug 2026. https://experienceleague.adobe.com/en/docs/brand-visibility/using/dashboards/opportunities/agentic-traffic-errors
+8. Adobe Experience League. Cited Sentiment Analysis. Updated 6 Aug 2026. https://experienceleague.adobe.com/en/docs/brand-visibility/using/dashboards/opportunities/cited-sentiment-analysis
+9. Adobe Experience League. Best Practices. Updated 7 Aug 2026. https://experienceleague.adobe.com/en/docs/brand-visibility/using/essentials/best-practices
+10. Adobe Experience League. Quick Start. 2026. https://experienceleague.adobe.com/en/docs/brand-visibility/using/essentials/quick-start
+11. Adobe Research. Knowledge-Aware Query Expansion with LLMs for Textual and Relational Retrieval. 29 Apr 2025. https://research.adobe.com/publication/knowledge-aware-query-expansion-with-large-language-models-for-textual-and-relational-retrieval/
+12. Google Search Central. Optimizing your website for generative AI features on Google Search. 2026. https://developers.google.com/search/docs/fundamentals/ai-optimization-guide
+13. Google Search Central. AI features and your website. Updated 10 Dec 2025. https://developers.google.com/search/docs/appearance/ai-features
+14. Aggarwal et al.. GEO: Generative Engine Optimization. KDD 2024. https://arxiv.org/abs/2311.09735
+15. Chen et al.. Generative Engine Optimization: How to Dominate AI Search. 2025. https://arxiv.org/abs/2509.08919
+16. AIrops. Staying Seen In AI Search: How Citations & Mentions Impact Brand Visibility. 23 Sep 2025. https://www.airops.com/report/how-citations-mentions-impact-visibility-in-ai-search
+17. Semrush. AI visibility is a topic-level game: A study of 50,000 brands in ChatGPT. 20 Jul 2026. https://www.semrush.com/blog/chatgpt-topic-authority-study/
+18. Semrush. Expanded 2026 AI Visibility Index. 26 Jun 2026. https://www.semrush.com/news/463141-semrush-releases-expanded-2026-ai-visibility-index-analyzing-126-million-ai-search-prompts/
+19. Semrush. How to measure and report on AI search visibility. 20 May 2026. https://www.semrush.com/blog/measure-ai-visibility/
+20. Semrush. How to optimize for AI search results in 2026. 6 May 2026. https://www.semrush.com/blog/ai-search-optimization/
+21. Perplexity. Perplexity Crawlers. 2026. https://docs.perplexity.ai/docs/resources/perplexity-crawlers
+22. GEO-Flag. Detecting and Measuring GEO-Optimized Web Content. 17 Aug 2026. https://arxiv.org/abs/2608.16824
+23. Zhen et al.. What Do Chinese-Language Generative Search Engines Cite and Surface?. 17 Jul 2026. https://arxiv.org/abs/2607.15771
+Appendix A — Research-to-Implementation Matrix
+Evidence
+What we implement
+Priority
+Finding / evidence
+Implementation
+Priority
+Adobe: broad AI visibility + prompt discovery
+AI Visibility + Prompt Discovery agents
+P0
+Adobe: recurring prompt library
+Versioned Prompt Library + scheduler
+P0
+Adobe: competitor/topic/source gaps
+Competitive Gap Agent
+P0
+Adobe: optimization opportunities
+Recommendation + prioritization engine
+P0
+Adobe: agentic CDN logs
+Agentic Traffic Agent
+P1
+Adobe: 403/404/5xx agent errors
+Agent-specific error audit
+P1
+Adobe: cited sentiment
+Third-party cited-page analysis
+P1
+Google: crawl/index fundamentals remain central
+Technical crawler/indexability rubric
+P0
+Google: no special llms.txt requirement
+Do not score llms.txt as a hard requirement
+P0
+GEO paper: experimental optimization works but varies by domain
+Before/after repeated prompt tests
+P1
+Recent research: visibility fluctuates
+Repeated runs + stability metric
+P1
+Recent research: source quality/provenance risk
+Evidence confidence + source-quality scoring
+P0
+Adobe Research: knowledge-aware retrieval
+Entity/relationship model + knowledge graph-ready schema
+P2
+Semrush: topic-level visibility
+Topic coverage score, not just prompt score
+P0
+Independent research: third-party/earned sources matter
+Off-site citation/source-gap agent
+P1

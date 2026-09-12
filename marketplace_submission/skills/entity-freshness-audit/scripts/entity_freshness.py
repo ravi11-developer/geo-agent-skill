@@ -65,9 +65,18 @@ COPYRIGHT_RE = re.compile(
 # Handles "© 2026", "© 2020-2026" and the very common "© 2020-26": the year that
 # matters is the LATEST one in the range, since that is what the site claims as
 # current. Reading the first year turned "© 2020-26" into six-year-old content.
+# Footer credit lines attribute the *builder*, not the site owner.
+CREDIT_RE = re.compile(
+    r"\b(?:site|website|design(?:ed)?|develop(?:ed)?|built|made|crafted|powered|"
+    r"theme|template|hosted)\s+by\b|\ba\s+(?:division|subsidiary|brand|company)\s+of\b",
+    re.I,
+)
+
 COPYRIGHT_YEAR_RE = re.compile(
     r"(?:©|&copy;|\(c\)|copyright)\s*(\d{4})(?:\s*[-–—]\s*(\d{2,4}))?", re.I)
-YEAR_RE = re.compile(r"\b(19[9]\d|20[0-4]\d)\b")
+# 1990-2099. The previous 20[0-4]\d bound silently treated 2050+ as "not a
+# year", which would quietly disable staleness detection rather than fail.
+YEAR_RE = re.compile(r"\b(19[9]\d|20[0-9]\d)\b")
 FOUNDING_CONTEXT_RE = re.compile(
     r"(founded|founding|since|established|est\.|inception|incorporated|operating since|serving since|"
     r"in business since|copyright ©?\s*\d{4}\s*[-–])\D{0,25}$",
@@ -206,7 +215,11 @@ def extract_names(page: Page) -> list[tuple[str, str]]:
 
     body = page.body_text
     match = COPYRIGHT_RE.search(body)
-    if match:
+    if match and not CREDIT_RE.search(match.group(1)):
+        # "(c) 2024 Site by DesignAgency Inc. for Acme Corp" names the agency,
+        # not the site owner, and the capture passed every length and casing
+        # guard. Rather than guess which half is the brand, skip the line: the
+        # title, H1, JSON-LD and OpenGraph slots still carry the real name.
         add(match.group(1), "footer copyright")
     for pattern, slot in ((WELCOME_RE, "body 'Welcome to'"), (FORMERLY_RE, "body 'formerly'"),
                           (DIVISION_RE, "body 'division of'")):
@@ -381,7 +394,10 @@ def collect_dates(page: Page, current_year: int) -> dict[str, Any]:
         year = int(match.group(1))
         before = text[max(0, match.start() - 40):match.start()]
         after = text[match.end():match.end() + 40]
-        if FOUNDING_CONTEXT_RE.search(before):
+        # Look both ways: "operating since 2015" puts the cue before the year,
+        # "2015 is when we were founded" puts it after. Checking only `before`
+        # reported the second phrasing as a stale claim.
+        if FOUNDING_CONTEXT_RE.search(before) or FOUNDING_CONTEXT_RE.search(after):
             continue  # a founding year is a fact, not staleness
         if year >= current_year:
             recent.append(year)
@@ -598,32 +614,25 @@ def check_corroboration(snapshot: SiteSnapshot, profile: dict[str, Any],
 
     if corroboration["signals"] == 0 and profile.get("canonical") and entry.word_count >= 120:
         total_chars = sum(page.char_count for page in snapshot.ok_pages)
-        findings.append(make_finding(
-            category="corroboration",
-            title="No independently verifiable identity or citation signals anywhere on the site",
-            severity="low",
-            evidence=(
+        # Corroboration is not one of the eight report categories, so this is
+        # proactive advice rather than a finding: an absent third-party record
+        # is a gap in what we can verify, not a defect we observed on the page.
+        recs.append(recommendation(
+            "Publish independently verifiable identity signals",
+            (
                 f"Across {total_chars} characters of text on {len(snapshot.ok_pages)} crawled pages from "
                 f"{entry.url} ({entry.http_label}), the site publishes 0 schema sameAs entries, "
                 f"0 links to third-party identity platforms (LinkedIn, Crunchbase, Wikidata, app stores, "
                 f"review sites) out of {corroboration['external_links']} external links, and "
                 f"0 citation elements (<cite>, rel=author, rel=publisher). Every claim made about "
-                f"\"{profile['canonical']}\" rests on the site's own assertion."
-            ),
-            action=(
-                "Add a `sameAs` array to the Organization JSON-LD listing the company's LinkedIn, Crunchbase "
-                "and app-store or registry profiles, link those profiles from the footer HTML, and cite the "
-                "source next to any statistic you quote. Independent corroboration is what lets an AI system "
-                "treat your machine-readable claims as trustworthy enough to repeat."
-            ),
-            mechanism=(
-                "Assistants weigh a claim by how many independent sources agree with it. A site that no "
-                "external record links back to is a single unverifiable source, so its numbers get hedged "
+                f"\"{profile['canonical']}\" rests on the site's own assertion. Add a `sameAs` array to the "
+                "Organization JSON-LD listing the company's LinkedIn, Crunchbase and app-store or registry "
+                "profiles, link those profiles from the footer HTML, and cite the source next to any statistic "
+                "you quote. Assistants weigh a claim by how many independent sources agree with it, so a site "
+                "no external record links back to is a single unverifiable source whose numbers get hedged "
                 "or dropped even when they are correct."
             ),
-            locations=[entry.url],
-            detected_by=SKILL_ID,
-            proof=corroboration,
+            "entity_identity", "low",
         ))
     elif corroboration["signals"] and not corroboration["same_as"]:
         recs.append(recommendation(
@@ -631,7 +640,7 @@ def check_corroboration(snapshot: SiteSnapshot, profile: dict[str, Any],
             f"The site links out to {len(corroboration['platform_links'])} identity platforms but publishes no "
             "`sameAs` array in its Organization schema. Putting the same URLs in `sameAs` states the link "
             "machine-readably instead of leaving it to be inferred from anchor tags.",
-            "corroboration", "low",
+            "entity_identity", "low",
         ))
     return findings, recs
 
@@ -670,7 +679,7 @@ def run(context: dict[str, Any]) -> SkillResult:
          "canonical": profile["canonical"]},
         {"check": "content_is_current", "passed": not fresh_findings,
          "value": sum(len(d["stale"]) for d in dates)},
-        {"check": "externally_corroborated", "passed": not corr_findings,
+        {"check": "externally_corroborated", "passed": corroboration["signals"] > 0,
          "value": corroboration["signals"]},
     ]
     result.runtime_seconds = time.monotonic() - started

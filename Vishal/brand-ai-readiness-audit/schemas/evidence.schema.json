@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["source_url", "type", "value", "location", "method"],
+  "properties": {
+    "source_url": { "type": "string", "format": "uri" },
+    "type": { "type": "string" },
+    "value": { "type": ["string", "object", "array", "number", "boolean", "null"] },
+    "location": { "type": "string" },
+    "method": { "type": "string" }
+  }
+}

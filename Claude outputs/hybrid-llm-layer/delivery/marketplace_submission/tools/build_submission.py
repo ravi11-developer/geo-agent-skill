@@ -35,7 +35,7 @@ TOP_LEVEL_FILES = ("run.py", "__init__.py", "requirements.txt", "README.md")
 TOP_LEVEL_DIRS = ("lib", "schema", "examples", "tools")
 
 # Never shipped: caches, results, editor droppings, local LLM caches.
-EXCLUDE_DIRS = {"__pycache__", ".git", ".venv", ".pytest_cache", ".mypy_cache",
+EXCLUDE_DIRS = {"__pycache__", ".git", ".venv", "venv", "env", ".pytest_cache", ".mypy_cache",
                 "node_modules", "llm_cache", "results", ".idea", ".vscode"}
 EXCLUDE_SUFFIXES = (".pyc", ".pyo", ".log", ".tmp", ".orig", ".rej", ".swp")
 EXCLUDE_NAMES = {".DS_Store", "Thumbs.db", ".env", ".env.local", "secrets.json"}

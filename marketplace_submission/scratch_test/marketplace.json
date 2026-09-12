@@ -1,0 +1,111 @@
+{
+  "$schema": "https://agentskills.io/schemas/marketplace-v1.json",
+  "id": "ai-discoverability-marketplace",
+  "name": "AI Discoverability & Engagement Audit Marketplace",
+  "version": "1.0.0",
+  "description": "A composable marketplace of read-only audit skills that measure how well a website can be crawled, rendered, extracted, understood, trusted and navigated by AI answer engines and autonomous agents.",
+  "author": {
+    "name": "Team Agent F",
+    "context": "Adobe University Hackathon 2026 - Round 3"
+  },
+  "license": "MIT",
+  "runtime": {
+    "language": "python",
+    "min_version": "3.9",
+    "dependencies": ["requests>=2.28", "beautifulsoup4>=4.11"],
+    "network": "outbound-http-get-only",
+    "side_effects": "none"
+  },
+  "safety": {
+    "read_only": true,
+    "http_methods_allowed": ["GET", "HEAD"],
+    "respects_robots_txt": true,
+    "max_pages_per_run": 12,
+    "max_runtime_seconds": 60,
+    "writes_to_target": false,
+    "collects_pii": false
+  },
+  "contracts": {
+    "categories": [
+      "crawlability",
+      "rendering",
+      "content_extraction",
+      "structured_data",
+      "non_text_facts",
+      "freshness",
+      "entity_identity",
+      "engagement"
+    ],
+    "severities": ["critical", "high", "medium", "low"],
+    "finding_schema": "lib/contracts.py::make_finding",
+    "evidence_policy": "Every finding must cite the page URL, the observed HTTP status and at least one reproducible measurement. Findings that cannot satisfy this contract are rejected at construction time."
+  },
+  "entrypoint": "audit-orchestrator",
+  "skills": [
+    {
+      "id": "audit-orchestrator",
+      "name": "Audit Orchestrator",
+      "version": "1.0.0",
+      "kind": "orchestrator",
+      "path": "skills/audit-orchestrator",
+      "entrypoint": "orchestrator.py",
+      "description": "Entrypoint skill. Plans the audit, invokes the specialist skills in dependency order, deduplicates and prioritises their findings, and emits the final structured report.",
+      "provides": [],
+      "consumes": [],
+      "produces": ["audit_report"],
+      "enabled": true
+    },
+    {
+      "id": "crawl-render-audit",
+      "name": "Crawl & Render Audit",
+      "version": "1.0.0",
+      "kind": "audit",
+      "path": "skills/crawl-render-audit",
+      "entrypoint": "crawl_render.py",
+      "description": "Fetches the site read-only, builds the shared site snapshot, and detects machine access barriers: unreachable pages, robots/noindex blocks, and business content that only exists after client-side JavaScript execution.",
+      "provides": ["crawlability", "rendering"],
+      "consumes": [],
+      "produces": ["snapshot"],
+      "enabled": true
+    },
+    {
+      "id": "content-semantics-audit",
+      "name": "Content & Semantics Audit",
+      "version": "1.0.0",
+      "kind": "audit",
+      "path": "skills/content-semantics-audit",
+      "entrypoint": "content_semantics.py",
+      "description": "Measures whether the facts a buyer would ask about are present as machine-readable text: extractable body content, JSON-LD/microdata structured data, and facts locked inside images.",
+      "provides": ["content_extraction", "structured_data", "non_text_facts"],
+      "consumes": ["snapshot"],
+      "produces": ["fact_coverage"],
+      "enabled": true
+    },
+    {
+      "id": "entity-freshness-audit",
+      "name": "Entity & Freshness Audit",
+      "version": "1.0.0",
+      "kind": "audit",
+      "path": "skills/entity-freshness-audit",
+      "entrypoint": "entity_freshness.py",
+      "description": "Cross-references the organisation name across title, H1, JSON-LD, OpenGraph, footer copyright and body prose to detect entity ambiguity, and dates every factual claim to detect stale content.",
+      "provides": ["entity_identity", "freshness"],
+      "consumes": ["snapshot"],
+      "produces": ["entity_profile"],
+      "enabled": true
+    },
+    {
+      "id": "engagement-audit",
+      "name": "Engagement & Orientation Audit",
+      "version": "1.0.0",
+      "kind": "audit",
+      "path": "skills/engagement-audit",
+      "entrypoint": "engagement.py",
+      "description": "Measures on-site orientation: navigation landmarks, internal link graph, breadcrumbs, and next-step affordances that let a visitor (or an agent following a citation) continue instead of dead-ending.",
+      "provides": ["engagement"],
+      "consumes": ["snapshot"],
+      "produces": ["navigation_profile"],
+      "enabled": true
+    }
+  ]
+}

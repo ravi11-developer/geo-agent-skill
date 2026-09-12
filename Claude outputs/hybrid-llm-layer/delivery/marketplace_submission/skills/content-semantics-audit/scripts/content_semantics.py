@@ -36,7 +36,15 @@ SIGNAL_PATTERNS: dict[str, re.Pattern[str]] = {
         r"(?:\$|€|£|₹)\s?\d|\b\d[\d,.]*\s?(?:usd|eur|gbp|inr)\b|\bper\s+(?:month|year|user|seat)\b|/\s?(?:mo|month|yr|year)\b",
         re.I,
     ),
-    "contact": re.compile(r"[\w.+-]+@[\w-]+\.[\w.]{2,}|\+?\d[\d\s().-]{8,}\d"),
+    # The phone half is anchored to a real 7-or-10-digit shape and fenced by
+    # digit lookarounds. The previous "any 10+ digits and punctuation" form
+    # matched price lists, SKUs, version strings, ZIP+4 and timestamps, which
+    # marked "contact" satisfied on product pages and suppressed the
+    # content_extraction finding the page actually deserved.
+    "contact": re.compile(
+        r"[\w.+-]+@[\w-]+\.[\w.]{2,}"
+        r"|(?<![\d.])(?:\+\d{1,3}[\s.-]?)?(?:\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]\d{4}(?![\d.])"
+    ),
     "company_facts": re.compile(
         r"\b(founded|founding|headquarter\w*|employees|customers|clients|established|revenue|arr|"
         r"offices|certified|iso\s*\d{4,5}|soc\s*2|uptime|sla)\b|\b\d{1,3}(?:,\d{3})+\b|\b\d+(?:\.\d+)?\s*%",
@@ -153,7 +161,16 @@ def _section_word_count(page: Page, image: dict[str, Any]) -> int:
         return 0
     heading = tag.find_previous(["h1", "h2", "h3"])
     if heading is None:
-        return len(page.content_text.split())
+        # No heading above the image (a hero infographic or a pricing table at
+        # the top of the page). Measuring the *whole page* here made every such
+        # image look well-described, so top-of-page fact images never registered
+        # as non_text_facts. Measure only the container that actually surrounds
+        # the image.
+        parent = tag.find_parent(["section", "article", "main", "div"])
+        if parent is None:
+            return 0
+        words = [w for w in parent.get_text(" ", strip=True).split() if w]
+        return len(words)
     words = 0
     for sibling in heading.next_siblings:
         name = getattr(sibling, "name", None)

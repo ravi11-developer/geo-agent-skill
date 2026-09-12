@@ -139,7 +139,12 @@ def exposes_run(path: str) -> bool:
 
 def package_files(root: str):
     for dirpath, dirnames, filenames in os.walk(root):
-        dirnames[:] = [d for d in dirnames if d not in ("__pycache__", ".git", ".venv")]
+        # A local virtualenv is developer scaffolding, never part of the shipped
+        # package: scanning site-packages reported third-party library code as
+        # marketplace safety violations.
+        dirnames[:] = [d for d in dirnames
+                       if d not in ("__pycache__", ".git", ".venv", "venv", "env",
+                                    "node_modules", ".pytest_cache", ".mypy_cache")]
         for name in filenames:
             if name.endswith(".pyc"):
                 continue

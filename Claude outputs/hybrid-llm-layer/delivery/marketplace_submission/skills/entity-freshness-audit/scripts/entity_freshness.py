@@ -59,9 +59,18 @@ COPYRIGHT_RE = re.compile(
 # Handles "© 2026", "© 2020-2026" and the very common "© 2020-26": the year that
 # matters is the LATEST one in the range, since that is what the site claims as
 # current. Reading the first year turned "© 2020-26" into six-year-old content.
+# Footer credit lines attribute the *builder*, not the site owner.
+CREDIT_RE = re.compile(
+    r"\b(?:site|website|design(?:ed)?|develop(?:ed)?|built|made|crafted|powered|"
+    r"theme|template|hosted)\s+by\b|\ba\s+(?:division|subsidiary|brand|company)\s+of\b",
+    re.I,
+)
+
 COPYRIGHT_YEAR_RE = re.compile(
     r"(?:©|&copy;|\(c\)|copyright)\s*(\d{4})(?:\s*[-–—]\s*(\d{2,4}))?", re.I)
-YEAR_RE = re.compile(r"\b(19[9]\d|20[0-4]\d)\b")
+# 1990-2099. The previous 20[0-4]\d bound silently treated 2050+ as "not a
+# year", which would quietly disable staleness detection rather than fail.
+YEAR_RE = re.compile(r"\b(19[9]\d|20[0-9]\d)\b")
 FOUNDING_CONTEXT_RE = re.compile(
     r"(founded|founding|since|established|est\.|inception|incorporated|operating since|serving since|"
     r"in business since|copyright ©?\s*\d{4}\s*[-–])\D{0,25}$",
@@ -178,7 +187,11 @@ def extract_names(page: Page) -> list[tuple[str, str]]:
 
     body = page.body_text
     match = COPYRIGHT_RE.search(body)
-    if match:
+    if match and not CREDIT_RE.search(match.group(1)):
+        # "(c) 2024 Site by DesignAgency Inc. for Acme Corp" names the agency,
+        # not the site owner, and the capture passed every length and casing
+        # guard. Rather than guess which half is the brand, skip the line: the
+        # title, H1, JSON-LD and OpenGraph slots still carry the real name.
         add(match.group(1), "footer copyright")
     for pattern, slot in ((WELCOME_RE, "body 'Welcome to'"), (FORMERLY_RE, "body 'formerly'"),
                           (DIVISION_RE, "body 'division of'")):
@@ -344,7 +357,10 @@ def collect_dates(page: Page, current_year: int) -> dict[str, Any]:
         year = int(match.group(1))
         before = text[max(0, match.start() - 40):match.start()]
         after = text[match.end():match.end() + 40]
-        if FOUNDING_CONTEXT_RE.search(before):
+        # Look both ways: "operating since 2015" puts the cue before the year,
+        # "2015 is when we were founded" puts it after. Checking only `before`
+        # reported the second phrasing as a stale claim.
+        if FOUNDING_CONTEXT_RE.search(before) or FOUNDING_CONTEXT_RE.search(after):
             continue  # a founding year is a fact, not staleness
         if year >= current_year:
             recent.append(year)
