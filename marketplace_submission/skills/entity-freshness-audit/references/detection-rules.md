@@ -10,12 +10,7 @@
    among names that behave like site identity - present in a strong slot (schema name,
    `og:site_name`, footer copyright) or recurring across slots or pages.
 4. Count as a **variant** any other name that is at most 2.2x the canonical's length and
-   either >= 0.50 character-similar to it or shares its first four squashed characters -
-   **excluding** names that are the canonical plus additional whole words
-   ("Google Maps", "Samsung Galaxy"). A whole-word `<canonical> <extra>` (either
-   direction) is a product or service sub-brand, not a misspelling; genuine conflicts are
-   re-spellings that normalise to a different stem, and legal suffixes ("Acme Corp") are
-   already stripped in step 2.
+   either >= 0.50 character-similar to it or shares its first four squashed characters.
 5. Fire when the family (canonical + variants) reaches **3**.
 
 Two spellings are a recommendation, not a defect.
@@ -27,12 +22,6 @@ Titles split on `:: — – | - · • › »`. When the leading segment is a ge
 faq, team, press, resources, solutions, company, overview) the **trailing** segment is
 the brand instead - sub-pages are titled "Page - Brand" while home pages are titled
 "Brand - tagline". Without this rule every sub-page contributes a phantom entity.
-
-A leading segment that is a **wiki namespace route** - a single token, a colon, then the
-page name with no surrounding space ("Help:Contents", "Wikipedia:About", "Category:Foo") -
-is treated the same as a generic word: it is a MediaWiki taxonomy address, not the brand,
-so the trailing segment ("... - Wikipedia") is taken. A "Brand: tagline" separator (colon
-followed by a space) is *not* a namespace and is left intact.
 
 ## freshness
 
