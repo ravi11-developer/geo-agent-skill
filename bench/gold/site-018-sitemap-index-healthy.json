@@ -1,0 +1,26 @@
+{
+    "site_id": "site-018-sitemap-index-healthy",
+    "url": "http://localhost:9502/",
+    "origin_port": 9502,
+    "needs_own_origin": true,
+    "description": "Healthy site that publishes a correct sitemap index (sitemap.xml -> sitemap-pages.xml) with lastmod dates, declared through a Sitemap: directive in robots.txt. Everything a crawler needs is already in place.",
+    "expected_findings": [],
+    "expected_non_findings": [
+        {"category": "crawlability", "reason": "robots.txt allows every crawler and declares a sitemap"},
+        {"category": "structured_data", "reason": "Complete Organization JSON-LD is present"},
+        {"category": "rendering", "reason": "All content is server-rendered in the raw HTML"},
+        {"category": "entity_identity", "reason": "Harborline Logistics is named consistently throughout"},
+        {"category": "freshness", "reason": "News dated September 2026, sitemap lastmod 2026-09-05"},
+        {"category": "engagement", "reason": "Navigation and footer link every key page"},
+        {"category": "non_text_facts", "reason": "Every fact is stated in text"}
+    ],
+    "expected_proactive": [
+        "Add Product or Service structured data for the individual service lines",
+        "Add FAQ structured data for common importer questions"
+    ],
+    "forbidden_proactive": [
+        "Publish an XML sitemap with lastmod dates"
+    ],
+    "max_acceptable_findings": 2,
+    "notes": "Regression guard for the sitemap false positive. This site publishes a sitemap index with lastmod dates; an agent that recommends publishing a sitemap here is reporting on a body it discarded rather than on the site. An agent that reports zero sitemap URLs has not followed the <sitemapindex> into its children."
+}

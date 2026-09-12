@@ -5,6 +5,7 @@ Each site-XXX directory is served at http://localhost:PORT/site-XXX/
 """
 
 import http.server
+import json
 import os
 import sys
 import threading
@@ -40,6 +41,43 @@ class SyntheticSiteHandler(http.server.SimpleHTTPRequestHandler):
         super().do_GET()
 
 
+def start_own_origin_servers():
+    """Serve fixtures that declare ``needs_own_origin`` at the root of their own port.
+
+    robots.txt and sitemap.xml are origin-level documents, so a fixture served under
+    /site-xxx/ shares them with every other fixture and cannot carry a crawler policy
+    of its own. Those fixtures get a port to themselves instead.
+    """
+    gold_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "gold")
+    started = []
+    if not os.path.isdir(gold_dir):
+        return started
+    for fname in sorted(os.listdir(gold_dir)):
+        if not fname.endswith(".json"):
+            continue
+        with open(os.path.join(gold_dir, fname), encoding="utf-8") as fh:
+            gold = json.load(fh)
+        if not gold.get("needs_own_origin"):
+            continue
+        site_dir = os.path.join(os.path.abspath(SITES_DIR), gold["site_id"])
+        port = int(gold.get("origin_port", 0))
+        if not port or not os.path.isdir(site_dir):
+            continue
+        handler = type(f"Origin{port}", (http.server.SimpleHTTPRequestHandler,), {
+            "__init__": lambda self, *a, _d=site_dir, **k:
+                http.server.SimpleHTTPRequestHandler.__init__(self, *a, directory=_d, **k),
+            "log_message": lambda self, *a: None,
+        })
+        try:
+            server = http.server.HTTPServer(("127.0.0.1", port), handler)
+        except OSError as exc:
+            print(f"  warning: cannot serve {gold['site_id']} on {port}: {exc}", file=sys.stderr)
+            continue
+        threading.Thread(target=server.serve_forever, daemon=True).start()
+        started.append((gold["site_id"], port))
+    return started
+
+
 def start_server(port: int = DEFAULT_PORT, background: bool = False):
     """Start the synthetic site server."""
     sites_dir = os.path.abspath(SITES_DIR)
@@ -52,9 +90,13 @@ def start_server(port: int = DEFAULT_PORT, background: bool = False):
 
     # List available sites
     sites = sorted(d for d in os.listdir(sites_dir) if os.path.isdir(os.path.join(sites_dir, d)))
+    own_origin = dict(start_own_origin_servers())
     print(f"Serving {len(sites)} synthetic sites on http://localhost:{port}/")
     for site in sites:
-        print(f"  http://localhost:{port}/{site}/")
+        if site in own_origin:
+            print(f"  http://localhost:{own_origin[site]}/  ({site}, own origin)")
+        else:
+            print(f"  http://localhost:{port}/{site}/")
 
     if background:
         thread = threading.Thread(target=server.serve_forever, daemon=True)

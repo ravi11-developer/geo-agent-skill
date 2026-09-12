@@ -83,6 +83,11 @@ class Page:
     status_code: int | None = None
     content_type: str = ""
     html: str = ""
+    # Body of a *non-HTML* text document (robots.txt, sitemap XML).  Kept apart
+    # from ``html`` on purpose: ``ok`` and ``soup`` stay HTML-only, so a plain
+    # text or XML fetch can never be mistaken for a crawlable page by any
+    # downstream skill that iterates ``SiteSnapshot.ok_pages``.
+    text_body: str = ""
     headers: dict[str, str] = field(default_factory=dict)
     error: str | None = None
     elapsed_ms: int = 0
@@ -347,7 +352,18 @@ class SiteSnapshot:
     pages: list[Page] = field(default_factory=list)
     robots_txt: str | None = None
     robots_status: int | None = None
+    # Flat list of page URLs recovered from every sitemap document that was
+    # actually read (a ``<sitemapindex>`` is followed one level into its
+    # children).  Consumers that only want "does this site publish a sitemap"
+    # should read ``sitemap_checked``/``sitemap_sources`` instead of testing
+    # this list, because an empty list is also what an unread sitemap produces.
     sitemap_urls: list[str] = field(default_factory=list)
+    sitemap_sources: list[dict[str, Any]] = field(default_factory=list)
+    sitemap_lastmods: list[str] = field(default_factory=list)
+    robots_sitemap_refs: list[str] = field(default_factory=list)
+    # False means the check never completed (transport error), which is not the
+    # same as "the site publishes no sitemap" and must not be reported as such.
+    sitemap_checked: bool = False
     broken_links: list[dict[str, Any]] = field(default_factory=list)
     fetch_errors: list[dict[str, Any]] = field(default_factory=list)
     notes: dict[str, Any] = field(default_factory=dict)

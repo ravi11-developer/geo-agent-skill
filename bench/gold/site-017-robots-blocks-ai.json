@@ -1,0 +1,31 @@
+{
+    "site_id": "site-017-robots-blocks-ai",
+    "url": "http://localhost:9501/",
+    "origin_port": 9501,
+    "needs_own_origin": true,
+    "holdout": true,
+    "description": "Well-built site whose robots.txt disallows GPTBot, ClaudeBot and PerplexityBot from the whole site while leaving ordinary search crawlers free. The page itself is healthy: the only defect is the crawler policy. GPTBot and ClaudeBot share one rule block (two consecutive User-agent lines), which a parser that resets its agent list per line reads as blocking only ClaudeBot.",
+    "expected_findings": [
+        {
+            "category": "crawlability",
+            "description": "robots.txt disallows AI crawlers from the audited path, so assistants can never fetch, index or cite the content",
+            "severity": "high",
+            "keywords": ["robots", "crawl", "disallow", "blocked", "gptbot", "claudebot", "user-agent", "ai"]
+        }
+    ],
+    "expected_non_findings": [
+        {"category": "structured_data", "reason": "Complete Organization JSON-LD is present"},
+        {"category": "rendering", "reason": "All content is server-rendered in the raw HTML"},
+        {"category": "entity_identity", "reason": "Northwind Instruments is named consistently throughout"},
+        {"category": "freshness", "reason": "News dated September 2026, copyright 2026"},
+        {"category": "engagement", "reason": "Navigation and footer link every key page"},
+        {"category": "non_text_facts", "reason": "Every fact is stated in text"}
+    ],
+    "expected_proactive": [
+        "Allow the query-time AI crawlers that decide citations, not only the training crawlers",
+        "Scope blanket Disallow rules to private and transactional paths",
+        "Add Product structured data for the individual instruments"
+    ],
+    "max_acceptable_findings": 2,
+    "notes": "Regression guard for two failures at once: robots.txt served as text/plain must be read at all, and a shared User-agent rule block must attribute the Disallow to every agent named in it. An agent that reports 'entry URL is not retrievable' here has confused a crawler policy with an outage."
+}

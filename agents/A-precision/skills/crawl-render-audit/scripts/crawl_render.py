@@ -15,6 +15,7 @@ the finding can quote the facts that a non-rendering crawler loses.
 
 from __future__ import annotations
 
+import gzip
 import re
 import time
 from typing import Any
@@ -37,9 +38,28 @@ JS_GATE_RE = re.compile(
 TRANSACTIONAL_PATH_RE = re.compile(
     r"/(account|login|signin|sign-in|register|cart|checkout|basket|search|admin|wp-admin|"
     r"my-?account|profile|logout|password|reset)(/|\?|$)", re.I)
-AI_USER_AGENTS = ("gptbot", "claudebot", "anthropic-ai", "perplexitybot", "google-extended",
-                  "ccbot", "bingbot", "applebot-extended", "oai-searchbot")
+# Both halves of every vendor's fleet matter, and they fail differently: the
+# training crawlers (GPTBot, ClaudeBot, Google-Extended) decide whether a brand
+# is ever learned, while the *query-time* crawlers (OAI-SearchBot, ChatGPT-User,
+# Claude-SearchBot, PerplexityBot) decide whether it can be cited in an answer
+# being written right now.  Blocking only the second set is a common and almost
+# invisible way to disappear from AI answers, so both are checked.
+AI_USER_AGENTS = ("gptbot", "oai-searchbot", "chatgpt-user", "claudebot", "claude-searchbot",
+                  "anthropic-ai", "perplexitybot", "perplexity-user", "google-extended",
+                  "meta-externalagent", "ccbot", "bingbot", "applebot-extended")
+# The token this auditor answers to, used to decide what *we* may fetch.
+AUDITOR_UA_TOKEN = "aidiscoverabilityauditor"
 PRICE_RE = re.compile(r"(?:\$|€|£|₹)\s?\d[\d,.]*")
+
+# Sitemaps: bounded on purpose.  A sitemap index may point at hundreds of child
+# documents; we read enough to prove the sitemap exists and to recover a useful
+# URL inventory, never enough to turn an audit into a crawl of the whole site.
+SITEMAP_MAX_DOCUMENTS = 6
+SITEMAP_MAX_URLS = 5000
+SITEMAP_BLOCK_RE = re.compile(r"<sitemap\b[^>]*>(.*?)</sitemap\s*>", re.I | re.S)
+URL_BLOCK_RE = re.compile(r"<url\b[^>]*>(.*?)</url\s*>", re.I | re.S)
+LOC_RE = re.compile(r"<loc>\s*([^<\s]+)\s*</loc>", re.I)
+LASTMOD_RE = re.compile(r"<lastmod>\s*([^<\s]+)\s*</lastmod>", re.I)
 
 
 # ---------------------------------------------------------------------------
@@ -52,7 +72,36 @@ except ImportError:  # pragma: no cover
     requests = None  # type: ignore
 
 
-def _fetch(url: str, session: Any = None) -> Page:
+def _is_html_type(content_type: str) -> bool:
+    """An absent Content-Type is treated as HTML, matching how browsers sniff."""
+    return "html" in content_type.lower() or not content_type.strip()
+
+
+def _decode_text(raw: bytes) -> str:
+    """Decode a non-HTML text document, transparently gunzipping it first.
+
+    ``sitemap.xml.gz`` is served as a gzip *payload* (Content-Type
+    application/gzip), not as a gzip *transfer encoding*, so no HTTP client
+    decompresses it for us - the bytes arrive with the gzip magic number intact
+    and have to be unwrapped here or the document reads as binary noise.
+    """
+    if raw[:2] == b"\x1f\x8b":
+        try:
+            raw = gzip.decompress(raw)
+        except (OSError, EOFError):
+            return ""
+    return raw.decode("utf-8", errors="replace")
+
+
+def _fetch(url: str, session: Any = None, accept_text: bool = False) -> Page:
+    """Fetch one document.
+
+    HTML always lands in ``page.html``.  ``accept_text=True`` additionally keeps
+    the body of *non-HTML* text documents in ``page.text_body`` - which is what
+    robots.txt (``text/plain``, mandated by RFC 9309) and sitemaps
+    (``application/xml``) actually are.  Gating the body on an HTML content type
+    is why both were previously fetched, answered 200, and then discarded.
+    """
     page = Page(url=url)
     start = time.monotonic()
     try:
@@ -61,16 +110,19 @@ def _fetch(url: str, session: Any = None) -> Page:
             page.status_code = resp.status_code
             page.headers = {k.lower(): v for k, v in resp.headers.items()}
             page.content_type = page.headers.get("content-type", "")
-            if resp.status_code == 200 and ("html" in page.content_type or not page.content_type):
-                # requests falls back to ISO-8859-1 for text/* without a charset
-                # parameter (RFC 2616), which mojibakes UTF-8 pages that declare
-                # their charset in a <meta> tag - very common in the wild, and it
-                # silently corrupts em dashes, quotes and accented brand names.
-                if "charset=" not in page.content_type.lower():
-                    head = resp.content[:2048].decode("ascii", errors="ignore").lower()
-                    match = re.search(r'<meta[^>]+charset=["\']?([\w-]+)', head)
-                    resp.encoding = (match.group(1) if match else None) or resp.apparent_encoding or "utf-8"
-                page.html = resp.text
+            if resp.status_code == 200:
+                if _is_html_type(page.content_type):
+                    # requests falls back to ISO-8859-1 for text/* without a charset
+                    # parameter (RFC 2616), which mojibakes UTF-8 pages that declare
+                    # their charset in a <meta> tag - very common in the wild, and it
+                    # silently corrupts em dashes, quotes and accented brand names.
+                    if "charset=" not in page.content_type.lower():
+                        head = resp.content[:2048].decode("ascii", errors="ignore").lower()
+                        match = re.search(r'<meta[^>]+charset=["\']?([\w-]+)', head)
+                        resp.encoding = (match.group(1) if match else None) or resp.apparent_encoding or "utf-8"
+                    page.html = resp.text
+                elif accept_text:
+                    page.text_body = _decode_text(resp.content)
         else:  # urllib fallback keeps the skill runnable without requests
             from urllib.request import Request, urlopen
 
@@ -81,7 +133,10 @@ def _fetch(url: str, session: Any = None) -> Page:
                 page.content_type = page.headers.get("content-type", "")
                 body = resp.read()
                 if page.status_code == 200:
-                    page.html = body.decode("utf-8", errors="replace")
+                    if _is_html_type(page.content_type):
+                        page.html = body.decode("utf-8", errors="replace")
+                    elif accept_text:
+                        page.text_body = _decode_text(body)
     except Exception as exc:  # noqa: BLE001 - recorded as evidence, never raised
         page.error = f"{type(exc).__name__}: {exc}"
         if hasattr(exc, "code"):
@@ -102,9 +157,23 @@ def _new_session():
 # robots.txt (advisory: we obey it, we only report it when it blocks answers)
 # ---------------------------------------------------------------------------
 
-def _parse_robots(robots_txt: str) -> dict[str, list[str]]:
-    rules: dict[str, list[str]] = {}
-    agents: list[str] = []
+def _parse_robots(robots_txt: str) -> dict[str, list[tuple[str, bool]]]:
+    """Parse robots.txt into ``agent -> [(path, is_allow)]`` groups.
+
+    Two details decide whether this produces findings or false positives, and
+    the naive version gets both wrong:
+
+    * Consecutive ``User-agent`` lines share one rule block (RFC 9309 s2.2.1).
+      Resetting the agent list on every such line silently drops the rules for
+      every agent but the last one in the block - so the very common
+      ``User-agent: GPTBot`` / ``User-agent: ClaudeBot`` / ``Disallow: /`` reads
+      as "only ClaudeBot is blocked".
+    * ``Allow`` exists.  Ignoring it turns a site that deliberately carves AI
+      crawlers *out* of a blanket block into a reported block.
+    """
+    groups: dict[str, list[tuple[str, bool]]] = {}
+    current: list[str] = []
+    in_directives = False
     for raw_line in robots_txt.splitlines():
         line = raw_line.split("#", 1)[0].strip()
         if not line or ":" not in line:
@@ -112,24 +181,179 @@ def _parse_robots(robots_txt: str) -> dict[str, list[str]]:
         key, value = (part.strip() for part in line.split(":", 1))
         key = key.lower()
         if key == "user-agent":
-            agents = [value.lower()]
-            rules.setdefault(value.lower(), [])
-        elif key == "disallow" and agents:
-            for agent in agents:
-                rules.setdefault(agent, []).append(value)
-    return rules
+            if in_directives:  # a directive closed the previous group
+                current = []
+                in_directives = False
+            agent = value.lower()
+            if agent:
+                current.append(agent)
+                groups.setdefault(agent, [])
+        elif key in ("disallow", "allow") and current:
+            in_directives = True
+            for agent in current:
+                groups.setdefault(agent, []).append((value, key == "allow"))
+    return groups
 
 
-def _blocked_agents(rules: dict[str, list[str]], path: str) -> list[str]:
-    blocked = []
-    for agent, disallows in rules.items():
-        if agent != "*" and agent not in AI_USER_AGENTS:
+def _rule_matches(rule: str, path: str) -> int:
+    """Length of ``rule`` when it matches ``path``, else -1.
+
+    Supports the two wildcards robots.txt actually uses in the wild: ``*`` for
+    any run of characters and a trailing ``$`` to anchor the end of the path.
+    """
+    if not rule:
+        return -1
+    if "*" in rule or rule.endswith("$"):
+        anchored = rule.endswith("$")
+        body = rule[:-1] if anchored else rule
+        pattern = "^" + re.escape(body).replace(r"\*", ".*") + ("$" if anchored else "")
+        try:
+            return len(rule) if re.match(pattern, path) else -1
+        except re.error:
+            return -1
+    return len(rule) if path.startswith(rule) else -1
+
+
+def _path_allowed(rules: list[tuple[str, bool]], path: str) -> bool:
+    """RFC 9309 precedence: the longest matching rule wins, Allow breaks ties."""
+    best_len, best_allow = -1, True
+    for rule, allow in rules:
+        if not rule and not allow:
+            continue  # a bare "Disallow:" imposes no restriction at all
+        length = _rule_matches(rule, path)
+        if length < 0:
             continue
-        for rule in disallows:
-            if rule == "/" or (rule and path.startswith(rule)):
-                blocked.append(agent)
-                break
+        if length > best_len or (length == best_len and allow and not best_allow):
+            best_len, best_allow = length, allow
+    return True if best_len < 0 else best_allow
+
+
+def _rules_for(groups: dict[str, list[tuple[str, bool]]], token: str) -> tuple[list, str]:
+    """The single group that governs one crawler, plus the name that matched.
+
+    Group selection is *most specific wins*, not a union: a crawler named
+    explicitly obeys only its own block and ignores ``*`` entirely, so a site
+    that blocks everyone but allows GPTBot is read correctly.
+    """
+    token = token.lower()
+    if token in groups:
+        return groups[token], token
+    if "*" in groups:
+        return groups["*"], "*"
+    return [], ""
+
+
+def _blocked_agents(groups: dict[str, list[tuple[str, bool]]], path: str) -> list[dict[str, str]]:
+    """Which AI crawlers robots.txt disallows from ``path``, and via which group."""
+    blocked: list[dict[str, str]] = []
+    for agent in AI_USER_AGENTS:
+        rules, matched = _rules_for(groups, agent)
+        if not rules:
+            continue
+        if not _path_allowed(rules, path):
+            blocked.append({"agent": agent, "via": matched})
     return blocked
+
+
+def _auditor_may_fetch(groups: dict[str, list[tuple[str, bool]]], path: str) -> bool:
+    """Whether *this* auditor is permitted to fetch ``path``.
+
+    Deliberately separate from :func:`_blocked_agents`: a site that blocks
+    GPTBot has said nothing about us, and refusing to crawl on GPTBot's behalf
+    would replace a correct ``crawlability`` finding with a bogus "entry URL is
+    not retrievable" one.
+    """
+    rules, _ = _rules_for(groups, AUDITOR_UA_TOKEN)
+    return _path_allowed(rules, path) if rules else True
+
+
+def _sitemap_refs(robots_txt: str) -> list[str]:
+    """``Sitemap:`` directives, which are group-independent and may point anywhere."""
+    out: list[str] = []
+    for raw_line in robots_txt.splitlines():
+        line = raw_line.split("#", 1)[0].strip()
+        if ":" not in line:
+            continue
+        key, value = (part.strip() for part in line.split(":", 1))
+        if key.lower() == "sitemap" and value and value not in out:
+            out.append(value)
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Sitemaps
+# ---------------------------------------------------------------------------
+
+def _parse_sitemap_doc(xml: str) -> dict[str, list[str]]:
+    """Split one sitemap document into child sitemaps and page URLs.
+
+    ``<loc>`` alone cannot tell the two apart - it is the element used inside
+    both ``<sitemap>`` (an index entry) and ``<url>`` (a page entry) - so the
+    wrapper is matched first.  Reading every ``<loc>`` as a page URL is why a
+    sitemap index previously looked like a list of pages that were all XML.
+    Matching on the wrapper rather than the namespace keeps this working for the
+    many real sitemaps that declare an unusual or missing xmlns.
+    """
+    children: list[str] = []
+    for block in SITEMAP_BLOCK_RE.findall(xml):
+        children.extend(LOC_RE.findall(block))
+    pages: list[str] = []
+    lastmods: list[str] = []
+    for block in URL_BLOCK_RE.findall(xml):
+        pages.extend(LOC_RE.findall(block))
+        lastmods.extend(LASTMOD_RE.findall(block))
+    if not children and not pages:
+        # Malformed, but bare <loc> entries still prove a sitemap is published.
+        pages = LOC_RE.findall(xml)
+    return {"children": children, "pages": pages, "lastmods": lastmods}
+
+
+def _collect_sitemaps(entry_points: list[str], session: Any) -> dict[str, Any]:
+    """Read sitemaps breadth-first, following ``<sitemapindex>`` into children.
+
+    Bounded by :data:`SITEMAP_MAX_DOCUMENTS` so a site with hundreds of shards
+    costs a fixed number of requests.  ``checked`` records whether the server
+    ever gave a definitive answer, so "no sitemap" can be distinguished from
+    "we never found out" - the difference between a correct recommendation and
+    telling a site to build something it already has.
+    """
+    seen: set[str] = set()
+    queue = [u for u in entry_points if u]
+    sources: list[dict[str, Any]] = []
+    pages: list[str] = []
+    lastmods: list[str] = []
+    checked = False
+
+    while queue and len(sources) < SITEMAP_MAX_DOCUMENTS:
+        url = queue.pop(0)
+        if url in seen:
+            continue
+        seen.add(url)
+        doc = _fetch(url, session, accept_text=True)
+        if doc.status_code is not None:
+            checked = True  # the server answered; absence is now an observation
+        record = {"url": url, "status": doc.status_code, "kind": "unread", "urls": 0}
+        # Some servers label sitemap.xml as text/html, which lands it in `html`.
+        body = doc.text_body or doc.html or ""
+        if doc.status_code == 200 and body.strip():
+            parsed = _parse_sitemap_doc(body)
+            record["kind"] = "index" if parsed["children"] else "urlset"
+            record["urls"] = len(parsed["pages"]) or len(parsed["children"])
+            queue.extend(child for child in parsed["children"] if child not in seen)
+            for loc in parsed["pages"]:
+                if len(pages) < SITEMAP_MAX_URLS:
+                    pages.append(loc)
+            lastmods.extend(parsed["lastmods"])
+        sources.append(record)
+
+    return {
+        "sources": sources,
+        "pages": pages,
+        "lastmods": lastmods,
+        "checked": checked,
+        # A published-but-empty sitemap is still a published sitemap.
+        "present": any(s["status"] == 200 and s["kind"] != "unread" for s in sources),
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -186,16 +410,29 @@ def crawl(url: str, max_pages: int = MAX_PAGES, budget: Any = None,
 
     snapshot = SiteSnapshot(base_url=base, entry_url=url)
 
-    robots = _fetch(urljoin(base + "/", "robots.txt"), session)
+    robots = _fetch(urljoin(base + "/", "robots.txt"), session, accept_text=True)
     snapshot.robots_status = robots.status_code
     if robots.status_code == 200:
-        snapshot.robots_txt = robots.html or ""
-
-    sitemap = _fetch(urljoin(base + "/", "sitemap.xml"), session)
-    if sitemap.status_code == 200 and sitemap.html:
-        snapshot.sitemap_urls = re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", sitemap.html)
+        snapshot.robots_txt = robots.text_body or robots.html or ""
 
     robots_rules = _parse_robots(snapshot.robots_txt) if snapshot.robots_txt else {}
+    snapshot.robots_sitemap_refs = _sitemap_refs(snapshot.robots_txt or "")
+
+    # A site's own `Sitemap:` directives are tried before the conventional
+    # location, because the directive is authoritative about where the sitemap
+    # actually lives - /sitemap.xml is only a convention.
+    sitemaps = _collect_sitemaps(
+        snapshot.robots_sitemap_refs + [urljoin(base + "/", "sitemap.xml")], session)
+    snapshot.sitemap_urls = sitemaps["pages"]
+    snapshot.sitemap_sources = sitemaps["sources"]
+    snapshot.sitemap_lastmods = sitemaps["lastmods"]
+    snapshot.sitemap_checked = sitemaps["checked"]
+    snapshot.notes["sitemap_present"] = sitemaps["present"]
+
+    # Whether *we* are allowed here, which is a different question from whether
+    # an AI crawler is - see `_auditor_may_fetch`.
+    entry_allowed = _auditor_may_fetch(robots_rules, parsed.path or "/") if robots_rules else True
+    snapshot.notes["entry_allowed_for_auditor"] = entry_allowed
 
     queue: list[tuple[str, int, str | None]] = [(url, 0, None)]
     seen = {url}
@@ -205,8 +442,12 @@ def crawl(url: str, max_pages: int = MAX_PAGES, budget: Any = None,
             stopped_reason = "exploration_deadline"
             break
         current, depth, parent = queue.pop(0)
-        if robots_rules and _blocked_agents(robots_rules, urlparse(current).path):
+        # Obey robots for *our own* user agent only.  Skipping a URL because
+        # some other crawler is disallowed would hide the very defect we exist
+        # to report, and would report the site as unreachable instead.
+        if robots_rules and not _auditor_may_fetch(robots_rules, urlparse(current).path):
             snapshot.notes.setdefault("skipped_by_robots", []).append(current)
+            stopped_reason = "robots_disallowed_auditor"
             continue
 
         fetch_started = time.monotonic()
@@ -284,6 +525,65 @@ def check_crawlability(snapshot: SiteSnapshot) -> tuple[list[dict], list[dict]]:
     recs: list[dict] = []
     entry = snapshot.entry_page
 
+    rules = _parse_robots(snapshot.robots_txt) if snapshot.robots_txt else {}
+    entry_path = urlparse(snapshot.entry_url).path or "/"
+    blocked = _blocked_agents(rules, entry_path) if rules else []
+    auditor_blocked = bool(rules) and not _auditor_may_fetch(rules, entry_path)
+
+    # robots.txt is evaluated *before* retrievability on purpose.  When the same
+    # rules that block AI crawlers also block this auditor there are no pages to
+    # report on, and the "not retrievable" finding below would describe a
+    # deliberate policy as though the site were down.
+    if blocked:
+        named = sorted({b["agent"] for b in blocked if b["via"] != "*"})
+        wildcard = sorted({b["agent"] for b in blocked if b["via"] == "*"})
+        detail_parts = []
+        if named:
+            detail_parts.append(f"named explicitly: {', '.join(named)}")
+        if wildcard:
+            detail_parts.append(f"via the wildcard `User-agent: *` group: {', '.join(wildcard)}")
+        findings.append(make_finding(
+            category="crawlability",
+            title="robots.txt blocks AI crawlers from the audited path",
+            severity="high",
+            evidence=(
+                f"{snapshot.base_url}/robots.txt (HTTP {snapshot.robots_status}) disallows {entry_path} for "
+                f"{len(blocked)} of {len(AI_USER_AGENTS)} known AI user agents ({'; '.join(detail_parts)}). "
+                f"Entry URL {snapshot.entry_url} answered "
+                f"{entry.http_label if entry else 'no request (disallowed for this auditor too)'}; "
+                f"{len(snapshot.ok_pages)} pages were reachable for this audit."
+            ),
+            action=(
+                "Narrow the Disallow rules in robots.txt so public marketing and documentation paths stay "
+                "crawlable for AI user agents, and add explicit Allow rules for the query-time crawlers that "
+                "decide citations (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, PerplexityBot) as well as the "
+                "training crawlers (GPTBot, ClaudeBot, Google-Extended), keeping blanket blocks scoped to "
+                "private or transactional paths, so the HTML stays machine-readable and assistants can cite it."
+            ),
+            mechanism=(
+                "AI assistants honour robots.txt at fetch time; a disallowed path is never retrieved, so the "
+                "brand cannot be cited even when the content is excellent. Blocking only the query-time "
+                "crawlers removes the brand from answers while leaving ordinary search traffic untouched, "
+                "which is why this is usually unintentional."
+            ),
+            locations=[f"{snapshot.base_url}/robots.txt"],
+            detected_by=SKILL_ID,
+            proof={"blocked_agents": blocked, "entry_path": entry_path,
+                   "auditor_blocked": auditor_blocked},
+        ))
+
+    if auditor_blocked:
+        # We obeyed the same rules we are reporting; say so rather than implying
+        # the rest of the checks found the site clean.
+        recs.append(recommendation(
+            "Re-run the audit once AI user agents are allowed",
+            "robots.txt disallowed this read-only auditor from the audited path, so only the robots policy "
+            "itself could be assessed. The content, structured-data, freshness and engagement checks need a "
+            "crawlable path before they can report anything.",
+            "crawlability", "low",
+        ))
+        return findings, recs
+
     if entry is None or not entry.ok:
         status = entry.http_label if entry else "HTTP no-response"
         detail = entry.error if entry and entry.error else "no HTML body returned"
@@ -314,33 +614,6 @@ def check_crawlability(snapshot: SiteSnapshot) -> tuple[list[dict], list[dict]]:
                    "retried": True},
         ))
         return findings, recs
-
-    # robots.txt blocking the audited path for * or a known AI agent
-    if snapshot.robots_txt:
-        rules = _parse_robots(snapshot.robots_txt)
-        blocked = _blocked_agents(rules, urlparse(snapshot.entry_url).path)
-        if blocked:
-            findings.append(make_finding(
-                category="crawlability",
-                title="robots.txt blocks AI crawlers from the audited path",
-                severity="high",
-                evidence=(
-                    f"{snapshot.base_url}/robots.txt ({snapshot.robots_status}) disallows "
-                    f"{urlparse(snapshot.entry_url).path} for {len(blocked)} user-agent blocks "
-                    f"({', '.join(sorted(blocked))}); {len(snapshot.ok_pages)} pages of the site are affected. "
-                    f"Verified against {snapshot.entry_url} ({entry.http_label})."
-                ),
-                action=(
-                    "Narrow the Disallow rules in robots.txt so public marketing and documentation paths stay "
-                    "crawlable for AI user agents (GPTBot, ClaudeBot, PerplexityBot, Google-Extended), keeping "
-                    "blanket blocks scoped to private or transactional paths, so the HTML stays machine-readable "
-                    "and assistants can discover and cite it."
-                ),
-                mechanism="AI assistants honour robots.txt at fetch time; a disallowed path is never retrieved, so the brand cannot be cited even when the content is excellent.",
-                locations=[f"{snapshot.base_url}/robots.txt"],
-                detected_by=SKILL_ID,
-                proof={"blocked_agents": blocked},
-            ))
 
     # noindex directives (meta or header)
     noindexed = []
@@ -386,11 +659,25 @@ def check_crawlability(snapshot: SiteSnapshot) -> tuple[list[dict], list[dict]]:
         ))
 
     # Proactive-only observations (never scored as defects)
-    if not snapshot.sitemap_urls:
+    #
+    # Gated on having actually read a sitemap rather than on the URL list being
+    # empty. An empty list is also what a discarded body produces, which is how
+    # this recommendation used to tell sites with a perfectly good sitemap index
+    # to go and publish one.
+    if snapshot.sitemap_checked and not snapshot.notes.get("sitemap_present"):
         recs.append(recommendation(
             "Publish an XML sitemap with lastmod dates",
-            "No /sitemap.xml was served. A sitemap with accurate <lastmod> values gives crawlers a cheap "
-            "freshness signal and a complete URL inventory, which improves how quickly new facts are picked up.",
+            "No sitemap was served at /sitemap.xml and robots.txt declared no `Sitemap:` directive. A sitemap "
+            "with accurate <lastmod> values gives crawlers a cheap freshness signal and a complete URL "
+            "inventory, which improves how quickly new facts are picked up.",
+            "crawlability", "low",
+        ))
+    elif snapshot.notes.get("sitemap_present") and not snapshot.sitemap_lastmods:
+        recs.append(recommendation(
+            "Add lastmod dates to the published sitemap",
+            f"A sitemap is published ({len(snapshot.sitemap_urls)} URLs across "
+            f"{len(snapshot.sitemap_sources)} sitemap documents) but carries no <lastmod> values, so crawlers "
+            "cannot tell which pages changed and re-fetch on a blind schedule instead of a freshness signal.",
             "crawlability", "low",
         ))
     if snapshot.robots_status != 200:
@@ -591,6 +878,10 @@ def run(context: dict[str, Any]) -> SkillResult:
          "passed": len(snapshot.pages) <= context.get("max_pages", MAX_PAGES),
          "value": snapshot.notes.get("stopped_because")},
         {"check": "max_crawl_depth", "value": snapshot.notes.get("max_depth_reached", 0)},
+        {"check": "robots_txt_read", "passed": bool(snapshot.robots_txt),
+         "value": snapshot.robots_status},
+        {"check": "sitemap_read", "passed": bool(snapshot.notes.get("sitemap_present")),
+         "value": f"{len(snapshot.sitemap_urls)} URLs / {len(snapshot.sitemap_sources)} documents"},
     ]
     result.runtime_seconds = time.monotonic() - started
     return result

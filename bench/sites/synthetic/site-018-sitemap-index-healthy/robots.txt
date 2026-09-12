@@ -1,0 +1,7 @@
+# Harborline Logistics - crawler policy
+User-agent: *
+Disallow: /cart
+Disallow: /account
+Allow: /
+
+Sitemap: http://localhost:9502/sitemap.xml

@@ -79,13 +79,55 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
         super().do_GET()
 
 
-def start_server():
-    """Start synthetic site server in background."""
-    server = http.server.HTTPServer(("127.0.0.1", PORT), QuietHandler)
-    thread = threading.Thread(target=server.serve_forever, daemon=True)
-    thread.start()
+class OriginHandler(http.server.SimpleHTTPRequestHandler):
+    """Serves one fixture at the *root* of its own origin.
+
+    Needed because robots.txt and sitemap.xml are origin-level documents: a
+    fixture served at /site-xxx/ shares /robots.txt with every other fixture, so
+    it could never carry a crawler policy of its own.  Content types come from
+    :mod:`mimetypes` exactly as they would from a real server - .txt as
+    text/plain, .xml as text/xml - which is the condition under test.
+    """
+
+    directory_for_origin = SYNTHETIC_SITES_DIR
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=self.directory_for_origin, **kwargs)
+
+    def log_message(self, *args):
+        pass
+
+
+def start_server(golds: dict[str, dict] | None = None):
+    """Start the shared synthetic server, plus one per own-origin fixture.
+
+    Returns ``(servers, origins)`` where ``origins`` maps site_id -> base URL for
+    the fixtures that needed an origin to themselves.
+    """
+    servers = [http.server.HTTPServer(("127.0.0.1", PORT), QuietHandler)]
+    origins: dict[str, str] = {}
+
+    for site_id, gold in sorted((golds or {}).items()):
+        if not gold.get("needs_own_origin"):
+            continue
+        port = int(gold.get("origin_port", 0))
+        site_dir = os.path.join(SYNTHETIC_SITES_DIR, site_id)
+        if not port or not os.path.isdir(site_dir):
+            print(f"  WARNING: {site_id} declares needs_own_origin but has no "
+                  f"origin_port or directory; skipping", file=sys.stderr)
+            continue
+        handler = type(f"Handler_{port}", (OriginHandler,), {"directory_for_origin": site_dir})
+        try:
+            servers.append(http.server.HTTPServer(("127.0.0.1", port), handler))
+        except OSError as exc:
+            print(f"  WARNING: cannot serve {site_id} on port {port}: {exc}", file=sys.stderr)
+            continue
+        origins[site_id] = f"http://localhost:{port}/"
+
+    for server in servers:
+        threading.Thread(target=server.serve_forever, daemon=True).start()
     time.sleep(0.3)
-    return server
+    return servers, origins
 
 
 # ---------------------------------------------------------------------------
@@ -113,9 +155,10 @@ def get_synthetic_sites() -> list[str]:
 # Run a single agent on a single site
 # ---------------------------------------------------------------------------
 
-def run_single(agent_name: str, site_id: str, gold: dict) -> dict[str, Any]:
+def run_single(agent_name: str, site_id: str, gold: dict,
+               origins: dict[str, str] | None = None) -> dict[str, Any]:
     """Run one agent on one site and score it."""
-    url = f"http://localhost:{PORT}/{site_id}/"
+    url = (origins or {}).get(site_id) or f"http://localhost:{PORT}/{site_id}/"
 
     # Import and run agent
     result = {
@@ -452,12 +495,14 @@ def main():
     parser.add_argument("--output", default=None, help="Save results JSON to file")
     args = parser.parse_args()
 
-    # Start server
-    print("Starting synthetic site server...")
-    server = start_server()
-
-    # Load gold standards
+    # Gold standards first: they declare which fixtures need their own origin.
     golds = load_gold_standards()
+
+    print("Starting synthetic site server...")
+    servers, origins = start_server(golds)
+    for site_id, base in sorted(origins.items()):
+        print(f"  {site_id} served at {base}")
+
     sites = get_synthetic_sites()
 
     if args.site:
@@ -485,7 +530,7 @@ def main():
             gold = golds.get(site_id, {"expected_findings": [], "max_acceptable_findings": 5})
 
             print(f"  {site_id}...", end=" ", flush=True)
-            result = run_single(agent, site_id, gold)
+            result = run_single(agent, site_id, gold, origins)
 
             if result.get("error"):
                 print(f"ERROR: {result['error'][:60]}")

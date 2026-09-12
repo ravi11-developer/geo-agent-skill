@@ -1,0 +1,17 @@
+# Northwind Instruments - crawler policy
+# Ordinary search crawlers are welcome; only private paths are closed.
+User-agent: *
+Disallow: /cart
+Disallow: /checkout
+Disallow: /account
+
+# Two user-agent lines sharing one rule block: valid per RFC 9309 s2.2.1,
+# and the shape a naive parser silently reads as "only ClaudeBot is blocked".
+User-agent: GPTBot
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+Sitemap: http://localhost:9501/sitemap.xml

@@ -45,14 +45,27 @@ finding quotes. Deterministic, dependency-free, and reproducible.
 `crawlability` fires only on hard, quotable barriers:
 
 - entry URL does not return HTTP 200 with an HTML body -> **critical**;
-- `robots.txt` disallows the audited path for `*` or a named AI agent (GPTBot,
-  ClaudeBot, PerplexityBot, Google-Extended, CCBot, ...) -> **high**;
+- `robots.txt` disallows the audited path for a known AI crawler -> **high**. Both
+  halves of each vendor's fleet are checked, because they fail differently: the
+  training crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot) decide whether a
+  brand is ever learned, while the query-time crawlers (OAI-SearchBot, ChatGPT-User,
+  Claude-SearchBot, PerplexityBot) decide whether it can be cited in an answer being
+  written right now. Blocking only the second set removes a brand from AI answers
+  while leaving ordinary search traffic untouched, which is why it is usually
+  unintentional;
 - `noindex` in a robots meta tag or `X-Robots-Tag` header on a content page -> **high**.
 
 ## Precision guards
 
 - A JS-populated element that **already** contains server-rendered text is not a gap.
-- A missing `robots.txt` or `sitemap.xml` is a *recommendation*, never a finding.
+- A missing `robots.txt` or `sitemap.xml` is a *recommendation*, never a finding, and
+  is only claimed once the server has actually answered - `snapshot.sitemap_checked`
+  separates "no sitemap" from "we never found out".
+- robots.txt group selection is most-specific-wins and `Allow` is honoured, so a site
+  that carves AI crawlers out of a blanket block is not reported as blocking them.
+- What this skill *obeys* is separate from what it *reports*: it honours only the rules
+  written for its own user agent, so a site that blocks GPTBot is still crawled and
+  reported as a robots defect rather than as an unreachable site.
 - Sub-page 404s are recorded in the snapshot (`broken_links`) and left for the
   report's telemetry; they are not reported as a crawlability defect, because a
   broken link is a link-hygiene issue, not a barrier to the audited document.
