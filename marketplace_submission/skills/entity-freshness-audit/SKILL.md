@@ -46,6 +46,11 @@ explicit prose patterns: "Welcome to X", an "About X" heading, "(formerly X)",
 - Names are counted only when they are variants **of the canonical name**. On a real
   multi-page site, sub-page titles ("Online Rent Agreement", "Scaling Render Services")
   are page topics, not competing company names.
+- Product/service sub-brands that extend the canonical with extra whole words
+  ("Google Maps", "Google Workspace", "Samsung Galaxy") are not counted as name variants,
+  so a mega-portal's product catalogue does not read as a naming conflict.
+- Wiki namespace routes ("Help:Contents", "Wikipedia:About") are recognised as MediaWiki
+  taxonomy addresses, not brand names, so the trailing site name is used instead.
 - Product names are never entity names, so a page with both Organization and
   SoftwareApplication schema stays clean.
 - A founding year ("founded in 2015") is a fact, not staleness.
