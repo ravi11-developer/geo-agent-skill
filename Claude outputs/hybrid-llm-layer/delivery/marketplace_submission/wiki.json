@@ -1,0 +1,403 @@
+{
+  "site": "https://en.wikipedia.org/wiki/Main_Page",
+  "audited_at": "2026-09-12T18:35:48.473645+00:00",
+  "agent": "marketplace",
+  "marketplace": {
+    "id": "ai-discoverability-marketplace",
+    "name": "AI Discoverability & Engagement Audit Marketplace",
+    "version": "1.1.0",
+    "entrypoint": "audit-orchestrator",
+    "skills_invoked": [
+      "crawl-render-audit",
+      "content-semantics-audit",
+      "entity-freshness-audit",
+      "engagement-audit",
+      "sentiment-engagement-audit"
+    ],
+    "read_only": true
+  },
+  "summary": {
+    "total_findings": 2,
+    "critical": 0,
+    "high": 2,
+    "medium": 0,
+    "low": 0,
+    "by_severity": {
+      "high": 2
+    },
+    "categories_flagged": [
+      "crawlability",
+      "entity_identity"
+    ],
+    "categories_clean": [
+      "content_extraction",
+      "engagement",
+      "freshness",
+      "non_text_facts",
+      "rendering",
+      "structured_data"
+    ],
+    "health_score": 56,
+    "top_priority": "Indexable content is marked noindex",
+    "pages_crawled": 12,
+    "pages_retrievable": 12,
+    "recommendation_count": 8,
+    "runtime_seconds": 6.953
+  },
+  "findings": [
+    {
+      "id": "MKT-CRAWL-01",
+      "title": "Indexable content is marked noindex",
+      "category": "crawlability",
+      "_category": "crawlability",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": "2 pages of 12 carry a noindex directive, e.g. https://en.wikipedia.org/wiki/Special:RecentChanges (HTTP 200) with robots=\"noindex,nofollow,max-image-preview:standard\" while still serving 15479 characters (2056 words) of business content.",
+      "locations": [
+        "https://en.wikipedia.org/wiki/Special:RecentChanges",
+        "https://en.wikipedia.org/wiki/Special:SpecialPages"
+      ],
+      "proof": {
+        "noindex_pages": 2
+      },
+      "suggested_action": {
+        "summary": "Remove the noindex meta tag and X-Robots-Tag header from public HTML pages that carry product, pricing or company facts, keeping the Organization JSON-LD structured data in place, and reserve noindex for staging, search-result and duplicate URLs, so those pages stay machine-readable and AI systems can extract and cite them.",
+        "priority": "high",
+        "mechanism": "noindex tells retrieval systems to discard the document after fetching it, so the facts never reach the index an assistant answers from."
+      },
+      "detected_by": "crawl-render-audit",
+      "rank": 1
+    },
+    {
+      "id": "MKT-ENTITY-02",
+      "title": "The organisation is referred to by several conflicting names",
+      "category": "entity_identity",
+      "_category": "entity_identity",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": "Scanned 178578 characters of extractable text across 12 crawled pages from https://en.wikipedia.org/wiki/Main_Page (HTTP 200): 8 spellings of the same organisation occupy the identity slots: \"Wikipedia:Contents\" (h1, og:title, title); \"Help:Contents\" (h1, og:title, title); \"Wikipedia\" (body 'Welcome to'); \"Wikipedia:About\" (h1, og:title, title); \"Wikipedia:Community portal\" (h1, og:title, title); \"Wikipedia:Contact us\" (h1, og:title, title). \"Wikipedia:Contents\" and \"Wikipedia:Contact us\" are 85% string-similar, i.e. variants of one another rather than separate companies, and 7 such near-duplicate pairs were measured in total.",
+      "locations": [
+        "https://en.wikipedia.org/wiki/Help:Contents",
+        "https://en.wikipedia.org/wiki/Help:Introduction",
+        "https://en.wikipedia.org/wiki/Main_Page"
+      ],
+      "proof": {
+        "canonical": "wikipedia contents",
+        "variant_count": 8,
+        "names": [
+          "Wikipedia:Contents",
+          "Help:Contents",
+          "Wikipedia",
+          "Wikipedia:About",
+          "Wikipedia:Community portal",
+          "Wikipedia:Contact us",
+          "Wikipedia:File upload wizard",
+          "Wikipedia, the free encyclopedia"
+        ],
+        "variant_pairs": [
+          [
+            "wikipedia contents",
+            "wikipedia contact us",
+            0.857
+          ],
+          [
+            "wikipedia contents",
+            "wikipedia about",
+            0.71
+          ],
+          [
+            "wikipedia contents",
+            "wikipedia",
+            0.692
+          ],
+          [
+            "wikipedia contents",
+            "wikipedia community portal",
+            0.683
+          ],
+          [
+            "wikipedia contents",
+            "help contents",
+            0.621
+          ]
+        ]
+      },
+      "suggested_action": {
+        "summary": "Pick one canonical legal name and use it verbatim in the <title>, <h1>, footer copyright and the JSON-LD Organization `name` property on every HTML page, demoting every other spelling to `alternateName` in that same Organization block, and add `sameAs` links to the company's LinkedIn and Crunchbase profiles. One machine-readable name lets AI systems and crawlers resolve every page to a single entity they can trust, extract and cite.",
+        "priority": "high",
+        "mechanism": "Assistants resolve a page to an entity before they cite it. Competing names split the evidence across several weak candidate entities, so the brand is described vaguely, attributed to the wrong name, or dropped from the answer."
+      },
+      "detected_by": "entity-freshness-audit",
+      "rank": 2
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Extend structured data to Product/Offer nodes",
+      "detail": "Organization schema is present but individual products and prices are not modelled. Adding Product with an Offer (price, priceCurrency, availability) lets assistants quote your pricing with attribution instead of paraphrasing a table.",
+      "category": "structured_data",
+      "effort": "medium"
+    },
+    {
+      "title": "Update JSON-LD to carry the canonical name and list variants as alternateName",
+      "detail": "Keep exactly one `name` in the Organization block and move every retired spelling to `alternateName`, so historical references still resolve to the same entity instead of competing with it.",
+      "category": "entity_identity",
+      "effort": "medium"
+    },
+    {
+      "title": "Assert indexability in CI for public templates",
+      "detail": "A noindex directive that reaches production removes a page from every index silently. A build-time check that public templates never emit noindex (and a weekly crawl that asserts it) keeps this from recurring after the immediate fix.",
+      "category": "crawlability",
+      "effort": "low"
+    },
+    {
+      "title": "Publish an XML sitemap with lastmod dates",
+      "detail": "No /sitemap.xml was served. A sitemap with accurate <lastmod> values gives crawlers a cheap freshness signal and a complete URL inventory, which improves how quickly new facts are picked up.",
+      "category": "crawlability",
+      "effort": "low"
+    },
+    {
+      "title": "Add Organization schema alongside the existing structured data",
+      "detail": "Structured data is present (Article, mw:Entity, mw:ExpandedAttrs, mw:Extension/indicator, mw:Extension/indicator mw:Transclusion) but no Organization/LocalBusiness node was found. Organization markup is what ties products, reviews and articles to a single citable entity.",
+      "category": "structured_data",
+      "effort": "low"
+    },
+    {
+      "title": "Validate structured data in CI so a syntax error cannot ship",
+      "detail": "The site already relies on JSON-LD, so a single malformed block silently removes every machine-readable fact on that page. Add a schema validation step to the build (a JSON parse plus a schema.org type check) to keep the markup trustworthy.",
+      "category": "structured_data",
+      "effort": "low"
+    },
+    {
+      "title": "Add FAQPage schema for the questions buyers actually ask",
+      "detail": "FAQ structured data is the cheapest way to get exact question/answer pairs into AI answers, and it reuses copy you already have on product and support pages.",
+      "category": "structured_data",
+      "effort": "low"
+    },
+    {
+      "title": "Corroborate the canonical company name off-site",
+      "detail": "Add `sameAs` links to LinkedIn, Crunchbase and Wikidata, and use the identical spelling in those profiles. External agreement is what lets an AI system trust that the variants are one company.",
+      "category": "entity_identity",
+      "effort": "low"
+    }
+  ],
+  "coverage": {
+    "crawlability": "flagged",
+    "rendering": "clean",
+    "content_extraction": "clean",
+    "structured_data": "clean",
+    "non_text_facts": "clean",
+    "freshness": "clean",
+    "entity_identity": "flagged",
+    "engagement": "clean"
+  },
+  "checks_performed": [
+    {
+      "skill": "crawl-render-audit",
+      "check": "entry_url_retrievable",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "robots_allows_ai_agents",
+      "passed": false
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "content_present_without_javascript",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "pages_crawled",
+      "value": 12,
+      "value_ok": 12
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "crawl_budget_respected",
+      "passed": true,
+      "value": "page_limit"
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "max_crawl_depth",
+      "value": 1
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "structured_data_present",
+      "passed": true
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "facts_extractable_as_text",
+      "passed": true,
+      "value": 3
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "no_image_only_facts",
+      "passed": true
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "fact_families_covered",
+      "value": {
+        "pricing": false,
+        "contact": true,
+        "company_facts": true,
+        "product_detail": true
+      }
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "single_canonical_entity_name",
+      "passed": false,
+      "value": 8,
+      "canonical": "wikipedia contents"
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "content_is_current",
+      "passed": true,
+      "value": 58
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "navigation_landmarks_present",
+      "passed": true,
+      "value": 9
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "internal_links_present",
+      "value": 153
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "breadcrumbs_present",
+      "value": false
+    },
+    {
+      "skill": "sentiment-engagement-audit",
+      "check": "semantic_analysis_performed",
+      "passed": true,
+      "value": "disabled"
+    }
+  ],
+  "telemetry": {
+    "skills": [
+      {
+        "skill": "crawl-render-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 1,
+        "recommendations": 2,
+        "runtime_seconds": 6.282,
+        "provides": [
+          "crawlability",
+          "rendering"
+        ]
+      },
+      {
+        "skill": "content-semantics-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 4,
+        "runtime_seconds": 0.281,
+        "provides": [
+          "content_extraction",
+          "structured_data",
+          "non_text_facts"
+        ]
+      },
+      {
+        "skill": "entity-freshness-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 1,
+        "recommendations": 3,
+        "runtime_seconds": 0.078,
+        "provides": [
+          "entity_identity",
+          "freshness"
+        ]
+      },
+      {
+        "skill": "engagement-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 2,
+        "runtime_seconds": 0.25,
+        "provides": [
+          "engagement"
+        ]
+      },
+      {
+        "skill": "sentiment-engagement-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 0,
+        "runtime_seconds": 0.0,
+        "provides": [
+          "engagement_sentiment"
+        ]
+      }
+    ],
+    "runtime_seconds": 6.953,
+    "pages_fetched": 12,
+    "broken_links": []
+  },
+  "audit_health": {
+    "status": "complete",
+    "pages_discovered": 12,
+    "pages_requested": 12,
+    "pages_analyzed": 12,
+    "semantic_pages_analyzed": 0,
+    "llm_mode": "off",
+    "llm_status": "disabled",
+    "fallbacks_used": [],
+    "warnings": [],
+    "errors": [],
+    "elapsed_seconds": 6.953
+  },
+  "llm": {
+    "mode": "off",
+    "status": "disabled",
+    "provider": "anthropic",
+    "model": null,
+    "prompt_version": "1.0.0",
+    "schema_version": "1.0.0",
+    "taxonomy_version": "1.0.0",
+    "snapshot_id": null,
+    "calls": 0,
+    "errors": 0,
+    "repairs": 0,
+    "rejections": 0,
+    "abstentions": 0,
+    "promotions": 0,
+    "enrichments": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "elapsed_seconds": 6.891,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "writes": 0,
+      "errors": 0,
+      "hit_rate": 0.0
+    },
+    "fallbacks_used": [],
+    "warnings": [],
+    "call_log": []
+  }
+}

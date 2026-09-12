@@ -1,0 +1,365 @@
+{
+  "site": "https://example.com",
+  "audited_at": "2026-09-12T18:33:50.812883+00:00",
+  "agent": "marketplace",
+  "marketplace": {
+    "id": "ai-discoverability-marketplace",
+    "name": "AI Discoverability & Engagement Audit Marketplace",
+    "version": "1.1.0",
+    "entrypoint": "audit-orchestrator",
+    "skills_invoked": [
+      "crawl-render-audit",
+      "content-semantics-audit",
+      "entity-freshness-audit",
+      "engagement-audit",
+      "sentiment-engagement-audit"
+    ],
+    "read_only": true
+  },
+  "summary": {
+    "total_findings": 2,
+    "critical": 0,
+    "high": 1,
+    "medium": 1,
+    "low": 0,
+    "by_severity": {
+      "high": 1,
+      "medium": 1
+    },
+    "categories_flagged": [
+      "engagement",
+      "structured_data"
+    ],
+    "categories_clean": [
+      "content_extraction",
+      "crawlability",
+      "entity_identity",
+      "freshness",
+      "non_text_facts",
+      "rendering"
+    ],
+    "health_score": 67,
+    "top_priority": "The site offers no navigation or internal linking for orientation",
+    "pages_crawled": 1,
+    "pages_retrievable": 1,
+    "recommendation_count": 8,
+    "runtime_seconds": 0.953
+  },
+  "findings": [
+    {
+      "id": "MKT-ENGAGE-01",
+      "title": "The site offers no navigation or internal linking for orientation",
+      "category": "engagement",
+      "_category": "engagement",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": "https://example.com (HTTP 200) serves 142 characters of content but contains 0 <nav> landmarks, 0 internal links and 1 external links; header/footer/breadcrumb landmarks present: 0 of 3. The same pattern holds on 1 of 1 measurable pages, so every page is a dead end for a visitor who arrives from a search result or an AI citation.",
+      "locations": [
+        "https://example.com"
+      ],
+      "proof": {
+        "pages_without_navigation": 1,
+        "pages_checked": 1
+      },
+      "suggested_action": {
+        "summary": "Add a persistent header <nav> linking Home, About, Products, Pricing and Contact on every HTML page, a footer with the same site-wide links plus policy pages, and breadcrumbs marked up as machine-readable BreadcrumbList JSON-LD on sub-pages. Cross-link related products and articles in body copy so visitors and AI crawlers can discover, extract and cite the rest of the site from any entry point.",
+        "priority": "high",
+        "mechanism": "Internal links are how crawlers discover pages and how AI systems infer site structure and topical relationships; without them each page is an isolated document, and a visitor who lands mid-site has no path to a conversion step."
+      },
+      "detected_by": "engagement-audit",
+      "rank": 1
+    },
+    {
+      "id": "MKT-SCHEMA-02",
+      "title": "No machine-readable structured data (JSON-LD, microdata or RDFa) anywhere on the site",
+      "category": "structured_data",
+      "_category": "structured_data",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": "0 of 1 crawled pages expose structured data: https://example.com (HTTP 200) serves 142 characters (21 words) of organisation, product and contact information in prose but contains 0 application/ld+json blocks and 0 itemtype/typeof attributes.",
+      "locations": [
+        "https://example.com"
+      ],
+      "proof": {
+        "pages_checked": 1,
+        "pages_with_schema": 0
+      },
+      "suggested_action": {
+        "summary": "Add an Organization JSON-LD block in the HTML <head> of every page (name, url, logo, description, address, contactPoint, sameAs) and Product/Offer JSON-LD next to each product section, so the facts that are currently prose-only become machine-readable and AI systems can extract and cite them as attributed entity data instead of inferring them from the copy.",
+        "priority": "medium",
+        "mechanism": "Schema.org markup is the one channel where a site states its own facts unambiguously; without it every extraction is an inference that an assistant may decline to cite."
+      },
+      "detected_by": "content-semantics-audit",
+      "rank": 2
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Add the rest of the metadata layer alongside the schema",
+      "detail": "https://example.com exposes no canonical URL, no OpenGraph tags and no usable meta description either. Adding a canonical link and OpenGraph tags alongside the Organization JSON-LD makes the page unambiguous for crawlers, previews and assistants at the same time.",
+      "category": "structured_data",
+      "effort": "medium"
+    },
+    {
+      "title": "Add Product structured data for individual products after the Organization block",
+      "detail": "Once Organization JSON-LD exists, model each individual product with Product and an Offer (price, priceCurrency, availability). That is what lets an assistant quote your pricing per product with attribution instead of paraphrasing a page.",
+      "category": "structured_data",
+      "effort": "medium"
+    },
+    {
+      "title": "Add internal links between related content pages",
+      "detail": "Beyond the menu, link products to their pricing and documentation from inside the body copy. The internal link graph is how crawlers discover pages and how AI systems infer which topics belong together.",
+      "category": "engagement",
+      "effort": "medium"
+    },
+    {
+      "title": "Publish an XML sitemap with lastmod dates",
+      "detail": "No /sitemap.xml was served. A sitemap with accurate <lastmod> values gives crawlers a cheap freshness signal and a complete URL inventory, which improves how quickly new facts are picked up.",
+      "category": "crawlability",
+      "effort": "low"
+    },
+    {
+      "title": "Add an explicit robots.txt that names AI user agents",
+      "detail": "No robots.txt was served. An explicit allow-list for GPTBot, ClaudeBot, PerplexityBot and Google-Extended documents your intent and prevents defensive bot rules from silently blocking assistants.",
+      "category": "crawlability",
+      "effort": "low"
+    },
+    {
+      "title": "Add FAQPage structured data for the questions buyers ask",
+      "detail": "FAQ structured data turns copy you already have into exact question/answer pairs that AI answers can lift verbatim, and it is the cheapest schema to add after Organization and Product.",
+      "category": "structured_data",
+      "effort": "low"
+    },
+    {
+      "title": "Add breadcrumb navigation for user and bot orientation",
+      "detail": "Breadcrumbs marked up as BreadcrumbList tell a visitor who arrived from an AI citation where they are, and give crawlers an explicit hierarchy to follow.",
+      "category": "engagement",
+      "effort": "low"
+    },
+    {
+      "title": "Add `sameAs` links to social profiles in Organization JSON-LD",
+      "detail": "Even if your site is otherwise healthy, adding `sameAs` links to your LinkedIn, Crunchbase, and Twitter profiles inside your Organization JSON-LD explicitly binds those distinct sources together into one entity graph. AI assistants heavily rely on this to merge facts from different domains into a single confident answer.",
+      "category": "entity_identity",
+      "effort": "low"
+    }
+  ],
+  "coverage": {
+    "crawlability": "clean",
+    "rendering": "clean",
+    "content_extraction": "clean",
+    "structured_data": "flagged",
+    "non_text_facts": "clean",
+    "freshness": "clean",
+    "entity_identity": "clean",
+    "engagement": "flagged"
+  },
+  "checks_performed": [
+    {
+      "skill": "crawl-render-audit",
+      "check": "entry_url_retrievable",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "robots_allows_ai_agents",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "content_present_without_javascript",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "pages_crawled",
+      "value": 1,
+      "value_ok": 1
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "crawl_budget_respected",
+      "passed": true,
+      "value": "queue_exhausted"
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "max_crawl_depth",
+      "value": 0
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "structured_data_present",
+      "passed": false
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "facts_extractable_as_text",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "no_image_only_facts",
+      "passed": true
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "fact_families_covered",
+      "value": {
+        "pricing": false,
+        "contact": false,
+        "company_facts": false,
+        "product_detail": false
+      }
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "single_canonical_entity_name",
+      "passed": true,
+      "value": 1,
+      "canonical": "example domain"
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "content_is_current",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "navigation_landmarks_present",
+      "passed": false,
+      "value": 0
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "internal_links_present",
+      "value": 0
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "breadcrumbs_present",
+      "value": false
+    },
+    {
+      "skill": "sentiment-engagement-audit",
+      "check": "semantic_analysis_performed",
+      "passed": true,
+      "value": "disabled"
+    }
+  ],
+  "telemetry": {
+    "skills": [
+      {
+        "skill": "crawl-render-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 2,
+        "runtime_seconds": 0.797,
+        "provides": [
+          "crawlability",
+          "rendering"
+        ]
+      },
+      {
+        "skill": "content-semantics-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 1,
+        "recommendations": 3,
+        "runtime_seconds": 0.0,
+        "provides": [
+          "content_extraction",
+          "structured_data",
+          "non_text_facts"
+        ]
+      },
+      {
+        "skill": "entity-freshness-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 0,
+        "runtime_seconds": 0.0,
+        "provides": [
+          "entity_identity",
+          "freshness"
+        ]
+      },
+      {
+        "skill": "engagement-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 1,
+        "recommendations": 2,
+        "runtime_seconds": 0.0,
+        "provides": [
+          "engagement"
+        ]
+      },
+      {
+        "skill": "sentiment-engagement-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 0,
+        "runtime_seconds": 0.0,
+        "provides": [
+          "engagement_sentiment"
+        ]
+      }
+    ],
+    "runtime_seconds": 0.953,
+    "pages_fetched": 1,
+    "broken_links": []
+  },
+  "audit_health": {
+    "status": "complete",
+    "pages_discovered": 1,
+    "pages_requested": 12,
+    "pages_analyzed": 1,
+    "semantic_pages_analyzed": 0,
+    "llm_mode": "off",
+    "llm_status": "disabled",
+    "fallbacks_used": [],
+    "warnings": [],
+    "errors": [],
+    "elapsed_seconds": 0.953
+  },
+  "llm": {
+    "mode": "off",
+    "status": "disabled",
+    "provider": "anthropic",
+    "model": null,
+    "prompt_version": "1.0.0",
+    "schema_version": "1.0.0",
+    "taxonomy_version": "1.0.0",
+    "snapshot_id": null,
+    "calls": 0,
+    "errors": 0,
+    "repairs": 0,
+    "rejections": 0,
+    "abstentions": 0,
+    "promotions": 0,
+    "enrichments": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "elapsed_seconds": 0.797,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "writes": 0,
+      "errors": 0,
+      "hit_rate": 0.0
+    },
+    "fallbacks_used": [],
+    "warnings": [],
+    "call_log": []
+  }
+}
