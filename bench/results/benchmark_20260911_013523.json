@@ -1,0 +1,1115 @@
+{
+  "timestamp": "2026-09-10T20:05:23.066601+00:00",
+  "agents": [
+    "vishal"
+  ],
+  "sites": [
+    "site-001-healthy",
+    "site-002-no-schema",
+    "site-003-js-only-facts",
+    "site-004-image-only-facts",
+    "site-005-entity-conflict",
+    "site-006-stale-facts",
+    "site-007-poor-navigation",
+    "site-008-mixed-faults",
+    "site-009-weird-but-healthy",
+    "site-010-seo-noise",
+    "site-011-multipage-healthy",
+    "site-012-spa-shell",
+    "site-013-invalid-schema",
+    "site-014-subpage-entity-drift",
+    "site-015-image-nav-faults",
+    "site-016-noindex-block"
+  ],
+  "leaderboard": {
+    "vishal": {
+      "sites_tested": 16,
+      "sites_failed": 0,
+      "dev_sites": 10,
+      "holdout_sites": 6,
+      "detection": {
+        "tp": 4,
+        "fp": 1,
+        "fn": 10,
+        "precision": 0.8,
+        "recall": 0.2857,
+        "f1": 0.4211
+      },
+      "holdout_detection_f1": 0.5,
+      "false_positive_score": 1.0,
+      "evidence_score": 0.3542,
+      "action_score": 0.3542,
+      "severity_score": 0.625,
+      "proactive_score": 0.0,
+      "generalization_score": 0.5,
+      "schema_score": 1.0,
+      "runtime_score": 1.0,
+      "avg_runtime_seconds": 0.15,
+      "overall": 49.6,
+      "overall_legacy": 45.1
+    }
+  },
+  "detailed_results": {
+    "vishal": [
+      {
+        "agent": "vishal",
+        "site": "site-001-healthy",
+        "url": "http://localhost:9500/site-001-healthy/",
+        "runtime_seconds": 0.18,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": 0.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "vishal",
+        "site": "site-002-no-schema",
+        "url": "http://localhost:9500/site-002-no-schema/",
+        "runtime_seconds": 0.16,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "structured_data"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "structured_data",
+                "gold": {
+                  "category": "structured_data",
+                  "description": "No structured data (JSON-LD) present despite having organization/product information that should be machine-readable",
+                  "severity": "medium"
+                },
+                "agent": {
+                  "id": "DATA-001",
+                  "title": "Missing JSON-LD",
+                  "category": "structured_data",
+                  "original_category": "structured_data",
+                  "severity": "high",
+                  "evidence": "No Organization or Product schema found.",
+                  "suggested_action": {
+                    "summary": "Add JSON-LD.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              1
+            ],
+            "average": 1.0,
+            "normalized": 0.25
+          },
+          "actions": {
+            "scores": [
+              2
+            ],
+            "average": 2.0,
+            "normalized": 0.5
+          },
+          "severity": {
+            "scores": [
+              0.5
+            ],
+            "average": 0.5
+          },
+          "proactive": 0.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "vishal",
+        "site": "site-003-js-only-facts",
+        "url": "http://localhost:9500/site-003-js-only-facts/",
+        "runtime_seconds": 0.16,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [
+              "content_extraction",
+              "rendering"
+            ],
+            "matches": [],
+            "false_positives": [],
+            "missed": [
+              {
+                "category": "content_extraction",
+                "gold_finding": {
+                  "category": "content_extraction",
+                  "description": "Key facts about products, pricing, and company are not accessible to non-rendering crawlers",
+                  "severity": "high"
+                }
+              },
+              {
+                "category": "rendering",
+                "gold_finding": {
+                  "category": "rendering",
+                  "description": "Important business content (products, pricing, company facts) is unavailable in raw HTML and only appears after client-side JavaScript execution",
+                  "severity": "high"
+                }
+              }
+            ]
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": 0.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "vishal",
+        "site": "site-004-image-only-facts",
+        "url": "http://localhost:9500/site-004-image-only-facts/",
+        "runtime_seconds": 0.15,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [
+              "content_extraction",
+              "non_text_facts"
+            ],
+            "matches": [],
+            "false_positives": [],
+            "missed": [
+              {
+                "category": "content_extraction",
+                "gold_finding": {
+                  "category": "content_extraction",
+                  "description": "Critical business facts cannot be extracted by text-based crawlers because they are embedded in images",
+                  "severity": "high"
+                }
+              },
+              {
+                "category": "non_text_facts",
+                "gold_finding": {
+                  "category": "non_text_facts",
+                  "description": "Important business information (products, pricing, features, contact details) exists only in images without text equivalents",
+                  "severity": "high"
+                }
+              }
+            ]
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": 0.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "vishal",
+        "site": "site-005-entity-conflict",
+        "url": "http://localhost:9500/site-005-entity-conflict/",
+        "runtime_seconds": 0.16,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [
+              "entity_identity"
+            ],
+            "matches": [],
+            "false_positives": [],
+            "missed": [
+              {
+                "category": "entity_identity",
+                "gold_finding": {
+                  "category": "entity_identity",
+                  "description": "Company is referred to by multiple conflicting names, creating entity ambiguity that would confuse AI systems trying to identify and cite the brand",
+                  "severity": "high"
+                }
+              }
+            ]
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": 0.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "vishal",
+        "site": "site-006-stale-facts",
+        "url": "http://localhost:9500/site-006-stale-facts/",
+        "runtime_seconds": 0.14,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [
+              "freshness"
+            ],
+            "matches": [],
+            "false_positives": [],
+            "missed": [
+              {
+                "category": "freshness",
+                "gold_finding": {
+                  "category": "freshness",
+                  "description": "Content is significantly outdated - pricing, awards, statistics, team information, and press releases are all from 2018-2021 with no recent updates",
+                  "severity": "high"
+                }
+              }
+            ]
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": 0.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "vishal",
+        "site": "site-007-poor-navigation",
+        "url": "http://localhost:9500/site-007-poor-navigation/",
+        "runtime_seconds": 0.13,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6667,
+            "tp_categories": [
+              "engagement"
+            ],
+            "fp_categories": [
+              "structured_data"
+            ],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "engagement",
+                "gold": {
+                  "category": "engagement",
+                  "description": "No navigation structure - site lacks nav elements, internal links, header/footer, breadcrumbs. Users and AI systems cannot discover related content or understand site structure.",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "NAV-001",
+                  "title": "Poor Navigation",
+                  "category": "engagement",
+                  "original_category": "engagement",
+                  "severity": "medium",
+                  "evidence": "No <nav> tags found in HTML.",
+                  "suggested_action": {
+                    "summary": "Use semantic <nav> tags.",
+                    "priority": "medium"
+                  }
+                }
+              }
+            ],
+            "false_positives": [
+              {
+                "category": "structured_data",
+                "agent_finding": {
+                  "id": "DATA-001",
+                  "title": "Missing JSON-LD",
+                  "category": "structured_data",
+                  "original_category": "structured_data",
+                  "severity": "high",
+                  "evidence": "No Organization or Product schema found.",
+                  "suggested_action": {
+                    "summary": "Add JSON-LD.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              2
+            ],
+            "average": 2.0,
+            "normalized": 0.5
+          },
+          "actions": {
+            "scores": [
+              1
+            ],
+            "average": 1.0,
+            "normalized": 0.25
+          },
+          "severity": {
+            "scores": [
+              0.5
+            ],
+            "average": 0.5
+          },
+          "proactive": 0.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "vishal",
+        "site": "site-008-mixed-faults",
+        "url": "http://localhost:9500/site-008-mixed-faults/",
+        "runtime_seconds": 0.14,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 4,
+            "precision": 1.0,
+            "recall": 0.3333,
+            "f1": 0.5,
+            "tp_categories": [
+              "engagement",
+              "structured_data"
+            ],
+            "fp_categories": [],
+            "fn_categories": [
+              "entity_identity",
+              "freshness",
+              "non_text_facts",
+              "rendering"
+            ],
+            "matches": [
+              {
+                "category": "engagement",
+                "gold": {
+                  "category": "engagement",
+                  "description": "No navigation structure for user or bot orientation",
+                  "severity": "medium"
+                },
+                "agent": {
+                  "id": "NAV-001",
+                  "title": "Poor Navigation",
+                  "category": "engagement",
+                  "original_category": "engagement",
+                  "severity": "medium",
+                  "evidence": "No <nav> tags found in HTML.",
+                  "suggested_action": {
+                    "summary": "Use semantic <nav> tags.",
+                    "priority": "medium"
+                  }
+                }
+              },
+              {
+                "category": "structured_data",
+                "gold": {
+                  "category": "structured_data",
+                  "description": "No structured data present despite having organization and product information",
+                  "severity": "medium"
+                },
+                "agent": {
+                  "id": "DATA-001",
+                  "title": "Missing JSON-LD",
+                  "category": "structured_data",
+                  "original_category": "structured_data",
+                  "severity": "high",
+                  "evidence": "No Organization or Product schema found.",
+                  "suggested_action": {
+                    "summary": "Add JSON-LD.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": [
+              {
+                "category": "entity_identity",
+                "gold_finding": {
+                  "category": "entity_identity",
+                  "description": "Company referred to by multiple conflicting names (CloudPeak Technologies, Cloud Peak Tech, CloudPeak Solutions, CP Technologies, PeakCloud Inc.)",
+                  "severity": "high"
+                }
+              },
+              {
+                "category": "freshness",
+                "gold_finding": {
+                  "category": "freshness",
+                  "description": "Awards and industry data from 2018-2019, copyright year 2020",
+                  "severity": "medium"
+                }
+              },
+              {
+                "category": "non_text_facts",
+                "gold_finding": {
+                  "category": "non_text_facts",
+                  "description": "Customer results and partnership information locked in images without text equivalents",
+                  "severity": "medium"
+                }
+              },
+              {
+                "category": "rendering",
+                "gold_finding": {
+                  "category": "rendering",
+                  "description": "Product and pricing information only available via client-side JavaScript",
+                  "severity": "high"
+                }
+              }
+            ]
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              2,
+              1
+            ],
+            "average": 1.5,
+            "normalized": 0.375
+          },
+          "actions": {
+            "scores": [
+              1,
+              2
+            ],
+            "average": 1.5,
+            "normalized": 0.375
+          },
+          "severity": {
+            "scores": [
+              1.0,
+              0.5
+            ],
+            "average": 0.75
+          },
+          "proactive": null,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "vishal",
+        "site": "site-009-weird-but-healthy",
+        "url": "http://localhost:9500/site-009-weird-but-healthy/",
+        "runtime_seconds": 0.14,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": null,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "vishal",
+        "site": "site-010-seo-noise",
+        "url": "http://localhost:9500/site-010-seo-noise/",
+        "runtime_seconds": 0.16,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": null,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "vishal",
+        "site": "site-011-multipage-healthy",
+        "url": "http://localhost:9500/site-011-multipage-healthy/",
+        "runtime_seconds": 0.15,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": 0.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": true
+      },
+      {
+        "agent": "vishal",
+        "site": "site-012-spa-shell",
+        "url": "http://localhost:9500/site-012-spa-shell/",
+        "runtime_seconds": 0.13,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.5,
+            "recall": 0.5,
+            "f1": 0.5,
+            "tp_categories": [
+              "rendering"
+            ],
+            "fp_categories": [
+              "engagement"
+            ],
+            "fn_categories": [
+              "content_extraction"
+            ],
+            "matches": [
+              {
+                "category": "rendering",
+                "gold": {
+                  "category": "rendering",
+                  "description": "Empty framework root; all content injected client-side",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "REND-001",
+                  "title": "JS Render Gap",
+                  "category": "rendering",
+                  "original_category": "rendering",
+                  "severity": "critical",
+                  "evidence": "Very low word count (5) in initial HTML.",
+                  "suggested_action": {
+                    "summary": "Implement SSR.",
+                    "priority": "critical"
+                  }
+                }
+              }
+            ],
+            "false_positives": [
+              {
+                "category": "engagement",
+                "agent_finding": {
+                  "id": "NAV-001",
+                  "title": "Poor Navigation",
+                  "category": "engagement",
+                  "original_category": "engagement",
+                  "severity": "medium",
+                  "evidence": "No <nav> tags found in HTML.",
+                  "suggested_action": {
+                    "summary": "Use semantic <nav> tags.",
+                    "priority": "medium"
+                  }
+                }
+              }
+            ],
+            "missed": [
+              {
+                "category": "content_extraction",
+                "gold_finding": {
+                  "category": "content_extraction",
+                  "description": "Raw HTML yields no business facts at all",
+                  "severity": "high"
+                }
+              }
+            ]
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              1
+            ],
+            "average": 1.0,
+            "normalized": 0.25
+          },
+          "actions": {
+            "scores": [
+              1
+            ],
+            "average": 1.0,
+            "normalized": 0.25
+          },
+          "severity": {
+            "scores": [
+              0.5
+            ],
+            "average": 0.5
+          },
+          "proactive": 0.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": true
+      },
+      {
+        "agent": "vishal",
+        "site": "site-013-invalid-schema",
+        "url": "http://localhost:9500/site-013-invalid-schema/",
+        "runtime_seconds": 0.14,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "structured_data"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "structured_data",
+                "gold": {
+                  "category": "structured_data",
+                  "description": "JSON-LD present but syntactically invalid, so it is discarded by consumers",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "DATA-001",
+                  "title": "Missing JSON-LD",
+                  "category": "structured_data",
+                  "original_category": "structured_data",
+                  "severity": "high",
+                  "evidence": "No Organization or Product schema found.",
+                  "suggested_action": {
+                    "summary": "Add JSON-LD.",
+                    "priority": "high"
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              1
+            ],
+            "average": 1.0,
+            "normalized": 0.25
+          },
+          "actions": {
+            "scores": [
+              2
+            ],
+            "average": 2.0,
+            "normalized": 0.5
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": 0.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": true
+      },
+      {
+        "agent": "vishal",
+        "site": "site-014-subpage-entity-drift",
+        "url": "http://localhost:9500/site-014-subpage-entity-drift/",
+        "runtime_seconds": 0.14,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [
+              "entity_identity",
+              "freshness"
+            ],
+            "matches": [],
+            "false_positives": [],
+            "missed": [
+              {
+                "category": "entity_identity",
+                "gold_finding": {
+                  "category": "entity_identity",
+                  "description": "Helios Robotics / Helios Robotic Systems / Helios Systems Group / HelioBotics across pages",
+                  "severity": "high"
+                }
+              },
+              {
+                "category": "freshness",
+                "gold_finding": {
+                  "category": "freshness",
+                  "description": "News page awards, press and market data from 2019-2021 with a 2019 copyright",
+                  "severity": "medium"
+                }
+              }
+            ]
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": 0.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": true
+      },
+      {
+        "agent": "vishal",
+        "site": "site-015-image-nav-faults",
+        "url": "http://localhost:9500/site-015-image-nav-faults/",
+        "runtime_seconds": 0.13,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6667,
+            "tp_categories": [
+              "engagement"
+            ],
+            "fp_categories": [],
+            "fn_categories": [
+              "non_text_facts"
+            ],
+            "matches": [
+              {
+                "category": "engagement",
+                "gold": {
+                  "category": "engagement",
+                  "description": "No navigation, header, footer or internal links",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "NAV-001",
+                  "title": "Poor Navigation",
+                  "category": "engagement",
+                  "original_category": "engagement",
+                  "severity": "medium",
+                  "evidence": "No <nav> tags found in HTML.",
+                  "suggested_action": {
+                    "summary": "Use semantic <nav> tags.",
+                    "priority": "medium"
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": [
+              {
+                "category": "non_text_facts",
+                "gold_finding": {
+                  "category": "non_text_facts",
+                  "description": "Capabilities, pricing, audit results and facility data exist only inside images",
+                  "severity": "high"
+                }
+              }
+            ]
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              2
+            ],
+            "average": 2.0,
+            "normalized": 0.5
+          },
+          "actions": {
+            "scores": [
+              1
+            ],
+            "average": 1.0,
+            "normalized": 0.25
+          },
+          "severity": {
+            "scores": [
+              0.5
+            ],
+            "average": 0.5
+          },
+          "proactive": 0.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": true
+      },
+      {
+        "agent": "vishal",
+        "site": "site-016-noindex-block",
+        "url": "http://localhost:9500/site-016-noindex-block/",
+        "runtime_seconds": 0.15,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [
+              "crawlability"
+            ],
+            "matches": [],
+            "false_positives": [],
+            "missed": [
+              {
+                "category": "crawlability",
+                "gold_finding": {
+                  "category": "crawlability",
+                  "description": "Public content page carries a noindex directive, so retrieval systems discard it after fetching",
+                  "severity": "high"
+                }
+              }
+            ]
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": 0.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "B-coverage",
+  "name": "Coverage Build",
+  "version": "2.0.0",
+  "entrypoint": "run.py",
+  "strategy": "deterministic-with-optional-semantic-layer",
+  "uses_llm": "opt-in, off by default",
+  "requires_api_key": false,
+  "summary": "Agent A's five deterministic skills plus off-site discoverability (the half of the handout that asks why a brand is not found or cited at all) and an opt-in semantic layer. Ships with the model layer off, so the default run is deterministic and needs no API key.",
+  "optimises_for": ["recall", "off-site coverage", "proactive suggestion quality"],
+  "categories": [
+    "crawlability", "rendering", "content_extraction", "structured_data",
+    "non_text_facts", "freshness", "entity_identity", "engagement"
+  ],
+  "emits": ["findings", "recommendations", "observations (semantic layer only)"],
+  "differs_from": {
+    "A-precision": "Adds offsite-discoverability-audit (recommendations only) and sentiment-engagement-audit (inert unless the semantic layer is on). Recommendations ranked by (specificity, effort) and capped at 10, so general advice cannot evict site-specific advice."
+  },
+  "llm": {
+    "enabled_by_default": false,
+    "default_mode": "off",
+    "env": ["LLM_ENABLED", "LLM_MODE", "LLM_PROVIDER", "LLM_MODEL", "ANTHROPIC_API_KEY"],
+    "guarantee": "With the layer off the marketplace performs no LLM call and requires no API key."
+  },
+  "status": "active"
+}

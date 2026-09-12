@@ -115,16 +115,7 @@ def prioritise(findings: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return findings
 
 
-def dedupe_recommendations(recommendations: list[dict[str, Any]], limit: int = 10) -> list[dict[str, Any]]:
-    """Rank proactive advice, most site-specific first, and cap the list.
-
-    Ranking is (specificity, effort), not effort alone.  Sorting on effort by
-    itself let a cheap piece of general advice outrank a recommendation derived
-    from something actually measured on *this* site, and - because the list is
-    truncated - silently evict it.  ``rank_hint`` lets a skill declare that its
-    advice is general: 0 is advice grounded in an observation about this site,
-    1 is advice that would apply to many sites.  Within a band, cheaper first.
-    """
+def dedupe_recommendations(recommendations: list[dict[str, Any]], limit: int = 8) -> list[dict[str, Any]]:
     seen: set[str] = set()
     unique = []
     for rec in recommendations:
@@ -134,7 +125,7 @@ def dedupe_recommendations(recommendations: list[dict[str, Any]], limit: int = 1
         seen.add(key)
         unique.append(rec)
     order = {"high": 0, "medium": 1, "low": 2}
-    unique.sort(key=lambda r: (r.get("rank_hint", 0), order.get(r.get("effort", "medium"), 1)))
+    unique.sort(key=lambda r: order.get(r.get("effort", "medium"), 1))
     return unique[:limit]
 
 

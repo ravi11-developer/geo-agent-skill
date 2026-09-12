@@ -1,0 +1,20 @@
+{
+  "id": "A-precision",
+  "name": "Precision Build",
+  "version": "2.0.0",
+  "entrypoint": "run.py",
+  "strategy": "deterministic",
+  "uses_llm": false,
+  "requires_api_key": false,
+  "summary": "Five deterministic skills covering the on-site half of AI discoverability. Contains no model layer at all - no provider, no prompts, no API surface - so determinism is a property of the package rather than of its configuration.",
+  "optimises_for": ["precision", "reproducibility", "runtime"],
+  "categories": [
+    "crawlability", "rendering", "content_extraction", "structured_data",
+    "non_text_facts", "freshness", "entity_identity", "engagement"
+  ],
+  "emits": ["findings", "recommendations"],
+  "differs_from": {
+    "B-coverage": "No off-site discoverability skill, no semantic layer, no sentiment skill. Recommendation list capped at 8 and ranked by effort alone."
+  },
+  "status": "active"
+}

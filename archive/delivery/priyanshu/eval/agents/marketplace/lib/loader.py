@@ -67,7 +67,7 @@ def load_skills(manifest: dict[str, Any] | None = None, kinds: tuple[str, ...] =
             continue
 
         skill_dir = os.path.join(MARKETPLACE_ROOT, entry["path"])
-        module_path = os.path.join(skill_dir, entry["script"])
+        module_path = os.path.join(skill_dir, entry["entrypoint"])
         module = _load_module(entry["id"], module_path)
         runner = getattr(module, "run", None)
         if runner is None:
@@ -80,7 +80,7 @@ def load_skills(manifest: dict[str, Any] | None = None, kinds: tuple[str, ...] =
                 version=entry.get("version", "0.0.0"),
                 kind=entry.get("kind", "audit"),
                 path=entry["path"],
-                entrypoint=entry["script"],
+                entrypoint=entry["entrypoint"],
                 provides=list(entry.get("provides", [])),
                 consumes=list(entry.get("consumes", [])),
                 produces=list(entry.get("produces", [])),

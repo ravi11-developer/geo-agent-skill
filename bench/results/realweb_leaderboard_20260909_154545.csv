@@ -1,0 +1,3 @@
+agent,f1,precision,recall,tp,fp,fn,unverified_rate,findings_per_site,evidence,actions,schema,recs_per_site,crash_rate,avg_runtime_s
+specialist,0.0,0.0,0.0,0,0,0,0.0,0,0.0,0.0,0.0,0,1.0,0.0
+vishal,0.0,0.0,0.0,0,1,1,0.25,4.0,0.5625,0.3125,1.0,0.0,0.0,0.36

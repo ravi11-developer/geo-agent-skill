@@ -89,3 +89,7 @@ desktop.ini
 priyanshu/eval/sites/real/corpus*/
 priyanshu/eval/results/
 priyanshu/testing site/*.md
+
+# Generated submission packages
+/*-submission.zip
+/agents/*/.llm-cache/

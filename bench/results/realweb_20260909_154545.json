@@ -1,0 +1,225 @@
+{
+  "run_at": "2026-09-09T10:15:45.341801+00:00",
+  "corpus": {
+    "dir": "/home/vishal-patel/Downloads/Adobe/geo-agent-skill/priyanshu/eval/sites/real/corpus",
+    "sites": 1,
+    "captured_at": "2026-09-07T20:46:43.432087+00:00",
+    "selection_method": "Hand-curated across verticals where AI answer engines rarely cite the primary source: government and civic portals, universities and research institutes, NGOs, D2C and hospitality brands (image-heavy), healthcare providers, local-services marketplaces (JS-heavy), long-tail B2B and industry bodies, and modern SPA product sites. Domains are over-provisioned; the capture tool skips whatever is dead, blocked or robots-disallowed and reports coverage."
+  },
+  "agents": [
+    "specialist",
+    "vishal"
+  ],
+  "leaderboard": {
+    "specialist": {
+      "sites": 1,
+      "crashes": 1,
+      "crash_rate": 1.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "unverified_findings": 0,
+      "unverified_rate": 0.0,
+      "findings_total": 0,
+      "findings_per_site": 0,
+      "evidence_score": 0.0,
+      "action_score": 0.0,
+      "schema_score": 0.0,
+      "recommendations_per_site": 0,
+      "avg_runtime_seconds": 0.0
+    },
+    "vishal": {
+      "sites": 1,
+      "crashes": 0,
+      "crash_rate": 0.0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "unverified_findings": 1,
+      "unverified_rate": 0.25,
+      "findings_total": 4,
+      "findings_per_site": 4.0,
+      "evidence_score": 0.5625,
+      "action_score": 0.3125,
+      "schema_score": 1.0,
+      "recommendations_per_site": 0.0,
+      "avg_runtime_seconds": 0.36
+    }
+  },
+  "adjudications": {
+    "aiims": {
+      "labels": {
+        "crawlability": "no",
+        "structured_data": "yes",
+        "rendering": "no",
+        "content_extraction": "abstain",
+        "non_text_facts": "abstain",
+        "freshness": "no",
+        "entity_identity": "abstain",
+        "engagement": "abstain"
+      },
+      "measurements": {
+        "pages": 4,
+        "noindex": false,
+        "robots_blocks_all": false,
+        "jsonld_blocks": 0,
+        "jsonld_broken": 0,
+        "shell_pages": 0,
+        "entry_words": 2638,
+        "entry_signals": 1,
+        "entry_fact_images": 6,
+        "fact_images": 0,
+        "fact_images_loose": 18,
+        "stale_mentions": 37,
+        "recent_years": [
+          2026
+        ],
+        "copyright_year": null,
+        "stale_pages": 0,
+        "names": [
+          "aiims",
+          "aiims new",
+          "screen reader access"
+        ],
+        "canonical": "aiims",
+        "family": [
+          "aiims",
+          "aiims new"
+        ],
+        "variant_pairs": 1,
+        "nav_counts": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "internal_links": [
+          169,
+          143,
+          174,
+          169
+        ]
+      }
+    }
+  },
+  "per_site": {
+    "specialist": [
+      {
+        "site": "aiims",
+        "agent": "specialist",
+        "url": "https://www.aiims.edu/",
+        "error": "import failed: ModuleNotFoundError: No module named 'bs4'",
+        "runtime_seconds": 0.0,
+        "flagged": [],
+        "detection": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "tn": 3,
+          "unverified": [],
+          "precision": null,
+          "recall": 0.0
+        },
+        "findings": 0,
+        "evidence": [],
+        "actions": [],
+        "schema": 0.0,
+        "recommendations": 0
+      }
+    ],
+    "vishal": [
+      {
+        "site": "aiims",
+        "agent": "vishal",
+        "url": "https://www.aiims.edu/",
+        "error": null,
+        "runtime_seconds": 0.361,
+        "flagged": [
+          "crawlability",
+          "non_text_facts"
+        ],
+        "detection": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1,
+          "tn": 2,
+          "unverified": [
+            "non_text_facts"
+          ],
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "findings": 4,
+        "evidence": [
+          1,
+          2,
+          3,
+          3
+        ],
+        "actions": [
+          2,
+          1,
+          1,
+          1
+        ],
+        "schema": 1.0,
+        "recommendations": 0
+      }
+    ]
+  },
+  "label_counts": {
+    "crawlability": {
+      "yes": 0,
+      "no": 1,
+      "abstain": 0
+    },
+    "rendering": {
+      "yes": 0,
+      "no": 1,
+      "abstain": 0
+    },
+    "content_extraction": {
+      "yes": 0,
+      "no": 0,
+      "abstain": 1
+    },
+    "structured_data": {
+      "yes": 1,
+      "no": 0,
+      "abstain": 0
+    },
+    "non_text_facts": {
+      "yes": 0,
+      "no": 0,
+      "abstain": 1
+    },
+    "freshness": {
+      "yes": 0,
+      "no": 1,
+      "abstain": 0
+    },
+    "entity_identity": {
+      "yes": 0,
+      "no": 0,
+      "abstain": 1
+    },
+    "engagement": {
+      "yes": 0,
+      "no": 0,
+      "abstain": 1
+    }
+  },
+  "adjudicator_validation": {
+    "agreement": null,
+    "agree": 0,
+    "disagree": 0,
+    "abstained": 0,
+    "mistakes": []
+  }
+}

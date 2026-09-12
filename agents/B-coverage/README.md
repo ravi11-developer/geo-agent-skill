@@ -1,8 +1,16 @@
-# Agent F - The Marketplace
+# AI Discoverability & Engagement Audit — Coverage Build
 
 An **Agent Skill Marketplace** for AI discoverability and on-site engagement auditing,
 built to the Round 3 handout's marketplace model: a manifest, an entrypoint skill, and
 specialist skills that are composed at run time rather than wired together in code.
+
+
+> **This is the coverage build.** It is the precision build plus two skills:
+> `offsite-discoverability-audit`, which covers the half of the handout that asks
+> why a brand is not found or cited at all, and `sentiment-engagement-audit`,
+> which is inert unless the optional semantic layer is switched on. The model
+> layer ships **off**: the default run is deterministic and needs no API key.
+> See `../A-precision/` for the deterministic-only sibling.
 
 ```
 marketplace.json                     # manifest: skills, contracts, features, safety envelope

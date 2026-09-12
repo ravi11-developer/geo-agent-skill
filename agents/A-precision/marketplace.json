@@ -1,9 +1,9 @@
 {
   "$schema": "https://agentskills.io/schemas/marketplace-v1.json",
-  "id": "ai-discoverability-coverage-audit",
-  "name": "AI Discoverability & Engagement Audit - Coverage Build",
+  "id": "ai-discoverability-precision-audit",
+  "name": "AI Discoverability & Engagement Audit - Precision Build",
   "version": "2.0.0",
-  "description": "A composable marketplace of read-only audit skills covering both halves of the problem: how well a website can be crawled, rendered, extracted, understood and navigated, and how well the brand anchors itself to the wider web so an answer engine can identify and corroborate it. Includes an opt-in semantic layer.",
+  "description": "A composable marketplace of read-only audit skills that measure how well a website can be crawled, rendered, extracted, understood, trusted and navigated by AI answer engines. Deterministic by construction: the package contains no model layer, so the same site always produces the same report.",
   "author": {
     "name": "Team Agent F",
     "context": "Adobe University Hackathon 2026 - Round 3"
@@ -53,12 +53,7 @@
       "low"
     ],
     "finding_schema": "lib/contracts.py::make_finding",
-    "evidence_policy": "Every finding must cite the page URL, the observed HTTP status and at least one reproducible measurement. Findings that cannot satisfy this contract are rejected at construction time.",
-    "semantic_categories": [
-      "engagement_sentiment"
-    ],
-    "observation_schema": "lib/contracts.py::make_observation",
-    "semantic_evidence_policy": "Every semantic observation must cite evidence ids issued by this run; quoted text is checked as a verbatim substring of the cited section; numbers, technology names and URLs absent from the cited evidence are rejected. Observations are promoted into findings only under lib/llm/validation.py::promotion_decision, and never in shadow mode."
+    "evidence_policy": "Every finding must cite the page URL, the observed HTTP status and at least one reproducible measurement. Findings that cannot satisfy this contract are rejected at construction time."
   },
   "entrypoint": "audit-orchestrator",
   "skills": [
@@ -159,88 +154,12 @@
       "enabled": true,
       "script": "scripts/engagement.py",
       "entrypoint": false
-    },
-    {
-      "id": "sentiment-engagement-audit",
-      "name": "Sentiment & Semantic Engagement Audit",
-      "version": "1.0.0",
-      "kind": "audit",
-      "path": "skills/sentiment-engagement-audit",
-      "description": "Reads the site's own copy aspect by aspect - value proposition, pricing, shipping, returns, support, trust, CTAs, error messages, tone consistency - and proposes evidence-cited observations about where the writing itself loses a visitor or an answer engine. Emits observations, never findings; promotion is the orchestrator's decision and is disabled by default.",
-      "provides": [
-        "engagement_sentiment"
-      ],
-      "consumes": [
-        "snapshot",
-        "fact_coverage",
-        "entity_profile",
-        "navigation_profile"
-      ],
-      "produces": [
-        "semantic_observations",
-        "evidence_pack"
-      ],
-      "optional": true,
-      "requires_feature": "llm.semantic",
-      "enabled": true,
-      "script": "scripts/sentiment_engagement.py",
-      "entrypoint": false
-    },
-    {
-      "id": "offsite-discoverability-audit",
-      "name": "Off-Site Discoverability Audit",
-      "version": "1.0.0",
-      "kind": "audit",
-      "path": "skills/offsite-discoverability-audit",
-      "provides": [
-        "offsite_discoverability"
-      ],
-      "consumes": [
-        "snapshot"
-      ],
-      "produces": [
-        "offsite_profile"
-      ],
-      "emits": "recommendations only",
-      "enabled": true,
-      "script": "scripts/offsite_discoverability.py",
-      "entrypoint": false
     }
   ],
   "features": {
     "llm": {
-      "enabled_by_default": false,
-      "default_mode": "off",
-      "modes": [
-        "off",
-        "suggestions_only",
-        "semantic_shadow",
-        "semantic_enabled",
-        "full"
-      ],
-      "provider_neutral": true,
-      "providers": [
-        "disabled",
-        "fake",
-        "anthropic"
-      ],
-      "model": "supplied by configuration (LLM_MODEL); never hard-coded",
-      "config_module": "lib/llm/config.py::LLMConfig",
-      "environment": [
-        "LLM_ENABLED",
-        "LLM_MODE",
-        "LLM_PROVIDER",
-        "LLM_MODEL",
-        "ANTHROPIC_API_KEY",
-        "LLM_TIMEOUT_SECONDS",
-        "LLM_MAX_RETRIES",
-        "LLM_MAX_INPUT_TOKENS",
-        "LLM_CONFIDENCE_THRESHOLD",
-        "LLM_VERIFIER_ENABLED",
-        "LLM_CACHE_ENABLED"
-      ],
-      "guarantee": "With the layer off the marketplace performs no LLM call, requires no API key, and emits exactly the deterministic report it emitted before the layer existed.",
-      "failure_policy": "An LLM failure is an audit limitation reported in audit_health; it never blocks the deterministic report and never becomes a finding about the site."
+      "present": false,
+      "guarantee": "This package ships no LLM layer at all - no provider, no prompts, no API surface. Determinism is a property of the package, not of its configuration."
     },
     "crawl_profiles": {
       "default": "legacy",
