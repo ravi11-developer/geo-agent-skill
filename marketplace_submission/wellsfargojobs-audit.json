@@ -1,0 +1,321 @@
+{
+  "site": "https://www.wellsfargojobs.com/en/",
+  "audited_at": "2026-09-11T18:41:29.467990+00:00",
+  "agent": "marketplace",
+  "marketplace": {
+    "id": "ai-discoverability-engagement-marketplace",
+    "name": "AI Discoverability & Engagement Audit Marketplace",
+    "version": "1.0.0",
+    "entrypoint": "audit-orchestrator",
+    "skills_invoked": [
+      "crawl-render-audit",
+      "content-semantics-audit",
+      "entity-freshness-audit",
+      "engagement-audit"
+    ],
+    "read_only": true
+  },
+  "summary": {
+    "total_findings": 2,
+    "critical": 0,
+    "high": 2,
+    "medium": 0,
+    "low": 0,
+    "by_severity": {
+      "critical": 0,
+      "high": 2,
+      "medium": 0,
+      "low": 0
+    },
+    "categories_flagged": [
+      "crawlability",
+      "entity_identity"
+    ],
+    "categories_clean": [
+      "content_extraction",
+      "corroboration",
+      "engagement",
+      "freshness",
+      "non_text_facts",
+      "rendering",
+      "structured_data"
+    ],
+    "health_score": 56,
+    "top_priority": "Indexable content is marked noindex",
+    "pages_crawled": 12,
+    "pages_retrievable": 12,
+    "recommendation_count": 8,
+    "runtime_seconds": 7.625
+  },
+  "findings": [
+    {
+      "id": "MKT-CRAWL-01",
+      "title": "Indexable content is marked noindex",
+      "category": "crawlability",
+      "_category": "crawlability",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": "1 pages of 12 carry a noindex directive, e.g. https://www.wellsfargojobs.com/en/jobs/saved-jobs/ (HTTP 200) with robots=\"NOINDEX\" while still serving 835 characters (130 words) of business content.",
+      "locations": [
+        "https://www.wellsfargojobs.com/en/jobs/saved-jobs/"
+      ],
+      "proof": {
+        "noindex_pages": 1
+      },
+      "suggested_action": {
+        "summary": "Remove the noindex meta tag and X-Robots-Tag header from public HTML pages that carry product, pricing or company facts, keeping the Organization JSON-LD structured data in place, and reserve noindex for staging, search-result and duplicate URLs, so those pages stay machine-readable and AI systems can extract and cite them.",
+        "priority": "high",
+        "mechanism": "noindex tells retrieval systems to discard the document after fetching it, so the facts never reach the index an assistant answers from."
+      },
+      "detected_by": "crawl-render-audit",
+      "rank": 1
+    },
+    {
+      "id": "MKT-ENTITY-02",
+      "title": "The organisation is referred to by several conflicting names",
+      "category": "entity_identity",
+      "_category": "entity_identity",
+      "severity": "high",
+      "confidence": "high",
+      "evidence": "Scanned 31640 characters of extractable text across 12 crawled pages from https://www.wellsfargojobs.com/en/ (HTTP 200): 3 spellings of the same organisation occupy the identity slots: \"Disability inclusion at Wells Fargo\" (h1, og:title); \"Disability Inclusion\" (title); \"Life at Wells Fargo\" (h1, og:title, title). \"Disability inclusion at Wells Fargo\" and \"Disability Inclusion\" are 76% string-similar, i.e. variants of one another rather than separate companies, and 2 such near-duplicate pairs were measured in total.",
+      "locations": [
+        "https://www.wellsfargojobs.com/en/",
+        "https://www.wellsfargojobs.com/en/business-divisions/",
+        "https://www.wellsfargojobs.com/en/inclusion/"
+      ],
+      "proof": {
+        "canonical": "disability inclusion at wells fargo",
+        "variant_count": 3,
+        "names": [
+          "Disability inclusion at Wells Fargo",
+          "Disability Inclusion",
+          "Life at Wells Fargo"
+        ],
+        "variant_pairs": [
+          [
+            "disability inclusion at wells fargo",
+            "disability inclusion",
+            0.76
+          ],
+          [
+            "disability inclusion at wells fargo",
+            "life at wells fargo",
+            0.596
+          ]
+        ]
+      },
+      "suggested_action": {
+        "summary": "Pick one canonical legal name and use it verbatim in the <title>, <h1>, footer copyright and the JSON-LD Organization `name` property on every HTML page, demoting every other spelling to `alternateName` in that same Organization block, and add `sameAs` links to the company's LinkedIn and Crunchbase profiles. One machine-readable name lets AI systems and crawlers resolve every page to a single entity they can trust, extract and cite.",
+        "priority": "high",
+        "mechanism": "Assistants resolve a page to an entity before they cite it. Competing names split the evidence across several weak candidate entities, so the brand is described vaguely, attributed to the wrong name, or dropped from the answer."
+      },
+      "detected_by": "entity-freshness-audit",
+      "rank": 2
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Extend structured data to Product/Offer nodes",
+      "detail": "Organization schema is present but individual products and prices are not modelled. Adding Product with an Offer (price, priceCurrency, availability) lets assistants quote your pricing with attribution instead of paraphrasing a table.",
+      "category": "structured_data",
+      "effort": "medium"
+    },
+    {
+      "title": "Update JSON-LD to carry the canonical name and list variants as alternateName",
+      "detail": "Keep exactly one `name` in the Organization block and move every retired spelling to `alternateName`, so historical references still resolve to the same entity instead of competing with it.",
+      "category": "entity_identity",
+      "effort": "medium"
+    },
+    {
+      "title": "Assert indexability in CI for public templates",
+      "detail": "A noindex directive that reaches production removes a page from every index silently. A build-time check that public templates never emit noindex (and a weekly crawl that asserts it) keeps this from recurring after the immediate fix.",
+      "category": "crawlability",
+      "effort": "low"
+    },
+    {
+      "title": "Publish an XML sitemap with lastmod dates",
+      "detail": "No /sitemap.xml was served. A sitemap with accurate <lastmod> values gives crawlers a cheap freshness signal and a complete URL inventory, which improves how quickly new facts are picked up.",
+      "category": "crawlability",
+      "effort": "low"
+    },
+    {
+      "title": "Add an explicit robots.txt that names AI user agents",
+      "detail": "No robots.txt was served. An explicit allow-list for GPTBot, ClaudeBot, PerplexityBot and Google-Extended documents your intent and prevents defensive bot rules from silently blocking assistants.",
+      "category": "crawlability",
+      "effort": "low"
+    },
+    {
+      "title": "Validate structured data in CI so a syntax error cannot ship",
+      "detail": "The site already relies on JSON-LD, so a single malformed block silently removes every machine-readable fact on that page. Add a schema validation step to the build (a JSON parse plus a schema.org type check) to keep the markup trustworthy.",
+      "category": "structured_data",
+      "effort": "low"
+    },
+    {
+      "title": "Add FAQPage schema for the questions buyers actually ask",
+      "detail": "FAQ structured data is the cheapest way to get exact question/answer pairs into AI answers, and it reuses copy you already have on product and support pages.",
+      "category": "structured_data",
+      "effort": "low"
+    },
+    {
+      "title": "Add a text equivalent for the one fact-bearing image",
+      "detail": "/media/av1mdo3v/msfe-designation-2026.png?anchor=center&mode=crop&width=100&height=100&mode=crop&quality=75 on https://www.wellsfargojobs.com/en/ carries information with only generic alt text. A short caption or adjacent text block makes that fact extractable without changing the design.",
+      "category": "non_text_facts",
+      "effort": "low"
+    }
+  ],
+  "coverage": {
+    "crawlability": "flagged",
+    "rendering": "clean",
+    "content_extraction": "clean",
+    "structured_data": "clean",
+    "non_text_facts": "clean",
+    "freshness": "clean",
+    "entity_identity": "flagged",
+    "corroboration": "clean",
+    "engagement": "clean"
+  },
+  "checks_performed": [
+    {
+      "skill": "crawl-render-audit",
+      "check": "entry_url_retrievable",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "robots_allows_ai_agents",
+      "passed": false
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "content_present_without_javascript",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "pages_crawled",
+      "value": 12,
+      "value_ok": 12
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "structured_data_present",
+      "passed": true
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "facts_extractable_as_text",
+      "passed": true,
+      "value": 2
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "no_image_only_facts",
+      "passed": true
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "fact_families_covered",
+      "value": {
+        "pricing": false,
+        "contact": false,
+        "company_facts": true,
+        "product_detail": true
+      }
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "single_canonical_entity_name",
+      "passed": false,
+      "value": 3,
+      "canonical": "disability inclusion at wells fargo"
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "content_is_current",
+      "passed": true,
+      "value": 3
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "externally_corroborated",
+      "passed": true,
+      "value": 85
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "navigation_landmarks_present",
+      "passed": true,
+      "value": 1
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "internal_links_present",
+      "value": 35
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "breadcrumbs_present",
+      "value": false
+    }
+  ],
+  "telemetry": {
+    "skills": [
+      {
+        "skill": "crawl-render-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 1,
+        "recommendations": 3,
+        "runtime_seconds": 7.453,
+        "provides": [
+          "crawlability",
+          "rendering"
+        ]
+      },
+      {
+        "skill": "content-semantics-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 4,
+        "runtime_seconds": 0.031,
+        "provides": [
+          "content_extraction",
+          "structured_data",
+          "non_text_facts"
+        ]
+      },
+      {
+        "skill": "entity-freshness-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 1,
+        "recommendations": 3,
+        "runtime_seconds": 0.032,
+        "provides": [
+          "entity_identity",
+          "freshness",
+          "corroboration"
+        ]
+      },
+      {
+        "skill": "engagement-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 2,
+        "runtime_seconds": 0.031,
+        "provides": [
+          "engagement"
+        ]
+      }
+    ],
+    "runtime_seconds": 7.625,
+    "pages_fetched": 12,
+    "broken_links": []
+  }
+}

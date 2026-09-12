@@ -1,0 +1,268 @@
+{
+  "site": "https://www.linkedin.com/feed/",
+  "audited_at": "2026-09-11T18:44:53.343019+00:00",
+  "agent": "marketplace",
+  "marketplace": {
+    "id": "ai-discoverability-engagement-marketplace",
+    "name": "AI Discoverability & Engagement Audit Marketplace",
+    "version": "1.0.0",
+    "entrypoint": "audit-orchestrator",
+    "skills_invoked": [
+      "crawl-render-audit",
+      "content-semantics-audit",
+      "entity-freshness-audit",
+      "engagement-audit"
+    ],
+    "read_only": true
+  },
+  "summary": {
+    "total_findings": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 0,
+    "by_severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 0
+    },
+    "categories_flagged": [
+      "structured_data"
+    ],
+    "categories_clean": [
+      "content_extraction",
+      "corroboration",
+      "crawlability",
+      "engagement",
+      "entity_identity",
+      "freshness",
+      "non_text_facts",
+      "rendering"
+    ],
+    "health_score": 89,
+    "top_priority": "No machine-readable structured data (JSON-LD, microdata or RDFa) anywhere on the site",
+    "pages_crawled": 1,
+    "pages_retrievable": 1,
+    "recommendation_count": 6,
+    "runtime_seconds": 3.359
+  },
+  "findings": [
+    {
+      "id": "MKT-SCHEMA-01",
+      "title": "No machine-readable structured data (JSON-LD, microdata or RDFa) anywhere on the site",
+      "category": "structured_data",
+      "_category": "structured_data",
+      "severity": "medium",
+      "confidence": "high",
+      "evidence": "0 of 1 crawled pages expose structured data: https://www.linkedin.com/feed/ (HTTP 200) serves 639 characters (106 words) of organisation, product and contact information in prose but contains 0 application/ld+json blocks and 0 itemtype/typeof attributes.",
+      "locations": [
+        "https://www.linkedin.com/feed/"
+      ],
+      "proof": {
+        "pages_checked": 1,
+        "pages_with_schema": 0
+      },
+      "suggested_action": {
+        "summary": "Add an Organization JSON-LD block in the HTML <head> of every page (name, url, logo, description, address, contactPoint, sameAs) and Product/Offer JSON-LD next to each product section, so the facts that are currently prose-only become machine-readable and AI systems can extract and cite them as attributed entity data instead of inferring them from the copy.",
+        "priority": "medium",
+        "mechanism": "Schema.org markup is the one channel where a site states its own facts unambiguously; without it every extraction is an inference that an assistant may decline to cite."
+      },
+      "detected_by": "content-semantics-audit",
+      "rank": 1
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Add Product structured data for individual products after the Organization block",
+      "detail": "Once Organization JSON-LD exists, model each individual product with Product and an Offer (price, priceCurrency, availability). That is what lets an assistant quote your pricing per product with attribution instead of paraphrasing a page.",
+      "category": "structured_data",
+      "effort": "medium"
+    },
+    {
+      "title": "Give every page an explicit next step",
+      "detail": "No contact, demo or pricing call-to-action was detected in the body copy. A single clear next step converts the attention that an AI citation sends to the page.",
+      "category": "engagement",
+      "effort": "medium"
+    },
+    {
+      "title": "Publish an XML sitemap with lastmod dates",
+      "detail": "No /sitemap.xml was served. A sitemap with accurate <lastmod> values gives crawlers a cheap freshness signal and a complete URL inventory, which improves how quickly new facts are picked up.",
+      "category": "crawlability",
+      "effort": "low"
+    },
+    {
+      "title": "Add FAQPage structured data for the questions buyers ask",
+      "detail": "FAQ structured data turns copy you already have into exact question/answer pairs that AI answers can lift verbatim, and it is the cheapest schema to add after Organization and Product.",
+      "category": "structured_data",
+      "effort": "low"
+    },
+    {
+      "title": "Use one spelling of the company name in every identity slot",
+      "detail": "Two closely related spellings were observed (\"LinkedIn Login, Sign in\" and \"LinkedIn\", 59% similar). This is not yet ambiguous, but standardising the shorter form as `alternateName` in Organization JSON-LD keeps entity resolution unambiguous as the site grows.",
+      "category": "entity_identity",
+      "effort": "low"
+    },
+    {
+      "title": "Add `sameAs` links to social profiles in Organization JSON-LD",
+      "detail": "Even if your site is otherwise healthy, adding `sameAs` links to your LinkedIn, Crunchbase, and Twitter profiles inside your Organization JSON-LD explicitly binds those distinct sources together into one entity graph. AI assistants heavily rely on this to merge facts from different domains into a single confident answer.",
+      "category": "entity_identity",
+      "effort": "low"
+    }
+  ],
+  "coverage": {
+    "crawlability": "clean",
+    "rendering": "clean",
+    "content_extraction": "clean",
+    "structured_data": "flagged",
+    "non_text_facts": "clean",
+    "freshness": "clean",
+    "entity_identity": "clean",
+    "corroboration": "clean",
+    "engagement": "clean"
+  },
+  "checks_performed": [
+    {
+      "skill": "crawl-render-audit",
+      "check": "entry_url_retrievable",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "robots_allows_ai_agents",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "content_present_without_javascript",
+      "passed": true
+    },
+    {
+      "skill": "crawl-render-audit",
+      "check": "pages_crawled",
+      "value": 1,
+      "value_ok": 1
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "structured_data_present",
+      "passed": false
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "facts_extractable_as_text",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "no_image_only_facts",
+      "passed": true
+    },
+    {
+      "skill": "content-semantics-audit",
+      "check": "fact_families_covered",
+      "value": {
+        "pricing": false,
+        "contact": false,
+        "company_facts": false,
+        "product_detail": false
+      }
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "single_canonical_entity_name",
+      "passed": true,
+      "value": 2,
+      "canonical": "linkedin login sign in"
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "content_is_current",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "skill": "entity-freshness-audit",
+      "check": "externally_corroborated",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "navigation_landmarks_present",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "internal_links_present",
+      "value": 12
+    },
+    {
+      "skill": "engagement-audit",
+      "check": "breadcrumbs_present",
+      "value": false
+    }
+  ],
+  "telemetry": {
+    "skills": [
+      {
+        "skill": "crawl-render-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 1,
+        "runtime_seconds": 3.203,
+        "provides": [
+          "crawlability",
+          "rendering"
+        ]
+      },
+      {
+        "skill": "content-semantics-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 1,
+        "recommendations": 2,
+        "runtime_seconds": 0.0,
+        "provides": [
+          "content_extraction",
+          "structured_data",
+          "non_text_facts"
+        ]
+      },
+      {
+        "skill": "entity-freshness-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 1,
+        "runtime_seconds": 0.0,
+        "provides": [
+          "entity_identity",
+          "freshness",
+          "corroboration"
+        ]
+      },
+      {
+        "skill": "engagement-audit",
+        "version": "1.0.0",
+        "status": "ok",
+        "error": null,
+        "findings": 0,
+        "recommendations": 1,
+        "runtime_seconds": 0.016,
+        "provides": [
+          "engagement"
+        ]
+      }
+    ],
+    "runtime_seconds": 3.359,
+    "pages_fetched": 1,
+    "broken_links": []
+  }
+}
