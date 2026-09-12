@@ -1,0 +1,7 @@
+# Runtime (required)
+requests>=2.28
+beautifulsoup4>=4.11
+
+# Tooling (optional - validators degrade to built-in parsers without them)
+PyYAML>=6.0        # strict YAML frontmatter parsing in tools/validate_package.py
+jsonschema>=4.0    # full JSON Schema validation of audit.json

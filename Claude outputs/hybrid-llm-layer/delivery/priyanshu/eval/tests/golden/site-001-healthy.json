@@ -1,0 +1,69 @@
+{
+  "coverage": {
+    "content_extraction": "clean",
+    "crawlability": "clean",
+    "engagement": "clean",
+    "entity_identity": "clean",
+    "freshness": "clean",
+    "non_text_facts": "clean",
+    "rendering": "clean",
+    "structured_data": "clean"
+  },
+  "findings": [],
+  "recommendations": [
+    {
+      "category": "structured_data",
+      "effort": "medium",
+      "title": "Extend structured data to Product/Offer nodes"
+    },
+    {
+      "category": "crawlability",
+      "effort": "low",
+      "title": "Publish an XML sitemap with lastmod dates"
+    },
+    {
+      "category": "crawlability",
+      "effort": "low",
+      "title": "Add an explicit robots.txt that names AI user agents"
+    },
+    {
+      "category": "structured_data",
+      "effort": "low",
+      "title": "Validate structured data in CI so a syntax error cannot ship"
+    },
+    {
+      "category": "structured_data",
+      "effort": "low",
+      "title": "Add FAQPage schema for the questions buyers actually ask"
+    },
+    {
+      "category": "entity_identity",
+      "effort": "low",
+      "title": "Add `sameAs` links to social profiles in Organization JSON-LD"
+    }
+  ],
+  "summary": {
+    "by_severity": {},
+    "categories_clean": [
+      "content_extraction",
+      "crawlability",
+      "engagement",
+      "entity_identity",
+      "freshness",
+      "non_text_facts",
+      "rendering",
+      "structured_data"
+    ],
+    "categories_flagged": [],
+    "critical": 0,
+    "health_score": 100,
+    "high": 0,
+    "low": 0,
+    "medium": 0,
+    "pages_crawled": 8,
+    "pages_retrievable": 1,
+    "recommendation_count": 6,
+    "top_priority": "No AI-discoverability defects detected",
+    "total_findings": 0
+  }
+}

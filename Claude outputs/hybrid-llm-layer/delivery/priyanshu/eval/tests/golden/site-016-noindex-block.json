@@ -1,0 +1,94 @@
+{
+  "coverage": {
+    "content_extraction": "clean",
+    "crawlability": "flagged",
+    "engagement": "clean",
+    "entity_identity": "clean",
+    "freshness": "clean",
+    "non_text_facts": "clean",
+    "rendering": "clean",
+    "structured_data": "clean"
+  },
+  "findings": [
+    {
+      "_category": "crawlability",
+      "category": "crawlability",
+      "evidence": "1 pages of 1 carry a noindex directive, e.g. http://HOST/ (HTTP 200) with robots=\"noindex, nofollow\" while still serving 566 characters (68 words) of business content.",
+      "id": "MKT-CRAWL-01",
+      "locations": [
+        "http://HOST/"
+      ],
+      "severity": "high",
+      "suggested_action": {
+        "mechanism": "noindex tells retrieval systems to discard the document after fetching it, so the facts never reach the index an assistant answers from.",
+        "priority": "high",
+        "summary": "Remove the noindex meta tag and X-Robots-Tag header from public HTML pages that carry product, pricing or company facts, keeping the Organization JSON-LD structured data in place, and reserve noindex for staging, search-result and duplicate URLs, so those pages stay machine-readable and AI systems can extract and cite them."
+      },
+      "title": "Indexable content is marked noindex"
+    }
+  ],
+  "recommendations": [
+    {
+      "category": "structured_data",
+      "effort": "medium",
+      "title": "Extend structured data to Product/Offer nodes"
+    },
+    {
+      "category": "crawlability",
+      "effort": "low",
+      "title": "Assert indexability in CI for public templates"
+    },
+    {
+      "category": "crawlability",
+      "effort": "low",
+      "title": "Publish an XML sitemap with lastmod dates"
+    },
+    {
+      "category": "crawlability",
+      "effort": "low",
+      "title": "Add an explicit robots.txt that names AI user agents"
+    },
+    {
+      "category": "structured_data",
+      "effort": "low",
+      "title": "Validate structured data in CI so a syntax error cannot ship"
+    },
+    {
+      "category": "structured_data",
+      "effort": "low",
+      "title": "Add FAQPage schema for the questions buyers actually ask"
+    },
+    {
+      "category": "entity_identity",
+      "effort": "low",
+      "title": "Add `sameAs` links to social profiles in Organization JSON-LD"
+    }
+  ],
+  "summary": {
+    "by_severity": {
+      "high": 1
+    },
+    "categories_clean": [
+      "content_extraction",
+      "engagement",
+      "entity_identity",
+      "freshness",
+      "non_text_facts",
+      "rendering",
+      "structured_data"
+    ],
+    "categories_flagged": [
+      "crawlability"
+    ],
+    "critical": 0,
+    "health_score": 78,
+    "high": 1,
+    "low": 0,
+    "medium": 0,
+    "pages_crawled": 4,
+    "pages_retrievable": 1,
+    "recommendation_count": 7,
+    "top_priority": "Indexable content is marked noindex",
+    "total_findings": 1
+  }
+}
