@@ -1,0 +1,2 @@
+Agent,Detection_F1,Precision,Recall,FP_Score,Evidence,Actions,Severity,Proactive,Generalization,Avg_Runtime,Overall,Overall_Legacy
+B-coverage,0.9286,0.9286,0.9286,1.0000,1.0000,0.9808,1.0000,0.9486,1.0000,0.6,97.7,76.5

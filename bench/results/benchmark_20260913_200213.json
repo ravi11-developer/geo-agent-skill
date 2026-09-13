@@ -1,0 +1,1473 @@
+{
+  "timestamp": "2026-09-13T14:32:13.858821+00:00",
+  "agents": [
+    "B-coverage"
+  ],
+  "sites": [
+    "site-001-healthy",
+    "site-002-no-schema",
+    "site-003-js-only-facts",
+    "site-004-image-only-facts",
+    "site-005-entity-conflict",
+    "site-006-stale-facts",
+    "site-007-poor-navigation",
+    "site-008-mixed-faults",
+    "site-009-weird-but-healthy",
+    "site-010-seo-noise",
+    "site-011-multipage-healthy",
+    "site-012-spa-shell",
+    "site-013-invalid-schema",
+    "site-014-subpage-entity-drift",
+    "site-015-image-nav-faults",
+    "site-016-noindex-block",
+    "site-017-robots-blocks-ai",
+    "site-018-sitemap-index-healthy"
+  ],
+  "leaderboard": {
+    "B-coverage": {
+      "sites_tested": 18,
+      "sites_failed": 0,
+      "dev_sites": 11,
+      "holdout_sites": 7,
+      "detection": {
+        "tp": 14,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9333,
+        "recall": 1.0,
+        "f1": 0.9655
+      },
+      "holdout_detection_f1": 1.0,
+      "false_positive_score": 1.0,
+      "evidence_score": 1.0,
+      "action_score": 0.9808,
+      "severity_score": 1.0,
+      "proactive_score": 0.9486,
+      "generalization_score": 1.0,
+      "schema_score": 1.0,
+      "runtime_score": 1.0,
+      "avg_runtime_seconds": 0.59,
+      "overall": 98.4,
+      "overall_legacy": 77.3
+    }
+  },
+  "detailed_results": {
+    "B-coverage": [
+      {
+        "agent": "B-coverage",
+        "site": "site-001-healthy",
+        "url": "http://localhost:9500/site-001-healthy/",
+        "runtime_seconds": 1.077,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": 1.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-002-no-schema",
+        "url": "http://localhost:9500/site-002-no-schema/",
+        "runtime_seconds": 0.755,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "structured_data"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "structured_data",
+                "gold": {
+                  "category": "structured_data",
+                  "description": "No structured data (JSON-LD) present despite having organization/product information that should be machine-readable",
+                  "severity": "medium"
+                },
+                "agent": {
+                  "id": "MKT-SCHEMA-01",
+                  "title": "No machine-readable structured data (JSON-LD, microdata or RDFa) anywhere on the site",
+                  "category": "structured_data",
+                  "original_category": "structured_data",
+                  "severity": "medium",
+                  "evidence": "0 of 1 crawled pages expose structured data: http://localhost:9500/site-002-no-schema/ (HTTP 200) serves 1477 characters (202 words) of organisation, product and contact information in prose but contains 0 application/ld+json blocks and 0 itemtype/typeof attributes.",
+                  "suggested_action": {
+                    "summary": "Add an Organization JSON-LD block in the HTML <head> of every page (name, url, logo, description, address, contactPoint, sameAs) and Product/Offer JSON-LD next to each product section, so the facts that are currently prose-only become machine-readable and AI systems can extract and cite them as attributed entity data instead of inferring them from the copy.",
+                    "priority": "medium",
+                    "mechanism": "Schema.org markup is the one channel where a site states its own facts unambiguously; without it every extraction is an inference that an assistant may decline to cite."
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "actions": {
+            "scores": [
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": 1.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-003-js-only-facts",
+        "url": "http://localhost:9500/site-003-js-only-facts/",
+        "runtime_seconds": 0.318,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "content_extraction",
+              "rendering"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "rendering",
+                "gold": {
+                  "category": "rendering",
+                  "description": "Important business content (products, pricing, company facts) is unavailable in raw HTML and only appears after client-side JavaScript execution",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-REND-01",
+                  "title": "Business-critical content is only present after client-side JavaScript execution",
+                  "category": "rendering",
+                  "original_category": "rendering",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-003-js-only-facts/ (HTTP 200) serves only 133 characters (17 words) of extractable body text; the element #js-content is empty in the raw HTML and is populated at runtime by inline JavaScript carrying 1440 characters of markup (82 words) across 1 injection sites. Facts visible only after JS execution include the prices \"$120, $149, $299, $499\".",
+                  "suggested_action": {
+                    "summary": "Server-side render (SSR) or statically pre-render the product, pricing and company sections into the initial HTML response for #js-content inside <main>, keeping JavaScript for enhancement only, and mirror the same values in Product/Offer JSON-LD structured data. Verify with a text-only fetch (`curl`) that the raw HTML already carries the prices, so the facts are machine-readable for AI crawlers and assistants that never execute JavaScript and can be extracted and cited.",
+                    "priority": "high",
+                    "mechanism": "Most AI retrieval pipelines index the raw HTTP response; content injected by the browser after load is invisible to them, so JS-only facts are simply absent from the model's evidence."
+                  }
+                }
+              },
+              {
+                "category": "content_extraction",
+                "gold": {
+                  "category": "content_extraction",
+                  "description": "Key facts about products, pricing, and company are not accessible to non-rendering crawlers",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-EXTR-02",
+                  "title": "Key business facts cannot be extracted from the HTML by a text-based crawler",
+                  "category": "content_extraction",
+                  "original_category": "content_extraction",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-003-js-only-facts/ (HTTP 200) yields only 133 characters (17 words) of extractable text, and 4 of 4 fact families are absent from it (missing: company_facts, contact, pricing, product_detail). The page advertises 1 fact sections (Acme Cloud Solutions) but supplies no prices, contact details or company figures in HTML text. Root cause measured on this page: client-side rendering. A simulated render recovers 82 words that a text-only crawler never sees, starting \"Our Products AcmeKube Fully managed Kubernetes platform with automated\".",
+                  "suggested_action": {
+                    "summary": "Publish the product, pricing, company and contact facts as server-rendered HTML text in the initial response - real <h2> headings, paragraphs and tables rather than JavaScript payloads or images - and back them with Organization and Product JSON-LD structured data. Then verify with a text-only fetch: whatever `curl` returns is the machine-readable evidence an AI assistant can extract, quote and cite.",
+                    "priority": "high",
+                    "mechanism": "Retrieval-augmented assistants chunk and embed the text of the HTTP response. If the response has no facts, the site is either omitted from the answer or represented by a competitor's page that does state them."
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              4,
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "actions": {
+            "scores": [
+              4,
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "severity": {
+            "scores": [
+              1.0,
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": 1.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-004-image-only-facts",
+        "url": "http://localhost:9500/site-004-image-only-facts/",
+        "runtime_seconds": 0.466,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "content_extraction",
+              "non_text_facts"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "content_extraction",
+                "gold": {
+                  "category": "content_extraction",
+                  "description": "Critical business facts cannot be extracted by text-based crawlers because they are embedded in images",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-EXTR-01",
+                  "title": "Key business facts cannot be extracted from the HTML by a text-based crawler",
+                  "category": "content_extraction",
+                  "original_category": "content_extraction",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-004-image-only-facts/ (HTTP 200) yields only 241 characters (36 words) of extractable text, and 3 of 4 fact families are absent from it (missing: company_facts, contact, pricing). The page advertises 4 fact sections (Acme Cloud Solutions, Our Products and Pricing, Company Overview, Contact Us) but supplies no prices, contact details or company figures in HTML text. Root cause measured on this page: image-only content.",
+                  "suggested_action": {
+                    "summary": "Publish the product, pricing, company and contact facts as server-rendered HTML text in the initial response - real <h2> headings, paragraphs and tables rather than JavaScript payloads or images - and back them with Organization and Product JSON-LD structured data. Then verify with a text-only fetch: whatever `curl` returns is the machine-readable evidence an AI assistant can extract, quote and cite.",
+                    "priority": "high",
+                    "mechanism": "Retrieval-augmented assistants chunk and embed the text of the HTTP response. If the response has no facts, the site is either omitted from the answer or represented by a competitor's page that does state them."
+                  }
+                }
+              },
+              {
+                "category": "non_text_facts",
+                "gold": {
+                  "category": "non_text_facts",
+                  "description": "Important business information (products, pricing, features, contact details) exists only in images without text equivalents",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-IMG-02",
+                  "title": "Business facts are published only inside images, with no text equivalent",
+                  "category": "non_text_facts",
+                  "original_category": "non_text_facts",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-004-image-only-facts/ (HTTP 200) presents 5 fact-bearing images (5 images across 1 pages) whose alt text is missing or generic, and whose surrounding sections contain fewer than 30 words of prose: products-table.png (alt=\"products\", under \"Our Products and Pricing\"); pricing-comparison.png (alt=\"pricing\", under \"Our Products and Pricing\"); feature-matrix.png (alt=\"features\", under \"Our Products and Pricing\"); company-infographic.png (alt=\"company info\", under \"Company Overview\"). The page's own extractable text is 241 characters, so these facts exist nowhere in machine-readable form.",
+                  "suggested_action": {
+                    "summary": "Reproduce the content of each image as HTML text next to it - a real <table> for the pricing and feature matrix, a text block for the company infographic, and vCard-style markup for the contact card - then add descriptive alt text (or a <figcaption>) stating the specific facts shown. Mirror the same values in Product/Offer JSON-LD so the numbers are machine-readable and AI systems can extract and cite them from the HTML instead of ignoring the images.",
+                    "priority": "high",
+                    "mechanism": "Text extractors and LLM retrieval pipelines do not OCR images; a fact that exists only as pixels is invisible to the model even though a human sees it immediately."
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              4,
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "actions": {
+            "scores": [
+              4,
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "severity": {
+            "scores": [
+              1.0,
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": 1.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-005-entity-conflict",
+        "url": "http://localhost:9500/site-005-entity-conflict/",
+        "runtime_seconds": 0.608,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "entity_identity"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "entity_identity",
+                "gold": {
+                  "category": "entity_identity",
+                  "description": "Company is referred to by multiple conflicting names, creating entity ambiguity that would confuse AI systems trying to identify and cite the brand",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-ENTITY-01",
+                  "title": "The organisation is referred to by several conflicting names",
+                  "category": "entity_identity",
+                  "original_category": "entity_identity",
+                  "severity": "high",
+                  "evidence": "Scanned 939 characters of extractable text across 1 crawled pages from http://localhost:9500/site-005-entity-conflict/ (HTTP 200): 6 spellings of the same organisation occupy the identity slots: \"Nova Technical Corp\" (footer copyright, json-ld alternateName); \"Nova Manufacturing Ltd\" (body 'formerly'); \"NovarTech\" ('About' heading); \"NovaTech Holdings Group\" (body 'division of'); \"NovaTech Industries\" (h1, json-ld name, title); \"NovaTech Industries Nova Technical Corp\" (body 'Welcome to'). \"Nova Technical Corp\" and \"NovarTech\" are 72% string-similar, i.e. variants of one another rather than separate companies, and 5 such near-duplicate pairs were measured in total.",
+                  "suggested_action": {
+                    "summary": "Pick one canonical legal name and use it verbatim in the <title>, <h1>, footer copyright and the JSON-LD Organization `name` property on every HTML page, demoting every other spelling to `alternateName` in that same Organization block, and add `sameAs` links to the company's LinkedIn and Crunchbase profiles. One machine-readable name lets AI systems and crawlers resolve every page to a single entity they can trust, extract and cite.",
+                    "priority": "high",
+                    "mechanism": "Assistants resolve a page to an entity before they cite it. Competing names split the evidence across several weak candidate entities, so the brand is described vaguely, attributed to the wrong name, or dropped from the answer."
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "actions": {
+            "scores": [
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": 1.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-006-stale-facts",
+        "url": "http://localhost:9500/site-006-stale-facts/",
+        "runtime_seconds": 0.604,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "freshness"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "freshness",
+                "gold": {
+                  "category": "freshness",
+                  "description": "Content is significantly outdated - pricing, awards, statistics, team information, and press releases are all from 2018-2021 with no recent updates",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-FRESH-01",
+                  "title": "Published facts are visibly out of date",
+                  "category": "freshness",
+                  "original_category": "freshness",
+                  "severity": "high",
+                  "evidence": "Across 1267 characters of body text, 17 dated claims on http://localhost:9500/site-006-stale-facts/ (HTTP 200) reference 2018-2021, i.e. 5+ years before the current year 2026; the spread covers pricing x8, update stamp x3, team x2, statistic x2. Examples: \"onth per cluster. Last updated: January 2019 AcmeAnalytics Real-time\"; \"49/month. Pricing effective as of March 2020 Pricing Plans Product Pr\"; \"ted AcmeKube Starter $99/month December 2018 AcmeKube Pro $199/month\". 1 of 1 crawled pages carry no current-year date at all, and the copyright on them still reads 2021, 5 years stale. No date at or after last year appears anywhere in the crawled text.",
+                  "suggested_action": {
+                    "summary": "Refresh the dated blocks in priority order - pricing tables first, then statistics, awards, team and press - stamp each with a visible 'Last updated' date plus a machine-readable `dateModified` in the page's JSON-LD, and generate the footer copyright year from the server clock so the HTML never contradicts the content. Label genuinely historical facts as such ('award received in 2019'). Recency that AI systems can extract is what keeps the page eligible to be cited rather than skipped.",
+                    "priority": "high",
+                    "mechanism": "Recency is a ranking and trust signal for AI answer engines: when the newest date on a page is years old, retrieval systems down-rank it and assistants prefer a competitor's current page, even if your facts are still accurate."
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "actions": {
+            "scores": [
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": 0.875,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-007-poor-navigation",
+        "url": "http://localhost:9500/site-007-poor-navigation/",
+        "runtime_seconds": 0.144,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6667,
+            "tp_categories": [
+              "engagement"
+            ],
+            "fp_categories": [
+              "structured_data"
+            ],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "engagement",
+                "gold": {
+                  "category": "engagement",
+                  "description": "No navigation structure - site lacks nav elements, internal links, header/footer, breadcrumbs. Users and AI systems cannot discover related content or understand site structure.",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-ENGAGE-01",
+                  "title": "The site offers no navigation or internal linking for orientation",
+                  "category": "engagement",
+                  "original_category": "engagement",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-007-poor-navigation/ (HTTP 200) serves 496 characters of content but contains 0 <nav> landmarks, 0 internal links and 0 external links; header/footer/breadcrumb landmarks present: 0 of 3. The same pattern holds on 1 of 1 measurable pages, so every page is a dead end for a visitor who arrives from a search result or an AI citation.",
+                  "suggested_action": {
+                    "summary": "Add a persistent header <nav> linking Home, About, Products, Pricing and Contact on every HTML page, a footer with the same site-wide links plus policy pages, and breadcrumbs marked up as machine-readable BreadcrumbList JSON-LD on sub-pages. Cross-link related products and articles in body copy so visitors and AI crawlers can discover, extract and cite the rest of the site from any entry point.",
+                    "priority": "high",
+                    "mechanism": "Internal links are how crawlers discover pages and how AI systems infer site structure and topical relationships; without them each page is an isolated document, and a visitor who lands mid-site has no path to a conversion step."
+                  }
+                }
+              }
+            ],
+            "false_positives": [
+              {
+                "category": "structured_data",
+                "agent_finding": {
+                  "id": "MKT-SCHEMA-02",
+                  "title": "No machine-readable structured data (JSON-LD, microdata or RDFa) anywhere on the site",
+                  "category": "structured_data",
+                  "original_category": "structured_data",
+                  "severity": "medium",
+                  "evidence": "0 of 1 crawled pages expose structured data: http://localhost:9500/site-007-poor-navigation/ (HTTP 200) serves 496 characters (60 words) of organisation, product and contact information in prose but contains 0 application/ld+json blocks and 0 itemtype/typeof attributes.",
+                  "suggested_action": {
+                    "summary": "Add an Organization JSON-LD block in the HTML <head> of every page (name, url, logo, description, address, contactPoint, sameAs) and Product/Offer JSON-LD next to each product section, so the facts that are currently prose-only become machine-readable and AI systems can extract and cite them as attributed entity data instead of inferring them from the copy.",
+                    "priority": "medium",
+                    "mechanism": "Schema.org markup is the one channel where a site states its own facts unambiguously; without it every extraction is an inference that an assistant may decline to cite."
+                  }
+                }
+              }
+            ],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "actions": {
+            "scores": [
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": 0.6875,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-008-mixed-faults",
+        "url": "http://localhost:9500/site-008-mixed-faults/",
+        "runtime_seconds": 0.16,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "engagement",
+              "entity_identity",
+              "freshness",
+              "non_text_facts",
+              "rendering",
+              "structured_data"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "rendering",
+                "gold": {
+                  "category": "rendering",
+                  "description": "Product and pricing information only available via client-side JavaScript",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-REND-01",
+                  "title": "Business-critical content is only present after client-side JavaScript execution",
+                  "category": "rendering",
+                  "original_category": "rendering",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-008-mixed-faults/ (HTTP 200) serves only 547 characters (72 words) of extractable body text; the element #dynamic-section is empty in the raw HTML and is populated at runtime by inline JavaScript carrying 97 characters of markup (8 words) across 1 injection sites. Facts visible only after JS execution include the prices \"$0.023, $399\".",
+                  "suggested_action": {
+                    "summary": "Server-side render (SSR) or statically pre-render the product, pricing and company sections into the initial HTML response for #dynamic-section inside <main>, keeping JavaScript for enhancement only, and mirror the same values in Product/Offer JSON-LD structured data. Verify with a text-only fetch (`curl`) that the raw HTML already carries the prices, so the facts are machine-readable for AI crawlers and assistants that never execute JavaScript and can be extracted and cited.",
+                    "priority": "high",
+                    "mechanism": "Most AI retrieval pipelines index the raw HTTP response; content injected by the browser after load is invisible to them, so JS-only facts are simply absent from the model's evidence."
+                  }
+                }
+              },
+              {
+                "category": "structured_data",
+                "gold": {
+                  "category": "structured_data",
+                  "description": "No structured data present despite having organization and product information",
+                  "severity": "medium"
+                },
+                "agent": {
+                  "id": "MKT-SCHEMA-03",
+                  "title": "No machine-readable structured data (JSON-LD, microdata or RDFa) anywhere on the site",
+                  "category": "structured_data",
+                  "original_category": "structured_data",
+                  "severity": "medium",
+                  "evidence": "0 of 1 crawled pages expose structured data: http://localhost:9500/site-008-mixed-faults/ (HTTP 200) serves 547 characters (72 words) of organisation, product and contact information in prose but contains 0 application/ld+json blocks and 0 itemtype/typeof attributes.",
+                  "suggested_action": {
+                    "summary": "Add an Organization JSON-LD block in the HTML <head> of every page (name, url, logo, description, address, contactPoint, sameAs) and Product/Offer JSON-LD next to each product section, so the facts that are currently prose-only become machine-readable and AI systems can extract and cite them as attributed entity data instead of inferring them from the copy.",
+                    "priority": "medium",
+                    "mechanism": "Schema.org markup is the one channel where a site states its own facts unambiguously; without it every extraction is an inference that an assistant may decline to cite."
+                  }
+                }
+              },
+              {
+                "category": "entity_identity",
+                "gold": {
+                  "category": "entity_identity",
+                  "description": "Company referred to by multiple conflicting names (CloudPeak Technologies, Cloud Peak Tech, CloudPeak Solutions, CP Technologies, PeakCloud Inc.)",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-ENTITY-02",
+                  "title": "The organisation is referred to by several conflicting names",
+                  "category": "entity_identity",
+                  "original_category": "entity_identity",
+                  "severity": "high",
+                  "evidence": "Scanned 547 characters of extractable text across 1 crawled pages from http://localhost:9500/site-008-mixed-faults/ (HTTP 200): 3 spellings of the same organisation occupy the identity slots: \"CloudPeak Technologies\" (h1, title); \"Cloud Peak Tech\" (body 'Welcome to'); \"CP Technologies\" ('About' heading). \"CloudPeak Technologies\" and \"CP Technologies\" are 80% string-similar, i.e. variants of one another rather than separate companies, and 2 such near-duplicate pairs were measured in total.",
+                  "suggested_action": {
+                    "summary": "Pick one canonical legal name and use it verbatim in the <title>, <h1>, footer copyright and the JSON-LD Organization `name` property on every HTML page, demoting every other spelling to `alternateName` in that same Organization block, and add `sameAs` links to the company's LinkedIn and Crunchbase profiles. One machine-readable name lets AI systems and crawlers resolve every page to a single entity they can trust, extract and cite.",
+                    "priority": "high",
+                    "mechanism": "Assistants resolve a page to an entity before they cite it. Competing names split the evidence across several weak candidate entities, so the brand is described vaguely, attributed to the wrong name, or dropped from the answer."
+                  }
+                }
+              },
+              {
+                "category": "engagement",
+                "gold": {
+                  "category": "engagement",
+                  "description": "No navigation structure for user or bot orientation",
+                  "severity": "medium"
+                },
+                "agent": {
+                  "id": "MKT-ENGAGE-06",
+                  "title": "The site offers no navigation or internal linking for orientation",
+                  "category": "engagement",
+                  "original_category": "engagement",
+                  "severity": "medium",
+                  "evidence": "http://localhost:9500/site-008-mixed-faults/ (HTTP 200) serves 547 characters of content but contains 0 <nav> landmarks, 0 internal links and 0 external links; header/footer/breadcrumb landmarks present: 0 of 3. The same pattern holds on 1 of 1 measurable pages, so every page is a dead end for a visitor who arrives from a search result or an AI citation.",
+                  "suggested_action": {
+                    "summary": "Add a persistent header <nav> linking Home, About, Products, Pricing and Contact on every HTML page, a footer with the same site-wide links plus policy pages, and breadcrumbs marked up as machine-readable BreadcrumbList JSON-LD on sub-pages. Cross-link related products and articles in body copy so visitors and AI crawlers can discover, extract and cite the rest of the site from any entry point.",
+                    "priority": "medium",
+                    "mechanism": "Internal links are how crawlers discover pages and how AI systems infer site structure and topical relationships; without them each page is an isolated document, and a visitor who lands mid-site has no path to a conversion step."
+                  }
+                }
+              },
+              {
+                "category": "non_text_facts",
+                "gold": {
+                  "category": "non_text_facts",
+                  "description": "Customer results and partnership information locked in images without text equivalents",
+                  "severity": "medium"
+                },
+                "agent": {
+                  "id": "MKT-IMG-04",
+                  "title": "Business facts are published only inside images, with no text equivalent",
+                  "category": "non_text_facts",
+                  "original_category": "non_text_facts",
+                  "severity": "medium",
+                  "evidence": "http://localhost:9500/site-008-mixed-faults/ (HTTP 200) presents 2 fact-bearing images (2 images across 1 pages) whose alt text is missing or generic, and whose surrounding sections contain fewer than 30 words of prose: customer-results.png (alt=\"results\", under \"Our Customers and Results\"); partnership-logos.png (alt=\"partners\", under \"Our Customers and Results\"). The page's own extractable text is 547 characters, so these facts exist nowhere in machine-readable form.",
+                  "suggested_action": {
+                    "summary": "Reproduce the content of each image as HTML text next to it - a real <table> for the pricing and feature matrix, a text block for the company infographic, and vCard-style markup for the contact card - then add descriptive alt text (or a <figcaption>) stating the specific facts shown. Mirror the same values in Product/Offer JSON-LD so the numbers are machine-readable and AI systems can extract and cite them from the HTML instead of ignoring the images.",
+                    "priority": "medium",
+                    "mechanism": "Text extractors and LLM retrieval pipelines do not OCR images; a fact that exists only as pixels is invisible to the model even though a human sees it immediately."
+                  }
+                }
+              },
+              {
+                "category": "freshness",
+                "gold": {
+                  "category": "freshness",
+                  "description": "Awards and industry data from 2018-2019, copyright year 2020",
+                  "severity": "medium"
+                },
+                "agent": {
+                  "id": "MKT-FRESH-05",
+                  "title": "Published facts are visibly out of date",
+                  "category": "freshness",
+                  "original_category": "freshness",
+                  "severity": "medium",
+                  "evidence": "Across 547 characters of body text, 4 dated claims on http://localhost:9500/site-008-mixed-faults/ (HTTP 200) reference 2018-2020, i.e. 6+ years before the current year 2026; the spread covers award x2, pricing x1, undated claim x1. Examples: \"r of \"Best Cloud Startup\" at TechSummit 2018. Named a Gartner Cool Ve\"; \"it 2018. Named a Gartner Cool Vendor in 2019. Industry data: Cloud ma\"; \"ta: Cloud market worth $250B (Statista, 2019) Contact Email: info@cpe\". 1 of 1 crawled pages carry no current-year date at all, and the copyright on them still reads 2020, 6 years stale. No date at or after last year appears anywhere in the crawled text.",
+                  "suggested_action": {
+                    "summary": "Refresh the dated blocks in priority order - pricing tables first, then statistics, awards, team and press - stamp each with a visible 'Last updated' date plus a machine-readable `dateModified` in the page's JSON-LD, and generate the footer copyright year from the server clock so the HTML never contradicts the content. Label genuinely historical facts as such ('award received in 2019'). Recency that AI systems can extract is what keeps the page eligible to be cited rather than skipped.",
+                    "priority": "medium",
+                    "mechanism": "Recency is a ranking and trust signal for AI answer engines: when the newest date on a page is years old, retrieval systems down-rank it and assistants prefer a competitor's current page, even if your facts are still accurate."
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "actions": {
+            "scores": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "severity": {
+            "scores": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": null,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-009-weird-but-healthy",
+        "url": "http://localhost:9500/site-009-weird-but-healthy/",
+        "runtime_seconds": 1.514,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": null,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-010-seo-noise",
+        "url": "http://localhost:9500/site-010-seo-noise/",
+        "runtime_seconds": 0.758,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": null,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-011-multipage-healthy",
+        "url": "http://localhost:9500/site-011-multipage-healthy/",
+        "runtime_seconds": 0.471,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": 1.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": true
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-012-spa-shell",
+        "url": "http://localhost:9500/site-012-spa-shell/",
+        "runtime_seconds": 0.152,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "content_extraction",
+              "rendering"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "rendering",
+                "gold": {
+                  "category": "rendering",
+                  "description": "Empty framework root; all content injected client-side",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-REND-01",
+                  "title": "Business-critical content is only present after client-side JavaScript execution",
+                  "category": "rendering",
+                  "original_category": "rendering",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-012-spa-shell/ (HTTP 200) serves only 28 characters (4 words) of extractable body text; the element #root is empty in the raw HTML and is populated at runtime by inline JavaScript carrying 247 characters of markup (22 words) across 1 injection sites. Facts visible only after JS execution include the prices \"$1,250, $890\".",
+                  "suggested_action": {
+                    "summary": "Server-side render (SSR) or statically pre-render the product, pricing and company sections into the initial HTML response for #root inside <main>, keeping JavaScript for enhancement only, and mirror the same values in Product/Offer JSON-LD structured data. Verify with a text-only fetch (`curl`) that the raw HTML already carries the prices, so the facts are machine-readable for AI crawlers and assistants that never execute JavaScript and can be extracted and cited.",
+                    "priority": "high",
+                    "mechanism": "Most AI retrieval pipelines index the raw HTTP response; content injected by the browser after load is invisible to them, so JS-only facts are simply absent from the model's evidence."
+                  }
+                }
+              },
+              {
+                "category": "content_extraction",
+                "gold": {
+                  "category": "content_extraction",
+                  "description": "Raw HTML yields no business facts at all",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-EXTR-02",
+                  "title": "Key business facts cannot be extracted from the HTML by a text-based crawler",
+                  "category": "content_extraction",
+                  "original_category": "content_extraction",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-012-spa-shell/ (HTTP 200) yields only 28 characters (4 words) of extractable text, and 4 of 4 fact families are absent from it (missing: company_facts, contact, pricing, product_detail). The page advertises 0 fact sections () but supplies no prices, contact details or company figures in HTML text. Root cause measured on this page: client-side rendering. A simulated render recovers 22 words that a text-only crawler never sees, starting \"Verdant Bio Lab automation for genomics teams. Founded 2020 in Basel.\".",
+                  "suggested_action": {
+                    "summary": "Publish the product, pricing, company and contact facts as server-rendered HTML text in the initial response - real <h2> headings, paragraphs and tables rather than JavaScript payloads or images - and back them with Organization and Product JSON-LD structured data. Then verify with a text-only fetch: whatever `curl` returns is the machine-readable evidence an AI assistant can extract, quote and cite.",
+                    "priority": "high",
+                    "mechanism": "Retrieval-augmented assistants chunk and embed the text of the HTTP response. If the response has no facts, the site is either omitted from the answer or represented by a competitor's page that does state them."
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              4,
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "actions": {
+            "scores": [
+              4,
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "severity": {
+            "scores": [
+              1.0,
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": 1.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": true
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-013-invalid-schema",
+        "url": "http://localhost:9500/site-013-invalid-schema/",
+        "runtime_seconds": 0.608,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "structured_data"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "structured_data",
+                "gold": {
+                  "category": "structured_data",
+                  "description": "JSON-LD present but syntactically invalid, so it is discarded by consumers",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-SCHEMA-01",
+                  "title": "JSON-LD structured data is present but does not parse",
+                  "category": "structured_data",
+                  "original_category": "structured_data",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-013-invalid-schema/ (HTTP 200) contains 1 JSON-LD blocks, of which 1 fail to parse: JSONDecodeError: Expecting property name enclosed in double quotes: line 12 column 3 (char 296). The unparseable block is 299 characters long and starts \"{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organizati\".",
+                  "suggested_action": {
+                    "summary": "Fix the JSON syntax in the application/ld+json block and re-validate the schema against schema.org (Rich Results test), so the Organization and Product entities in the page HTML become machine-readable again; invalid JSON-LD is discarded silently, so AI systems and search engines currently extract nothing from it and cannot cite the entity.",
+                    "priority": "high",
+                    "mechanism": "Structured data is the highest-confidence channel for entity facts; a parse error means AI systems fall back to guessing from prose."
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "actions": {
+            "scores": [
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": 1.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": true
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-014-subpage-entity-drift",
+        "url": "http://localhost:9500/site-014-subpage-entity-drift/",
+        "runtime_seconds": 0.471,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "entity_identity",
+              "freshness"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "freshness",
+                "gold": {
+                  "category": "freshness",
+                  "description": "News page awards, press and market data from 2019-2021 with a 2019 copyright",
+                  "severity": "medium"
+                },
+                "agent": {
+                  "id": "MKT-FRESH-02",
+                  "title": "Published facts are visibly out of date",
+                  "category": "freshness",
+                  "original_category": "freshness",
+                  "severity": "medium",
+                  "evidence": "Across 1318 characters of body text, 7 dated claims on http://localhost:9500/site-014-subpage-entity-drift/ (HTTP 200) reference 2019-2021, i.e. 5+ years before the current year 2026; the spread covers pricing x2, update stamp x2, undated claim x1, award x1. Examples: \"afor. COO: Daniel Reiss. Both joined in 2019 and lead the company tod\"; \"ards Winner, Logistics Innovation Award 2019. Named a Robotics Busine\"; \"otics Business Review Top 50 company in 2020. Press March 2021: Helio\". 1 of 3 crawled pages carry no current-year date at all, and the copyright on them still reads 2019, 7 years stale. Only 1 current-era year references were found ([2026]).",
+                  "suggested_action": {
+                    "summary": "Refresh the dated blocks in priority order - pricing tables first, then statistics, awards, team and press - stamp each with a visible 'Last updated' date plus a machine-readable `dateModified` in the page's JSON-LD, and generate the footer copyright year from the server clock so the HTML never contradicts the content. Label genuinely historical facts as such ('award received in 2019'). Recency that AI systems can extract is what keeps the page eligible to be cited rather than skipped.",
+                    "priority": "medium",
+                    "mechanism": "Recency is a ranking and trust signal for AI answer engines: when the newest date on a page is years old, retrieval systems down-rank it and assistants prefer a competitor's current page, even if your facts are still accurate."
+                  }
+                }
+              },
+              {
+                "category": "entity_identity",
+                "gold": {
+                  "category": "entity_identity",
+                  "description": "Helios Robotics / Helios Robotic Systems / Helios Systems Group / HelioBotics across pages",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-ENTITY-01",
+                  "title": "The organisation is referred to by several conflicting names",
+                  "category": "entity_identity",
+                  "original_category": "entity_identity",
+                  "severity": "high",
+                  "evidence": "Scanned 1318 characters of extractable text across 3 crawled pages from http://localhost:9500/site-014-subpage-entity-drift/ (HTTP 200): 4 spellings of the same organisation occupy the identity slots: \"Helios Robotic Systems\" ('About' heading, h1, title); \"HelioBotics Inc\" (body 'formerly'); \"Helios Robotics\" (footer copyright, h1, json-ld name); \"Helios Systems Group\" (footer copyright). \"Helios Robotic Systems\" and \"Helios Robotics\" are 82% string-similar, i.e. variants of one another rather than separate companies, and 3 such near-duplicate pairs were measured in total.",
+                  "suggested_action": {
+                    "summary": "Pick one canonical legal name and use it verbatim in the <title>, <h1>, footer copyright and the JSON-LD Organization `name` property on every HTML page, demoting every other spelling to `alternateName` in that same Organization block, and add `sameAs` links to the company's LinkedIn and Crunchbase profiles. One machine-readable name lets AI systems and crawlers resolve every page to a single entity they can trust, extract and cite.",
+                    "priority": "high",
+                    "mechanism": "Assistants resolve a page to an entity before they cite it. Competing names split the evidence across several weak candidate entities, so the brand is described vaguely, attributed to the wrong name, or dropped from the answer."
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              4,
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "actions": {
+            "scores": [
+              4,
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "severity": {
+            "scores": [
+              1.0,
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": 1.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": true
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-015-image-nav-faults",
+        "url": "http://localhost:9500/site-015-image-nav-faults/",
+        "runtime_seconds": 0.156,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "engagement",
+              "non_text_facts"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "engagement",
+                "gold": {
+                  "category": "engagement",
+                  "description": "No navigation, header, footer or internal links",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-ENGAGE-02",
+                  "title": "The site offers no navigation or internal linking for orientation",
+                  "category": "engagement",
+                  "original_category": "engagement",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-015-image-nav-faults/ (HTTP 200) serves 988 characters of content but contains 0 <nav> landmarks, 0 internal links and 0 external links; header/footer/breadcrumb landmarks present: 0 of 3. The same pattern holds on 1 of 1 measurable pages, so every page is a dead end for a visitor who arrives from a search result or an AI citation.",
+                  "suggested_action": {
+                    "summary": "Add a persistent header <nav> linking Home, About, Products, Pricing and Contact on every HTML page, a footer with the same site-wide links plus policy pages, and breadcrumbs marked up as machine-readable BreadcrumbList JSON-LD on sub-pages. Cross-link related products and articles in body copy so visitors and AI crawlers can discover, extract and cite the rest of the site from any entry point.",
+                    "priority": "high",
+                    "mechanism": "Internal links are how crawlers discover pages and how AI systems infer site structure and topical relationships; without them each page is an isolated document, and a visitor who lands mid-site has no path to a conversion step."
+                  }
+                }
+              },
+              {
+                "category": "non_text_facts",
+                "gold": {
+                  "category": "non_text_facts",
+                  "description": "Capabilities, pricing, audit results and facility data exist only inside images",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-IMG-01",
+                  "title": "Business facts are published only inside images, with no text equivalent",
+                  "category": "non_text_facts",
+                  "original_category": "non_text_facts",
+                  "severity": "high",
+                  "evidence": "http://localhost:9500/site-015-image-nav-faults/ (HTTP 200) presents 4 fact-bearing images (4 images across 1 pages) whose alt text is missing or generic, and whose surrounding sections contain fewer than 30 words of prose: capability-matrix.png (alt=\"capabilities\", under \"Capabilities and Pricing\"); pricing-tiers.png (alt=\"pricing\", under \"Capabilities and Pricing\"); audit-results-chart.png (alt=\"results\", under \"Certifications and Audit Results\"); facility-comparison-table.png (alt=\"facilities\", under \"Plant Locations\"). The page's own extractable text is 988 characters, so these facts exist nowhere in machine-readable form.",
+                  "suggested_action": {
+                    "summary": "Reproduce the content of each image as HTML text next to it - a real <table> for the pricing and feature matrix, a text block for the company infographic, and vCard-style markup for the contact card - then add descriptive alt text (or a <figcaption>) stating the specific facts shown. Mirror the same values in Product/Offer JSON-LD so the numbers are machine-readable and AI systems can extract and cite them from the HTML instead of ignoring the images.",
+                    "priority": "high",
+                    "mechanism": "Text extractors and LLM retrieval pipelines do not OCR images; a fact that exists only as pixels is invisible to the model even though a human sees it immediately."
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              4,
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "actions": {
+            "scores": [
+              4,
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "severity": {
+            "scores": [
+              1.0,
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": 1.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": true
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-016-noindex-block",
+        "url": "http://localhost:9500/site-016-noindex-block/",
+        "runtime_seconds": 0.453,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "crawlability"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "crawlability",
+                "gold": {
+                  "category": "crawlability",
+                  "description": "Public content page carries a noindex directive, so retrieval systems discard it after fetching",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-CRAWL-01",
+                  "title": "Indexable content is marked noindex",
+                  "category": "crawlability",
+                  "original_category": "crawlability",
+                  "severity": "high",
+                  "evidence": "1 pages of 1 carry a noindex directive, e.g. http://localhost:9500/site-016-noindex-block/ (HTTP 200) with robots=\"noindex, nofollow\" while still serving 566 characters (68 words) of business content.",
+                  "suggested_action": {
+                    "summary": "Remove the noindex meta tag and X-Robots-Tag header from public HTML pages that carry product, pricing or company facts, keeping the Organization JSON-LD structured data in place, and reserve noindex for staging, search-result and duplicate URLs, so those pages stay machine-readable and AI systems can extract and cite them.",
+                    "priority": "high",
+                    "mechanism": "noindex tells retrieval systems to discard the document after fetching it, so the facts never reach the index an assistant answers from."
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "actions": {
+            "scores": [
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": 1.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": true
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-017-robots-blocks-ai",
+        "url": "http://localhost:9501/",
+        "runtime_seconds": 0.909,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [
+              "crawlability"
+            ],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [
+              {
+                "category": "crawlability",
+                "gold": {
+                  "category": "crawlability",
+                  "description": "robots.txt disallows AI crawlers from the audited path, so assistants can never fetch, index or cite the content",
+                  "severity": "high"
+                },
+                "agent": {
+                  "id": "MKT-CRAWL-01",
+                  "title": "robots.txt blocks AI crawlers from the audited path",
+                  "category": "crawlability",
+                  "original_category": "crawlability",
+                  "severity": "high",
+                  "evidence": "http://localhost:9501/robots.txt (HTTP 200) disallows / for 3 of 13 known AI user agents (named explicitly: claudebot, gptbot, perplexitybot). Entry URL http://localhost:9501/ answered HTTP 200; 2 pages were reachable for this audit.",
+                  "suggested_action": {
+                    "summary": "Narrow the Disallow rules in robots.txt so public marketing and documentation paths stay crawlable for AI user agents, and add explicit Allow rules for the query-time crawlers that decide citations (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, PerplexityBot) as well as the training crawlers (GPTBot, ClaudeBot, Google-Extended), keeping blanket blocks scoped to private or transactional paths, so the HTML stays machine-readable and assistants can cite it.",
+                    "priority": "high",
+                    "mechanism": "AI assistants honour robots.txt at fetch time; a disallowed path is never retrieved, so the brand cannot be cited even when the content is excellent. Blocking only the query-time crawlers removes the brand from answers while leaving ordinary search traffic untouched, which is why this is usually unintentional."
+                  }
+                }
+              }
+            ],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [
+              4
+            ],
+            "average": 4.0,
+            "normalized": 1.0
+          },
+          "actions": {
+            "scores": [
+              3
+            ],
+            "average": 3.0,
+            "normalized": 0.75
+          },
+          "severity": {
+            "scores": [
+              1.0
+            ],
+            "average": 1.0
+          },
+          "proactive": 0.6667,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": true
+      },
+      {
+        "agent": "B-coverage",
+        "site": "site-018-sitemap-index-healthy",
+        "url": "http://localhost:9502/",
+        "runtime_seconds": 0.916,
+        "error": null,
+        "scores": {
+          "detection": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp_categories": [],
+            "fp_categories": [],
+            "fn_categories": [],
+            "matches": [],
+            "false_positives": [],
+            "missed": []
+          },
+          "false_positive": 1.0,
+          "evidence": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "actions": {
+            "scores": [],
+            "average": 0,
+            "normalized": 0.0
+          },
+          "severity": {
+            "scores": [],
+            "average": 0.5
+          },
+          "proactive": 1.0,
+          "schema": 1.0,
+          "runtime": 1.0
+        },
+        "holdout": false
+      }
+    ]
+  }
+}
