@@ -13,8 +13,10 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 from typing import Any
+from urllib.parse import urlparse
 
 MARKETPLACE_ROOT = os.path.dirname(os.path.abspath(__file__))
 if MARKETPLACE_ROOT not in sys.path:
@@ -42,15 +44,34 @@ def run_audit(url: str, config: dict[str, Any] | None = None) -> dict[str, Any]:
     return _orchestrator().run({"url": url, "config": config or {}})
 
 
+def default_output_path(url: str) -> str:
+    """``https://example.com`` -> ``audit_example.json``.
+
+    The host is the report's identity, so the default filename is derived from
+    it: ``www.`` and the public suffix are dropped, remaining labels joined with
+    ``_``, and anything outside ``[A-Za-z0-9_-]`` replaced so the name is safe
+    on every filesystem.
+    """
+    host = urlparse(url if "://" in url else f"http://{url}").hostname or ""
+    host = host[4:] if host.startswith("www.") else host
+    labels = [label for label in host.split(".") if label]
+    if len(labels) > 1:
+        labels = labels[:-1]          # drop the TLD: example.com -> example
+    name = re.sub(r"[^A-Za-z0-9_-]", "-", "_".join(labels)) or "site"
+    return f"audit_{name}.json"
+
+
 def main() -> None:
     if len(sys.argv) < 2:
-        print("usage: python run.py <url> [output.json]", file=sys.stderr)
+        print("usage: python run.py <url> [output.json]   "
+              "(default: audit_<host>.json)", file=sys.stderr)
         raise SystemExit(2)
-    report = run_audit(sys.argv[1])
-    if len(sys.argv) > 2:
-        with open(sys.argv[2], "w", encoding="utf-8") as fh:
-            json.dump(report, fh, indent=2, default=str)
-        print(f"saved {sys.argv[2]}")
+    url = sys.argv[1]
+    output = sys.argv[2] if len(sys.argv) > 2 else default_output_path(url)
+    report = run_audit(url)
+    with open(output, "w", encoding="utf-8") as fh:
+        json.dump(report, fh, indent=2, default=str)
+    print(f"saved {output}")
     summary = report["summary"]
     print(f"{report['site']}  health={summary['health_score']}  findings={summary['total_findings']}")
     for finding in report["findings"]:

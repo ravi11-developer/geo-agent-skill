@@ -40,6 +40,11 @@ LEGAL_SUFFIXES = {
     "bv", "srl", "sl", "pvt", "pte", "nv", "llp", "lp", "kk", "oy", "oyj", "ab", "aps",
     "pty", "ptyltd", "coltd", "sarl", "spa", "kg", "cokg", "holding", "holdings",
 }
+LEADING_NON_NAME_WORDS = {
+    "a", "an", "the", "our", "your", "his", "her", "its", "their", "this", "that",
+    "these", "those", "we", "you", "they", "it", "all", "any", "some", "every",
+    "each", "both", "more", "most", "many", "such", "one", "two", "if", "when",
+}
 NAME_STOPWORDS = {
     "home", "about", "contact", "products", "product", "pricing", "welcome", "blog", "news",
     "documentation", "docs", "services", "overview", "menu", "login", "search", "support",
@@ -48,9 +53,16 @@ NAME_STOPWORDS = {
 CAP_TOKEN = r"[A-Z][\w&'’.\-]*"
 NAME_PHRASE = rf"{CAP_TOKEN}(?:\s+{CAP_TOKEN}){{0,4}}"
 
+# The trigger phrase is case-insensitive; the *name* after it is not. Applying
+# re.I to the whole pattern silently defeated NAME_PHRASE: with the flag set,
+# CAP_TOKEN's leading [A-Z] matches any letter, so "part of the application
+# process" and "part of our list is simple" parsed as company names. Scope the
+# flag to the trigger with an inline group so capitalisation stays load-bearing.
 WELCOME_RE = re.compile(rf"\bWelcome to\s+({NAME_PHRASE})")
-FORMERLY_RE = re.compile(rf"\b(?:formerly|previously known as|f/k/a|rebranded from)\s+({NAME_PHRASE})", re.I)
-DIVISION_RE = re.compile(rf"\b(?:a division of|a subsidiary of|part of|an? .{{0,20}}company of)\s+({NAME_PHRASE})", re.I)
+FORMERLY_RE = re.compile(
+    rf"\b(?i:formerly|previously known as|f/k/a|rebranded from)\s+({NAME_PHRASE})")
+DIVISION_RE = re.compile(
+    rf"\b(?i:a division of|a subsidiary of|part of|an? .{{0,20}}company of)\s+({NAME_PHRASE})")
 ABOUT_HEADING_RE = re.compile(rf"^About\s+({NAME_PHRASE})$")
 COPYRIGHT_RE = re.compile(
     r"(?:©|&copy;|\(c\)|copyright)\s*(?:\d{4}\s*[-–]\s*)?\d{4}\s+([A-Z][^.|\n]{2,60}?)"
@@ -76,6 +88,15 @@ CLAIM_KEYWORDS = (
     ("team", ("ceo", "cto", "appointed", "team", "founder")),
 )
 ORG_TYPES_LOWER = {t.lower() for t in ORG_SCHEMA_TYPES}
+# Slots in which markup or prose asserts *who the site is*, as opposed to what a
+# given page is about. `title`, `og:title` and `h1` are deliberately absent: they
+# are page topics, and treating them as entity names is what makes every
+# sub-page of a real site look like a competing organisation.
+IDENTITY_SLOTS = {
+    "json-ld name", "json-ld legalName", "json-ld alternateName", "og:site_name",
+    "footer copyright", "body 'Welcome to'", "body 'formerly'", "body 'division of'",
+    "'About' heading",
+}
 
 
 # ---------------------------------------------------------------------------
@@ -84,6 +105,11 @@ ORG_TYPES_LOWER = {t.lower() for t in ORG_SCHEMA_TYPES}
 
 def _clean_candidate(raw: str) -> str:
     name = re.sub(r"\s+", " ", (raw or "").strip())
+    # A name never spans a sentence boundary. CAP_TOKEN admits '.' so that
+    # "B.V." and "Sanity.io" survive, which also let a match run straight past a
+    # full stop and swallow the next clause ("its culture. Tata Steel has").
+    # A period *followed by whitespace* ends the name; one inside a token does not.
+    name = re.split(r"(?<=[.!?])\s", name, maxsplit=1)[0]
     name = name.strip(" \t\n\"'“”‘’,;:·|-–—")
     name = re.sub(r"[.,;:]+$", "", name)
     return name
@@ -96,6 +122,7 @@ def normalise_name(name: str) -> str:
     stripping punctuation turns "B.V." into "b v" and "L.L.C." into "l l c".
     """
     text = _clean_candidate(name).lower()
+    text = re.sub(r"['’]s\b", "", text)      # "Grasim's" is not a second company
     text = re.sub(r"[^\w\s&]", " ", text)
     tokens = [t for t in text.split() if t]
     changed = True
@@ -117,6 +144,13 @@ def _acceptable(name: str) -> bool:
     if len(words) > 6:
         return False
     if cleaned.lower() in NAME_STOPWORDS or normalise_name(cleaned) in NAME_STOPWORDS:
+        return False
+    # A clause lifted out of prose almost always opens with a determiner or
+    # pronoun ("The Platform will be corrected", "Our list is simple"). An
+    # organisation's name effectively never does, and where one genuinely
+    # starts with "The" it is also published in a markup slot, so nothing is
+    # lost by declining to read it out of a sentence.
+    if words[0].lower() in LEADING_NON_NAME_WORDS:
         return False
     if not any(ch.isupper() for ch in cleaned):
         return False
@@ -196,7 +230,9 @@ def build_entity_profile(snapshot: SiteSnapshot) -> dict[str, Any]:
     slots: dict[str, set[str]] = defaultdict(set)
     surface: dict[str, str] = {}
     pages: dict[str, set[str]] = defaultdict(set)
+    on_entry: set[str] = set()
 
+    entry = snapshot.entry_page
     for page in snapshot.ok_pages:
         for name, slot in extract_names(page):
             key = normalise_name(name)
@@ -204,41 +240,78 @@ def build_entity_profile(snapshot: SiteSnapshot) -> dict[str, Any]:
                 continue
             slots[key].add(slot)
             pages[key].add(page.url)
+            if entry is not None and page.url == entry.url:
+                on_entry.add(key)
             surface.setdefault(key, _clean_candidate(name))
 
     keys = sorted(slots)
     if not keys:
         return {"names": {}, "distinct": 0, "variant_pairs": [], "canonical": "", "variants": []}
 
-    # The canonical name is the *medoid* of the name set - the spelling closest to
-    # all the others - chosen from names that actually behave like site identity
-    # (they sit in a strong slot, or recur across slots or pages). Picking the
-    # most-frequent name instead would let a footer variant such as "PeakCloud
-    # Inc." become the anchor and hide the conflict; picking any name at all
-    # would let a one-off sub-page title become the anchor on real sites.
-    strong_slots = {"json-ld name", "json-ld legalName", "og:site_name", "footer copyright"}
+    # Which names are even eligible to be "the organisation, spelled differently"?
+    #
+    # On a *sub*-page, `title`, `og:title` and `h1` carry whatever that page is
+    # about, and they vary by design: "Institute colloquium", "Women's Wool
+    # Runners", "Run Selenium tests with C#". Treating those as entity names is
+    # what makes every section of a healthy site look like a competing
+    # organisation - and the deeper the crawl, the worse it gets.
+    #
+    # A name counts as site identity when any of three things is true:
+    #   * it occupies an IDENTITY_SLOT - markup or prose asserting who the site
+    #     is, rather than what a page covers;
+    #   * it appears on the entry page, whose title and h1 *are* the site's own
+    #     name (on a single-page site there is nowhere else for it to live);
+    #   * it recurs across two or more pages, because a page topic appears on
+    #     the one page it describes while the organisation's name keeps coming
+    #     back.
+    #
+    # Anchoring the canonical name was never enough on its own: the variant set
+    # was drawn from every harvested name, so sub-page titles walked back in as
+    # "variants" of whatever anchor was chosen. Both ends have to be restricted.
+    asserted = [k for k in keys if (slots[k] & IDENTITY_SLOTS) or k in on_entry]
+    identity = [k for k in keys
+                if (slots[k] & IDENTITY_SLOTS) or k in on_entry or len(pages[k]) >= 2] or keys
     squashed_all = {k: k.replace(" ", "") for k in keys}
 
     def similarity(a: str, b: str) -> float:
         return SequenceMatcher(None, squashed_all[a], squashed_all[b]).ratio()
 
-    anchors = [k for k in keys
-               if (slots[k] & strong_slots) or len(slots[k]) >= 2 or len(pages[k]) >= 2] or keys
-    canonical = max(anchors, key=lambda k: (
-        sum(similarity(k, other) for other in keys if other != k), len(slots[k]), len(pages[k]), -len(k)))
+    # The canonical name is the *medoid* - the spelling closest to all the
+    # others - but it is chosen only from names the site actually asserts, never
+    # from one that merely recurs. On a site with many "Brand — Section" titles
+    # the recurring set is dominated by those titles, so a medoid drawn from it
+    # lands on "Tata Steel Archives" rather than "Tata Steel", and every real
+    # section name then reads as a rival spelling of a page title. Picking the
+    # most-frequent name instead would let a footer variant such as "PeakCloud
+    # Inc." become the anchor and hide a genuine conflict.
+    pool = asserted or identity
+    canonical = max(pool, key=lambda k: (
+        sum(similarity(k, other) for other in pool if other != k),
+        len(slots[k]), len(pages[k]), -len(k)))
 
     # Only names that are plausibly *the same organisation spelled differently*
-    # count towards ambiguity. On a real multi-page site, sub-page titles and
-    # marketing headlines ("Online Rent Agreement", "Scaling Render Services")
-    # are page topics, not competing entity names, and anchoring on the canonical
-    # name is what tells the two apart.
+    # count towards ambiguity.
     squashed = {k: k.replace(" ", "") for k in keys}
     variants = []
-    for key in keys:
+    for key in identity:
         if key == canonical:
             continue
         if len(squashed[key]) > len(squashed[canonical]) * 2.2 + 4:
             continue  # a phrase, not a name variant
+        # The canonical name followed by extra words is a *qualifier* - a
+        # section, product line or regional arm ("Juspay Careers", "Tata Steel
+        # Archives", "Pension Watch Share") - not a competing spelling of the
+        # organisation. Ambiguity means the same entity spelled differently,
+        # which is a substitution, never a pure extension. Legal suffixes are
+        # already stripped by normalise_name, so "Acme" and "Acme Ltd" collapse
+        # to one key and never reach this test.
+        # Compared on the shorter of the two, so it holds whichever way round
+        # the canonical fell: "Juspay" vs "Juspay Technologies" is one company
+        # under two names, and "Juspay Blog" is a section of it.
+        canon_tokens, key_tokens = canonical.split(), key.split()
+        shorter, longer = sorted((canon_tokens, key_tokens), key=len)
+        if len(longer) > len(shorter) and longer[:len(shorter)] == shorter:
+            continue
         ratio = SequenceMatcher(None, squashed[canonical], squashed[key]).ratio()
         shares_stem = squashed[key][:4] == squashed[canonical][:4] and len(squashed[canonical]) >= 4
         if ratio >= 0.5 or shares_stem:
