@@ -14,7 +14,7 @@ Validated by `schema/audit.schema.json`; run `python tools/validate_package.py -
 | `summary.top_priority` | string | title of the highest-ranked finding, or a clean-site message |
 | `summary.pages_crawled` / `pages_retrievable` | int | crawl reach |
 | `findings[].id` | string | `MKT-<AREA>-<rank>` |
-| `findings[].category` | enum | one of the nine contract categories |
+| `findings[].category` | enum | one of the eight contract categories enforced by `lib/contracts.py::CATEGORIES` |
 | `findings[].severity` | enum | critical / high / medium / low |
 | `findings[].evidence` | string | **must** carry the page URL, the observed HTTP status and at least one measurement |
 | `findings[].locations[]` | string | URLs the finding applies to |

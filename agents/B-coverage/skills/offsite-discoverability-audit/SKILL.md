@@ -1,8 +1,13 @@
 ---
 name: offsite-discoverability-audit
 description: Audit the signals that let an AI assistant identify a brand against the rest of the web, rather than merely read its pages — external identity anchoring (sameAs, Wikidata, LinkedIn), corroboration surface (press, newsroom, awards), direct-answer content shape, answer-engine schema coverage, fact quotability, and contact details as readable text. Emits prioritized recommendations only, never defects, because a read-only crawl of one origin cannot observe the wider web. Use when diagnosing why a brand is absent from or confused in AI answers even though its own site reads cleanly.
+version: 1.0.0
 license: MIT
+kind: audit
+provides: [offsite_discoverability]
+consumes: [snapshot]
 allowed-tools: []
+safety: read-only; operates entirely on the shared snapshot, performs no network calls of its own
 ---
 
 # Off-Site Discoverability Audit

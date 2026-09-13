@@ -129,7 +129,7 @@ If the question is "which one is actually better" rather than "what did it
 find on this one site", that's what the benchmark is for:
 
 ```bash
-./geo bench                 # both agents, all 16 gold sites, full metric table
+./geo bench                 # both agents, all 18 gold sites, full metric table
 ./geo bench --agent A-precision   # one agent only
 ```
 

@@ -1,0 +1,61 @@
+{
+  "id": "offsite-discoverability-audit",
+  "name": "Off-Site Discoverability Audit",
+  "version": "1.0.0",
+  "kind": "audit",
+  "entrypoint": "scripts/offsite_discoverability.py",
+  "function": "run(context: dict) -> SkillResult",
+  "provides": [
+    "offsite_discoverability"
+  ],
+  "consumes": [
+    "snapshot"
+  ],
+  "produces": [
+    "offsite_profile"
+  ],
+  "emits": "recommendations only",
+  "signals": {
+    "identity_anchoring": [
+      "Organization/Corporation/LocalBusiness/Brand JSON-LD sameAs targets",
+      "outbound links to known identity providers"
+    ],
+    "corroboration_surface": [
+      "press / newsroom / awards / coverage surface in readable text"
+    ],
+    "direct_answer_shape": [
+      "question-shaped prose",
+      "FAQPage markup"
+    ],
+    "answer_engine_schema": [
+      "FAQPage",
+      "HowTo",
+      "QAPage",
+      "Speakable",
+      "BreadcrumbList",
+      "Article"
+    ],
+    "quotability": [
+      "pages carrying a figure, price, date or quantity"
+    ],
+    "contact_reachability": [
+      "email or phone number present as readable text"
+    ]
+  },
+  "thresholds": {
+    "answer_engine_schema": ">=5 of the 6 types absent AND an Organization block already exists",
+    "quotability": "fewer than half of crawled pages carry a concrete fact",
+    "identity_anchoring": "no sameAs target and no outbound identity-provider link"
+  },
+  "emits_no_findings_because": "A defect must cite a reproducible measurement (lib/contracts.make_finding rejects anything else). From one origin this skill can observe that a site publishes no anchor; it cannot observe whether the wider web corroborates it. Asserting 'this brand is uncorroborated' would report something never measured.",
+  "non_defects": [
+    "valid Organization JSON-LD with no sameAs (site-010 is healthy)",
+    "an About page with no numbers on it",
+    "absent structured data entirely - that is content-semantics-audit's finding, not a second report of one root cause"
+  ],
+  "safety": {
+    "read_only": true,
+    "network": "none - consumes the shared snapshot, fetches nothing of its own",
+    "third_party_requests": false
+  }
+}

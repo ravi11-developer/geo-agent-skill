@@ -18,9 +18,9 @@ same-host absolute links is rewritten (to a root-relative path), which is what
 keeps a replayed crawl from leaking back onto the live site.
 
 Usage:
-    python eval/runners/capture_corpus.py                       # curated list
-    python eval/runners/capture_corpus.py --limit 60 --pages 4
-    python eval/runners/capture_corpus.py --urls my_urls.txt --out eval/sites/real/custom
+    python bench/runners/capture_corpus.py                       # curated list
+    python bench/runners/capture_corpus.py --limit 60 --pages 4
+    python bench/runners/capture_corpus.py --urls my_urls.txt --out bench/sites/real/custom
 """
 
 from __future__ import annotations

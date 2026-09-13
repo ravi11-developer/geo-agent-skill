@@ -2,9 +2,9 @@
 """Complete benchmark runner — runs all agents on all sites and produces a leaderboard.
 
 Usage:
-    python eval/runners/run_suite.py                    # Run all agents on all synthetic sites
-    python eval/runners/run_suite.py --agent deterministic  # Run single agent
-    python eval/runners/run_suite.py --site site-003-js-only-facts  # Run all agents on one site
+    python bench/runners/run_suite.py                    # Run all agents on all synthetic sites
+    python bench/runners/run_suite.py --agent B-coverage  # Run single agent
+    python bench/runners/run_suite.py --site site-003-js-only-facts  # Run all agents on one site
 """
 
 from __future__ import annotations

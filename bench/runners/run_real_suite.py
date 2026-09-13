@@ -4,7 +4,7 @@
 Real sites have no gold labels, so this runner scores three things that do not
 need them:
 
-1. **Adjudicated detection** - ``eval/scoring/adjudicate.py`` re-derives each
+1. **Adjudicated detection** - ``bench/scoring/adjudicate.py`` re-derives each
    category from the stored bytes and may answer yes / no / abstain. Contradicting
    a ``no`` is a false positive, missing a ``yes`` is a false negative, and
    findings that land on an ``abstain`` are reported as *unverified* rather than
@@ -18,9 +18,9 @@ Each site is served from its own local replay server rooted at that site, so
 root-relative links, robots.txt and stored Content-Type headers behave exactly as
 captured, and every agent replays byte-identical input.
 
-    python eval/runners/capture_corpus.py            # once
-    python eval/runners/run_real_suite.py            # all agents, all sites
-    python eval/runners/run_real_suite.py --agent marketplace --limit 10
+    python bench/runners/capture_corpus.py            # once
+    python bench/runners/run_real_suite.py            # all agents, all sites
+    python bench/runners/run_real_suite.py --agent marketplace --limit 10
 """
 
 from __future__ import annotations

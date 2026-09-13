@@ -29,12 +29,12 @@ prompts and no API surface, so no environment variable can switch a model on.
 **B** adds the half of the handout A does not cover — why a brand is not *found
 or cited at all* — plus an opt-in semantic layer that ships disabled.
 
-## Current standing — 16 gold sites, 9 weighted metrics
+## Current standing — 18 gold sites, 9 weighted metrics
 
 | Agent | F1 | Prec | Rec | FP | Evidence | Actions | Severity | Proactive | Generalization | **Overall** |
 |---|---|---|---|---|---|---|---|---|---|---|
-| **B-coverage** | 0.966 | 0.933 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | **0.966** | 1.000 | **99.0** |
-| A-precision | 0.966 | 0.933 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 0.947 | 1.000 | 98.8 |
+| **B-coverage** | 0.966 | 0.933 | 1.000 | 1.000 | 1.000 | 0.981 | 1.000 | **0.949** | 1.000 | **98.4** |
+| A-precision | 0.966 | 0.933 | 1.000 | 1.000 | 1.000 | 0.981 | 1.000 | 0.932 | 1.000 | 98.2 |
 
 The two are identical on detection; B wins on proactive suggestion quality alone.
 Reproduce with `./geo bench`.

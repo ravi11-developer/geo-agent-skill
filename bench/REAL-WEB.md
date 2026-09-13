@@ -12,9 +12,9 @@ Everything runs from your own machine, because it needs ordinary outbound intern
 ```bash
 pip install requests beautifulsoup4 trafilatura        # trafilatura is only for the baseline agent
 
-python eval/runners/capture_corpus.py                  # 1. capture the corpus  (~10-20 min)
-python eval/runners/run_real_suite.py                  # 2. score every agent   (~2-5 min)
-python eval/runners/validate_adjudicator.py            # 3. how trustworthy is the scoring
+python bench/runners/capture_corpus.py                  # 1. capture the corpus  (~10-20 min)
+python bench/runners/run_real_suite.py                  # 2. score every agent   (~2-5 min)
+python bench/runners/validate_adjudicator.py            # 3. how trustworthy is the scoring
 ```
 
 Useful flags: `--limit 20` (trial run), `--pages 6` (deeper crawl), `--agent marketplace`
@@ -23,7 +23,7 @@ Useful flags: `--limit 20` (trial run), `--pages 6` (deeper crawl), `--agent mar
 
 ## The corpus
 
-`eval/sites/real/sites.json` lists 104 hand-picked domains across twelve verticals chosen
+`bench/sites/real/sites.json` lists 104 hand-picked domains across twelve verticals chosen
 because AI assistants rarely cite the primary source in them:
 
 | vertical | n | why citation is weak there |
@@ -65,7 +65,7 @@ then served from its own local replay server rooted at that site.
 
 ## How agents are scored without gold labels
 
-`eval/scoring/adjudicate.py` re-derives each of the eight categories from the stored bytes
+`bench/scoring/adjudicate.py` re-derives each of the eight categories from the stored bytes
 using a deliberately independent implementation - stdlib `html.parser` instead of
 BeautifulSoup, byte-level regex instead of DOM walks, Jaccard token overlap instead of
 `SequenceMatcher`. For every site and category it answers:

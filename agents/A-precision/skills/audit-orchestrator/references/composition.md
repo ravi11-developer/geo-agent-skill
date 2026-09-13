@@ -19,8 +19,8 @@ Severity answers "what do I fix first", so it is adjusted in context:
 - Blocking categories: `crawlability`, `rendering`, `content_extraction`,
   `entity_identity`. These describe a machine being unable to read or resolve the
   site at all.
-- Secondary categories: `engagement`, `non_text_facts`, `freshness`,
-  `corroboration`.
+- Secondary categories: `engagement`, `non_text_facts`, `freshness`
+  (`lib/contracts.py::SECONDARY_CATEGORIES`).
 
 When a site has **>= 4 findings including at least one blocking finding**, secondary
 findings at `high` are capped at `medium`, and the finding records why:

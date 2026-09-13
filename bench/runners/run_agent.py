@@ -2,8 +2,8 @@
 """Run a single agent on a given URL and output/save results.
 
 Usage:
-    python eval/runners/run_agent.py --agent deterministic --url http://localhost:9500/site-001-healthy/
-    python eval/runners/run_agent.py --agent specialist --url https://example.com --output report.json
+    python bench/runners/run_agent.py --agent B-coverage --url http://localhost:9500/site-001-healthy/
+    python bench/runners/run_agent.py --agent A-precision --url https://example.com --output report.json
 """
 
 from __future__ import annotations
@@ -56,7 +56,8 @@ def run_agent(agent_name: str, url: str, timeout: int = 300) -> dict[str, Any]:
 
 def main():
     parser = argparse.ArgumentParser(description="Run a single agent on a URL")
-    parser.add_argument("--agent", required=True, help="Agent name (baseline, deterministic, reasoning, specialist, hybrid)")
+    parser.add_argument("--agent", required=True,
+                        help="Agent id as discovered under agents/ (see: ./geo list)")
     parser.add_argument("--url", required=True, help="Target URL to audit")
     parser.add_argument("--output", "-o", help="Filepath to write JSON report")
     parser.add_argument("--timeout", type=int, default=300, help="Execution timeout in seconds")

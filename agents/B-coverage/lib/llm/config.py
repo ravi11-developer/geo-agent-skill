@@ -124,14 +124,33 @@ def _as_float(raw: Any, default: float, minimum: float | None = None, maximum: f
 # Crawl budget (introduced as configuration; legacy defaults are preserved)
 # ---------------------------------------------------------------------------
 
+# Reserved out of `total_budget_seconds` for everything that runs after the
+# crawl phase - the deterministic skills (fast, page-count independent) plus
+# the optional LLM semantic/verifier/suggestion calls, which are capped by
+# their own ceilings (`max_semantic_pages`, `max_calls`) rather than by page
+# count. `explore_deadline_seconds` is derived from this so the two numbers
+# can never drift apart the way `total_budget_seconds` and a hand-picked
+# deadline constant used to.
+RESERVED_FOR_ANALYSIS_SECONDS = 90.0
+# ...and the same reservation when the LLM layer is off, which is the default.
+# 90s was sized for the worst case *with* model calls in flight; measured with
+# the layer off, every deterministic skill after the crawl finishes in ~4s on a
+# 56-page snapshot, so reserving 90s silently donated a third of the handout's
+# allowance to a phase that does not exist. The reserve is picked in
+# `LLMConfig.from_env` from the mode actually in force.
+RESERVED_FOR_ANALYSIS_SECONDS_OFFLINE = 25.0
+
+
 @dataclass(frozen=True)
 class CrawlBudget:
     """Crawl planning limits.
 
     ``legacy`` reproduces the shipped behaviour byte for byte (12 pages, plain
-    breadth-first, no depth ceiling) and is the default, so no existing test or
-    benchmark result moves.  ``extended`` is the Round-3 budget described in the
-    hybrid design and must be requested explicitly.
+    breadth-first, no depth ceiling) and remains available as an explicit
+    opt-out (``AUDIT_CRAWL_PROFILE=legacy``).  ``extended`` is the default: the
+    Round-3 budget that actually spends the handout's 5-minute allowance
+    instead of stopping after ~30 seconds, sized from a real-site sweep (see
+    ``bench/results/ksweep_B-coverage_*.csv`` and ``satsweep_B-coverage_*.csv``).
     """
 
     profile: str = "legacy"
@@ -149,6 +168,20 @@ class CrawlBudget:
     # how many consecutive fetches without a new template count as saturated.
     per_template_samples: int = 3
     saturation_window: int = 6
+    # Fetching. `fetch_concurrency` 1 is strictly sequential, which is what the
+    # legacy profile has always done. A site that publishes `Crawl-delay` for
+    # our token collapses this back to 1 at run time regardless of the profile.
+    fetch_concurrency: int = 1
+    per_host_delay_seconds: float = 0.0
+    # Retry policy for a *fetch*, not for the audit: a transient 429/5xx or a
+    # dropped connection used to end the crawl with a one-page snapshot and a
+    # `crawlability` finding blaming the site.
+    max_fetch_attempts: int = 1
+    retry_backoff_seconds: float = 0.5
+    # Fraction of the exploration budget that must still be unspent before a
+    # saturation stop is allowed to be overridden and sampling widened. 0.0
+    # disables expansion entirely, which is the legacy behaviour.
+    expansion_headroom: float = 0.0
 
     @classmethod
     def legacy(cls) -> "CrawlBudget":
@@ -156,35 +189,72 @@ class CrawlBudget:
 
     @classmethod
     def extended(cls) -> "CrawlBudget":
-        """The measured profile - see `bench/results/ksweep_*.csv` for the sweep.
+        """The measured profile - see `bench/results/ksweep_*.csv` and
+        `satsweep_*.csv` for the sweeps this is derived from.
 
-        `hard_page_limit` sits at the knee of the findings-vs-pages curve rather
-        than at a round number, and `explore_deadline_seconds` keeps the whole
-        audit inside the handout's 5-minute ceiling even when every fetch is slow.
+        A first pass at this profile (16 soft / 30 hard) turned out to be well
+        short of the actual knee: re-sweeping real sites out to k=120 showed
+        findings still climbing past 30 pages for several sites (e.g.
+        `bharatforge.com` needed 45, `assocham.org` picked up another category
+        only at 120) while runtime stayed far under the 5-minute ceiling (worst
+        clean case ~113s at 120 pages). `soft_page_target` is now only the
+        point at which a saturation stop becomes *possible*; it is no longer
+        the effective ceiling it used to be. Measured on beardo.in, the old
+        settings stopped at exactly 60 pages after 74s with 772 URLs still
+        queued and 717 known from the sitemap - a 5-minute allowance spent in
+        81s. Two things fix that: expansion (`expansion_headroom`,
+        `expansion_loops`, `targeted_additions`), which widens the per-template
+        allowance rather than stopping while a third of the budget is unspent,
+        and `fetch_concurrency`, which cuts the ~1.29s/page serial cost far
+        enough that `hard_page_limit` can be a real ceiling instead of an
+        aspiration. The wall clock, not the page count, is what ends a crawl on
+        a large site now.
         """
         return cls(
             profile="extended",
-            soft_page_target=16,
-            hard_page_limit=30,
+            soft_page_target=60,
+            hard_page_limit=150,
             max_depth=3,
-            targeted_depth=3,
+            targeted_depth=4,
             targeted_additions=5,
-            expansion_loops=1,
-            per_template_samples=3,
-            saturation_window=6,
-            explore_deadline_seconds=210.0,
+            expansion_loops=4,
+            per_template_samples=5,
+            saturation_window=10,
+            fetch_concurrency=6,
+            per_host_delay_seconds=0.15,
+            max_fetch_attempts=3,
+            retry_backoff_seconds=0.6,
+            expansion_headroom=0.35,
+            total_budget_seconds=300.0,
+            explore_deadline_seconds=300.0 - RESERVED_FOR_ANALYSIS_SECONDS_OFFLINE,
         )
 
     @classmethod
-    def from_env(cls, env: Mapping[str, str] | None = None) -> "CrawlBudget":
+    def from_env(cls, env: Mapping[str, str] | None = None,
+                 reserved_for_analysis: float | None = None) -> "CrawlBudget":
+        """``reserved_for_analysis`` is supplied by :meth:`LLMConfig.from_env`,
+        which is the only place that knows whether model calls will run at all.
+        """
         env = os.environ if env is None else env
-        profile = str(env.get("AUDIT_CRAWL_PROFILE", "legacy")).strip().lower()
-        base = cls.extended() if profile == "extended" else cls.legacy()
+        # `extended` is the default: a bare `legacy` fallback here is what used
+        # to leave the time-aware crawl logic permanently switched off.
+        # `AUDIT_CRAWL_PROFILE=legacy` still opts back down to the original
+        # 12-page behaviour for anyone who needs it.
+        profile = str(env.get("AUDIT_CRAWL_PROFILE", "extended")).strip().lower()
+        base = cls.legacy() if profile == "legacy" else cls.extended()
         raw_depth = env.get("AUDIT_MAX_DEPTH")
         # An absent variable keeps the profile's own default; only an explicit
-        # value changes the depth ceiling, so `extended` stays depth-2.
+        # value changes the depth ceiling.
         max_depth = (base.max_depth if raw_depth in (None, "")
                      else _as_int(raw_depth, base.max_depth or 2, 0, 10))
+        total_budget_seconds = _as_float(
+            env.get("AUDIT_TOTAL_BUDGET_SECONDS"), base.total_budget_seconds, 5.0, 3600.0)
+        # Derived from the (possibly overridden) total budget rather than the
+        # profile's own fixed default, so raising AUDIT_TOTAL_BUDGET_SECONDS
+        # actually moves the deadline instead of being inert.
+        reserve = (RESERVED_FOR_ANALYSIS_SECONDS if reserved_for_analysis is None
+                   else float(reserved_for_analysis))
+        default_deadline = max(total_budget_seconds - reserve, 1.0)
         return replace(
             base,
             soft_page_target=_as_int(env.get("AUDIT_SOFT_PAGE_TARGET"), base.soft_page_target, 1, 500),
@@ -192,10 +262,16 @@ class CrawlBudget:
             max_depth=max_depth,
             per_template_samples=_as_int(env.get("AUDIT_PER_TEMPLATE_SAMPLES"), base.per_template_samples, 1, 20),
             saturation_window=_as_int(env.get("AUDIT_SATURATION_WINDOW"), base.saturation_window, 1, 50),
+            fetch_concurrency=_as_int(env.get("AUDIT_FETCH_CONCURRENCY"), base.fetch_concurrency, 1, 16),
+            per_host_delay_seconds=_as_float(
+                env.get("AUDIT_PER_HOST_DELAY_SECONDS"), base.per_host_delay_seconds, 0.0, 30.0),
+            max_fetch_attempts=_as_int(env.get("AUDIT_MAX_FETCH_ATTEMPTS"), base.max_fetch_attempts, 1, 6),
+            expansion_loops=_as_int(env.get("AUDIT_EXPANSION_LOOPS"), base.expansion_loops, 0, 20),
             semantic_page_target=_as_int(env.get("AUDIT_SEMANTIC_PAGE_TARGET"), base.semantic_page_target, 1, 50),
             max_semantic_pages=_as_int(env.get("AUDIT_MAX_SEMANTIC_PAGES"), base.max_semantic_pages, 1, 50),
-            total_budget_seconds=_as_float(env.get("AUDIT_TOTAL_BUDGET_SECONDS"), base.total_budget_seconds, 5.0, 3600.0),
-            explore_deadline_seconds=_as_float(env.get("AUDIT_EXPLORE_DEADLINE_SECONDS"), base.explore_deadline_seconds, 1.0, 3600.0),
+            total_budget_seconds=total_budget_seconds,
+            explore_deadline_seconds=_as_float(
+                env.get("AUDIT_EXPLORE_DEADLINE_SECONDS"), default_deadline, 1.0, 3600.0),
         )
 
 
@@ -333,7 +409,17 @@ class LLMConfig:
             max_repairs=_as_int(overrides.get("max_repairs", env.get("LLM_MAX_REPAIRS")), 1, 0, 3),
             allow_benchmark_calls=_as_bool(env.get("LLM_ALLOW_BENCHMARK_CALLS"), False),
             api_key_present=bool(api_key),
-            crawl=CrawlBudget.from_env(env),
+            # The crawl deadline depends on whether anything expensive runs
+            # after the crawl. With the layer off nothing does - every
+            # deterministic skill finishes in ~4s on a 56-page snapshot - so
+            # reserving the LLM-sized 90s would hand a third of the handout's
+            # allowance to a phase that will not execute.
+            crawl=CrawlBudget.from_env(
+                env,
+                reserved_for_analysis=(RESERVED_FOR_ANALYSIS_SECONDS
+                                       if (enabled and mode != MODE_OFF)
+                                       else RESERVED_FOR_ANALYSIS_SECONDS_OFFLINE),
+            ),
         )
         return config
 

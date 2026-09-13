@@ -26,7 +26,7 @@
       "HEAD"
     ],
     "respects_robots_txt": true,
-    "max_pages_per_run": 12,
+    "max_pages_per_run": 150,
     "max_runtime_seconds": 300,
     "writes_to_target": false,
     "collects_pii": false,
@@ -192,6 +192,7 @@
       "version": "1.0.0",
       "kind": "audit",
       "path": "skills/offsite-discoverability-audit",
+      "description": "Audits the signals that let an answer engine identify the brand against the wider web rather than merely read its pages: external identity anchoring, corroboration surface, direct-answer content shape, answer-engine schema coverage, fact quotability and contact reachability. Emits prioritised recommendations only - one origin cannot observe whether the rest of the web corroborates it.",
       "provides": [
         "offsite_discoverability"
       ],
@@ -243,25 +244,32 @@
       "failure_policy": "An LLM failure is an audit limitation reported in audit_health; it never blocks the deterministic report and never becomes a finding about the site."
     },
     "crawl_profiles": {
-      "default": "legacy",
+      "default": "extended",
       "legacy": {
         "soft_page_target": 12,
         "hard_page_limit": 12,
         "max_depth": null
       },
       "extended": {
-        "soft_page_target": 20,
-        "hard_page_limit": 30,
-        "max_depth": 2,
-        "targeted_depth": 3,
+        "soft_page_target": 60,
+        "hard_page_limit": 150,
+        "max_depth": 3,
+        "targeted_depth": 4,
         "targeted_additions": 5,
-        "expansion_loops": 1
+        "expansion_loops": 4,
+        "expansion_headroom": 0.35,
+        "per_template_samples": 5,
+        "saturation_window": 10,
+        "fetch_concurrency": 6,
+        "per_host_delay_seconds": 0.15,
+        "max_fetch_attempts": 3,
+        "explore_deadline_seconds": 275
       },
       "semantic_pages": {
         "target": 10,
         "maximum": 15
       },
-      "note": "The extended profile must be requested explicitly (AUDIT_CRAWL_PROFILE=extended); the shipped default reproduces the original crawl scope exactly."
+      "note": "extended is the default. The wall clock, not a page count, ends the crawl: when template sampling saturates while at least expansion_headroom of the exploration budget is unspent, the per-template allowance is widened (up to expansion_loops times) instead of stopping early. Concurrency is capped by a politeness gate and collapses to sequential whenever the site publishes Crawl-delay. AUDIT_CRAWL_PROFILE=legacy opts back down to the original 12-page, single-threaded, no-retry scope."
     }
   }
 }

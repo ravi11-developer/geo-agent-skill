@@ -2,10 +2,10 @@
 """Automated 2,600-Website Benchmark Pipeline.
 
 Usage:
-    python eval/runners/run_2600_benchmark.py --capture          # Run Phase 1: Capture 2600 sites
-    python eval/runners/run_2600_benchmark.py --benchmark        # Run Phase 2: Benchmark all 6 agents
-    python eval/runners/run_2600_benchmark.py --all              # Run both Phase 1 and Phase 2
-    python eval/runners/run_2600_benchmark.py --limit 50 --all   # Quick 50-site trial
+    python bench/runners/run_2600_benchmark.py --capture          # Run Phase 1: Capture 2600 sites
+    python bench/runners/run_2600_benchmark.py --benchmark        # Run Phase 2: Benchmark all 6 agents
+    python bench/runners/run_2600_benchmark.py --all              # Run both Phase 1 and Phase 2
+    python bench/runners/run_2600_benchmark.py --limit 50 --all   # Quick 50-site trial
 """
 
 import os
@@ -71,7 +71,7 @@ def main():
     if not (args.capture or args.benchmark or args.all):
         parser.print_help()
         print("\nTip: Run with --all to execute the full capture + benchmark flow:")
-        print("     python eval/runners/run_2600_benchmark.py --all")
+        print("     python bench/runners/run_2600_benchmark.py --all")
         return
 
     if args.capture or args.all:

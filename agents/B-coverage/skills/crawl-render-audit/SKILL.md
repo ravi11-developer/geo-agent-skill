@@ -6,7 +6,7 @@ license: MIT
 kind: audit
 provides: [crawlability, rendering]
 allowed-tools: [http-get]
-safety: read-only; GET only; obeys robots.txt; max 12 pages per run
+safety: read-only; GET only; obeys robots.txt and Crawl-delay; max 150 pages per run; <= 6 concurrent requests
 ---
 
 # Crawl & Render Audit

@@ -445,17 +445,10 @@ def run_location_integrity() -> dict:
         server.server_close()
 
 
-def run_saturation_stop() -> dict:
-    """A site with several URL templates should stop well short of the hard
-    page limit once each template is sampled, under the extended crawl profile.
-
-    Regression guard for the Phase 3 stratified crawl (crawl_render.py):
-    without saturation, a fixed page budget is spent breadth-first and never
-    reports that it stopped early. Six templates x 2 pages each is enough
-    to trigger a stop before the 30-page hard limit if saturation is working.
-    """
+def _template_site_routes() -> dict:
+    """Six URL templates x 20 instances, all reachable from the entry page."""
     sections = ("blog", "products", "docs", "team", "pricing", "faq")
-    per_section = 5  # > per_template_samples(3), so every template saturates well before this many are fetched
+    per_section = 20
     routes = {"/": _page(HTML_OK)}
     for section in sections:
         for i in range(1, per_section + 1):
@@ -463,9 +456,19 @@ def run_saturation_stop() -> dict:
             routes[path] = _page(HTML_OK.replace(b"Acme Metrology", f"Acme {section}-{i}".encode()))
     links = "".join(f'<a href="/{s}/{i}">{s} {i}</a>' for s in sections for i in range(1, per_section + 1))
     routes["/"] = _page(HTML_OK.replace(b"</body>", links.encode() + b"</body>"))
-    # 1 entry + 6 sections x 5 pages = 31 URLs total, comfortably above soft_page_target(16),
-    # so a crawl that saturates should stop well short of exhausting the queue.
+    return routes
 
+
+def run_budget_expansion() -> dict:
+    """With budget left, a saturation stop must widen sampling, not end the crawl.
+
+    The counterpart to `run_saturation_stop`. On the same 121-URL fixture the
+    crawl saturates almost immediately at the 60-page soft target - and that is
+    precisely the point at which the shipped crawler used to stop, handing back
+    three quarters of the handout's 5-minute allowance. Expansion must carry it
+    past the soft target while the clock says there is time.
+    """
+    routes = _template_site_routes()
     port = free_port()
     server = make_server(routes, port)
     from run import run_audit
@@ -477,11 +480,65 @@ def run_saturation_stop() -> dict:
         finally:
             os.environ.pop("AUDIT_CRAWL_PROFILE", None)
         telemetry = report.get("telemetry", {})
+        pages = telemetry.get("pages_fetched", 0)
+        expansions = telemetry.get("crawl_expansions", 0)
+        soft = 60
+        ok = pages > soft and expansions >= 1
+        return {"case": "budget_expansion",
+                "note": "saturation with budget left widens sampling instead of stopping",
+                "error": None if ok else (
+                    f"pages_fetched={pages} expansions={expansions} "
+                    f"(expected more than {soft} pages and at least one expansion)"),
+                "seconds": round(time.monotonic() - started, 2), "findings": [], "schema_errors": [],
+                "expect_ok": ok, "forbid_ok": True}
+    except Exception as exc:  # noqa: BLE001
+        return {"case": "budget_expansion",
+                "note": "saturation with budget left widens sampling instead of stopping",
+                "error": f"{type(exc).__name__}: {exc}", "seconds": 0.0, "findings": [],
+                "schema_errors": [], "expect_ok": False, "forbid_ok": True}
+    finally:
+        server.shutdown()
+        server.server_close()
+
+
+def run_saturation_stop() -> dict:
+    """A site with several URL templates should stop well short of the hard
+    page limit once each template is sampled, under the extended crawl profile.
+
+    Regression guard for the Phase 3 stratified crawl (crawl_render.py):
+    without saturation, a fixed page budget is spent breadth-first and never
+    reports that it stopped early. Six templates x 20 pages each is enough
+    to trigger a stop before the hard page limit if saturation is working.
+
+    Run with expansion switched off (`AUDIT_EXPANSION_LOOPS=0`), because
+    saturation and expansion are now two separate rules and this case owns the
+    first one: does the crawl notice it has nothing new to learn. Whether it
+    then *stops* or widens sampling is `run_budget_expansion`'s question.
+    """
+    # 1 entry + 6 sections x 20 pages = 121 URLs total, comfortably above
+    # soft_page_target(60), so a crawl that saturates should stop well short of
+    # exhausting the queue.
+    routes = _template_site_routes()
+    port = free_port()
+    server = make_server(routes, port)
+    from run import run_audit
+    from lib.llm.config import CrawlBudget
+    ceiling = CrawlBudget.extended().hard_page_limit
+    started = time.monotonic()
+    try:
+        os.environ["AUDIT_CRAWL_PROFILE"] = "extended"
+        os.environ["AUDIT_EXPANSION_LOOPS"] = "0"
+        try:
+            report = run_audit(f"http://127.0.0.1:{port}/")
+        finally:
+            os.environ.pop("AUDIT_CRAWL_PROFILE", None)
+            os.environ.pop("AUDIT_EXPANSION_LOOPS", None)
+        telemetry = report.get("telemetry", {})
         stopped = telemetry.get("crawl_stopped_because")
         pages = telemetry.get("pages_fetched", 0)
-        ok = stopped == "saturated" and pages < 30
+        ok = stopped == "saturated" and pages < ceiling
         return {"case": "saturation_stop", "note": "extended crawl stops on template saturation, not the page ceiling",
-                "error": None if ok else f"stopped_because={stopped!r} pages_fetched={pages} (expected 'saturated' under 30)",
+                "error": None if ok else f"stopped_because={stopped!r} pages_fetched={pages} (expected 'saturated' under {ceiling})",
                 "seconds": round(time.monotonic() - started, 2), "findings": [], "schema_errors": [],
                 "expect_ok": ok, "forbid_ok": True}
     except Exception as exc:  # noqa: BLE001
@@ -509,7 +566,8 @@ def main() -> int:
     results = [run_case(n, CASES[n]) for n in names]
     if not args.case:
         results += [run_concurrency(), run_idempotency(), run_dead_port(),
-                    run_location_integrity(), run_saturation_stop()]
+                    run_location_integrity(), run_saturation_stop(),
+                    run_budget_expansion()]
 
     failures = 0
     print(f"{'case':<24}{'time':>7}  {'result':<8} detail")

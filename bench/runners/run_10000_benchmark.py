@@ -3,11 +3,11 @@
 required by capture_corpus.py, then kick off capture + benchmark.
 
 Usage:
-    python eval/runners/run_10000_benchmark.py --convert           # Step 1: build sites_10000.json
-    python eval/runners/run_10000_benchmark.py --capture           # Step 2: capture the corpus
-    python eval/runners/run_10000_benchmark.py --benchmark         # Step 3: run all 6 agents
-    python eval/runners/run_10000_benchmark.py --all               # All three steps
-    python eval/runners/run_10000_benchmark.py --limit 100 --all   # Quick trial run
+    python bench/runners/run_10000_benchmark.py --convert           # Step 1: build sites_10000.json
+    python bench/runners/run_10000_benchmark.py --capture           # Step 2: capture the corpus
+    python bench/runners/run_10000_benchmark.py --benchmark         # Step 3: run all 6 agents
+    python bench/runners/run_10000_benchmark.py --all               # All three steps
+    python bench/runners/run_10000_benchmark.py --limit 100 --all   # Quick trial run
 """
 
 from __future__ import annotations
@@ -73,7 +73,7 @@ def convert(limit: int = 0) -> None:
 
 def run_capture(workers: int = 128, limit: int = 0) -> None:
     cmd = [
-        sys.executable, "eval/runners/capture_corpus.py",
+        sys.executable, "bench/runners/capture_corpus.py",
         "--urls", MD_FILE,       # plain-text URL file — capture_corpus reads it directly
         "--out", CORPUS_DIR,
         "--workers", str(workers),
@@ -88,7 +88,7 @@ def run_capture(workers: int = 128, limit: int = 0) -> None:
 
 def run_benchmark(workers: int = 16, limit: int = 0, agents: list[str] | None = None) -> None:
     cmd = [
-        sys.executable, "eval/runners/run_real_suite.py",
+        sys.executable, "bench/runners/run_real_suite.py",
         "--corpus", CORPUS_DIR,
         "--workers", str(workers),
     ]

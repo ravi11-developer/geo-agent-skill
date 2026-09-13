@@ -26,9 +26,32 @@ GOLD_DIR = REPO_ROOT / "bench" / "gold"
 SYNTHETIC_PORT = 9700  # distinct from run_suite.py's 9500 and run_real_suite.py's 9600
 
 
+def pytest_addoption(parser: pytest.Parser) -> None:
+    parser.addoption(
+        "--runslow", action="store_true", default=False,
+        help="also run tests marked `slow`, which fetch live third-party sites",
+    )
+
+
 def pytest_configure(config: pytest.Config) -> None:
     config.addinivalue_line("markers", "slow: hits the live internet, real sites")
     config.addinivalue_line("markers", "llm: needs ANTHROPIC_API_KEY, skipped otherwise")
+
+
+def pytest_collection_modifyitems(config: pytest.Config, items: list[pytest.Item]) -> None:
+    """Keep the default run hermetic.
+
+    `slow` tests fetch live sites, so a plain `pytest` on a laptop with no
+    network - or behind a captive portal, or against a site that has since
+    changed - fails for reasons that say nothing about the agents. They are
+    skipped unless explicitly requested with `--runslow`.
+    """
+    if config.getoption("--runslow"):
+        return
+    skip_slow = pytest.mark.skip(reason="needs --runslow (fetches live third-party sites)")
+    for item in items:
+        if "slow" in item.keywords:
+            item.add_marker(skip_slow)
 
 
 @pytest.fixture(scope="session")

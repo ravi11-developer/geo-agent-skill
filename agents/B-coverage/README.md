@@ -42,12 +42,14 @@ Each skill directory carries a `SKILL.md` (human/agent-readable contract) and a
 ## Run it
 
 ```bash
-python eval/runners/run_agent.py --agent marketplace --url http://localhost:9500/site-008-mixed-faults/
-python eval/runners/run_suite.py --agent marketplace
-python eval/agents/marketplace/run.py https://example.com report.json   # standalone
+./geo run B-coverage https://example.com                        # via the repo CLI
+python agents/B-coverage/run.py https://example.com report.json # standalone, no CLI
 
-python eval/tests/run_tests.py                 # 186 offline tests, no API key needed
-python eval/runners/run_ablation.py            # all five feature modes, identical fixtures
+python bench/runners/run_agent.py --agent B-coverage --url http://localhost:9500/site-008-mixed-faults/
+python bench/runners/run_suite.py --agent B-coverage            # all 18 synthetic sites
+
+pytest                                          # offline suite, no API key needed
+python agents/B-coverage/tools/validate_package.py   # package/contract self-check
 ```
 
 No API key, no network beyond the audited site, and no configuration are required for any
@@ -87,7 +89,7 @@ in `severity_note` rather than hidden.
 
 ## Benchmark result (16 sites: 10 development + 6 held-out)
 
-Scoring v2, `python eval/runners/run_suite.py`:
+Scoring v2, `python bench/runners/run_suite.py`:
 
 | Agent | F1 | Prec | Rec | FP | Evidence | Actions | Severity | Proactive | Generalization | Overall | (legacy) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -139,7 +141,7 @@ the original ten sites.
 ### What changed in the harness, and why
 
 Three dimensions were measured rather than assumed. The changes are in
-`eval/scoring/proactive.py` and `aggregate_scores()` in `run_suite.py`, and they apply
+`bench/scoring/proactive.py` and `aggregate_scores()` in `run_suite.py`, and they apply
 identically to every agent - every agent's score moved.
 
 1. **Evidence, action and severity are averaged over sites where the agent matched a gold
@@ -248,19 +250,47 @@ and says so in `audit_health.warnings`. It never fails and never invents a findi
 | `LLM_CACHE_ENABLED` | `true` | in-process; add `LLM_CACHE_DIR` for a resumable disk cache |
 | `LLM_MAX_CALLS` | `6` | hard per-audit call ceiling |
 | `LLM_ALLOW_BENCHMARK_CALLS` | `false` | required before a paid provider can run in a large benchmark |
-| `AUDIT_CRAWL_PROFILE` | `legacy` | `legacy` (12 pages, as shipped) or `extended` (20 soft / 30 hard, depth 2) |
+| `AUDIT_CRAWL_PROFILE` | `extended` | `extended` (150-page ceiling, 60-page soft target, depth 3, default) or `legacy` (12 pages, as originally shipped) |
+| `AUDIT_FETCH_CONCURRENCY` | `6` | concurrent GETs; forced to 1 when the site publishes `Crawl-delay` |
+| `AUDIT_PER_HOST_DELAY_SECONDS` | `0.15` | minimum interval between request *starts*, shared across workers |
+| `AUDIT_MAX_FETCH_ATTEMPTS` | `3` | attempts per URL on a transport error or 408/425/429/5xx; `Retry-After` honoured |
+| `AUDIT_EXPANSION_LOOPS` | `4` | how many times a saturation stop may widen sampling instead of ending the crawl |
+| `AUDIT_TOTAL_BUDGET_SECONDS` | `300` | the handout's allowance; the exploration deadline is derived from it |
 
 ### Crawl budget and page selection
 
-The shipped crawl scope is unchanged: 12 pages, breadth-first, no depth ceiling. The
-Round-3 budget is available but must be requested, because silently widening the crawl
-would silently move every result already measured:
+The default crawl scope is `extended`: a 150-page ceiling with a 60-page soft target,
+depth 3, stratified template sampling, low-value URLs dropped, up to 6 concurrent GETs
+behind a politeness gate, and an exploration deadline derived from
+`AUDIT_TOTAL_BUDGET_SECONDS` (275s with the LLM layer off, 210s with it on).
+
+**The wall clock ends the crawl, not a page count.** Saturation - "no URL template has
+both fewer than `per_template_samples` fetched and a candidate still queued" - used to
+stop the crawl outright, which on a real site meant stopping at exactly the 60-page soft
+target after ~74s with hundreds of URLs still queued and three quarters of the handout's
+allowance unspent. It now *widens* sampling instead: while at least `expansion_headroom`
+(35%) of the exploration budget remains, the per-template allowance rises by
+`targeted_additions` and the depth ceiling lifts to `targeted_depth`, releasing the links
+that were held back at the old ceiling. Up to `expansion_loops` of these run before
+`saturated` is reported for real.
+
+The original scope is still available as an explicit opt-out, and it is byte-for-byte the
+behaviour originally shipped - sequential, no retries, no expansion:
 
 ```bash
-export AUDIT_CRAWL_PROFILE=extended    # 20 soft / 30 hard pages, depth 2, low-value URLs dropped
+export AUDIT_CRAWL_PROFILE=legacy    # 12 pages, breadth-first, no depth ceiling (as originally shipped)
 ```
 
-Deterministic checks run on every crawled page. Only 8-12 representative pages (never more
+Fetching is retried: up to `AUDIT_MAX_FETCH_ATTEMPTS` per URL - robots.txt and sitemaps
+included - on a transport error or a retryable status, honouring `Retry-After`. If the
+first pass still comes back with at most one usable page while the sitemap advertised
+more, a bounded recovery round re-queues up to 20 sitemap URLs and re-fetches the entry.
+A crawl that is rate-limited (an explicit 429, or a wall of refusals that begins only
+after the crawl was already working) reports an audit limitation in `audit_health` and
+emits **no** `crawlability` finding - a throttled auditor is not evidence that a site
+blocks machines.
+
+Deterministic checks run on every crawled page. Only 8-10 representative pages (never more
 than 15) are selected for semantic analysis, ranked by page-type coverage value, template
 uniqueness, semantic information value, and penalised for duplicate templates, depth and
 tracking query strings. The LLM may only rank and classify URLs the crawler already found;
@@ -335,11 +365,19 @@ a paid provider unless `LLM_ALLOW_BENCHMARK_CALLS=true`.
 
 ## Ablation
 
+A dedicated ablation runner is not shipped in this repo. The same comparison is
+driven by the feature-mode environment variables, one suite run per mode:
+
 ```bash
-python eval/runners/run_ablation.py                      # 16 synthetic sites, all five modes
-python eval/runners/run_ablation.py --corpus             # the captured real-site corpus
-python eval/runners/run_ablation.py --modes off,full
+for mode in off suggestions_only semantic_shadow semantic_enabled full; do
+  LLM_ENABLED=true LLM_MODE=$mode LLM_PROVIDER=fake \
+    python bench/runners/run_suite.py --agent B-coverage \
+      --output bench/results/ablation_$mode.json
+done
 ```
+
+`LLM_PROVIDER=fake` selects the offline responder described below, so the sweep
+costs nothing and needs no API key.
 
 The default responder is `offline-analyst`: a deterministic scripted responder that reads
 the same evidence pack a model would and answers by lexical rule. It is **not a model**. It
@@ -367,8 +405,9 @@ with `--responder anthropic --allow-paid-calls`.
 
 ## Safety
 
-Read-only by construction: HTTP GET only, robots.txt obeyed, at most 12 pages and ~8s per
-request, no cookies persisted, no writes to the target, no PII collected. Dependencies are
+Read-only by construction: HTTP GET only, robots.txt and `Crawl-delay` obeyed, at most 150
+pages, 6 concurrent requests and ~8s per request, no cookies persisted, no writes to the
+target, no PII collected. Dependencies are
 `requests` and `beautifulsoup4`, with a `urllib` fallback if `requests` is absent. Typical
 runtime is under 0.1s per site on localhost; a failing skill degrades coverage rather than
 the run.

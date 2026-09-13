@@ -2,9 +2,16 @@
 
 ## Fetching
 
-- GET only, `allow_redirects=True`, 8s timeout, <= 12 pages per run.
-- One retry for a transport error with no HTTP status (DNS/TLS/proxy blips); a finding
-  raised from a retry-failed fetch is emitted with `confidence: "medium"`.
+- GET only, `allow_redirects=True`, 8s timeout, <= 150 pages per run under the default
+  `extended` profile (<= 12 under `legacy`), at most 6 concurrent requests behind a
+  politeness gate that collapses to sequential whenever the site publishes `Crawl-delay`.
+- Up to 3 attempts per URL - robots.txt and sitemaps included - for a transport error or a
+  retryable status (408, 425, 429, 5xx), with exponential backoff and `Retry-After`
+  honoured. A finding raised from a retry-failed fetch with no HTTP status at all is
+  emitted with `confidence: "medium"`.
+- An explicit 429, or three or more refusals that begin only after the crawl was already
+  working, is recorded as `likely_rate_limited`. That is a limitation of the audit, not a
+  property of the site: no `crawlability` finding is emitted from such a run.
 - Charset: the header parameter wins; otherwise `<meta charset>` from the first 2KB;
   otherwise chardet, then UTF-8. **Never** the requests default of ISO-8859-1 for
   `text/html` without a charset - that mojibakes UTF-8 pages that declare charset in

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Measure the adjudicator's own accuracy, so real-web numbers can be defended.
 
-The real-web leaderboard is scored by `eval/scoring/adjudicate.py`, which derives
+The real-web leaderboard is scored by `bench/scoring/adjudicate.py`, which derives
 labels mechanically because real sites have no gold. That raises the obvious
 question: how accurate is the adjudicator? This script answers it by pushing the
 16 *labelled* synthetic sites through the identical pipeline - capture, replay,
 adjudicate - and comparing its labels with the hand-written gold.
 
-    python eval/runners/validate_adjudicator.py
+    python bench/runners/validate_adjudicator.py
 
 Quote the agreement figure it prints alongside any real-web result.
 """

@@ -17,7 +17,9 @@ from __future__ import annotations
 
 import gzip
 import re
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 from typing import Any
 from urllib.parse import urljoin, urlparse
 
@@ -26,7 +28,26 @@ from lib.contracts import Page, SiteSnapshot, SkillResult, make_finding, recomme
 SKILL_ID = "crawl-render-audit"
 USER_AGENT = "AIDiscoverabilityAuditor/1.0 (+read-only; respects robots.txt)"
 REQUEST_TIMEOUT = 8
+# Only ever reached by a caller that passes no budget at all. Every real entry
+# point resolves a `CrawlBudget` (`AUDIT_CRAWL_PROFILE`, default `extended`),
+# and `crawl()` falls back to the environment's budget rather than to this
+# number - a bare 12 here used to be a silent second ceiling that any caller
+# who forgot to thread the budget through would quietly inherit.
 MAX_PAGES = 12
+
+# A status the server may recover from on a second ask. 429 and 5xx are the
+# ones that matter: without a retry, one throttled request ends the crawl with
+# a one-page snapshot, and the crawlability detector then reports a defect that
+# belongs to our own traffic rather than to the site.
+RETRYABLE_STATUS = frozenset({408, 425, 429, 500, 502, 503, 504})
+# Statuses that, *after* the crawl has already succeeded somewhere, read as a
+# rate limit rather than as a site-wide retrieval barrier.
+THROTTLE_STATUS = frozenset({401, 403, 429})
+MAX_RETRY_SLEEP_SECONDS = 5.0
+# How many sitemap URLs a recovery round re-queues when the first pass came
+# back with nothing. Bounded: this is a floor under a failed crawl, not a
+# second crawl.
+SITEMAP_RECOVERY_URLS = 20
 
 FRAMEWORK_ROOT_IDS = {"root", "app", "__next", "__nuxt", "ember-app", "svelte-app", "q-app"}
 JS_GATE_RE = re.compile(
@@ -93,7 +114,7 @@ def _decode_text(raw: bytes) -> str:
     return raw.decode("utf-8", errors="replace")
 
 
-def _fetch(url: str, session: Any = None, accept_text: bool = False) -> Page:
+def _fetch_once(url: str, session: Any = None, accept_text: bool = False) -> Page:
     """Fetch one document.
 
     HTML always lands in ``page.html``.  ``accept_text=True`` additionally keeps
@@ -145,12 +166,135 @@ def _fetch(url: str, session: Any = None, accept_text: bool = False) -> Page:
     return page
 
 
-def _new_session():
+def _retry_after_seconds(page: Page) -> float | None:
+    """The server's own instruction, when it gave one.
+
+    Only the delta-seconds form is honoured. The HTTP-date form is rare in
+    practice and parsing it wrongly would be worse than falling back to our own
+    backoff, which is bounded either way.
+    """
+    raw = (page.headers or {}).get("retry-after", "").strip()
+    if not raw.isdigit():
+        return None
+    return min(float(raw), MAX_RETRY_SLEEP_SECONDS)
+
+
+def _fetch(url: str, session: Any = None, accept_text: bool = False, *,
+           attempts: int = 1, backoff: float = 0.5) -> Page:
+    """Fetch one document, retrying only what a retry can actually fix.
+
+    ``attempts`` of 1 reproduces the original single-shot behaviour exactly and
+    is what the legacy profile uses. Above that, a transport failure or a
+    :data:`RETRYABLE_STATUS` is retried with exponential backoff, honouring
+    ``Retry-After`` when the server sends one.
+
+    This is deliberately applied to *every* fetch, robots.txt and sitemaps
+    included. Losing the sitemap to one transient error is what left large
+    catalogue and single-page sites with an empty queue and a one-page audit,
+    and a one-page audit is reported as a ``crawlability`` defect of the site.
+    """
+    attempts = max(1, int(attempts))
+    page = _fetch_once(url, session, accept_text)
+    page.fetch_attempts = 1
+    for attempt in range(2, attempts + 1):
+        transport_failure = page.status_code is None and bool(page.error)
+        if not (transport_failure or page.status_code in RETRYABLE_STATUS):
+            break
+        delay = _retry_after_seconds(page)
+        if delay is None:
+            delay = min(backoff * (2 ** (attempt - 2)), MAX_RETRY_SLEEP_SECONDS)
+        time.sleep(delay)
+        page = _fetch_once(url, session, accept_text)
+        page.fetch_attempts = attempt
+    return page
+
+
+class _RateGate:
+    """Global minimum interval between requests, shared across crawl workers.
+
+    Concurrency is what buys back the wall clock, but it must not turn into a
+    burst against one host. Serialising only the *start* of each request keeps N
+    requests in flight while capping the issue rate at 1/``min_interval``.
+    """
+
+    def __init__(self, min_interval: float) -> None:
+        self._min = max(0.0, float(min_interval))
+        self._lock = threading.Lock()
+        self._next = 0.0
+
+    def wait(self) -> None:
+        if self._min <= 0:
+            return
+        with self._lock:
+            start = max(time.monotonic(), self._next)
+            self._next = start + self._min
+        remaining = start - time.monotonic()
+        if remaining > 0:
+            time.sleep(remaining)
+
+
+def _new_session(pool_size: int = 1):
     if requests is None:
         return None
     session = requests.Session()
     session.headers.update({"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml"})
+    # urllib3 pools 10 connections per host by default and *warns and discards*
+    # beyond that, which would throw away exactly the concurrency we added.
+    if pool_size > 1:
+        try:
+            from requests.adapters import HTTPAdapter
+
+            adapter = HTTPAdapter(pool_connections=pool_size, pool_maxsize=pool_size)
+            session.mount("http://", adapter)
+            session.mount("https://", adapter)
+        except Exception:  # noqa: BLE001 - pooling is an optimisation, never a requirement
+            pass
     return session
+
+
+class _SessionPool:
+    """One :class:`requests.Session` per worker thread.
+
+    A Session is not documented as thread-safe; sharing one across a pool risks
+    interleaved connection state for no gain, since each thread needs its own
+    connection anyway.
+    """
+
+    def __init__(self, pool_size: int = 1) -> None:
+        self._pool_size = pool_size
+        self._local = threading.local()
+
+    @property
+    def session(self):
+        existing = getattr(self._local, "session", None)
+        if existing is None:
+            existing = _new_session(self._pool_size)
+            self._local.session = existing
+        return existing
+
+
+def _fetch_wave(targets: list[str], pool: "_SessionPool", gate: _RateGate, *,
+                concurrency: int = 1, attempts: int = 1, backoff: float = 0.5) -> list[Page]:
+    """Fetch ``targets`` concurrently, returning results in *request* order.
+
+    Returning in request order rather than completion order is what keeps the
+    crawl deterministic: the wave is chosen by :func:`_pick_stratified`, and the
+    snapshot records it in exactly that sequence however the network reorders
+    the responses.
+    """
+    if concurrency <= 1 or len(targets) <= 1:
+        out = []
+        for target in targets:
+            gate.wait()
+            out.append(_fetch(target, pool.session, attempts=attempts, backoff=backoff))
+        return out
+
+    def _one(target: str) -> Page:
+        gate.wait()
+        return _fetch(target, pool.session, attempts=attempts, backoff=backoff)
+
+    with ThreadPoolExecutor(max_workers=min(concurrency, len(targets))) as executor:
+        return list(executor.map(_one, targets))
 
 
 # ---------------------------------------------------------------------------
@@ -267,6 +411,45 @@ def _auditor_may_fetch(groups: dict[str, list[tuple[str, bool]]], path: str) -> 
     return _path_allowed(rules, path) if rules else True
 
 
+def _crawl_delay_for_auditor(robots_txt: str) -> float | None:
+    """``Crawl-delay`` declared for us, or for ``*``, in seconds.
+
+    Not part of RFC 9309, but widely published and widely honoured, and it is
+    the site's own statement of how fast it wants to be read. A site that asks
+    for a delay gets a sequential crawl at that rate no matter what the profile
+    would otherwise do - concurrency exists to use our own budget, never to
+    outrun what the host asked for.
+    """
+    best: float | None = None
+    current: list[str] = []
+    in_directives = False
+    for raw_line in robots_txt.splitlines():
+        line = raw_line.split("#", 1)[0].strip()
+        if not line or ":" not in line:
+            continue
+        key, value = (part.strip() for part in line.split(":", 1))
+        key = key.lower()
+        if key == "user-agent":
+            if in_directives:
+                current = []
+                in_directives = False
+            if value:
+                current.append(value.lower())
+        elif key == "crawl-delay":
+            in_directives = True
+            if not any(agent in (AUDITOR_UA_TOKEN, "*") for agent in current):
+                continue
+            try:
+                delay = float(value)
+            except ValueError:
+                continue
+            if delay > 0 and (best is None or delay > best):
+                best = delay
+        elif key in ("disallow", "allow"):
+            in_directives = True
+    return best
+
+
 def _sitemap_refs(robots_txt: str) -> list[str]:
     """``Sitemap:`` directives, which are group-independent and may point anywhere."""
     out: list[str] = []
@@ -308,7 +491,8 @@ def _parse_sitemap_doc(xml: str) -> dict[str, list[str]]:
     return {"children": children, "pages": pages, "lastmods": lastmods}
 
 
-def _collect_sitemaps(entry_points: list[str], session: Any) -> dict[str, Any]:
+def _collect_sitemaps(entry_points: list[str], session: Any, *,
+                      attempts: int = 1, backoff: float = 0.5) -> dict[str, Any]:
     """Read sitemaps breadth-first, following ``<sitemapindex>`` into children.
 
     Bounded by :data:`SITEMAP_MAX_DOCUMENTS` so a site with hundreds of shards
@@ -329,7 +513,7 @@ def _collect_sitemaps(entry_points: list[str], session: Any) -> dict[str, Any]:
         if url in seen:
             continue
         seen.add(url)
-        doc = _fetch(url, session, accept_text=True)
+        doc = _fetch(url, session, accept_text=True, attempts=attempts, backoff=backoff)
         if doc.status_code is not None:
             checked = True  # the server answered; absence is now an observation
         record = {"url": url, "status": doc.status_code, "kind": "unread", "urls": 0}
@@ -494,41 +678,103 @@ def url_template_single(url: str) -> str:
     return build_templates([url])[url]
 
 
-def crawl(url: str, max_pages: int = MAX_PAGES, budget: Any = None,
-          error_log: Any = None) -> SiteSnapshot:
-    """Breadth-first, read-only crawl.
+def _resolve_budget(budget: Any) -> Any:
+    """The budget actually in force for this crawl.
 
-    ``budget`` is optional.  With no budget (the default) this behaves exactly
-    as it always has: plain breadth-first, ``max_pages`` documents, no depth
-    ceiling and no URL filtering beyond scope.  A budget with the ``extended``
-    profile additionally enforces a depth ceiling, drops low-value URLs and
-    honours a wall-clock exploration deadline - all of which are opt-in, because
-    silently changing the crawl scope would silently change every result the
-    project has already measured.
+    A caller that passes nothing gets the environment's profile
+    (``AUDIT_CRAWL_PROFILE``, default ``extended``) rather than the bare
+    :data:`MAX_PAGES` constant. That constant used to be the silent default for
+    every caller who forgot to thread a budget through - a second ceiling with
+    its own number, which is exactly how a 12-page cap survived a project-wide
+    move to an 80-page one.
     """
-    session = _new_session()
+    if budget is not None:
+        return budget
+    try:
+        from lib.llm.config import CrawlBudget
+    except Exception:  # noqa: BLE001 - the skill must stay runnable standalone
+        return None
+    return CrawlBudget.from_env()
+
+
+def _requeue_from_sitemap(snapshot: SiteSnapshot, queue: list, seen: set, parsed: Any,
+                          scope_prefix: str, limit: int) -> int:
+    """Put sitemap URLs the first pass never reached back on the queue."""
+    fetched = {_canonical_key(page.url) for page in snapshot.pages}
+    added = 0
+    for loc in snapshot.sitemap_urls:
+        if added >= limit:
+            break
+        key = _canonical_key(loc)
+        if key in fetched:
+            continue
+        target = urlparse(loc)
+        if not _same_site(target.netloc, parsed.netloc):
+            continue
+        if scope_prefix != "/" and not target.path.startswith(scope_prefix.rstrip("/")):
+            continue
+        if re.search(r"\.(pdf|zip|png|jpe?g|gif|svg|css|js|xml|ico|md|txt)$", target.path, re.I):
+            continue
+        seen.add(key)
+        queue.append((loc, 1, "sitemap-recovery"))
+        added += 1
+    return added
+
+
+def crawl(url: str, max_pages: int | None = None, budget: Any = None,
+          error_log: Any = None) -> SiteSnapshot:
+    """Read-only crawl: breadth-first under ``legacy``, stratified under ``extended``.
+
+    ``legacy`` is byte-for-byte the originally shipped behaviour: one request at
+    a time, no retries, plain breadth-first, ``hard_page_limit`` documents, no
+    depth ceiling and no URL filtering beyond scope.
+
+    ``extended`` (the default) additionally enforces a depth ceiling, drops
+    low-value URLs, samples stratified across URL templates, fetches
+    concurrently under a politeness gate, retries transient failures, and treats
+    the wall clock rather than a page count as the thing that ends the crawl:
+    when sampling saturates while a meaningful share of the exploration budget
+    is still unspent, the per-template allowance is widened instead of stopping.
+
+    ``max_pages``, when given, is an additional ceiling on top of the budget's
+    ``hard_page_limit``; it can only tighten the crawl, never widen it.
+    """
+    budget = _resolve_budget(budget)
+    extended = bool(budget is not None and getattr(budget, "profile", "legacy") != "legacy")
+
+    hard_limit = int(getattr(budget, "hard_page_limit", MAX_PAGES) or MAX_PAGES)
+    if max_pages is not None:
+        hard_limit = min(int(max_pages), hard_limit)
+    max_pages = max(1, hard_limit)
+
+    soft_target = int(getattr(budget, "soft_page_target", max_pages) or max_pages) if extended else max_pages
+    per_template = int(getattr(budget, "per_template_samples", 3) or 3) if extended else 0
+    saturation_window = int(getattr(budget, "saturation_window", 6) or 6) if extended else 0
+    max_depth = getattr(budget, "max_depth", None) if extended else None
+    attempts = int(getattr(budget, "max_fetch_attempts", 1) or 1)
+    backoff = float(getattr(budget, "retry_backoff_seconds", 0.5) or 0.5)
+    concurrency = int(getattr(budget, "fetch_concurrency", 1) or 1) if extended else 1
+    host_delay = float(getattr(budget, "per_host_delay_seconds", 0.0) or 0.0)
+    expansion_loops = int(getattr(budget, "expansion_loops", 0) or 0) if extended else 0
+    targeted_additions = int(getattr(budget, "targeted_additions", 0) or 0)
+    targeted_depth = getattr(budget, "targeted_depth", None)
+    expansion_headroom = float(getattr(budget, "expansion_headroom", 0.0) or 0.0)
+    explore_span = float(getattr(budget, "explore_deadline_seconds", 0.0) or 0.0) if extended else 0.0
+    deadline = (time.monotonic() + explore_span) if (extended and explore_span > 0) else None
+
+    pool = _SessionPool(concurrency)
+    gate = _RateGate(host_delay)
+    session = pool.session
+
     parsed = urlparse(url)
     base = f"{parsed.scheme}://{parsed.netloc}"
     path_parts = [p for p in parsed.path.strip("/").split("/") if p and "." not in p]
     scope_prefix = "/" + path_parts[0] + "/" if path_parts else "/"
 
-    extended = bool(budget is not None and getattr(budget, "profile", "legacy") != "legacy")
-    if extended:
-        # The budget governs, rather than being floored by the caller's default.
-        # `min()` here meant the extended profile could only ever *tighten* the
-        # crawl: with a manifest default of 12 and a hard limit of 30 it
-        # resolved to 12, so requesting the wider profile changed nothing at all.
-        max_pages = int(getattr(budget, "hard_page_limit", max_pages) or max_pages)
-    soft_target = int(getattr(budget, "soft_page_target", max_pages) or max_pages) if extended else max_pages
-    per_template = int(getattr(budget, "per_template_samples", 3) or 3) if extended else 0
-    saturation_window = int(getattr(budget, "saturation_window", 6) or 6) if extended else 0
-    max_depth = getattr(budget, "max_depth", None) if extended else None
-    deadline = (time.monotonic() + float(getattr(budget, "explore_deadline_seconds", 1e9))
-                if extended else None)
-
     snapshot = SiteSnapshot(base_url=base, entry_url=url)
 
-    robots = _fetch(urljoin(base + "/", "robots.txt"), session, accept_text=True)
+    robots = _fetch(urljoin(base + "/", "robots.txt"), session, accept_text=True,
+                    attempts=attempts, backoff=backoff)
     snapshot.robots_status = robots.status_code
     if robots.status_code == 200:
         snapshot.robots_txt = robots.text_body or robots.html or ""
@@ -536,11 +782,21 @@ def crawl(url: str, max_pages: int = MAX_PAGES, budget: Any = None,
     robots_rules = _parse_robots(snapshot.robots_txt) if snapshot.robots_txt else {}
     snapshot.robots_sitemap_refs = _sitemap_refs(snapshot.robots_txt or "")
 
+    # A published Crawl-delay outranks our own concurrency: the point of
+    # fetching in parallel is to use the audit's own 5-minute allowance, not to
+    # read a host faster than it asked to be read.
+    crawl_delay = _crawl_delay_for_auditor(snapshot.robots_txt) if snapshot.robots_txt else None
+    if crawl_delay:
+        concurrency = 1
+        gate = _RateGate(max(host_delay, crawl_delay))
+        snapshot.notes["crawl_delay_honoured"] = crawl_delay
+
     # A site's own `Sitemap:` directives are tried before the conventional
     # location, because the directive is authoritative about where the sitemap
     # actually lives - /sitemap.xml is only a convention.
     sitemaps = _collect_sitemaps(
-        snapshot.robots_sitemap_refs + [urljoin(base + "/", "sitemap.xml")], session)
+        snapshot.robots_sitemap_refs + [urljoin(base + "/", "sitemap.xml")], session,
+        attempts=attempts, backoff=backoff)
     snapshot.sitemap_urls = sitemaps["pages"]
     snapshot.sitemap_sources = sitemaps["sources"]
     snapshot.sitemap_lastmods = sitemaps["lastmods"]
@@ -554,6 +810,11 @@ def crawl(url: str, max_pages: int = MAX_PAGES, budget: Any = None,
 
     queue: list[tuple[str, int, str | None]] = [(url, 0, None)]
     seen = {_canonical_key(url)}
+    # Links behind the current depth ceiling. Held rather than dropped so a
+    # targeted expansion has somewhere to expand *to*: a link discarded at the
+    # ceiling is gone, and raising `max_depth` afterwards would find an empty
+    # queue and buy nothing.
+    deferred: list[tuple[str, int, str | None]] = []
 
     # Seed from the sitemap.  This is the site's own statement of which pages
     # matter, it costs nothing extra (the documents are already read), and it is
@@ -581,136 +842,247 @@ def crawl(url: str, max_pages: int = MAX_PAGES, budget: Any = None,
 
     sampled_templates: dict[str, int] = {}
     templates = build_templates([u for u, _, _ in queue]) if extended else {}
-    templates_built_at = max(len(seen), 1)
     fetches_since_new_template = 0
     stopped_reason = "queue_exhausted"
-    while queue and len(snapshot.pages) < max_pages:
-        if deadline is not None and time.monotonic() > deadline:
-            stopped_reason = "exploration_deadline"
-            break
-        if extended:
-            # Rebuilt every iteration over the *whole* known pool, fetched pages
-            # included.  A shape only becomes visible once its siblings exist, so
-            # a map frozen at the seed set cannot classify anything link
-            # discovery turns up later - and a per-URL fallback is worse than
-            # useless here, because a lone URL has no siblings and so resolves to
-            # a fully literal path.  Every freshly discovered link would then look
-            # like an unsampled template and be picked first, which inverts the
-            # policy into "prefer whatever we understand least".
-            templates = build_templates(
-                [u for u, _, _ in queue] + [page.url for page in snapshot.pages])
-            sampled_templates = {}
-            for page in snapshot.pages:
-                key = templates.get(page.url, "/")
-                sampled_templates[key] = sampled_templates.get(key, 0) + 1
+    expansions: list[dict[str, Any]] = []
 
-        # Saturation: stop once no template both (a) has fewer than
-        # per_template_samples fetched *and* (b) still has a candidate waiting
-        # in the queue. A template that will only ever have one instance -
-        # the homepage, a lone /about page - can never reach per_template on
-        # its own; requiring every template's *count* to clear the threshold
-        # (rather than checking whether more of it are even available) blocks
-        # saturation forever on any real site, which has several such
-        # singletons. Checking queue availability is what makes this a
-        # genuine "there is nothing more useful left to fetch" test.
-        if extended and len(snapshot.pages) >= soft_target and fetches_since_new_template >= saturation_window:
-            queued_counts: dict[str, int] = {}
-            for candidate, _depth, _parent in queue:
-                key = templates.get(candidate, "/")
-                queued_counts[key] = queued_counts.get(key, 0) + 1
-            undersampled_and_available = any(
-                sampled_templates.get(t, 0) < per_template and queued_counts.get(t, 0) > 0
-                for t in set(sampled_templates) | set(queued_counts)
-            )
-            if sampled_templates and not undersampled_and_available:
-                stopped_reason = "saturated"
+    # Round 0 is the crawl.  Round 1 runs only when round 0 came back with at
+    # most one usable page while the sitemap advertised more: that combination
+    # is almost never a property of the site (all of beardo.in, bikanervala.com
+    # and mokobara.com answered 200 with a working sitemap while the bench was
+    # recording one-page snapshots for them) and almost always a transient
+    # failure on our side, which the report would otherwise publish as a
+    # `crawlability` defect of the site.
+    for attempt_round in (0, 1):
+        if attempt_round == 1:
+            if not extended or len(snapshot.ok_pages) > 1 or not snapshot.sitemap_urls:
                 break
+            if deadline is not None and time.monotonic() >= deadline:
+                break
+            entry_page = snapshot.entry_page
+            if entry_page is not None and not entry_page.ok:
+                retry = _fetch(url, pool.session, attempts=max(attempts, 3),
+                               backoff=max(backoff, 1.0))
+                if retry.ok:
+                    retry.is_entry, retry.depth = True, 0
+                    snapshot.pages[snapshot.pages.index(entry_page)] = retry
+                    snapshot.notes["entry_recovered_on_retry"] = True
+            requeued = _requeue_from_sitemap(snapshot, queue, seen, parsed, scope_prefix,
+                                             SITEMAP_RECOVERY_URLS)
+            snapshot.notes["sitemap_recovery_requeued"] = requeued
+            if not requeued:
+                break
+            attempts = max(attempts, 3)
+            fetches_since_new_template = 0
+            stopped_reason = "queue_exhausted"
 
-        if extended:
-            current, depth, parent = _pick_stratified(queue, sampled_templates, templates)
-        else:
-            current, depth, parent = queue.pop(0)
-        # Obey robots for *our own* user agent only.  Skipping a URL because
-        # some other crawler is disallowed would hide the very defect we exist
-        # to report, and would report the site as unreachable instead.
-        if robots_rules and not _auditor_may_fetch(robots_rules, urlparse(current).path):
-            snapshot.notes.setdefault("skipped_by_robots", []).append(current)
-            continue
+        while queue and len(snapshot.pages) < max_pages:
+            if deadline is not None and time.monotonic() >= deadline:
+                stopped_reason = "exploration_deadline"
+                break
+            if extended:
+                # Rebuilt every iteration over the *whole* known pool, fetched pages
+                # included.  A shape only becomes visible once its siblings exist, so
+                # a map frozen at the seed set cannot classify anything link
+                # discovery turns up later - and a per-URL fallback is worse than
+                # useless here, because a lone URL has no siblings and so resolves to
+                # a fully literal path.  Every freshly discovered link would then look
+                # like an unsampled template and be picked first, which inverts the
+                # policy into "prefer whatever we understand least".
+                templates = build_templates(
+                    [u for u, _, _ in queue] + [page.url for page in snapshot.pages])
+                sampled_templates = {}
+                for page in snapshot.pages:
+                    key = templates.get(page.url, "/")
+                    sampled_templates[key] = sampled_templates.get(key, 0) + 1
 
-        fetch_started = time.monotonic()
-        page = _fetch(current, session)
-        if page.error and page.status_code is None and current == url:
-            time.sleep(0.2)  # one retry: a transient transport error is not a defect
-            page = _fetch(current, session)
-        page.is_entry = current == url
-        page.depth = depth
-        page.discovered_from = parent
-        snapshot.pages.append(page)
+            # Saturation: no template both (a) has fewer than per_template
+            # samples *and* (b) still has a candidate waiting in the queue. A
+            # template that will only ever have one instance - the homepage, a
+            # lone /about page - can never reach per_template on its own;
+            # requiring every template's *count* to clear the threshold (rather
+            # than checking whether more of it are even available) blocks
+            # saturation forever on any real site.
+            if extended and len(snapshot.pages) >= soft_target and fetches_since_new_template >= saturation_window:
+                queued_counts: dict[str, int] = {}
+                for candidate, _depth, _parent in queue:
+                    key = templates.get(candidate, "/")
+                    queued_counts[key] = queued_counts.get(key, 0) + 1
+                undersampled_and_available = any(
+                    sampled_templates.get(t, 0) < per_template and queued_counts.get(t, 0) > 0
+                    for t in set(sampled_templates) | set(queued_counts)
+                )
+                if sampled_templates and not undersampled_and_available:
+                    # Saturation means "nothing new is being learned at the
+                    # current sampling rate", which is a reason to sample harder
+                    # - not a reason to hand a third of the audit's allowance
+                    # back unused. Widen the allowance while the budget says
+                    # there is real time left, and only then stop.
+                    remaining = ((deadline - time.monotonic()) / explore_span
+                                 if deadline is not None and explore_span > 0 else 0.0)
+                    # Deferred links only count as somewhere to expand *to* if
+                    # this expansion would actually lift the ceiling that is
+                    # holding them; otherwise widening the per-template
+                    # allowance spends an expansion on an empty queue.
+                    can_release = bool(deferred) and targeted_depth is not None and (
+                        max_depth is None or targeted_depth > max_depth)
+                    may_expand = (len(expansions) < expansion_loops
+                                  and (queue or can_release)
+                                  and remaining >= expansion_headroom)
+                    if may_expand:
+                        per_template += targeted_additions
+                        if targeted_depth is not None and (max_depth is None or targeted_depth > max_depth):
+                            max_depth = targeted_depth
+                            queue.extend(deferred)
+                            deferred = []
+                        fetches_since_new_template = 0
+                        expansions.append({
+                            "at_pages": len(snapshot.pages),
+                            "per_template_samples": per_template,
+                            "max_depth": max_depth,
+                            "budget_remaining": round(remaining, 3),
+                        })
+                        continue
+                    stopped_reason = "saturated"
+                    break
 
-        if extended:
-            known = len(sampled_templates)
-            template = templates.get(current, "/")
-            if template in sampled_templates:
-                fetches_since_new_template += 1
-            else:
-                fetches_since_new_template = 0
-            sampled_templates[template] = sampled_templates.get(template, 0) + 1
-            del known
+            # One wave: the next `concurrency` best candidates, chosen by the
+            # same stratified policy as before. `projected` makes the picks
+            # inside a wave spread across templates instead of taking the same
+            # least-sampled one `concurrency` times over.
+            wave: list[tuple[str, int, str | None]] = []
+            projected = dict(sampled_templates)
+            wave_target = max(1, min(concurrency, max_pages - len(snapshot.pages)))
+            while queue and len(wave) < wave_target:
+                if extended:
+                    current, depth, parent = _pick_stratified(queue, projected, templates)
+                else:
+                    current, depth, parent = queue.pop(0)
+                # Obey robots for *our own* user agent only.  Skipping a URL because
+                # some other crawler is disallowed would hide the very defect we exist
+                # to report, and would report the site as unreachable instead.
+                if robots_rules and not _auditor_may_fetch(robots_rules, urlparse(current).path):
+                    snapshot.notes.setdefault("skipped_by_robots", []).append(current)
+                    continue
+                if extended:
+                    key = templates.get(current, "/")
+                    projected[key] = projected.get(key, 0) + 1
+                wave.append((current, depth, parent))
+            if not wave:
+                continue  # every remaining candidate was disallowed for this auditor
 
-        if page.error:
-            snapshot.fetch_errors.append({"url": current, "error": page.error})
-            if error_log is not None:
-                # Normalised so the health block can distinguish "the site is
-                # broken" from "our fetch did not complete"; classification is
-                # deterministic and happens inside ErrorLog.record.
-                error_log.record(phase="crawl", operation="fetch", message=page.error,
-                                 url=current, attempt=2 if current == url else 1,
-                                 max_attempts=2 if current == url else 1,
-                                 http_status=page.status_code,
-                                 elapsed_ms=int((time.monotonic() - fetch_started) * 1000))
-        elif page.status_code and page.status_code >= 400:
-            snapshot.broken_links.append({"url": current, "status": page.status_code})
-            if error_log is not None:
-                error_log.record(phase="crawl", operation="fetch",
-                                 message=f"HTTP {page.status_code}", url=current,
-                                 http_status=page.status_code,
-                                 elapsed_ms=int((time.monotonic() - fetch_started) * 1000))
+            fetched = _fetch_wave([candidate for candidate, _, _ in wave], pool, gate,
+                                  concurrency=concurrency, attempts=attempts, backoff=backoff)
 
-        if not page.ok:
-            continue
+            for (current, depth, parent), page in zip(wave, fetched):
+                if page.error and page.status_code is None and current == url and attempts <= 1:
+                    time.sleep(0.2)  # one retry: a transient transport error is not a defect
+                    page = _fetch(current, pool.session)
+                page.is_entry = current == url
+                page.depth = depth
+                page.discovered_from = parent
+                snapshot.pages.append(page)
 
-        if max_depth is not None and depth >= max_depth:
-            continue
+                if extended:
+                    template = templates.get(current, "/")
+                    if template in sampled_templates:
+                        fetches_since_new_template += 1
+                    else:
+                        fetches_since_new_template = 0
+                    sampled_templates[template] = sampled_templates.get(template, 0) + 1
 
-        for link in page.links:
-            href = link["href"]
-            if href.startswith(("#", "mailto:", "tel:", "javascript:", "data:")):
-                continue
-            absolute = urljoin(current, href).split("#")[0]
-            target = urlparse(absolute)
-            if not _same_site(target.netloc, parsed.netloc) or _canonical_key(absolute) in seen:
-                continue
-            if scope_prefix != "/" and not target.path.startswith(scope_prefix.rstrip("/")):
-                continue
-            if re.search(r"\.(pdf|zip|png|jpe?g|gif|svg|css|js|xml|ico)$", target.path, re.I):
-                continue
-            if extended and _is_low_value(absolute):
-                continue
-            seen.add(_canonical_key(absolute))
-            queue.append((absolute, depth + 1, current))
+                if page.error:
+                    snapshot.fetch_errors.append({"url": current, "error": page.error})
+                    if error_log is not None:
+                        # Normalised so the health block can distinguish "the site is
+                        # broken" from "our fetch did not complete"; classification is
+                        # deterministic and happens inside ErrorLog.record.
+                        error_log.record(phase="crawl", operation="fetch", message=page.error,
+                                         url=current, attempt=page.fetch_attempts,
+                                         max_attempts=attempts,
+                                         http_status=page.status_code,
+                                         elapsed_ms=page.elapsed_ms)
+                elif page.status_code and page.status_code >= 400:
+                    snapshot.broken_links.append({"url": current, "status": page.status_code})
+                    if error_log is not None:
+                        error_log.record(phase="crawl", operation="fetch",
+                                         message=f"HTTP {page.status_code}", url=current,
+                                         attempt=page.fetch_attempts, max_attempts=attempts,
+                                         http_status=page.status_code,
+                                         elapsed_ms=page.elapsed_ms)
 
-    if queue and len(snapshot.pages) >= max_pages:
-        stopped_reason = "page_limit"
+                if not page.ok:
+                    continue
+
+                hrefs = [link["href"] for link in page.links]
+                if extended:
+                    # Navigation that only exists after client-side injection.
+                    # Without it an SPA is a one-page audit by construction.
+                    hrefs.extend(page.js_links)
+                at_ceiling = max_depth is not None and depth >= max_depth
+                for href in hrefs:
+                    if href.startswith(("#", "mailto:", "tel:", "javascript:", "data:")):
+                        continue
+                    absolute = urljoin(current, href).split("#")[0]
+                    target = urlparse(absolute)
+                    if not _same_site(target.netloc, parsed.netloc) or _canonical_key(absolute) in seen:
+                        continue
+                    if scope_prefix != "/" and not target.path.startswith(scope_prefix.rstrip("/")):
+                        continue
+                    if re.search(r"\.(pdf|zip|png|jpe?g|gif|svg|css|js|xml|ico)$", target.path, re.I):
+                        continue
+                    if extended and _is_low_value(absolute):
+                        continue
+                    seen.add(_canonical_key(absolute))
+                    if at_ceiling:
+                        if len(deferred) < max_pages * 20:
+                            deferred.append((absolute, depth + 1, current))
+                    else:
+                        queue.append((absolute, depth + 1, current))
+
+        if queue and len(snapshot.pages) >= max_pages:
+            stopped_reason = "page_limit"
+        if len(snapshot.ok_pages) > 1 or stopped_reason == "exploration_deadline":
+            break
+
     if not snapshot.pages and snapshot.notes.get("skipped_by_robots"):
         # Every candidate was disallowed for us; that is a policy, not an outage,
         # and only worth reporting as the stop reason when nothing was fetched.
         stopped_reason = "robots_disallowed_auditor"
+
+    # Throttling is *our* problem, not the site's, and the two look identical in
+    # a single response. An explicit 429, or a wall of refusals that only starts
+    # after the crawl was already working, is read as a rate limit so the
+    # crawlability detector reports an audit limitation instead of accusing the
+    # site of blocking machines.
+    throttled = [p for p in snapshot.pages if p.status_code in THROTTLE_STATUS]
+    snapshot.notes["throttled_responses"] = len(throttled)
+    likely_rate_limited = bool(throttled) and (
+        any(p.status_code == 429 for p in throttled)
+        or (len(snapshot.ok_pages) >= 1 and len(throttled) >= 3)
+    )
+    snapshot.notes["likely_rate_limited"] = likely_rate_limited
+    if likely_rate_limited and error_log is not None:
+        first = throttled[0]
+        event = error_log.record(
+            phase="crawl", operation="rate_limit",
+            message=f"HTTP {first.status_code} on {len(throttled)} of {len(snapshot.pages)} requests",
+            url=first.url, http_status=first.status_code)
+        event.category = "auditor_limitation"
+        event.limitation_summary = (
+            f"The host rate-limited this auditor ({len(throttled)} of {len(snapshot.pages)} requests "
+            f"answered HTTP {first.status_code}); those pages are missing from the analysis and the "
+            f"result is not evidence that the site blocks AI crawlers."
+        )
 
     snapshot.notes["pages_fetched"] = len(snapshot.pages)
     snapshot.notes["pages_ok"] = len(snapshot.ok_pages)
     snapshot.notes["scope_prefix"] = scope_prefix
     snapshot.notes["crawl_profile"] = getattr(budget, "profile", "legacy") if budget is not None else "legacy"
     snapshot.notes["max_depth_reached"] = max((p.depth for p in snapshot.pages), default=0)
+    snapshot.notes["fetch_concurrency"] = concurrency
+    snapshot.notes["expansions"] = expansions
+    snapshot.notes["retried_fetches"] = sum(1 for p in snapshot.pages if p.fetch_attempts > 1)
     if extended and snapshot.pages:
         final_map = build_templates([page.url for page in snapshot.pages])
         sampled_templates = {}
@@ -720,7 +1092,7 @@ def crawl(url: str, max_pages: int = MAX_PAGES, budget: Any = None,
     snapshot.notes["templates_sampled"] = len(sampled_templates)
     snapshot.notes["templates"] = dict(sorted(sampled_templates.items()))
     snapshot.notes["urls_discovered"] = len(seen)
-    snapshot.notes["urls_queued_unvisited"] = len(queue)
+    snapshot.notes["urls_queued_unvisited"] = len(queue) + len(deferred)
     snapshot.notes["stopped_because"] = stopped_reason
     return snapshot
 
@@ -796,6 +1168,23 @@ def check_crawlability(snapshot: SiteSnapshot) -> tuple[list[dict], list[dict]]:
     if entry is None or not entry.ok:
         status = entry.http_label if entry else "HTTP no-response"
         detail = entry.error if entry and entry.error else "no HTML body returned"
+        if snapshot.notes.get("likely_rate_limited"):
+            # We were throttled. A rate limit and a bot wall are the same status
+            # code from one response, and the difference decides whether this is
+            # a defect of the site or a limitation of the audit. Reporting it as
+            # a finding would publish an accusation we cannot support - and this
+            # is exactly the path that produced one-page `crawlability` reports
+            # for sites that answer 200 to an ordinary client.
+            recs.append(recommendation(
+                "Re-run the audit from a different network or at a slower rate",
+                f"The host answered {status} to {snapshot.notes.get('throttled_responses', 0)} of "
+                f"{len(snapshot.pages)} requests from this auditor, which is a rate limit rather than "
+                "a measurement of the site. No crawlability conclusion is reported from this run; "
+                "re-run with AUDIT_FETCH_CONCURRENCY=1 and AUDIT_PER_HOST_DELAY_SECONDS=2 before "
+                "acting on any part of it.",
+                "crawlability", "low",
+            ))
+            return findings, recs
         # No HTTP status at all means the request never reached the server (DNS, TLS,
         # proxy). That is still a real discoverability barrier, but it can also be the
         # auditing network, so the finding is emitted with reduced confidence.
@@ -1056,21 +1445,34 @@ def check_rendering(snapshot: SiteSnapshot) -> tuple[list[dict], list[dict]]:
 # Skill entrypoint
 # ---------------------------------------------------------------------------
 
+def _effective_page_limit(context: dict[str, Any], budget: Any) -> int:
+    """The page ceiling the crawl was actually run under."""
+    limit = int(getattr(budget, "hard_page_limit", MAX_PAGES) or MAX_PAGES)
+    requested = context.get("max_pages")
+    return min(int(requested), limit) if requested else limit
+
+
 def run(context: dict[str, Any]) -> SkillResult:
     started = time.monotonic()
     result = SkillResult(skill=SKILL_ID)
 
+    # Resolved here rather than inside `crawl()` so the budget that governed the
+    # crawl is the same object the self-checks below are measured against.
+    # `max_pages=None` means "the budget decides"; passing a default here is what
+    # let a stale 12 outrank the resolved profile. An explicit `max_pages` from
+    # the caller still applies, but only ever as a tightening ceiling.
+    budget = _resolve_budget(context.get("crawl_budget"))
     snapshot = crawl(
         context["url"],
-        max_pages=context.get("max_pages", MAX_PAGES),
-        budget=context.get("crawl_budget"),
+        max_pages=context.get("max_pages"),
+        budget=budget,
         error_log=context.get("error_log"),
     )
     result.artifacts["snapshot"] = snapshot
     # Published for the verification stage: confirming that a fetch failure
     # reproduces is an HTTP concern, and this skill is the only one that owns
     # HTTP. One session is reused so a re-check costs a request, not a handshake.
-    _verify_session = _new_session()
+    _verify_session = _new_session(1)
     result.artifacts["refetch"] = lambda url, _s=_verify_session: _fetch(url, _s)
 
     crawl_findings, crawl_recs = check_crawlability(snapshot)
@@ -1088,9 +1490,16 @@ def run(context: dict[str, Any]) -> SkillResult:
         {"check": "content_present_without_javascript",
          "passed": not any(f["category"] == "rendering" for f in result.findings)},
         {"check": "pages_crawled", "value": len(snapshot.pages), "value_ok": len(snapshot.ok_pages)},
+        # Checked against the ceiling that actually governed the crawl. Reading
+        # `context["max_pages"]` here meant a caller-side default could fail a
+        # check the crawl had honoured perfectly.
         {"check": "crawl_budget_respected",
-         "passed": len(snapshot.pages) <= context.get("max_pages", MAX_PAGES),
+         "passed": len(snapshot.pages) <= _effective_page_limit(context, budget),
          "value": snapshot.notes.get("stopped_because")},
+        {"check": "crawl_time_budget",
+         "value": f"{snapshot.notes.get('fetch_concurrency', 1)}x concurrent, "
+                  f"{len(snapshot.notes.get('expansions', []))} expansions, "
+                  f"{snapshot.notes.get('retried_fetches', 0)} retried fetches"},
         {"check": "max_crawl_depth", "value": snapshot.notes.get("max_depth_reached", 0)},
         {"check": "robots_txt_read", "passed": bool(snapshot.robots_txt),
          "value": snapshot.robots_status},

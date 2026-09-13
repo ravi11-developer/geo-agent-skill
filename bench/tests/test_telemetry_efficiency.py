@@ -50,19 +50,42 @@ def test_extended_profile_reaches_more_templates_than_legacy(agent, synthetic_se
     "https://www.mokobara.com",
     "https://www.iiit.ac.in",
 ])
-def test_extended_profile_saturates_before_hard_limit_on_real_sites(url, agent_runner):
-    """Confirms the saturation fix: a real multi-template site should stop
-    because it ran out of new templates to learn about, not because it hit
-    the page ceiling. Regression guard for the singleton-template bug this
-    test suite caught (a template with exactly one instance - the homepage -
-    used to block saturation from ever firing; see crawl_render.py)."""
-    report = agent_runner("B-coverage", url, env={"AUDIT_CRAWL_PROFILE": "extended"}, timeout=200)
+def test_extended_profile_only_stops_early_once_its_budget_is_spent(url, agent_runner):
+    """A saturation stop is only legitimate once there is nothing left to buy.
+
+    The earlier version of this test asserted that a real site stops on
+    saturation below the page ceiling, and it passed - by stopping at exactly
+    the 60-page soft target after ~74s of a 300s allowance, with hundreds of
+    URLs still queued. Stopping early is now only allowed when the crawl has
+    either exhausted its expansions or run out of candidates; otherwise it must
+    have kept going and stopped for a reason that is about the budget
+    (`page_limit`, `exploration_deadline`) or about the site
+    (`queue_exhausted`).
+
+    Still a regression guard for the singleton-template bug (a template with
+    exactly one instance - the homepage - used to block saturation from ever
+    firing; see crawl_render.py), because `saturated` must remain reachable at
+    all once expansions are used up.
+    """
+    report = agent_runner("B-coverage", url, env={"AUDIT_CRAWL_PROFILE": "extended"}, timeout=290)
     telemetry = report["telemetry"]
-    assert telemetry.get("crawl_stopped_because") == "saturated", (
-        f"expected the crawl to saturate on {url}, got "
-        f"{telemetry.get('crawl_stopped_because')!r} after {telemetry.get('pages_fetched')} pages"
-    )
-    assert telemetry["pages_fetched"] < 30  # the extended profile's hard_page_limit
+    root = Path(__file__).resolve().parents[2] / "agents" / "B-coverage"
+    sys.path.insert(0, str(root))
+    from lib.llm.config import CrawlBudget
+    budget = CrawlBudget.extended()
+
+    stopped = telemetry.get("crawl_stopped_because")
+    assert stopped in {"saturated", "queue_exhausted", "page_limit", "exploration_deadline"}, stopped
+    assert telemetry["pages_fetched"] <= budget.hard_page_limit
+
+    if stopped == "saturated":
+        spent_expansions = telemetry.get("crawl_expansions", 0) >= budget.expansion_loops
+        nothing_left = telemetry.get("urls_queued_unvisited", 0) == 0
+        assert spent_expansions or nothing_left, (
+            f"{url} stopped on saturation after {telemetry.get('pages_fetched')} pages with "
+            f"{telemetry.get('crawl_expansions')} of {budget.expansion_loops} expansions used and "
+            f"{telemetry.get('urls_queued_unvisited')} URLs still queued - that is budget left unspent"
+        )
 
 
 # ---------------------------------------------------------------------------

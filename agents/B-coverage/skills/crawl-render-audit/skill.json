@@ -35,7 +35,10 @@
       "GET"
     ],
     "respects_robots_txt": true,
-    "max_pages": 12,
-    "timeout_seconds": 8
+    "max_pages": 150,
+    "timeout_seconds": 8,
+    "max_attempts_per_url": 3,
+    "max_concurrent_requests": 6,
+    "honours_crawl_delay": true
   }
 }

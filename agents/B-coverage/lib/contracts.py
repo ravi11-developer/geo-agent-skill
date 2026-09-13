@@ -92,6 +92,10 @@ class Page:
     error: str | None = None
     elapsed_ms: int = 0
     is_entry: bool = False
+    # How many HTTP requests this document actually cost. 1 means first time
+    # lucky; anything higher means the fetch layer recovered a transient
+    # failure that used to end the crawl.
+    fetch_attempts: int = 1
     # Crawl planning metadata.  Both default to the values the original
     # breadth-first crawler implied, so nothing downstream changes when the
     # legacy crawl profile is in force.
@@ -242,6 +246,27 @@ class Page:
         merged = " ".join(p["html"] for p in self.js_payloads)
         soup = BeautifulSoup(merged, "html.parser")
         return re.sub(r"\s+", " ", soup.get_text(" ", strip=True))
+
+    @cached_property
+    def js_links(self) -> list[str]:
+        """``href`` values that only exist inside JavaScript-injected markup.
+
+        The same simulated render the rendering detector uses already holds the
+        navigation of a client-rendered page. Ignoring it is what makes an SPA a
+        permanent one-page audit: its raw HTML has no ``<a href>`` at all, so
+        link discovery has nothing to follow however large the crawl budget is.
+        Raw-HTML hrefs are excluded because the crawler already has those.
+        """
+        if not self.js_payloads:
+            return []
+        raw = {link["href"] for link in self.links}
+        merged = " ".join(payload["html"] for payload in self.js_payloads)
+        found: list[str] = []
+        for a in BeautifulSoup(merged, "html.parser").find_all("a", href=True):
+            href = a["href"].strip()
+            if href and href not in raw and href not in found:
+                found.append(href)
+        return found
 
     @cached_property
     def js_shell_signals(self) -> dict[str, bool]:

@@ -392,8 +392,16 @@ def run_audit(url: str, config: dict[str, Any] | None = None) -> dict[str, Any]:
 
     flagged = {f["category"] for f in findings}
     covered_by_skill = {c for skill in skills for c in skill.provides}
+    # A skill that ran without raising has *not* checked anything if the crawl
+    # handed it nothing to read. Every category except `crawlability` is derived
+    # from page content, so on a snapshot with no retrievable page they are
+    # `not_checked` - reporting them `clean` would assert the site's rendering,
+    # schema and entity identity are healthy on the strength of zero documents,
+    # which is the one thing `coverage` exists to make impossible.
+    readable = bool(getattr(snapshot_artifact, "ok_pages", None))
     coverage = {
         category: ("flagged" if category in flagged
+                   else "not_checked" if not (readable or category == "crawlability")
                    else "clean" if category in covered_by_skill
                    else "not_checked")
         for category in CATEGORIES

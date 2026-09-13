@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Build the submission package from the live agent tree.
 
-The agent lives at ``eval/agents/marketplace/`` with each skill's executable at
+The agent lives at ``agents/A-precision/`` with each skill's executable at
 the skill root, which is what the benchmark loader expects.  The submission
 package wants the agentskills.io progressive-disclosure layout, with executables
 under ``scripts/``.  Keeping two hand-maintained copies is how they drift, so
 this script derives one from the other:
 
-    python eval/agents/marketplace/tools/build_submission.py            # ../../../marketplace_submission
-    python eval/agents/marketplace/tools/build_submission.py --out DIR --zip
+    python agents/A-precision/tools/build_submission.py            # ../../../marketplace_submission
+    python agents/A-precision/tools/build_submission.py --out DIR --zip
 
 It rewrites every ``entrypoint`` in ``marketplace.json`` and in each
 ``skill.json`` to the new path, copies only what belongs in a submission, then

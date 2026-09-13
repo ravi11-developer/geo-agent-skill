@@ -277,7 +277,13 @@ def run_audit(url: str, config: dict[str, Any] | None = None) -> dict[str, Any]:
         "url": url,
         "artifacts": {},
         "config": config,
-        "max_pages": config.get("max_pages", manifest.get("safety", {}).get("max_pages_per_run", 12)),
+        # The resolved crawl budget owns the page ceiling. The manifest value is
+        # the declared safety cap and only ever tightens it; neither is allowed
+        # to be a second, independently-drifting number.
+        "max_pages": config.get("max_pages") or min(
+            llm_config.crawl.hard_page_limit,
+            int(manifest.get("safety", {}).get("max_pages_per_run", llm_config.crawl.hard_page_limit)),
+        ),
         "llm_engine": engine,
         "error_log": error_log,
         "crawl_budget": llm_config.crawl,
@@ -401,8 +407,16 @@ def run_audit(url: str, config: dict[str, Any] | None = None) -> dict[str, Any]:
 
     flagged = {f["category"] for f in findings}
     covered_by_skill = {c for skill in skills for c in skill.provides}
+    # A skill that ran without raising has *not* checked anything if the crawl
+    # handed it nothing to read. Every category except `crawlability` is derived
+    # from page content, so on a snapshot with no retrievable page they are
+    # `not_checked` - reporting them `clean` would assert the site's rendering,
+    # schema and entity identity are healthy on the strength of zero documents,
+    # which is the one thing `coverage` exists to make impossible.
+    readable = bool(getattr(snapshot_artifact, "ok_pages", None))
     coverage = {
         category: ("flagged" if category in flagged
+                   else "not_checked" if not (readable or category == "crawlability")
                    else "clean" if category in covered_by_skill
                    else "not_checked")
         for category in CATEGORIES
@@ -474,6 +488,14 @@ def run_audit(url: str, config: dict[str, Any] | None = None) -> dict[str, Any]:
             "urls_discovered": (snapshot.notes.get("urls_discovered") if snapshot else 0),
             "seeded_from_sitemap": (snapshot.notes.get("seeded_from_sitemap", 0) if snapshot else 0),
             "crawl_stopped_because": (snapshot.notes.get("stopped_because") if snapshot else None),
+            # How the 5-minute allowance was actually spent, so a reader can see
+            # whether a thin result came from a small site or from a crawl that
+            # stopped early.
+            "crawl_expansions": len(snapshot.notes.get("expansions", [])) if snapshot else 0,
+            "fetch_concurrency": (snapshot.notes.get("fetch_concurrency", 1) if snapshot else 1),
+            "retried_fetches": (snapshot.notes.get("retried_fetches", 0) if snapshot else 0),
+            "likely_rate_limited": bool(snapshot.notes.get("likely_rate_limited")) if snapshot else False,
+            "urls_queued_unvisited": (snapshot.notes.get("urls_queued_unvisited", 0) if snapshot else 0),
             "broken_links": snapshot.broken_links if snapshot else [],
         },
         # What the audit examined and what it chose not to claim. Reported so a
