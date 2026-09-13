@@ -35,6 +35,7 @@ from lib.contracts import (
     recommendation,
 )
 from lib.loader import load_manifest, load_skills
+from lib.verification import verify_findings, verification_summary
 from lib.llm.config import CAP_PROMOTION, CAP_SUGGESTIONS, resolve_config
 from lib.llm.engine import HybridEngine
 from lib.llm.evidence import build_evidence_pack
@@ -335,6 +336,25 @@ def run_audit(url: str, config: dict[str, Any] | None = None) -> dict[str, Any]:
 
     findings = prioritise(merge_findings(raw_findings))
 
+    # --- verification: an adversarial re-check before anything is reported ---
+    # Detection and verification are deliberately separate passes. The detectors
+    # are tuned to notice; this pass is tuned to disbelieve, and it spends the
+    # audit's remaining time budget confirming that each finding's own evidence
+    # still holds. It may drop a finding or lower its confidence; it never
+    # invents one.
+    verification: dict[str, Any] = {"candidates": 0, "kept": 0, "dropped": 0,
+                                    "downgraded": 0, "decisions": []}
+    if findings:
+        candidate_count = len(findings)
+        findings, verification_log = verify_findings(
+            findings, snapshot_artifact,
+            refetch=context["artifacts"].get("refetch"),
+            budget_seconds=float(config.get("verification_budget_seconds", 25.0)),
+        )
+        verification = verification_summary(verification_log)
+        verification["candidates"] = candidate_count
+        findings = prioritise(findings)
+
     # Proactive Baseline: Always suggest sameAs links for strong AI entity recognition
     recommendations.append(recommendation(
         title="Add `sameAs` links to social profiles in Organization JSON-LD",
@@ -441,8 +461,16 @@ def run_audit(url: str, config: dict[str, Any] | None = None) -> dict[str, Any]:
             "skills": telemetry,
             "runtime_seconds": round(elapsed, 3),
             "pages_fetched": len(snapshot.pages) if snapshot else 0,
+            "templates_sampled": (snapshot.notes.get("templates_sampled") if snapshot else 0),
+            "urls_discovered": (snapshot.notes.get("urls_discovered") if snapshot else 0),
+            "seeded_from_sitemap": (snapshot.notes.get("seeded_from_sitemap", 0) if snapshot else 0),
+            "crawl_stopped_because": (snapshot.notes.get("stopped_because") if snapshot else None),
             "broken_links": snapshot.broken_links if snapshot else [],
         },
+        # What the audit examined and what it chose not to claim. Reported so a
+        # reader can weigh a site-wide statement against the sample behind it
+        # rather than having to assume the crawl was exhaustive.
+        "verification": verification,
     }
 
     # Optional, additive blocks.  Existing consumers read `findings`, `summary`,

@@ -405,6 +405,94 @@ def run_dead_port() -> dict:
                 "findings": [], "schema_errors": [], "expect_ok": False, "forbid_ok": True}
 
 
+
+def run_location_integrity() -> dict:
+    """Every finding's `locations` must be a page this run actually fetched.
+
+    Regression guard for lib/verification.py's location_integrity rule: a
+    finding citing a URL nothing ever read is unreproducible for whoever acts
+    on the report, and the verification stage is supposed to drop it before it
+    reaches the output. This runs a real multi-page site and checks the
+    invariant end-to-end rather than mocking a false detection.
+    """
+    routes = {
+        "/": _page(HTML_OK),
+        "/about.html": _page(HTML_OK.replace(b"Acme Metrology", b"Acme Metrology - About")),
+        "/broken.html": (500, {"Content-Type": "text/html"}, b"server error"),
+    }
+    port = free_port()
+    server = make_server(routes, port)
+    from run import run_audit
+    started = time.monotonic()
+    try:
+        report = run_audit(f"http://127.0.0.1:{port}/")
+        fetched = {f"http://127.0.0.1:{port}{p}" for p in routes} | {f"http://127.0.0.1:{port}/"}
+        bad = [
+            loc for finding in report.get("findings", [])
+            for loc in finding.get("locations", [])
+            if loc not in fetched and not loc.endswith(("robots.txt", "sitemap.xml"))
+        ]
+        return {"case": "location_integrity", "note": "no finding may cite an unfetched URL",
+                "error": None if not bad else f"finding cites unfetched location(s): {bad}",
+                "seconds": round(time.monotonic() - started, 2), "findings": [], "schema_errors": [],
+                "expect_ok": True, "forbid_ok": True}
+    except Exception as exc:  # noqa: BLE001
+        return {"case": "location_integrity", "note": "no finding may cite an unfetched URL",
+                "error": f"{type(exc).__name__}: {exc}", "seconds": 0.0, "findings": [],
+                "schema_errors": [], "expect_ok": True, "forbid_ok": True}
+    finally:
+        server.shutdown()
+        server.server_close()
+
+
+def run_saturation_stop() -> dict:
+    """A site with several URL templates should stop well short of the hard
+    page limit once each template is sampled, under the extended crawl profile.
+
+    Regression guard for the Phase 3 stratified crawl (crawl_render.py):
+    without saturation, a fixed page budget is spent breadth-first and never
+    reports that it stopped early. Six templates x 2 pages each is enough
+    to trigger a stop before the 30-page hard limit if saturation is working.
+    """
+    sections = ("blog", "products", "docs", "team", "pricing", "faq")
+    per_section = 5  # > per_template_samples(3), so every template saturates well before this many are fetched
+    routes = {"/": _page(HTML_OK)}
+    for section in sections:
+        for i in range(1, per_section + 1):
+            path = f"/{section}/{i}"
+            routes[path] = _page(HTML_OK.replace(b"Acme Metrology", f"Acme {section}-{i}".encode()))
+    links = "".join(f'<a href="/{s}/{i}">{s} {i}</a>' for s in sections for i in range(1, per_section + 1))
+    routes["/"] = _page(HTML_OK.replace(b"</body>", links.encode() + b"</body>"))
+    # 1 entry + 6 sections x 5 pages = 31 URLs total, comfortably above soft_page_target(16),
+    # so a crawl that saturates should stop well short of exhausting the queue.
+
+    port = free_port()
+    server = make_server(routes, port)
+    from run import run_audit
+    started = time.monotonic()
+    try:
+        os.environ["AUDIT_CRAWL_PROFILE"] = "extended"
+        try:
+            report = run_audit(f"http://127.0.0.1:{port}/")
+        finally:
+            os.environ.pop("AUDIT_CRAWL_PROFILE", None)
+        telemetry = report.get("telemetry", {})
+        stopped = telemetry.get("crawl_stopped_because")
+        pages = telemetry.get("pages_fetched", 0)
+        ok = stopped == "saturated" and pages < 30
+        return {"case": "saturation_stop", "note": "extended crawl stops on template saturation, not the page ceiling",
+                "error": None if ok else f"stopped_because={stopped!r} pages_fetched={pages} (expected 'saturated' under 30)",
+                "seconds": round(time.monotonic() - started, 2), "findings": [], "schema_errors": [],
+                "expect_ok": ok, "forbid_ok": True}
+    except Exception as exc:  # noqa: BLE001
+        return {"case": "saturation_stop", "note": "extended crawl stops on template saturation, not the page ceiling",
+                "error": f"{type(exc).__name__}: {exc}", "seconds": 0.0, "findings": [],
+                "schema_errors": [], "expect_ok": False, "forbid_ok": True}
+    finally:
+        server.shutdown()
+        server.server_close()
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Stress-test the marketplace entrypoint")
     ap.add_argument("--case", action="append", default=[])
@@ -420,7 +508,8 @@ def main() -> int:
     names = args.case or list(CASES)
     results = [run_case(n, CASES[n]) for n in names]
     if not args.case:
-        results += [run_concurrency(), run_idempotency(), run_dead_port()]
+        results += [run_concurrency(), run_idempotency(), run_dead_port(),
+                    run_location_integrity(), run_saturation_stop()]
 
     failures = 0
     print(f"{'case':<24}{'time':>7}  {'result':<8} detail")

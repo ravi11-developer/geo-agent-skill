@@ -25,7 +25,8 @@ Validated by `schema/audit.schema.json`; run `python tools/validate_package.py -
 | `recommendations[]` | array | proactive advice; never a defect, never counted in `summary` |
 | `coverage` | object | per category: `flagged` / `clean` / `not_checked` |
 | `checks_performed[]` | array | every assertion each skill evaluated, pass or fail |
-| `telemetry` | object | per-skill runtime, findings count, errors; pages fetched |
+| `telemetry` | object | per-skill runtime, findings count, errors; pages fetched, `templates_sampled`, `urls_discovered`, `seeded_from_sitemap`, `crawl_stopped_because` |
+| `verification` | object | what the adversarial re-check did: `candidates`, `kept`, `dropped`, `downgraded`, and a `decisions` list naming every finding that was dropped or had its confidence lowered, with the reason |
 
 ## Consumer guidance
 

@@ -145,6 +145,10 @@ class CrawlBudget:
     max_semantic_pages: int = 15
     total_budget_seconds: float = 300.0
     explore_deadline_seconds: float = 255.0
+    # Stratified sampling: how many samples of each URL template are enough, and
+    # how many consecutive fetches without a new template count as saturated.
+    per_template_samples: int = 3
+    saturation_window: int = 6
 
     @classmethod
     def legacy(cls) -> "CrawlBudget":
@@ -152,14 +156,23 @@ class CrawlBudget:
 
     @classmethod
     def extended(cls) -> "CrawlBudget":
+        """The measured profile - see `bench/results/ksweep_*.csv` for the sweep.
+
+        `hard_page_limit` sits at the knee of the findings-vs-pages curve rather
+        than at a round number, and `explore_deadline_seconds` keeps the whole
+        audit inside the handout's 5-minute ceiling even when every fetch is slow.
+        """
         return cls(
             profile="extended",
-            soft_page_target=20,
+            soft_page_target=16,
             hard_page_limit=30,
-            max_depth=2,
+            max_depth=3,
             targeted_depth=3,
             targeted_additions=5,
             expansion_loops=1,
+            per_template_samples=3,
+            saturation_window=6,
+            explore_deadline_seconds=210.0,
         )
 
     @classmethod
@@ -177,6 +190,8 @@ class CrawlBudget:
             soft_page_target=_as_int(env.get("AUDIT_SOFT_PAGE_TARGET"), base.soft_page_target, 1, 500),
             hard_page_limit=_as_int(env.get("AUDIT_HARD_PAGE_LIMIT"), base.hard_page_limit, 1, 500),
             max_depth=max_depth,
+            per_template_samples=_as_int(env.get("AUDIT_PER_TEMPLATE_SAMPLES"), base.per_template_samples, 1, 20),
+            saturation_window=_as_int(env.get("AUDIT_SATURATION_WINDOW"), base.saturation_window, 1, 50),
             semantic_page_target=_as_int(env.get("AUDIT_SEMANTIC_PAGE_TARGET"), base.semantic_page_target, 1, 50),
             max_semantic_pages=_as_int(env.get("AUDIT_MAX_SEMANTIC_PAGES"), base.max_semantic_pages, 1, 50),
             total_budget_seconds=_as_float(env.get("AUDIT_TOTAL_BUDGET_SECONDS"), base.total_budget_seconds, 5.0, 3600.0),

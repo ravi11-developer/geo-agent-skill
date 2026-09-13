@@ -383,6 +383,117 @@ def _is_low_value(absolute: str) -> bool:
     return False
 
 
+VOLATILE_SEGMENT_RE = re.compile(r"^[0-9a-f]{8}-[0-9a-f-]{16,}$", re.I)
+# How many siblings a path position needs before it is read as an instance slot
+# rather than a named section. Three is the smallest number that cannot be a
+# coincidence of two hand-written pages.
+TEMPLATE_SIBLING_THRESHOLD = 3
+# ...and how *unique* those siblings must be. A section name recurs across the
+# whole URL set (`/collections/` prefixes hundreds of URLs); an instance id
+# appears about once. Without this ratio, any site with three or more top-level
+# sections collapses them all into one template and stratification degenerates
+# into ordinary breadth-first.
+TEMPLATE_UNIQUENESS_RATIO = 0.5
+
+
+def _same_site(a: str, b: str) -> bool:
+    """Host equality that ignores a leading ``www.``.
+
+    Sitemaps publish the site's *canonical* host, which very often differs from
+    the host that was requested by exactly that prefix. Comparing netlocs
+    literally therefore discards the entire sitemap of any site whose canonical
+    host is the bare domain - silently, and precisely on the large sites where
+    the sitemap is most valuable.
+    """
+    return a.lower().removeprefix("www.") == b.lower().removeprefix("www.")
+
+
+def _canonical_key(url: str) -> str:
+    """Identity of a document for de-duplication.
+
+    A sitemap that publishes the bare host while the audit was pointed at the
+    ``www`` host otherwise spends two pages of budget fetching the same document
+    twice, once through a redirect.
+    """
+    parsed = urlparse(url)
+    host = parsed.netloc.lower().removeprefix("www.")
+    path = (parsed.path or "/").rstrip("/") or "/"
+    return f"{host}{path}?{parsed.query}" if parsed.query else f"{host}{path}"
+
+
+def _segments(url: str) -> list[str]:
+    return [s for s in (urlparse(url).path or "/").strip("/").split("/") if s]
+
+
+def build_templates(urls: list[str]) -> dict[str, str]:
+    """Group URLs by path *shape*, learning instance slots from the URLs themselves.
+
+    Most checks are template-level rather than page-level: one product page tells
+    you what every product page does about structured data, alt text and
+    client-side rendering. Sampling per template is what lets a fixed page budget
+    buy coverage of every template instead of N samples of whichever one the
+    header happens to link first.
+
+    Which segments are instances is inferred structurally, not lexically: a
+    position whose siblings under the same *template* prefix take three or more
+    distinct values is an instance slot. A purely lexical rule (hyphens, length)
+    cannot do this - it splits ``/collections/bags`` from ``/collections/tech``
+    while merging nothing, which yields one template per page and makes
+    stratification a no-op.
+    """
+    paths = {url: _segments(url) for url in urls}
+    depth = max((len(segs) for segs in paths.values()), default=0)
+    # prefix[url] is the template prefix agreed so far, extended one level a time
+    prefix: dict[str, tuple[str, ...]] = {url: () for url in paths}
+
+    for level in range(depth):
+        groups: dict[tuple[str, ...], list[str]] = {}
+        for url, segs in paths.items():
+            if len(segs) > level:
+                groups.setdefault(prefix[url], []).append(segs[level])
+        for url, segs in paths.items():
+            if len(segs) <= level:
+                continue
+            segment = segs[level]
+            siblings = groups.get(prefix[url], [])
+            distinct = len(set(siblings))
+            unique_enough = distinct >= max(1, len(siblings)) * TEMPLATE_UNIQUENESS_RATIO
+            if segment.isdigit():
+                token = "<num>"
+            elif VOLATILE_SEGMENT_RE.match(segment):
+                token = "<uuid>"
+            elif distinct >= TEMPLATE_SIBLING_THRESHOLD and unique_enough:
+                token = "<slug>"
+            else:
+                token = segment.lower()
+            prefix[url] = prefix[url] + (token,)
+
+    return {url: "/" + "/".join(parts) if parts else "/" for url, parts in prefix.items()}
+
+
+def _pick_stratified(pool: list[tuple[str, int, str | None]], sampled: dict[str, int],
+                     templates: dict[str, str]) -> tuple[str, int, str | None]:
+    """Take the candidate from the least-sampled template, shallowest first.
+
+    Plain breadth-first spends the whole budget on whatever the header links to.
+    Ordering by (samples already taken of this template, depth, discovery order)
+    keeps the crawl fully deterministic while making each additional fetch buy
+    the most coverage still available.
+    """
+    best_index, best_key = 0, None
+    for index, (candidate, depth, _parent) in enumerate(pool):
+        template = templates.get(candidate) or url_template_single(candidate)
+        key = (sampled.get(template, 0), depth, index)
+        if best_key is None or key < best_key:
+            best_key, best_index = key, index
+    return pool.pop(best_index)
+
+
+def url_template_single(url: str) -> str:
+    """Fallback shape for a URL that was not part of the last template build."""
+    return build_templates([url])[url]
+
+
 def crawl(url: str, max_pages: int = MAX_PAGES, budget: Any = None,
           error_log: Any = None) -> SiteSnapshot:
     """Breadth-first, read-only crawl.
@@ -403,7 +514,14 @@ def crawl(url: str, max_pages: int = MAX_PAGES, budget: Any = None,
 
     extended = bool(budget is not None and getattr(budget, "profile", "legacy") != "legacy")
     if extended:
-        max_pages = min(max_pages, getattr(budget, "hard_page_limit", max_pages))
+        # The budget governs, rather than being floored by the caller's default.
+        # `min()` here meant the extended profile could only ever *tighten* the
+        # crawl: with a manifest default of 12 and a hard limit of 30 it
+        # resolved to 12, so requesting the wider profile changed nothing at all.
+        max_pages = int(getattr(budget, "hard_page_limit", max_pages) or max_pages)
+    soft_target = int(getattr(budget, "soft_page_target", max_pages) or max_pages) if extended else max_pages
+    per_template = int(getattr(budget, "per_template_samples", 3) or 3) if extended else 0
+    saturation_window = int(getattr(budget, "saturation_window", 6) or 6) if extended else 0
     max_depth = getattr(budget, "max_depth", None) if extended else None
     deadline = (time.monotonic() + float(getattr(budget, "explore_deadline_seconds", 1e9))
                 if extended else None)
@@ -435,19 +553,88 @@ def crawl(url: str, max_pages: int = MAX_PAGES, budget: Any = None,
     snapshot.notes["entry_allowed_for_auditor"] = entry_allowed
 
     queue: list[tuple[str, int, str | None]] = [(url, 0, None)]
-    seen = {url}
+    seen = {_canonical_key(url)}
+
+    # Seed from the sitemap.  This is the site's own statement of which pages
+    # matter, it costs nothing extra (the documents are already read), and it is
+    # the only way to reach a client-rendered site at all: an SPA whose raw HTML
+    # contains no <a href> yields exactly one page to link-following, however
+    # large the budget.
+    seeded_from_sitemap = 0
+    if extended:
+        for loc in snapshot.sitemap_urls:
+            if len(seen) >= max_pages * 20:
+                break
+            target = urlparse(loc)
+            if not _same_site(target.netloc, parsed.netloc) or _canonical_key(loc) in seen:
+                continue
+            if scope_prefix != "/" and not target.path.startswith(scope_prefix.rstrip("/")):
+                continue
+            if re.search(r"\.(pdf|zip|png|jpe?g|gif|svg|css|js|xml|ico|md|txt)$", target.path, re.I):
+                continue
+            if _is_low_value(loc):
+                continue
+            seen.add(_canonical_key(loc))
+            queue.append((loc, 1, "sitemap"))
+            seeded_from_sitemap += 1
+    snapshot.notes["seeded_from_sitemap"] = seeded_from_sitemap
+
+    sampled_templates: dict[str, int] = {}
+    templates = build_templates([u for u, _, _ in queue]) if extended else {}
+    templates_built_at = max(len(seen), 1)
+    fetches_since_new_template = 0
     stopped_reason = "queue_exhausted"
     while queue and len(snapshot.pages) < max_pages:
         if deadline is not None and time.monotonic() > deadline:
             stopped_reason = "exploration_deadline"
             break
-        current, depth, parent = queue.pop(0)
+        if extended:
+            # Rebuilt every iteration over the *whole* known pool, fetched pages
+            # included.  A shape only becomes visible once its siblings exist, so
+            # a map frozen at the seed set cannot classify anything link
+            # discovery turns up later - and a per-URL fallback is worse than
+            # useless here, because a lone URL has no siblings and so resolves to
+            # a fully literal path.  Every freshly discovered link would then look
+            # like an unsampled template and be picked first, which inverts the
+            # policy into "prefer whatever we understand least".
+            templates = build_templates(
+                [u for u, _, _ in queue] + [page.url for page in snapshot.pages])
+            sampled_templates = {}
+            for page in snapshot.pages:
+                key = templates.get(page.url, "/")
+                sampled_templates[key] = sampled_templates.get(key, 0) + 1
+
+        # Saturation: stop once no template both (a) has fewer than
+        # per_template_samples fetched *and* (b) still has a candidate waiting
+        # in the queue. A template that will only ever have one instance -
+        # the homepage, a lone /about page - can never reach per_template on
+        # its own; requiring every template's *count* to clear the threshold
+        # (rather than checking whether more of it are even available) blocks
+        # saturation forever on any real site, which has several such
+        # singletons. Checking queue availability is what makes this a
+        # genuine "there is nothing more useful left to fetch" test.
+        if extended and len(snapshot.pages) >= soft_target and fetches_since_new_template >= saturation_window:
+            queued_counts: dict[str, int] = {}
+            for candidate, _depth, _parent in queue:
+                key = templates.get(candidate, "/")
+                queued_counts[key] = queued_counts.get(key, 0) + 1
+            undersampled_and_available = any(
+                sampled_templates.get(t, 0) < per_template and queued_counts.get(t, 0) > 0
+                for t in set(sampled_templates) | set(queued_counts)
+            )
+            if sampled_templates and not undersampled_and_available:
+                stopped_reason = "saturated"
+                break
+
+        if extended:
+            current, depth, parent = _pick_stratified(queue, sampled_templates, templates)
+        else:
+            current, depth, parent = queue.pop(0)
         # Obey robots for *our own* user agent only.  Skipping a URL because
         # some other crawler is disallowed would hide the very defect we exist
         # to report, and would report the site as unreachable instead.
         if robots_rules and not _auditor_may_fetch(robots_rules, urlparse(current).path):
             snapshot.notes.setdefault("skipped_by_robots", []).append(current)
-            stopped_reason = "robots_disallowed_auditor"
             continue
 
         fetch_started = time.monotonic()
@@ -459,6 +646,16 @@ def crawl(url: str, max_pages: int = MAX_PAGES, budget: Any = None,
         page.depth = depth
         page.discovered_from = parent
         snapshot.pages.append(page)
+
+        if extended:
+            known = len(sampled_templates)
+            template = templates.get(current, "/")
+            if template in sampled_templates:
+                fetches_since_new_template += 1
+            else:
+                fetches_since_new_template = 0
+            sampled_templates[template] = sampled_templates.get(template, 0) + 1
+            del known
 
         if page.error:
             snapshot.fetch_errors.append({"url": current, "error": page.error})
@@ -491,7 +688,7 @@ def crawl(url: str, max_pages: int = MAX_PAGES, budget: Any = None,
                 continue
             absolute = urljoin(current, href).split("#")[0]
             target = urlparse(absolute)
-            if target.netloc != parsed.netloc or absolute in seen:
+            if not _same_site(target.netloc, parsed.netloc) or _canonical_key(absolute) in seen:
                 continue
             if scope_prefix != "/" and not target.path.startswith(scope_prefix.rstrip("/")):
                 continue
@@ -499,17 +696,29 @@ def crawl(url: str, max_pages: int = MAX_PAGES, budget: Any = None,
                 continue
             if extended and _is_low_value(absolute):
                 continue
-            seen.add(absolute)
+            seen.add(_canonical_key(absolute))
             queue.append((absolute, depth + 1, current))
 
     if queue and len(snapshot.pages) >= max_pages:
         stopped_reason = "page_limit"
+    if not snapshot.pages and snapshot.notes.get("skipped_by_robots"):
+        # Every candidate was disallowed for us; that is a policy, not an outage,
+        # and only worth reporting as the stop reason when nothing was fetched.
+        stopped_reason = "robots_disallowed_auditor"
 
     snapshot.notes["pages_fetched"] = len(snapshot.pages)
     snapshot.notes["pages_ok"] = len(snapshot.ok_pages)
     snapshot.notes["scope_prefix"] = scope_prefix
     snapshot.notes["crawl_profile"] = getattr(budget, "profile", "legacy") if budget is not None else "legacy"
     snapshot.notes["max_depth_reached"] = max((p.depth for p in snapshot.pages), default=0)
+    if extended and snapshot.pages:
+        final_map = build_templates([page.url for page in snapshot.pages])
+        sampled_templates = {}
+        for page in snapshot.pages:
+            key = final_map.get(page.url, "/")
+            sampled_templates[key] = sampled_templates.get(key, 0) + 1
+    snapshot.notes["templates_sampled"] = len(sampled_templates)
+    snapshot.notes["templates"] = dict(sorted(sampled_templates.items()))
     snapshot.notes["urls_discovered"] = len(seen)
     snapshot.notes["urls_queued_unvisited"] = len(queue)
     snapshot.notes["stopped_because"] = stopped_reason
@@ -858,6 +1067,11 @@ def run(context: dict[str, Any]) -> SkillResult:
         error_log=context.get("error_log"),
     )
     result.artifacts["snapshot"] = snapshot
+    # Published for the verification stage: confirming that a fetch failure
+    # reproduces is an HTTP concern, and this skill is the only one that owns
+    # HTTP. One session is reused so a re-check costs a request, not a handshake.
+    _verify_session = _new_session()
+    result.artifacts["refetch"] = lambda url, _s=_verify_session: _fetch(url, _s)
 
     crawl_findings, crawl_recs = check_crawlability(snapshot)
     result.findings.extend(crawl_findings)

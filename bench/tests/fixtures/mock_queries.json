@@ -1,0 +1,22 @@
+[
+  {"query": "Can you audit mokobara.com for AI discoverability?", "expect_invoke": true, "expect_url": "https://mokobara.com"},
+  {"query": "Check how well https://beardo.in shows up in ChatGPT and Perplexity answers.", "expect_invoke": true, "expect_url": "https://beardo.in"},
+  {"query": "Why doesn't ChatGPT ever mention my site, https://www.acmecloud.example.com? Can you find out?", "expect_invoke": true, "expect_url": "https://www.acmecloud.example.com"},
+  {"query": "Run an AI-readiness audit on iiit.ac.in", "expect_invoke": true, "expect_url": "https://iiit.ac.in"},
+  {"query": "Is our homepage optimized for generative engines? URL: harborline.example.com", "expect_invoke": true, "expect_url": "https://harborline.example.com"},
+  {"query": "Audit http://localhost:9500/site-001-healthy/ and tell me what's wrong with it.", "expect_invoke": true, "expect_url": "http://localhost:9500/site-001-healthy/"},
+  {"query": "Find out why our brand keeps getting misrepresented by AI assistants. We're at northwindinst.com", "expect_invoke": true, "expect_url": "https://northwindinst.com"},
+  {"query": "Give me a report on structured data, freshness and on-site engagement for www.example.org", "expect_invoke": true, "expect_url": "https://www.example.org"},
+  {"query": "What's the weather in Austin today?", "expect_invoke": false, "expect_url": null},
+  {"query": "Write me a Python function that reverses a linked list.", "expect_invoke": false, "expect_url": null},
+  {"query": "Summarize the plot of Dune in three sentences.", "expect_invoke": false, "expect_url": null},
+  {"query": "Fix the bug in my crawl_render.py file - it's throwing a KeyError.", "expect_invoke": false, "expect_url": null},
+  {"query": "What is Generative Engine Optimization and why does it matter?", "expect_invoke": false, "expect_url": null},
+  {"query": "Book me a flight to Bangalore next Tuesday.", "expect_invoke": false, "expect_url": null},
+  {"query": "Compare mokobara.com and beardo.in - which one has better AI discoverability?", "expect_invoke": true, "expect_url": "https://mokobara.com"},
+  {"query": "our site is example.com, tell me if it'll get cited by AI search", "expect_invoke": true, "expect_url": "https://example.com"},
+  {"query": "translate 'hello, how are you' into french", "expect_invoke": false, "expect_url": null},
+  {"query": "Please crawl acmecloud.io and check its robots.txt, structured data and freshness for AI visibility.", "expect_invoke": true, "expect_url": "https://acmecloud.io"},
+  {"query": "Can you review this PR for security issues?", "expect_invoke": false, "expect_url": null},
+  {"query": "I heard about GEO audits - can you do one for https://northwindinst.example.com/products/", "expect_invoke": true, "expect_url": "https://northwindinst.example.com/products/"}
+]

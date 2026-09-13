@@ -19,6 +19,39 @@
   stops firing, and "no sitemap was served" becomes indistinguishable from "we threw the
   sitemap away". Both are fetched with `accept_text=True` for this reason.
 
+## Crawl planning
+
+The page budget is spent on *coverage*, not on depth-first luck.
+
+- **Discovery** draws on three sources, not one: the entry page's links, every
+  in-scope URL in the sitemap, and `Sitemap:` directives from robots.txt. Link
+  following alone cannot reach a client-rendered site at all - an SPA whose raw
+  HTML carries no `<a href>` yields exactly one page however large the budget.
+- **Templates are inferred structurally**, not lexically. A path position whose
+  siblings (under the same template prefix) take three or more values that are
+  *mostly distinct* is an instance slot; a section name recurs across the whole
+  URL set, an instance id appears about once. A purely lexical rule - hyphens,
+  length - produces one template per page, which makes stratification a no-op.
+- **Selection** takes the candidate from the least-sampled template, shallowest
+  first, discovery order last. Fully deterministic, and each extra fetch buys
+  the most coverage still available rather than another sample of whatever the
+  header linked first.
+- The template map is rebuilt each iteration over the whole known pool, and the
+  per-template counts are recomputed with it. Template identity changes as the
+  pool grows, so stale keys would otherwise accumulate until every page looked
+  like its own template.
+- **Stopping** is a saturation rule, not a page count: stop once every known
+  template has `per_template_samples`, no new template has appeared in
+  `saturation_window` fetches, and `soft_page_target` pages have been read.
+  `hard_page_limit` and `explore_deadline_seconds` are ceilings behind it.
+- URLs are de-duplicated on a canonical key (host without `www`, no trailing
+  slash), so a sitemap that publishes the bare host does not spend a second page
+  of budget re-fetching the entry document through a redirect.
+
+`snapshot.notes` records `templates_sampled`, `urls_discovered`,
+`seeded_from_sitemap` and `stopped_because` so the report can state what was
+examined instead of implying the crawl was exhaustive.
+
 ## robots.txt parsing
 
 - Groups follow RFC 9309 s2.2.1: consecutive `User-agent` lines **share** one rule
