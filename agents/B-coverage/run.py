@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
-"""Agent F - The Marketplace.
+"""Marketplace entrypoint.
 
-Benchmark entrypoint.  The suite calls :func:`run_audit`; everything below it is
-the marketplace: ``marketplace.json`` declares the installed skills, and the
-``audit-orchestrator`` skill loads and composes them at run time.
+Everything below this module is the marketplace: ``marketplace.json`` declares
+the installed skills, and the ``audit-orchestrator`` skill loads and composes
+them at run time.
 
-    from eval.agents.marketplace.run import run_audit
+    python run.py https://example.com [report.json]
+
+or from Python:
+
+    from run import run_audit
     report = run_audit("https://example.com")
 """
 

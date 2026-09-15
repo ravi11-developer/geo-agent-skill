@@ -149,8 +149,7 @@ class CrawlBudget:
     breadth-first, no depth ceiling) and remains available as an explicit
     opt-out (``AUDIT_CRAWL_PROFILE=legacy``).  ``extended`` is the default: the
     Round-3 budget that actually spends the handout's 5-minute allowance
-    instead of stopping after ~30 seconds, sized from a real-site sweep (see
-    ``bench/results/ksweep_B-coverage_*.csv`` and ``satsweep_B-coverage_*.csv``).
+    instead of stopping after ~30 seconds, sized from a sweep over real sites.
     """
 
     profile: str = "legacy"
@@ -189,8 +188,8 @@ class CrawlBudget:
 
     @classmethod
     def extended(cls) -> "CrawlBudget":
-        """The measured profile - see `bench/results/ksweep_*.csv` and
-        `satsweep_*.csv` for the sweeps this is derived from.
+        """The measured profile, derived from page-count and saturation sweeps
+        over real sites.
 
         A first pass at this profile (16 soft / 30 hard) turned out to be well
         short of the actual knee: re-sweeping real sites out to k=120 showed
